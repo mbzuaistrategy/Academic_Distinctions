@@ -431,7 +431,7 @@ a {
 .recognition-list {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 20px;
+  gap: 14px;
 }
 
 .recognition-type-list {
@@ -460,13 +460,13 @@ a {
 }
 
 .category-card {
-  min-height: 290px;
+  min-height: 205px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  gap: 18px;
+  gap: 12px;
   overflow: hidden;
-  padding: 22px 20px 20px;
+  padding: 16px;
 }
 
 .category-card::before {
@@ -489,8 +489,8 @@ a {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 10px;
-  margin-bottom: 14px;
+  gap: 8px;
+  margin-bottom: 10px;
   color: #6d6258;
   font-size: 0.72rem;
   font-weight: 800;
@@ -634,8 +634,8 @@ a {
 }
 
 .category-icon {
-  width: 44px;
-  height: 44px;
+  width: 34px;
+  height: 34px;
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -655,12 +655,28 @@ a {
   overflow-wrap: break-word;
 }
 
+.category-card h3 {
+  font-size: 1.2rem;
+  line-height: 1.12;
+}
+
 .category-card p,
 .recognition-card p,
 .recognition-type-card p {
   margin: 12px 0 0;
   color: #233551;
   overflow-wrap: break-word;
+}
+
+.category-card p {
+  display: -webkit-box;
+  margin-top: 8px;
+  overflow: hidden;
+  color: var(--muted);
+  font-size: 0.86rem;
+  line-height: 1.35;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
 }
 
 .card-footer {
@@ -670,6 +686,16 @@ a {
   gap: 12px;
   color: var(--maroon);
   font-weight: 800;
+}
+
+.category-card .card-footer {
+  font-size: 0.84rem;
+}
+
+.category-card .count-pill {
+  min-height: 22px;
+  padding: 0.14rem 0.48rem;
+  font-size: 0.68rem;
 }
 
 .count-pill,
