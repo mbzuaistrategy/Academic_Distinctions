@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Academic Distinctions Portal</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="app-layout">
+      <aside class="sidebar" aria-label="Portal navigation">
+        <div class="sidebar-brand">
+          <span>MBZUAI STRATEGY</span>
+          <a href="#home">Academic<br />Distinctions Portal</a>
+        </div>
+
+        <nav class="sidebar-nav">
+          <a class="sidebar-link" data-nav="home" href="#home">
+            <span class="sidebar-icon icon-overview" aria-hidden="true"></span>
+            Overview
+          </a>
+          <a class="sidebar-link" data-nav="categories" href="#categories">
+            <span class="sidebar-icon icon-categories" aria-hidden="true"></span>
+            Institutions
+          </a>
+
+          <a class="sidebar-link" data-nav="directory" href="#directory">
+            <span class="sidebar-icon icon-recognitions" aria-hidden="true"></span>
+            Recognitions
+          </a>
+        </nav>
+      </aside>
+
+      <main id="app" tabindex="-1"></main>
+    </div>
+
+    <template id="icon-template">
+      <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"></svg>
+    </template>
+
+    <script src="app.js"></script>
+  </body>
+</html>
