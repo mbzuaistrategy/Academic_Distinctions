@@ -939,7 +939,7 @@ function institutionGrid(items) {
   }
 
   return `
-    <div class="recognition-list">
+    <div class="recognition-list institution-directory">
       ${items
         .map(
           (item) => `

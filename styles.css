@@ -440,6 +440,11 @@ a {
   gap: 14px;
 }
 
+.institution-directory {
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 230px), 1fr));
+  gap: 14px;
+}
+
 .category-card,
 .recognition-card,
 .recognition-type-card {
@@ -864,6 +869,55 @@ a {
 .recognition-type-card {
   display: block;
   padding: 20px;
+}
+
+.institution-directory .recognition-card {
+  padding: 14px;
+}
+
+.institution-directory .institution-card-head {
+  gap: 8px;
+  margin-bottom: 10px;
+}
+
+.institution-directory .institution-logo,
+.institution-directory .logo-unit {
+  width: 34px;
+  height: 34px;
+}
+
+.institution-directory .logo-stack {
+  height: 34px;
+  gap: 4px;
+}
+
+.institution-directory .recognition-card h3 {
+  font-size: 1.12rem;
+  line-height: 1.15;
+}
+
+.institution-directory .recognition-card p {
+  display: -webkit-box;
+  margin-top: 7px;
+  overflow: hidden;
+  color: var(--muted);
+  font-size: 0.86rem;
+  line-height: 1.35;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+}
+
+.institution-directory .note-chip,
+.institution-directory .tier-badge {
+  min-height: 22px;
+  padding: 0.14rem 0.48rem;
+  font-size: 0.68rem;
+}
+
+.institution-directory .card-link {
+  margin-top: 12px;
+  padding: 0.4rem 0.58rem;
+  font-size: 0.78rem;
 }
 
 .recognition-type-card h3 {
