@@ -24,7 +24,7 @@ Recognition types are tagged as Tier 1, Tier 2, or Tier 3 using the tier system 
 
 ## Recognition Detail Pages
 
-Inside each institution group, cards represent the organization or awarding body, such as `Nobel Foundation` or `IEEE`. Click a body to view its organization-level profile and recognition types, then click a specific recognition, such as `Nobel Prize` or `IEEE Fellow`, to open a six-part criteria profile:
+The Institutions tab lists organizations and awarding bodies, such as `Nobel Foundation` or `IEEE`. Click a body to view its organization-level profile and recognition types, then click a specific recognition, such as `Nobel Prize` or `IEEE Fellow`, to open a six-part criteria profile. The Recognitions tab lists the recognition types directly.
 
 - Basic Information
 - Organization and Governance

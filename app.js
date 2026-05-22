@@ -578,6 +578,20 @@ function bodyCount(category) {
   return category.items?.length || 0;
 }
 
+function allInstitutions() {
+  return categories.flatMap((category) =>
+    (category.items || []).map((item, itemIndex) => ({
+      ...item,
+      itemIndex,
+      categoryId: category.id,
+      category: category.title,
+      categoryNumber: category.number,
+      recognitionTypes: recognitionOptions(item),
+      tierKeys: tierKeysForItem(item, category)
+    }))
+  );
+}
+
 function allRecognitions() {
   return categories.flatMap((category) =>
     (category.items || []).flatMap((item, itemIndex) =>
@@ -825,7 +839,7 @@ function render() {
     renderRecognition(value, Number(extra));
   } else if (route === "criteria" && value && extra !== undefined && detail !== undefined) {
     renderRecognitionCriteria(value, Number(extra), Number(detail));
-  } else if (route === "categories") {
+  } else if (route === "institutions" || route === "categories") {
     renderCategoriesPage();
   } else if (route === "directory") {
     renderDirectoryPage();
@@ -840,7 +854,7 @@ function render() {
 function updateActiveNavigation(route, value) {
   document.querySelectorAll("[data-nav]").forEach((link) => link.classList.remove("active"));
 
-  const primaryRoute = route === "directory" ? "directory" : route === "home" ? "home" : "categories";
+  const primaryRoute = route === "directory" ? "directory" : route === "home" ? "home" : "institutions";
   document.querySelector(`[data-nav="${primaryRoute}"]`)?.classList.add("active");
 
 }
@@ -864,8 +878,8 @@ function renderHome() {
       <div class="section-inner">
         <div class="section-heading">
           <div>
-            <h2>Institutions</h2>
-            <p>Each institution group contains the relevant academies, fellowships, awards, funding bodies, and leadership roles.</p>
+            <h2>Recognition Categories</h2>
+            <p>Each category contains the relevant academies, fellowships, awards, funding bodies, and leadership roles.</p>
           </div>
         </div>
         ${categoryGrid(categories)}
@@ -875,23 +889,25 @@ function renderHome() {
 }
 
 function renderCategoriesPage() {
+  const institutions = allInstitutions();
+
   app.innerHTML = `
     <section class="band compact">
       <div class="section-inner">
         <div class="section-heading">
           <div>
             <h2>Institutions</h2>
-            <p>Use this map to place each distinction in the right institutional evidence bucket.</p>
+            <p>Browse the organizations, academies, societies, foundations, funders, journals, and conferences in the dashboard.</p>
           </div>
         </div>
         <div class="toolbar">
           <label class="search" for="category-search">
             ${icon("search")}
-            <input id="category-search" type="search" placeholder="Search institutions or recognitions" autocomplete="off" />
+            <input id="category-search" type="search" placeholder="Search institutions" autocomplete="off" />
           </label>
         </div>
         <div id="category-results">
-          ${categoryGrid(categories)}
+          ${institutionGrid(institutions)}
         </div>
       </div>
     </section>
@@ -900,28 +916,51 @@ function renderCategoriesPage() {
   const search = document.querySelector("#category-search");
   search.addEventListener("input", () => {
     const query = search.value.trim().toLowerCase();
-    const directRecognitionMatches = allRecognitions().filter((item) =>
-      [item.category, item.organization, item.recognition, item.note]
+    const filtered = institutions.filter((item) =>
+      [item.category, item.organization, item.note, item.recognitionTypes.join(" ")]
         .join(" ")
         .toLowerCase()
         .includes(query)
     );
-    const filtered = categories.filter((category) =>
-      [
-        category.title,
-        category.shortTitle,
-        category.definition,
-        category.criteria.join(" "),
-        (category.items || []).map((item) => [item.organization, item.recognition, item.note].join(" ")).join(" ")
-      ]
-        .join(" ")
-        .toLowerCase()
-        .includes(query)
-    );
-    document.querySelector("#category-results").innerHTML = query
-      ? searchResultsView(filtered, directRecognitionMatches, query)
-      : categoryGrid(categories);
+    document.querySelector("#category-results").innerHTML = institutionGrid(query ? filtered : institutions);
   });
+}
+
+function institutionGrid(items) {
+  if (!items.length) {
+    return `
+      <div class="empty-state">
+        <div>
+          <strong>No matching institutions</strong>
+          <span>Try a broader search term.</span>
+        </div>
+      </div>
+    `;
+  }
+
+  return `
+    <div class="recognition-list">
+      ${items
+        .map(
+          (item) => `
+          <a class="recognition-card" href="#recognition/${item.categoryId}/${item.itemIndex}">
+            <div class="institution-card-head">
+              ${institutionLogo(item)}
+              <div class="tag-cluster">
+                ${item.tierKeys.map((key) => tierBadge(key)).join("")}
+                <span class="note-chip">${escapeHtml(item.category)}</span>
+              </div>
+            </div>
+            <h3>${escapeHtml(item.organization)}</h3>
+            <p>${escapeHtml(item.recognitionTypes.join("; "))}</p>
+            ${item.note ? `<span class="note-chip">${escapeHtml(item.note)}</span>` : ""}
+            <span class="card-link">Open institution ${icon("arrowRight")}</span>
+          </a>
+        `
+        )
+        .join("")}
+    </div>
+  `;
 }
 
 function searchResultsView(categoryMatches, recognitionMatches, query) {
@@ -1032,7 +1071,7 @@ function renderCategory(id) {
       <div class="section-inner">
         <div class="view-top">
           <div class="view-title">
-            <a class="icon-button" href="#categories" aria-label="Back to institutions">${icon("back")}</a>
+            <a class="icon-button" href="#institutions" aria-label="Back to institutions">${icon("back")}</a>
             <p class="eyebrow" style="color: var(--muted); margin-top: 1.2rem">${category.number}</p>
             <h1>${escapeHtml(category.title)}</h1>
             <p>${escapeHtml(category.definition)}</p>
