@@ -441,6 +441,7 @@ a {
 }
 
 .institution-directory {
+  align-items: stretch;
   grid-template-columns: repeat(auto-fit, minmax(min(100%, 230px), 1fr));
   gap: 14px;
 }
@@ -898,12 +899,17 @@ a {
 }
 
 .institution-directory .recognition-card {
+  display: flex;
+  min-height: 178px;
+  height: 100%;
+  flex-direction: column;
   padding: 14px;
 }
 
 .institution-directory .institution-card-head {
   gap: 8px;
   margin-bottom: 10px;
+  min-height: 34px;
 }
 
 .institution-directory .institution-logo,
@@ -913,17 +919,25 @@ a {
 }
 
 .institution-directory .logo-stack {
+  flex-basis: auto;
   height: 34px;
   gap: 4px;
 }
 
+.institution-directory .institution-card-head .logo-stack + .tag-cluster {
+  width: auto;
+  justify-content: flex-end;
+}
+
 .institution-directory .recognition-card h3 {
+  min-height: 2.58em;
   font-size: 1.12rem;
   line-height: 1.15;
 }
 
 .institution-directory .recognition-card p {
   display: -webkit-box;
+  min-height: 2.7em;
   margin-top: 7px;
   overflow: hidden;
   color: var(--muted);
@@ -941,7 +955,8 @@ a {
 }
 
 .institution-directory .card-link {
-  margin-top: 12px;
+  align-self: flex-start;
+  margin-top: auto;
   padding: 0.4rem 0.58rem;
   font-size: 0.78rem;
 }

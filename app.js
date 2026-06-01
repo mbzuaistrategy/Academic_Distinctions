@@ -948,12 +948,10 @@ function institutionGrid(items) {
               ${institutionLogo(item)}
               <div class="tag-cluster">
                 ${item.tierKeys.map((key) => tierBadge(key)).join("")}
-                <span class="note-chip">${escapeHtml(item.category)}</span>
               </div>
             </div>
             <h3>${escapeHtml(item.organization)}</h3>
             <p>${escapeHtml(item.recognitionTypes.join("; "))}</p>
-            ${item.note ? `<span class="note-chip">${escapeHtml(item.note)}</span>` : ""}
             <span class="card-link">Open institution ${icon("arrowRight")}</span>
           </a>
         `
