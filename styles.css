@@ -920,8 +920,13 @@ a {
 
 .institution-directory .logo-stack {
   flex-basis: auto;
-  height: 34px;
+  height: 30px;
   gap: 4px;
+}
+
+.institution-directory .logo-stack .logo-unit {
+  width: 30px;
+  height: 30px;
 }
 
 .institution-directory .institution-card-head .logo-stack + .tag-cluster {
