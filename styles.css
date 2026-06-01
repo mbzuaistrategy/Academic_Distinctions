@@ -900,7 +900,7 @@ a {
 
 .institution-directory .recognition-card {
   display: flex;
-  min-height: 178px;
+  min-height: 224px;
   height: 100%;
   flex-direction: column;
   padding: 14px;
@@ -909,7 +909,7 @@ a {
 .institution-directory .institution-card-head {
   gap: 8px;
   margin-bottom: 10px;
-  min-height: 34px;
+  min-height: 70px;
 }
 
 .institution-directory .institution-logo,
@@ -919,19 +919,19 @@ a {
 }
 
 .institution-directory .logo-stack {
-  flex-basis: auto;
-  height: 30px;
-  gap: 4px;
+  flex-basis: 100%;
+  height: 38px;
+  gap: 7px;
 }
 
 .institution-directory .logo-stack .logo-unit {
-  width: 30px;
-  height: 30px;
+  width: 38px;
+  height: 38px;
 }
 
 .institution-directory .institution-card-head .logo-stack + .tag-cluster {
-  width: auto;
-  justify-content: flex-end;
+  width: 100%;
+  justify-content: flex-start;
 }
 
 .institution-directory .recognition-card h3 {
