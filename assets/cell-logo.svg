@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 260 88" role="img" aria-label="Cell">
+  <rect width="260" height="88" rx="10" fill="#ffffff"/>
+  <rect x="24" y="18" width="212" height="52" rx="8" fill="#1b75bb"/>
+  <text x="130" y="56" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="40" font-weight="800" fill="#ffffff">Cell</text>
+</svg>

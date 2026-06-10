@@ -470,9 +470,9 @@ const categories = [
         organization: "Leading Journals (Nature, Science, Cell, etc.)",
         recognition: "Editor for leading journals; Senior Editor (Nature, Science, Cell)",
         logos: [
-          { src: "https://upload.wikimedia.org/wikipedia/commons/6/62/Nature_logo.svg", label: "Nature" },
-          { src: "https://upload.wikimedia.org/wikipedia/commons/7/75/Science_logo.svg", label: "Science" },
-          { src: "https://upload.wikimedia.org/wikipedia/commons/1/18/Cell_%28journal%29_logo.svg", label: "Cell" }
+          { src: "assets/nature-logo.svg", label: "Nature" },
+          { src: "assets/science-logo.svg", label: "Science" },
+          { src: "assets/cell-logo.svg", label: "Cell" }
         ],
         logoDomains: ["nature.com", "science.org", "cell.com"]
       },
