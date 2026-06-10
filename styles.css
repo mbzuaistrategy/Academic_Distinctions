@@ -191,6 +191,25 @@ a {
   border-top: 1.6px solid currentColor;
 }
 
+.icon-faculty::before {
+  left: 6px;
+  top: 3px;
+  width: 6px;
+  height: 6px;
+  border: 1.6px solid currentColor;
+  border-radius: 50%;
+}
+
+.icon-faculty::after {
+  left: 3px;
+  right: 3px;
+  top: 12px;
+  height: 4px;
+  border: 1.6px solid currentColor;
+  border-bottom: 0;
+  border-radius: 6px 6px 0 0;
+}
+
 .sidebar-section {
   margin: 8px 0 4px;
   padding-left: 18px;
@@ -1056,6 +1075,19 @@ a {
 .directory-table a {
   color: var(--maroon);
   font-weight: 800;
+}
+
+.faculty-table td:first-child {
+  color: var(--ink);
+  font-weight: 800;
+}
+
+.table-subtext {
+  display: block;
+  margin-top: 4px;
+  color: var(--muted);
+  font-size: 0.76rem;
+  font-weight: 700;
 }
 
 .criteria-detail-panel {

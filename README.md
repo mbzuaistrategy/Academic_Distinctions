@@ -33,6 +33,10 @@ The Institutions tab lists organizations and awarding bodies, such as `Nobel Fou
 - Award Details
 - Impact and Prestige
 
+## Faculty
+
+The Faculty tab lists faculty-held distinctions with public-facing hybrid category, internal level, and notable status. Each recognition links directly to its criteria profile page.
+
 ## Sections
 
 - Leading National Academies

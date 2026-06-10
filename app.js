@@ -565,6 +565,209 @@ const tierDefinitions = {
   }
 };
 
+const facultyRecognitions = [
+  {
+    faculty: "Anil Jain",
+    distinction: "International Association for Pattern Recognition IAPR Fellow",
+    notable: "Yes",
+    publicCategory: "Disciplinary Society Fellowships & Field Leadership",
+    internalLevel: "Level 2 / Tier 2",
+    levelKey: "level2"
+  },
+  {
+    faculty: "Anil Jain",
+    distinction: "International Society for Optics and Photonics SPIE Fellow",
+    notable: "Yes",
+    publicCategory: "Disciplinary Society Fellowships & Field Leadership",
+    internalLevel: "Level 2 / Tier 2",
+    levelKey: "level2"
+  },
+  {
+    faculty: "Anil Jain",
+    distinction: "IEEE W. Wallace McDowell Award",
+    notable: "Yes - very high",
+    publicCategory: "Global / Disciplinary Field Leadership",
+    internalLevel: "Level 1C / Tier 1C",
+    levelKey: "level1c"
+  },
+  {
+    faculty: "Anil Jain",
+    distinction: "IAPR King-Sun Fu Prize",
+    notable: "Yes - very high",
+    publicCategory: "Global / Disciplinary Field Leadership",
+    internalLevel: "Level 1C / Tier 1C",
+    levelKey: "level1c"
+  },
+  {
+    faculty: "David Basin",
+    distinction: "Levchin Prize for Real-World Cryptography",
+    notable: "Yes - very high",
+    publicCategory: "Global / Disciplinary Field Leadership",
+    internalLevel: "Level 1C / Tier 1C",
+    levelKey: "level1c"
+  },
+  {
+    faculty: "Eran Segal",
+    distinction: "European Molecular Biology Organization EMBO Member",
+    notable: "Yes",
+    publicCategory: "Disciplinary Society Fellowships & Field Leadership",
+    internalLevel: "Level 2 / Tier 2",
+    levelKey: "level2"
+  },
+  {
+    faculty: "Eric Moulines",
+    distinction: "CNRS Silver Medal",
+    notable: "Yes - high",
+    publicCategory: "Disciplinary Field Leadership",
+    internalLevel: "Level 2 / Tier 2",
+    levelKey: "level2"
+  },
+  {
+    faculty: "Eric Moulines",
+    distinction: "Orange Prize / French Academy Grand Prix",
+    notable: "Yes, verify exact title",
+    publicCategory: "Disciplinary Field Leadership",
+    internalLevel: "Level 2 / Tier 2",
+    levelKey: "level2"
+  },
+  {
+    faculty: "Eric Moulines",
+    distinction: "European Association for Signal Processing EURASIP Fellow",
+    notable: "Yes",
+    publicCategory: "Disciplinary Society Fellowships & Field Leadership",
+    internalLevel: "Level 2 / Tier 2",
+    levelKey: "level2"
+  },
+  {
+    faculty: "Gregory Chirikjian",
+    distinction: "ASME Machine Design Award",
+    notable: "Yes",
+    publicCategory: "Disciplinary Field Leadership",
+    internalLevel: "Level 2 / Tier 2",
+    levelKey: "level2"
+  },
+  {
+    faculty: "Ian Reid",
+    distinction: "Australian Academy of Technological Sciences and Engineering ATSE Fellow",
+    notable: "Yes",
+    publicCategory: "Global / Disciplinary Field Leadership",
+    internalLevel: "Level 2 / Tier 2",
+    levelKey: "level2"
+  },
+  {
+    faculty: "Iryna Gurevych",
+    distinction: "Royal Society Milner Award",
+    notable: "Yes - very high",
+    publicCategory: "Global / Disciplinary Field Leadership",
+    internalLevel: "Level 1C / Tier 1C",
+    levelKey: "level1c"
+  },
+  {
+    faculty: "Lena Maier-Hein",
+    distinction: "German Cancer Prize",
+    notable: "Yes - high",
+    publicCategory: "Disciplinary Field Leadership",
+    internalLevel: "Level 2 / Tier 2",
+    levelKey: "level2"
+  },
+  {
+    faculty: "Michael Jordan",
+    distinction: "IJCAI Award for Research Excellence",
+    notable: "Yes - very high",
+    publicCategory: "Global / Disciplinary Field Leadership",
+    internalLevel: "Level 1C / Tier 1C",
+    levelKey: "level1c"
+  },
+  {
+    faculty: "Michael Jordan",
+    distinction: "AMS Ulf Grenander Prize in Stochastic Theory and Modeling",
+    notable: "Yes - very high",
+    publicCategory: "Global / Disciplinary Field Leadership",
+    internalLevel: "Level 1C / Tier 1C",
+    levelKey: "level1c"
+  },
+  {
+    faculty: "Nikolaos \"Nikos\" Kyrpides",
+    distinction: "van Niel International Prize",
+    notable: "Yes",
+    publicCategory: "Disciplinary Field Leadership",
+    internalLevel: "Level 2 / Tier 2",
+    levelKey: "level2"
+  },
+  {
+    faculty: "Nikolaos \"Nikos\" Kyrpides",
+    distinction: "American Academy of Microbiology Fellow",
+    notable: "Yes",
+    publicCategory: "Disciplinary Society Fellowships & Field Leadership",
+    internalLevel: "Level 2 / Tier 2",
+    levelKey: "level2"
+  },
+  {
+    faculty: "Sami Haddadin",
+    distinction: "German Future Prize",
+    notable: "Yes - very high",
+    publicCategory: "Global / Disciplinary Field Leadership",
+    internalLevel: "Level 1C / Tier 1C",
+    levelKey: "level1c"
+  },
+  {
+    faculty: "Sami Haddadin",
+    distinction: "Gottfried Wilhelm Leibniz Prize",
+    notable: "Yes - very high",
+    publicCategory: "Global / Disciplinary Field Leadership",
+    internalLevel: "Level 1C / Tier 1C",
+    levelKey: "level1c"
+  },
+  {
+    faculty: "Sami Haddadin",
+    distinction: "German National Academy of Science and Engineering acatech Member",
+    notable: "Yes",
+    publicCategory: "Global / Disciplinary Field Leadership",
+    internalLevel: "Level 2 / Tier 2",
+    levelKey: "level2"
+  },
+  {
+    faculty: "Sir Michael Brady",
+    distinction: "Institution of Engineering and Technology IET Faraday Prize / Medal",
+    notable: "Yes - very high",
+    publicCategory: "Global / Disciplinary Field Leadership",
+    internalLevel: "Level 1C / Tier 1C",
+    levelKey: "level1c"
+  },
+  {
+    faculty: "Sir Michael Brady",
+    distinction: "Royal Academy of Engineering Whittle Medal",
+    notable: "Yes - very high",
+    publicCategory: "Global / Disciplinary Field Leadership",
+    internalLevel: "Level 1C / Tier 1C",
+    levelKey: "level1c"
+  },
+  {
+    faculty: "Yoshihiko Nakamura",
+    distinction: "Japan Society of Mechanical Engineers JSME Fellow",
+    notable: "Yes",
+    publicCategory: "Disciplinary Society Fellowships & Field Leadership",
+    internalLevel: "Level 2 / Tier 2",
+    levelKey: "level2"
+  },
+  {
+    faculty: "Yoshihiko Nakamura",
+    distinction: "JSME Medal for Distinguished Engineers",
+    notable: "Yes",
+    publicCategory: "Disciplinary Field Leadership",
+    internalLevel: "Level 2 / Tier 2",
+    levelKey: "level2"
+  },
+  {
+    faculty: "Yoshihiko Nakamura",
+    distinction: "IEEE Robotics and Automation Society RAS Pioneer Award",
+    notable: "Yes - very high",
+    publicCategory: "Global / Disciplinary Field Leadership",
+    internalLevel: "Level 1C / Tier 1C",
+    levelKey: "level1c"
+  }
+];
+
 const app = document.querySelector("#app");
 
 function icon(name, className = "icon") {
@@ -581,6 +784,10 @@ function escapeHtml(value = "") {
 }
 
 function getCategory(id) {
+  if (id === "faculty-recognitions") {
+    return facultyRecognitionCategory();
+  }
+
   return categories.find((category) => category.id === id);
 }
 
@@ -668,6 +875,8 @@ function hasAny(value, terms) {
 }
 
 function tierForRecognition(item, recognition, category) {
+  if (item?.tierKey) return item.tierKey;
+
   const text = normalizeText(`${item.organization} ${recognition}`);
   const recognitionText = normalizeText(recognition);
 
@@ -783,6 +992,128 @@ function tierBadgeGroup(item, category) {
   return keys.map((key) => tierBadge(key)).join("");
 }
 
+function facultyRecognitionCategory() {
+  return {
+    id: "faculty-recognitions",
+    number: "F",
+    title: "Faculty Recognitions",
+    shortTitle: "Faculty",
+    accent: "#91343a",
+    icon: "network",
+    definition:
+      "Faculty-held recognitions mapped to the MBZUAI hybrid public category and internal level framework.",
+    criteria: [
+      "Each entry is associated with a named faculty member.",
+      "Recognition pages use the same criteria structure as the main recognitions directory.",
+      "Levels and public-facing categories follow the provided faculty recognition list."
+    ],
+    items: facultyRecognitions.map(facultyRecognitionItem)
+  };
+}
+
+function facultyRecognitionItem(record) {
+  return {
+    organization: facultyAwardingBody(record.distinction),
+    recognition: record.distinction,
+    note: `${record.faculty}; ${record.publicCategory}`,
+    tierKey: record.levelKey,
+    criteriaProfiles: {
+      [record.distinction]: facultyCriteriaProfile(record)
+    }
+  };
+}
+
+function facultyCriteriaProfile(record) {
+  const level = tierLabel(record.levelKey);
+  const awardingBody = facultyAwardingBody(record.distinction);
+
+  return {
+    "Official Name": record.distinction,
+    "Institution/Type": record.publicCategory,
+    Definition:
+      `${record.distinction} is listed for ${record.faculty} as a faculty-held recognition in the MBZUAI faculty recognition list.`,
+    "History/Background": "To be completed with source-specific background.",
+    Purpose: "To be completed with the recognition's official purpose.",
+    "Awarding Body": awardingBody,
+    "Organization Type": facultyOrganizationType(record),
+    Mission: "To be completed from the awarding body's official source.",
+    Leadership: "To be completed from the awarding body's official source.",
+    "Committee/Jury Composition": "To be completed from the recognition's official selection or awards page.",
+    "Main Field/Scope": facultyFieldScope(record),
+    "Geographic Scope": record.publicCategory.includes("Global") ? "Global / international or globally visible field recognition." : "Disciplinary / field-specific recognition.",
+    "Geographic Distribution": "To be completed if the recognition has regional or national distribution criteria.",
+    "Amount of Members": "To be completed where applicable.",
+    "Type of Recognition": record.publicCategory,
+    "Nomination Process": "To be completed from the recognition's official nomination guidance.",
+    "Review/Evaluation Criteria": "To be completed from official criteria or award description.",
+    "Nomination Deadline": "To be completed.",
+    "Application Requirements": "To be completed.",
+    "Eligibility/Restrictions": "To be completed.",
+    Frequency: "To be completed.",
+    Duration: "To be completed.",
+    "Prize Money/Material Award": "To be completed.",
+    "Number of Recipients": "To be completed.",
+    "Notable Past Recipients": `${record.faculty} is listed as the MBZUAI faculty holder. Notable status: ${record.notable}.`,
+    "Career Impact/Outcomes": "Use as evidence of faculty distinction, disciplinary authority, and external recognition.",
+    "Relationship to Other Awards": `Internal classification supplied in the faculty list: ${record.internalLevel}.`,
+    "Ranking/Prestige Signal": `${level}. Public-facing category: ${record.publicCategory}. Notable status: ${record.notable}.`
+  };
+}
+
+function facultyOrganizationType(record) {
+  const text = normalizeText(record.distinction);
+
+  if (hasAny(text, ["academy", "embo"])) return "Academy or learned organization";
+  if (hasAny(text, ["fellow", "society", "association", "ieee", "asme", "iet", "jsme", "spie", "iapr", "eurasip"])) {
+    return "Professional or scholarly society";
+  }
+  if (hasAny(text, ["prize", "award", "medal"])) return "Prize or award-granting body";
+
+  return "To be completed";
+}
+
+function facultyFieldScope(record) {
+  const text = normalizeText(record.distinction);
+
+  if (hasAny(text, ["pattern recognition", "iapr", "computer vision", "ras", "robotics"])) return "Computer vision, pattern recognition, robotics, and AI-adjacent fields.";
+  if (hasAny(text, ["cryptography"])) return "Cryptography and computer security.";
+  if (hasAny(text, ["molecular biology", "microbiology", "cancer", "van niel"])) return "Life sciences, biology, microbiology, or medicine.";
+  if (hasAny(text, ["signal processing"])) return "Signal processing, statistics, and applied mathematics.";
+  if (hasAny(text, ["machine design", "mechanical", "engineering", "faraday", "whittle", "jsme"])) return "Engineering, technology, robotics, and mechanical systems.";
+
+  return "To be completed for the relevant discipline.";
+}
+
+function facultyAwardingBody(distinction) {
+  const text = normalizeText(distinction);
+
+  if (hasAny(text, ["iapr fellow", "king sun fu"])) return "International Association for Pattern Recognition (IAPR)";
+  if (text.includes("spie")) return "International Society for Optics and Photonics (SPIE)";
+  if (text.includes("mcdowell")) return "IEEE Computer Society";
+  if (text.includes("levchin")) return "Real-World Cryptography";
+  if (text.includes("embo")) return "European Molecular Biology Organization (EMBO)";
+  if (text.includes("cnrs")) return "Centre national de la recherche scientifique (CNRS)";
+  if (text.includes("orange prize") || text.includes("french academy")) return "French Academy of Sciences";
+  if (text.includes("eurasip")) return "European Association for Signal Processing (EURASIP)";
+  if (text.includes("asme")) return "American Society of Mechanical Engineers (ASME)";
+  if (text.includes("atse")) return "Australian Academy of Technological Sciences and Engineering (ATSE)";
+  if (text.includes("milner")) return "The Royal Society";
+  if (text.includes("german cancer")) return "German Cancer Prize";
+  if (text.includes("ijcai")) return "International Joint Conferences on Artificial Intelligence (IJCAI)";
+  if (text.includes("grenander")) return "American Mathematical Society (AMS)";
+  if (text.includes("van niel")) return "van Niel International Prize";
+  if (text.includes("american academy of microbiology")) return "American Academy of Microbiology";
+  if (text.includes("german future prize")) return "German Future Prize";
+  if (text.includes("leibniz")) return "German Research Foundation (DFG)";
+  if (text.includes("acatech")) return "German National Academy of Science and Engineering (acatech)";
+  if (text.includes("faraday")) return "Institution of Engineering and Technology (IET)";
+  if (text.includes("whittle")) return "Royal Academy of Engineering";
+  if (text.includes("jsme")) return "Japan Society of Mechanical Engineers (JSME)";
+  if (text.includes("ras pioneer")) return "IEEE Robotics and Automation Society (RAS)";
+
+  return "To be completed";
+}
+
 function domainFromWebsite(value = "") {
   try {
     const normalized = value.startsWith("http") ? value : `https://${value}`;
@@ -867,6 +1198,8 @@ function render() {
     renderRecognition(value, Number(extra));
   } else if (route === "criteria" && value && extra !== undefined && detail !== undefined) {
     renderRecognitionCriteria(value, Number(extra), Number(detail));
+  } else if (route === "faculty") {
+    renderFacultyPage();
   } else if (route === "institutions" || route === "categories") {
     renderCategoriesPage();
   } else if (route === "directory") {
@@ -882,7 +1215,14 @@ function render() {
 function updateActiveNavigation(route, value) {
   document.querySelectorAll("[data-nav]").forEach((link) => link.classList.remove("active"));
 
-  const primaryRoute = route === "directory" ? "directory" : route === "home" ? "home" : "institutions";
+  const primaryRoute =
+    route === "directory"
+      ? "directory"
+      : route === "faculty" || value === "faculty-recognitions"
+        ? "faculty"
+        : route === "home"
+          ? "home"
+          : "institutions";
   document.querySelector(`[data-nav="${primaryRoute}"]`)?.classList.add("active");
 
 }
@@ -1354,6 +1694,9 @@ function renderRecognitionCriteria(categoryId, itemIndex, recognitionIndex) {
   const item = category?.items?.[itemIndex];
   const selectedRecognition = item ? recognitionOptions(item)[recognitionIndex] : null;
   const selectedTier = item && selectedRecognition ? tierForRecognition(item, selectedRecognition, category) : null;
+  const isFacultyRecognition = category?.id === "faculty-recognitions";
+  const backHref = isFacultyRecognition ? "#faculty" : `#recognition/${category?.id}/${itemIndex}`;
+  const backLabel = isFacultyRecognition ? "Back to faculty" : `Back to ${item ? item.organization : "recognition"}`;
 
   if (!category || !item || !selectedRecognition) {
     renderCategoriesPage();
@@ -1365,7 +1708,7 @@ function renderRecognitionCriteria(categoryId, itemIndex, recognitionIndex) {
       <div class="section-inner">
         <div class="view-top">
           <div class="view-title">
-            <a class="icon-button" href="#recognition/${category.id}/${itemIndex}" aria-label="Back to ${escapeHtml(item.organization)}">${icon("back")}</a>
+            <a class="icon-button" href="${backHref}" aria-label="${escapeHtml(backLabel)}">${icon("back")}</a>
             <p class="eyebrow" style="color: var(--muted); margin-top: 1.2rem">${escapeHtml(item.organization)}</p>
             <h1>${escapeHtml(selectedRecognition)}</h1>
             <p>${escapeHtml(recognitionTypeLabel(selectedRecognition))} from ${escapeHtml(item.organization)}.</p>
@@ -1496,6 +1839,87 @@ function recognitionProfileFor(item, selectedRecognition) {
   const matchingKey = Object.keys(profiles).find((key) => normalizeText(key) === selected);
 
   return matchingKey ? profiles[matchingKey] : {};
+}
+
+function renderFacultyPage() {
+  app.innerHTML = `
+    <section class="band compact">
+      <div class="section-inner">
+        <div class="section-heading">
+          <div>
+            <h2>Faculty</h2>
+            <p>Faculty-held recognitions mapped to the hybrid public category and internal level framework.</p>
+          </div>
+        </div>
+
+        <div class="toolbar">
+          <label class="search" for="faculty-search">
+            ${icon("search")}
+            <input id="faculty-search" type="search" placeholder="Search faculty or recognitions" autocomplete="off" />
+          </label>
+        </div>
+
+        <div id="faculty-results">
+          ${facultyTable(facultyRecognitions)}
+        </div>
+      </div>
+    </section>
+  `;
+
+  const search = document.querySelector("#faculty-search");
+  search.addEventListener("input", () => {
+    const query = search.value.trim().toLowerCase();
+    const filtered = facultyRecognitions.filter((record) =>
+      [record.faculty, record.distinction, record.notable, record.publicCategory, record.internalLevel]
+        .join(" ")
+        .toLowerCase()
+        .includes(query)
+    );
+    document.querySelector("#faculty-results").innerHTML = facultyTable(query ? filtered : facultyRecognitions);
+  });
+}
+
+function facultyTable(records) {
+  if (!records.length) {
+    return `
+      <div class="empty-state">
+        <div>
+          <strong>No matching faculty recognitions</strong>
+          <span>Try searching by faculty name, recognition, category, or level.</span>
+        </div>
+      </div>
+    `;
+  }
+
+  return `
+    <table class="directory-table faculty-table">
+      <thead>
+        <tr>
+          <th>Faculty</th>
+          <th>Recognition</th>
+          <th>Level</th>
+          <th>Public Category</th>
+          <th>Notable?</th>
+        </tr>
+      </thead>
+      <tbody>
+        ${records
+          .map((record) => {
+            const index = facultyRecognitions.indexOf(record);
+            return `
+              <tr>
+                <td>${escapeHtml(record.faculty)}</td>
+                <td><a href="#criteria/faculty-recognitions/${index}/0">${escapeHtml(record.distinction)}</a></td>
+                <td>${tierBadge(record.levelKey)} <span class="table-subtext">${escapeHtml(record.internalLevel)}</span></td>
+                <td>${escapeHtml(record.publicCategory)}</td>
+                <td>${escapeHtml(record.notable)}</td>
+              </tr>
+            `;
+          })
+          .join("")}
+      </tbody>
+    </table>
+  `;
 }
 
 function renderDirectoryPage() {
