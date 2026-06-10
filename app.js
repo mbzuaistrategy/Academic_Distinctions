@@ -58,13 +58,33 @@ const categories = [
       { organization: "Canadian Academy of Engineering", recognition: "Fellow", note: "Registered charity", website: "https://www.cae-acg.ca" },
       { organization: "Australian Academy of Science", recognition: "Fellow", note: "Registered charity", website: "https://www.science.org.au" },
       { organization: "Indian National Academy of Engineering", recognition: "Member; Fellow / Foreign Fellow", note: "Supported by government", website: "https://www.inae.in" },
-      { organization: "MBR Academy of Scientists of the UAE", recognition: "Member", website: "https://mbras.ae" },
+      {
+        organization: "MBR Academy of Scientists of the UAE",
+        recognition: "Member",
+        website: "https://mbras.ae",
+        logoUrl: "assets/mbr-academy-scientists-logo.png"
+      },
       { organization: "Young Israeli Academy of Sciences", recognition: "Member", website: "https://www.young.academy.ac.il" },
-      { organization: "Australian Academy of Technological Sciences and Engineering (ATSE)", recognition: "Fellow", website: "https://www.atse.org.au" },
+      {
+        organization: "Australian Academy of Technological Sciences and Engineering (ATSE)",
+        recognition: "Fellow",
+        website: "https://www.atse.org.au",
+        logoUrl: "assets/atse-logo.png"
+      },
       { organization: "German National Academy of Science and Engineering (acatech)", recognition: "Member", website: "https://www.acatech.de" },
       { organization: "Berlin-Brandenburg Academy of Sciences and Humanities", recognition: "Member", website: "https://www.bbaw.de" },
-      { organization: "Science Council of Japan", recognition: "Associate Member", website: "https://www.scj.go.jp" },
-      { organization: "Serbian Royal Academy / SKANU", recognition: "Member" },
+      {
+        organization: "Science Council of Japan",
+        recognition: "Associate Member",
+        website: "https://www.scj.go.jp",
+        logoUrl: "assets/science-council-japan-logo.png"
+      },
+      {
+        organization: "Serbian Royal Academy / SKANU",
+        recognition: "Member",
+        logoUrl: "assets/serbian-royal-academy-logo.png",
+        logoFit: "wide"
+      },
       { organization: "Academy of Engineering Sciences of Serbia", recognition: "Foreign Member", website: "https://ains.rs" },
       { organization: "World Academy of Art and Science (WAAS)", recognition: "Fellow", website: "https://worldacademy.org" },
       { organization: "The World Academy of Sciences (TWAS)", recognition: "Fellow", website: "https://twas.org" },
@@ -388,7 +408,12 @@ const categories = [
         note: "Presented with, and independent from, the Cognitive Science Society",
         website: "https://glushkofoundation.org"
       },
-      { organization: "German Cancer Prize", recognition: "German Cancer Prize" },
+      {
+        organization: "German Cancer Prize",
+        recognition: "German Cancer Prize",
+        logoUrl: "assets/dkfz-logo.png",
+        logoFit: "wide"
+      },
       { organization: "Michael Bruno Memorial Award", recognition: "Michael Bruno Award" }
     ]
   },
@@ -448,7 +473,12 @@ const categories = [
         website: "https://www.wlasci.org",
         logoUrl: "https://www.wlasci.org/skin/images/logo.png"
       },
-      { organization: "van Niel International Prize", recognition: "van Niel International Prize" }
+      {
+        organization: "van Niel International Prize",
+        recognition: "van Niel International Prize",
+        logoUrl: "assets/van-niel-logo.png",
+        logoFit: "wide"
+      }
     ]
   },
   {

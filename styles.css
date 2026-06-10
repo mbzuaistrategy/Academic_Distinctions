@@ -595,6 +595,14 @@ a {
   object-position: top center;
 }
 
+.institution-logo.logo-wide {
+  width: 76px;
+}
+
+.institution-logo.large.logo-wide {
+  width: 112px;
+}
+
 .logo-initials {
   color: var(--navy);
   font-family: Georgia, "Times New Roman", serif;
