@@ -14,7 +14,82 @@ const categories = [
       "The distinction is primarily honorific, even when it also supports policy, advice, or service."
     ],
     items: [
-      { organization: "US National Academy of Sciences (NAS)", recognition: "Member", website: "https://www.nasonline.org" },
+      {
+        organization: "US National Academy of Sciences (NAS)",
+        recognition: "Member",
+        website: "https://www.nasonline.org",
+        bodyProfile: {
+          officialName: "National Academy of Sciences",
+          organizationType:
+            "Private, nonprofit / nongovernmental, but congressionally chartered and nationally recognized.",
+          definition:
+            "A U.S. national academy whose members are elected in recognition of distinguished and continuing achievements in original research.",
+          historyBackground:
+            "Established in 1863 by an Act of Congress signed by President Abraham Lincoln. It was created as a private, nongovernmental institution to advise the nation on science and technology.",
+          purpose:
+            "To recognize leading scientists and provide independent advice on issues related to science and technology.",
+          mission: "To promote science for the public good and advise the nation on science and technology.",
+          governanceLeadership:
+            "Governed by a 17-member Council, including five officers and 12 councilors elected from the Academy membership. The NAS president is Marcia McNutt.",
+          scopeReach:
+            "Broad science fields, including physical and mathematical sciences, biological sciences, engineering and applied sciences, biomedical sciences, behavioral and social sciences, and applied biological, agricultural, and environmental sciences."
+        },
+        criteriaProfiles: {
+          Member: {
+            "Official Name": "National Academy of Sciences",
+            "Institution/Type": "National academy.",
+            Definition:
+              "A U.S. national academy whose members are elected in recognition of distinguished and continuing achievements in original research.",
+            "History/Background":
+              "Established in 1863 by an Act of Congress signed by President Abraham Lincoln. It was created as a private, nongovernmental institution to advise the nation on science and technology.",
+            Purpose:
+              "To recognize leading scientists and provide independent advice on issues related to science and technology.",
+            "Awarding Body":
+              "The National Academy of Sciences itself; new members are elected by current members.",
+            "Organization Type":
+              "Private, nonprofit / nongovernmental, but congressionally chartered and nationally recognized.",
+            Mission: "To promote science for the public good and advise the nation on science and technology.",
+            Leadership:
+              "Governed by a 17-member Council, including five officers and 12 councilors elected from the Academy membership. The NAS president is Marcia McNutt.",
+            "Committee/Jury Composition":
+              "The election process is member-driven. Formal nominations are submitted by Academy members, reviewed through Academy election procedures, and voted on by members. Exact committee details are not fully public.",
+            "Main Field/Scope":
+              "Broad science fields, including physical and mathematical sciences, biological sciences, engineering and applied sciences, biomedical sciences, behavioral and social sciences, and applied biological, agricultural, and environmental sciences.",
+            "Geographic Scope": "National, United States, with a separate category for international members.",
+            "Geographic Distribution":
+              "No clear public quota by region found. NAS has U.S. members and international members, but selection is based on scientific achievement rather than stated geographic quotas.",
+            "Amount of Members":
+              "As of the 2026 election announcement, NAS had 2,705 active members and 557 international members.",
+            "Type of Recognition":
+              "Elected membership in NAS; considered one of the highest honors a scientist can receive.",
+            "Nomination Process":
+              "Not an open application. Candidates are formally nominated by existing Academy members and elected by current members.",
+            "Review/Evaluation Criteria":
+              "Distinguished and continuing achievements in original research; outstanding achievement and commitment to service.",
+            "Nomination Deadline":
+              "NAS does not present this as a public open-application deadline. Elections are annual; results are usually announced after the annual election cycle.",
+            "Application Requirements":
+              "Not an applicant-submitted process. A PNAS description of the election pathway says formal nominations include a brief CV, a 250-word statement of scientific accomplishments, and a list of no more than 12 publications.",
+            "Eligibility/Restrictions":
+              "Membership is for scientists with distinguished original research. U.S. citizens are elected as members; non-U.S. citizens may be elected as international members. International members have different voting and office-holding rights under NAS bylaws.",
+            Frequency:
+              "Annual election cycle. In 2026, NAS elected 120 members and 25 international members.",
+            Duration:
+              "Generally a lifetime honor / membership status, unless changed by resignation or other membership status rules. NAS bylaws mention resignation procedures.",
+            "Prize Money/Material Award":
+              "No regular prize money is attached to NAS membership. It is primarily an honorary elected membership.",
+            "Number of Recipients": "In 2026, NAS elected 120 new members and 25 international members.",
+            "Notable Past Recipients":
+              "Around 200 NAS members have received Nobel Prizes. Examples of NAS members include Jennifer Doudna, Frances Arnold, Katalin Kariko, Carolyn Bertozzi, Geoffrey Hinton, Yann LeCun, Judea Pearl, Barbara Liskov, Terence Tao, and Peter Shor. NAS membership recognizes distinguished and continuing achievements in original research.",
+            "Career Impact/Outcomes":
+              "NAS membership is a major prestige signal and is widely accepted as a mark of excellence in science, but NAS does not provide a simple career-impact statistic such as citation boost or promotion rate.",
+            "Relationship to Other Awards":
+              "Not a formal prerequisite for other awards, but many NAS members have also received major honors such as Nobel Prizes.",
+            "Ranking/Prestige Signal":
+              "Very high. Election to NAS is considered one of the highest honors a scientist can receive. Level 1A in the portal framework."
+          }
+        }
+      },
       { organization: "US National Academy of Engineering (NAE)", recognition: "Member; International Member", website: "https://www.nae.edu" },
       { organization: "US National Academy of Medicine (NAM)", recognition: "Member", website: "https://nam.edu" },
       { organization: "The Royal Society (UK)", recognition: "Fellow; Foreign Member; Royal Society Milner Award", website: "https://royalsociety.org" },
