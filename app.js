@@ -539,6 +539,52 @@ const categories = [
             "MacArthur is headquartered in Chicago, with offices in India and Nigeria. Over its 47-year history, it reports awarding more than $9.19 billion to nearly 11,000 organizations and individuals across 119 countries, all 50 U.S. states, Puerto Rico, and the U.S. Virgin Islands. In 2025, it paid out $561.6 million in grants and impact investments.",
           source: "MacArthur foundationxxx.docx"
         },
+        bodyProfileRows: [
+          { field: "Organization", value: "MF - MacArthur Foundation" },
+          { field: "Official Name", value: "John D. and Catherine T. MacArthur Foundation" },
+          {
+            field: "Organization Type",
+            value:
+              "Private foundation / independent foundation. MacArthur describes itself as one of the United States' largest independent foundations, and its financial page identifies its annual IRS filing as a 990-PF, the tax return filed by private foundations."
+          },
+          { field: "Institution", value: "Private Foundations" },
+          {
+            field: "Definition",
+            value:
+              "A U.S.-based private philanthropic foundation that funds individuals, nonprofit organizations, and networks through grants, impact investments, and recognition programs. In this taxonomy, it functions as an independent private foundation awarding body because it confers named recognitions such as the MacArthur Fellowship and supports work through foundation-administered awards and grantmaking."
+          },
+          {
+            field: "History/Background",
+            value:
+              "The Foundation's organizing documents were completed on October 18, 1970, after John D. MacArthur was advised that a foundation could put his wealth to public use after his death. John D. MacArthur died in 1978, and the Foundation began awarding grants soon afterward. Its early program areas included the MacArthur Fellows, public radio, peace and security, mental health, and the environment."
+          },
+          {
+            field: "Purpose",
+            value:
+              "To invest philanthropic capital in people, institutions, and networks addressing major social challenges, while also recognizing exceptional individual creativity through awards. Current areas highlighted by the Foundation include climate change, criminal justice reform, local news in the United States, equitable participation in artificial intelligence, Native communities, Nigeria-focused work, journalism, Chicago, impact investments, and technology in the public interest."
+          },
+          {
+            field: "Mission",
+            value:
+              "To support creative people, effective institutions, and influential networks working toward a more just, verdant, and peaceful world."
+          },
+          {
+            field: "Governance/Leadership",
+            value:
+              "The Foundation is governed by a Board of Directors that sets policy and strategic direction, approves grantmaking areas and initiatives, approves grants, and oversees investments and audit processes through committees. John Palfrey has served as President since September 1, 2019. Juan Salgado was elected Chair of the Board and assumed the role in June 2025."
+          },
+          {
+            field: "Scope/Reach",
+            value:
+              "MacArthur is headquartered in Chicago, with offices in India and Nigeria. Over its 47-year history, it reports awarding more than $9.19 billion to nearly 11,000 organizations and individuals across 119 countries, all 50 U.S. states, Puerto Rico, and the U.S. Virgin Islands. In 2025, it paid out $561.6 million in grants and impact investments."
+          },
+          { field: "Recognition Types", value: "MacArthur Fellowship" },
+          {
+            field: "Recognition Type Summary",
+            value:
+              "The MacArthur Fellowship is an $800,000, no-strings-attached award for extraordinarily talented and creative individuals, intended as an investment in their future potential."
+          }
+        ],
         criteriaProfiles: {
           "MacArthur Fellowship": {
             "Official Name": "MacArthur Fellowship",
