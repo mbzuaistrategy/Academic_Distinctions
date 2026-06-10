@@ -633,6 +633,8 @@ const legacyFacultyRecognitions = [
   {
     faculty: "Anil K. Jain",
     distinction: "IAPR Fellow",
+    work:
+      "Contributions to statistical pattern recognition, range-data analysis, and service to IAPR.",
     publicCategory: "Disciplinary Society Fellowships & Field Leadership",
     internalLevel: "Level 2 / Tier 2",
     levelKey: "level2"
@@ -640,6 +642,8 @@ const legacyFacultyRecognitions = [
   {
     faculty: "Anil K. Jain",
     distinction: "SPIE Fellow",
+    work:
+      "No public SPIE Fellow citation found. The best-supported basis is his work in pattern recognition and biometrics, especially biometric technology for human identification.",
     publicCategory: "Disciplinary Society Fellowships & Field Leadership",
     internalLevel: "Level 2 / Tier 2",
     levelKey: "level2"
@@ -647,6 +651,8 @@ const legacyFacultyRecognitions = [
   {
     faculty: "Anil K. Jain",
     distinction: "IEEE W. Wallace McDowell Award",
+    work:
+      "Pioneering contributions to the theory, techniques, and practice of pattern recognition, computer vision, and biometric recognition systems.",
     publicCategory: "Global / Disciplinary Field Leadership",
     internalLevel: "Level 1C / Tier 1C",
     levelKey: "level1c"
@@ -654,6 +660,8 @@ const legacyFacultyRecognitions = [
   {
     faculty: "Anil K. Jain",
     distinction: "IAPR King-Sun Fu Prize",
+    work:
+      "Pioneering contributions to pattern recognition theory and practice, computer vision, and the design of biometric systems.",
     publicCategory: "Global / Disciplinary Field Leadership",
     internalLevel: "Level 1C / Tier 1C",
     levelKey: "level1c"
@@ -661,6 +669,8 @@ const legacyFacultyRecognitions = [
   {
     faculty: "David Basin",
     distinction: "Levchin Prize for Real-World Cryptography",
+    work:
+      "Development of the Tamarin Prover and its use in the formal analysis and verification of real-world cryptographic protocols.",
     publicCategory: "Global / Disciplinary Field Leadership",
     internalLevel: "Level 1C / Tier 1C",
     levelKey: "level1c"
@@ -668,6 +678,8 @@ const legacyFacultyRecognitions = [
   {
     faculty: "Eran Segal",
     distinction: "European Molecular Biology Organization EMBO Member",
+    work:
+      "No individual EMBO citation found. EMBO membership recognizes research excellence and outstanding achievement; Segal's relevant body of work is computational and systems biology, including personalized nutrition/medicine, microbiome, genetics, nutrition, and gene regulation.",
     publicCategory: "Disciplinary Society Fellowships & Field Leadership",
     internalLevel: "Level 2 / Tier 2",
     levelKey: "level2"
@@ -675,6 +687,8 @@ const legacyFacultyRecognitions = [
   {
     faculty: "Éric Moulines",
     distinction: "CNRS Silver Medal",
+    work:
+      "Work in statistical signal processing and statistical information processing, including earlier work in automatic speech processing/speech synthesis and later contributions to statistical methods in signal processing.",
     publicCategory: "Disciplinary Field Leadership",
     internalLevel: "Level 2 / Tier 2",
     levelKey: "level2"
@@ -682,6 +696,8 @@ const legacyFacultyRecognitions = [
   {
     faculty: "Éric Moulines",
     distinction: "Orange Prize / French Academy Grand Prix",
+    work:
+      "No separate public prize citation found. The best-supported associated work is in statistical learning, numerical probability, statistical signal processing, Bayesian inference, Monte Carlo methods, and stochastic algorithms.",
     publicCategory: "Disciplinary Field Leadership",
     internalLevel: "Level 2 / Tier 2",
     levelKey: "level2"
@@ -689,6 +705,8 @@ const legacyFacultyRecognitions = [
   {
     faculty: "Éric Moulines",
     distinction: "European Association for Signal Processing EURASIP Fellow",
+    work:
+      "Contributions to statistical signal processing and applications to speech analysis.",
     publicCategory: "Disciplinary Society Fellowships & Field Leadership",
     internalLevel: "Level 2 / Tier 2",
     levelKey: "level2"
@@ -696,6 +714,8 @@ const legacyFacultyRecognitions = [
   {
     faculty: "Gregory Chirikjian",
     distinction: "ASME Machine Design Award",
+    work:
+      "Introducing design paradigms for hyper-redundant mechanisms, binary-actuated mechanisms, modular self-reconfigurable robots, and spherical motors, plus mentoring in machine design.",
     publicCategory: "Disciplinary Field Leadership",
     internalLevel: "Level 2 / Tier 2",
     levelKey: "level2"
@@ -832,6 +852,7 @@ function facultyRecord(faculty, distinction, groupKey, levelKey, options = {}) {
     organization: options.organization || "",
     routeRecognition: options.routeRecognition || distinction,
     details: options.details || "",
+    work: options.work || "",
     publicCategory: options.publicCategory || facultyGroupLabels[groupKey],
     internalLevel: options.internalLevel || facultyLevelLabels[levelKey] || "",
     levelKey
@@ -865,7 +886,9 @@ const additionalFacultyRecognitions = [
   }),
   facultyRecord("Ian Reid", "Fellow", "academy", "level2", {
     organization: "Australian Academy of Technological Sciences and Engineering (ATSE)",
-    details: "Year not specified"
+    details: "Year not specified",
+    work:
+      "Robot navigation using computer vision, especially mapping robot environments for autonomous operation in complex urban settings, with applications translated into manufacturing, sport refereeing, and historical-art analysis."
   }),
   facultyRecord("Ian Reid", "Fellow", "academy", "level2", {
     organization: "Australian Academy of Science",
@@ -1060,6 +1083,7 @@ function normalizeFacultyRecognitionRecord(record) {
   return {
     ...record,
     details: record.details || "",
+    work: record.work || "",
     organization: record.organization || "",
     routeRecognition: record.routeRecognition || record.distinction,
     publicCategory: record.publicCategory || facultyGroupLabels.disciplinaryField,
@@ -2006,9 +2030,12 @@ function mbzuaiRecipientSection(item, selectedRecognition) {
                 .map(
                   (record) => `
                   <li>
-                    <strong>${escapeHtml(record.faculty)}</strong>
-                    ${record.details ? `<span>${escapeHtml(record.details)}</span>` : ""}
-                    ${tierBadge(record.levelKey)}
+                    <div class="recipient-main-line">
+                      <strong>${escapeHtml(record.faculty)}</strong>
+                      ${record.details ? `<span>${escapeHtml(record.details)}</span>` : ""}
+                      ${tierBadge(record.levelKey)}
+                    </div>
+                    ${record.work ? `<p><strong>Related work:</strong> ${escapeHtml(record.work)}</p>` : ""}
                   </li>
                 `
                 )
@@ -2255,7 +2282,7 @@ function renderFacultyPage() {
   search.addEventListener("input", () => {
     const query = normalizeText(search.value.trim());
     const filtered = facultyRecognitions.filter((record) =>
-      normalizeText([record.faculty, record.distinction, record.organization, record.details, record.publicCategory, record.internalLevel].join(" "))
+      normalizeText([record.faculty, record.distinction, record.organization, record.details, record.work, record.publicCategory, record.internalLevel].join(" "))
         .includes(query)
     );
     document.querySelector("#faculty-results").innerHTML = facultyTable(sortFacultyRecords(query ? filtered : facultyRecognitions));
@@ -2306,6 +2333,7 @@ function facultyTable(records) {
                           <li>
                             <a href="${href}">${escapeHtml(title)}</a>
                             ${record.details ? `<span class="table-subtext">${escapeHtml(record.details)}</span>` : ""}
+                            ${record.work ? `<span class="table-work-note"><strong>Related work:</strong> ${escapeHtml(record.work)}</span>` : ""}
                           </li>
                         `;
                       })

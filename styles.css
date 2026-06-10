@@ -1143,6 +1143,20 @@ a {
   min-width: 0;
 }
 
+.table-work-note {
+  display: block;
+  margin-top: 5px;
+  color: var(--muted);
+  font-size: 0.78rem;
+  font-weight: 600;
+  line-height: 1.35;
+}
+
+.table-work-note strong {
+  color: #6d6258;
+  font-weight: 800;
+}
+
 .table-subtext {
   display: block;
   margin-top: 4px;
@@ -1186,9 +1200,8 @@ a {
 }
 
 .mbzuai-recipient-list li {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
+  display: grid;
+  gap: 6px;
   max-width: 100%;
   border: 1px solid var(--line);
   border-radius: 4px;
@@ -1196,9 +1209,27 @@ a {
   background: var(--surface);
 }
 
+.recipient-main-line {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+}
+
 .mbzuai-recipient-list strong,
 .mbzuai-recipient-list span {
   overflow-wrap: anywhere;
+}
+
+.mbzuai-recipient-list p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.82rem;
+  line-height: 1.35;
+}
+
+.mbzuai-recipient-list p strong {
+  color: #6d6258;
 }
 
 .mbzuai-recipient-list span {
