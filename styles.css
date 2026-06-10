@@ -614,8 +614,12 @@ a {
 .logo-stack {
   width: auto;
   min-width: 0;
-  height: 44px;
-  gap: 6px;
+  height: auto;
+  display: inline-flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 10px;
   overflow: visible;
   border: 0;
   background: transparent;
@@ -623,8 +627,8 @@ a {
 
 .logo-unit {
   position: relative;
-  width: 44px;
-  height: 44px;
+  width: 52px;
+  height: 52px;
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -638,6 +642,23 @@ a {
 .institution-card-head .logo-stack {
   flex-basis: 100%;
   max-width: 100%;
+  margin-bottom: 2px;
+}
+
+.institution-card-head .logo-stack .logo-unit {
+  width: 58px;
+  height: 48px;
+}
+
+.rich-logo-stack .logo-unit {
+  width: 104px;
+  height: 48px;
+}
+
+.rich-logo-stack .logo-unit img {
+  inset: 7px;
+  width: calc(100% - 14px);
+  height: calc(100% - 14px);
 }
 
 .institution-card-head .logo-stack + .tag-cluster {

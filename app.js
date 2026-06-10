@@ -469,6 +469,11 @@ const categories = [
       {
         organization: "Leading Journals (Nature, Science, Cell, etc.)",
         recognition: "Editor for leading journals; Senior Editor (Nature, Science, Cell)",
+        logos: [
+          { src: "https://upload.wikimedia.org/wikipedia/commons/6/62/Nature_logo.svg", label: "Nature" },
+          { src: "https://upload.wikimedia.org/wikipedia/commons/7/75/Science_logo.svg", label: "Science" },
+          { src: "https://upload.wikimedia.org/wikipedia/commons/1/18/Cell_%28journal%29_logo.svg", label: "Cell" }
+        ],
         logoDomains: ["nature.com", "science.org", "cell.com"]
       },
       {
@@ -1323,9 +1328,28 @@ function initials(value = "") {
 }
 
 function institutionLogo(item, size = "card") {
+  const logos = Array.isArray(item.logos) ? item.logos : [];
   const domains = logoDomainsFor(item);
   const fallback = escapeHtml(initials(item.organization));
   const logoFit = item.logoFit ? ` logo-${item.logoFit}` : "";
+
+  if (logos.length) {
+    return `
+      <span class="institution-logo ${size} logo-stack rich-logo-stack" aria-label="${escapeHtml(item.organization)} logos">
+        ${logos
+          .slice(0, 4)
+          .map(
+            (logo, index) => `
+            <span class="logo-unit" style="--i: ${index}" title="${escapeHtml(logo.label || item.organization)}">
+              <span class="logo-initials">${escapeHtml(initials(logo.label || item.organization))}</span>
+              <img src="${escapeHtml(logo.src)}" alt="" loading="lazy" onerror="this.hidden=true" />
+            </span>
+          `
+          )
+          .join("")}
+      </span>
+    `;
+  }
 
   if (item.logoUrl) {
     return `
