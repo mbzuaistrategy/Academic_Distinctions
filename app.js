@@ -321,8 +321,8 @@ const categories = [
       { organization: "BCS (The Chartered Institute for IT)", recognition: "BCS Fellow", website: "https://www.bcs.org" },
       { organization: "ASA (American Statistical Association)", recognition: "ASA Fellow; Leo Breiman Junior Award", website: "https://www.amstat.org" },
       { organization: "COPSS (Committee of Presidents of Statistical Societies)", recognition: "COPSS Presidents' Award", website: "https://community.amstat.org/copss/home" },
-      { organization: "International Association for Pattern Recognition (IAPR)", recognition: "International Association for Pattern Recognition IAPR Fellow; IAPR King-Sun Fu Prize", website: "https://iapr.org" },
-      { organization: "International Society for Optics and Photonics (SPIE)", recognition: "International Society for Optics and Photonics SPIE Fellow", website: "https://spie.org" },
+      { organization: "International Association for Pattern Recognition (IAPR)", recognition: "IAPR Fellow; IAPR King-Sun Fu Prize", website: "https://iapr.org" },
+      { organization: "International Society for Optics and Photonics (SPIE)", recognition: "SPIE Fellow", website: "https://spie.org" },
       { organization: "Real-World Cryptography", recognition: "Levchin Prize for Real-World Cryptography", website: "https://rwc.iacr.org" },
       { organization: "European Molecular Biology Organization (EMBO)", recognition: "European Molecular Biology Organization EMBO Member", website: "https://www.embo.org" },
       { organization: "European Association for Signal Processing (EURASIP)", recognition: "European Association for Signal Processing EURASIP Fellow", website: "https://eurasip.org" },
@@ -602,14 +602,14 @@ const tierDefinitions = {
 const legacyFacultyRecognitions = [
   {
     faculty: "Anil K. Jain",
-    distinction: "International Association for Pattern Recognition IAPR Fellow",
+    distinction: "IAPR Fellow",
     publicCategory: "Disciplinary Society Fellowships & Field Leadership",
     internalLevel: "Level 2 / Tier 2",
     levelKey: "level2"
   },
   {
     faculty: "Anil K. Jain",
-    distinction: "International Society for Optics and Photonics SPIE Fellow",
+    distinction: "SPIE Fellow",
     publicCategory: "Disciplinary Society Fellowships & Field Leadership",
     internalLevel: "Level 2 / Tier 2",
     levelKey: "level2"
@@ -2097,7 +2097,30 @@ function recognitionProfileFor(item, selectedRecognition) {
 function facultyRecognitionTitle(record) {
   const match = facultyRecognitionTarget(record);
   const organization = record.organization || match?.organization || "";
-  return organization ? `${organization} - ${record.distinction}` : record.distinction;
+  const distinction = record.distinction;
+
+  if (!organization || recognitionIncludesOrganization(distinction, organization)) {
+    return distinction;
+  }
+
+  return `${organization} - ${distinction}`;
+}
+
+function recognitionIncludesOrganization(recognition, organization) {
+  const recognitionText = normalizeText(recognition);
+  const organizationBase = normalizeText(organization.replace(/\([^)]*\)/g, ""));
+  const organizationAliases = [
+    organizationBase,
+    ...organization
+      .split(/\s+/)
+      .filter((part) => /^[A-Z]{2,}$/.test(part.replace(/[^A-Z]/g, "")))
+      .map((part) => part.replace(/[^A-Z]/g, "")),
+    ...[...organization.matchAll(/\(([^)]+)\)/g)].map((match) => match[1])
+  ]
+    .map(normalizeText)
+    .filter(Boolean);
+
+  return organizationAliases.some((alias) => recognitionText.startsWith(alias));
 }
 
 function sortFacultyRecords(records) {
@@ -2248,8 +2271,7 @@ function facultyTable(records) {
                       .map((record) => {
                         const match = facultyRecognitionTarget(record, recognitions);
                         const href = match ? `#criteria/${match.categoryId}/${match.itemIndex}/${match.recognitionIndex}` : "#directory";
-                        const organization = record.organization || match?.organization || "";
-                        const title = organization ? `${organization} - ${record.distinction}` : record.distinction;
+                        const title = facultyRecognitionTitle(record);
                         return `
                           <li>
                             <a href="${href}">${escapeHtml(title)}</a>
