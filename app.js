@@ -1909,7 +1909,7 @@ function renderRecognitionCriteria(categoryId, itemIndex, recognitionIndex) {
                 <dt>Awarding Body</dt>
                 <dd><span class="inline-logo-text">${institutionLogo(item, "tiny")}${escapeHtml(item.organization)}</span></dd>
                 <dt>Level</dt>
-                <dd>${tierBadge(selectedTier)} ${escapeHtml(tierLabel(selectedTier))}</dd>
+                <dd>${tierBadge(selectedTier)}</dd>
                 <dt>Institution</dt>
                 <dd>${escapeHtml(category.title)}</dd>
                 ${item.note ? `<dt>Note</dt><dd>${escapeHtml(item.note)}</dd>` : ""}
@@ -1925,12 +1925,45 @@ function renderRecognitionCriteria(categoryId, itemIndex, recognitionIndex) {
                   <p>Use this structure to complete the research profile for this specific recognition.</p>
                 </div>
               </div>
+              ${mbzuaiRecipientSection(item, selectedRecognition)}
               ${recognitionCriteriaProfile(item, category, selectedRecognition)}
             </div>
           </section>
         </div>
       </div>
     </section>
+  `;
+}
+
+function mbzuaiRecipientSection(item, selectedRecognition) {
+  const matches = facultyRecordsForRecognition(item, selectedRecognition);
+
+  return `
+    <article class="mbzuai-recipient-panel">
+      <div>
+        <h2>MBZUAI Recipient or Member</h2>
+        <p>${matches.length ? `${matches.length} faculty record${matches.length === 1 ? "" : "s"} linked to this recognition.` : "No MBZUAI faculty recipient or member listed yet."}</p>
+      </div>
+      ${
+        matches.length
+          ? `
+            <ul class="mbzuai-recipient-list">
+              ${matches
+                .map(
+                  (record) => `
+                  <li>
+                    <strong>${escapeHtml(record.faculty)}</strong>
+                    ${record.details ? `<span>${escapeHtml(record.details)}</span>` : ""}
+                    ${tierBadge(record.levelKey)}
+                  </li>
+                `
+                )
+                .join("")}
+            </ul>
+          `
+          : ""
+      }
+    </article>
   `;
 }
 
@@ -2181,7 +2214,6 @@ function facultyTable(records) {
         ${groups
           .map((group) => {
             const levelKeys = [...new Set(group.records.map((record) => record.levelKey).filter(Boolean))];
-            const internalLevels = [...new Set(group.records.map((record) => record.internalLevel).filter(Boolean))];
             const publicCategories = [...new Set(group.records.map((record) => record.publicCategory).filter(Boolean))];
             return `
               <tr>
@@ -2206,7 +2238,6 @@ function facultyTable(records) {
                 </td>
                 <td>
                   <div class="tag-cluster">${levelKeys.map((key) => tierBadge(key)).join("")}</div>
-                  <span class="table-subtext">${escapeHtml(internalLevels.join("; "))}</span>
                 </td>
                 <td>${escapeHtml(publicCategories.join("; "))}</td>
               </tr>
