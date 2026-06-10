@@ -462,9 +462,135 @@ const categories = [
             "The Nobel Foundation safeguards the Nobel Prize system, while the prize-awarding institutions remain independent in selecting Nobel Laureates.",
           scopeReach: "International; supports the Nobel Prize system and its prize-awarding institutions.",
           source: "https://www.nobelprize.org/the-nobel-prize-organisation/the-nobel-foundation/"
+        },
+        criteriaProfiles: {
+          "Nobel Prize": {
+            "Official Name": "Nobel Prize",
+            "Institution/Type": "Global apex prize.",
+            Definition:
+              "The Nobel Prize is a set of internationally recognized prizes honoring people and organizations whose work has conferred the greatest benefit to humankind in the areas specified by Alfred Nobel's will.",
+            "History/Background":
+              "The Nobel Prize was established through Alfred Nobel's will. The first Nobel Prizes were awarded in 1901 in Physics, Chemistry, Physiology or Medicine, Literature, and Peace; the Sveriges Riksbank Prize in Economic Sciences is administered with the Nobel system but was established later.",
+            Purpose:
+              "To recognize discoveries, inventions, literary work, peace efforts, and other contributions judged to have exceptional benefit for humankind.",
+            "Awarding Body":
+              "The relevant Nobel Prize-awarding institutions select laureates: the Royal Swedish Academy of Sciences, the Nobel Assembly at Karolinska Institutet, the Swedish Academy, and the Norwegian Nobel Committee. The Nobel Foundation administers the Nobel system and safeguards the prize assets and brand.",
+            "Organization Type":
+              "Private foundation-supported prize system with independent prize-awarding institutions.",
+            Mission:
+              "The Nobel system carries out Alfred Nobel's will by recognizing work of exceptional benefit to humankind and protecting the independence of the prize-awarding institutions.",
+            Leadership:
+              "The Nobel Foundation is responsible for the long-term administration of the Nobel Prize system, while each prize-awarding institution independently manages its own selection process.",
+            "Committee/Jury Composition":
+              "Each Nobel category has its own Nobel Committee or awarding body process. Committees screen confidential nominations, seek expert input, and make recommendations to the relevant prize-awarding institution, which makes the final decision.",
+            "Main Field/Scope":
+              "Physics, Chemistry, Physiology or Medicine, Literature, Peace, and the Nobel-associated Economic Sciences prize.",
+            "Geographic Scope": "Global / international.",
+            "Geographic Distribution":
+              "No public regional quota. Selection is based on contribution, discovery, work, or peace impact rather than geographic allocation.",
+            "Amount of Members": "Not a membership distinction; no member count applies.",
+            "Type of Recognition": "One-time global prize with lifetime prestige.",
+            "Nomination Process":
+              "Nomination is by invitation only. Qualified nominators are invited by the relevant Nobel Committee or awarding institution; self-nominations are not considered.",
+            "Review/Evaluation Criteria":
+              "Exceptional discoveries, achievements, literary work, or peace contributions aligned with Alfred Nobel's will and evaluated by the relevant Nobel category process.",
+            "Nomination Deadline":
+              "The nomination cycle is annual and confidential. Invitations are typically sent in the year before the award, and each committee sets its own deadline for invited nominations.",
+            "Application Requirements":
+              "No open application. Nominations are confidential and submitted by invited nominators with supporting rationale and materials required by the relevant committee.",
+            "Eligibility/Restrictions":
+              "Eligibility varies by prize area. Nobel Prizes are generally awarded to individuals, while the Peace Prize may also be awarded to organizations. Self-nomination is not accepted.",
+            Frequency: "Annual.",
+            Duration: "One-time award, lifetime prestige.",
+            "Prize Money/Material Award":
+              "Nobel Laureates receive a medal, diploma, and prize amount set for that year's Nobel Prize; the amount may be shared if a prize has multiple laureates.",
+            "Number of Recipients":
+              "The number varies by prize and year. Some Nobel Prizes are shared by multiple laureates; some years a prize may be reserved or not awarded.",
+            "Notable Past Recipients":
+              "Examples include Marie Curie, Albert Einstein, Martin Luther King Jr., Dorothy Crowfoot Hodgkin, Amartya Sen, Jennifer Doudna, Emmanuelle Charpentier, Katalin Kariko, Drew Weissman, and many others.",
+            "Career Impact/Outcomes":
+              "The Nobel Prize is among the strongest global prestige signals in scholarship, science, literature, and peace work. It usually produces major public visibility and durable historical recognition.",
+            "Relationship to Other Awards":
+              "Nobel Laureates often also hold major academy memberships, national honors, and elite disciplinary prizes, but the Nobel Prize is not a formal prerequisite for those distinctions.",
+            "Ranking/Prestige Signal":
+              "Level 1A apex global prize in the portal framework; field-defining, internationally recognized, and highly selective."
+          }
         }
       },
-      { organization: "MacArthur Foundation", recognition: "MacArthur Fellowship", website: "https://www.macfound.org" },
+      {
+        organization: "MacArthur Foundation",
+        recognition: "MacArthur Fellowship",
+        website: "https://www.macfound.org",
+        bodyProfile: {
+          officialName: "John D. and Catherine T. MacArthur Foundation",
+          organizationType:
+            "Private foundation / independent foundation. MacArthur describes itself as one of the United States' largest independent foundations, and its financial page identifies its annual IRS filing as a 990-PF, the tax return filed by private foundations.",
+          definition:
+            "A U.S.-based private philanthropic foundation that funds individuals, nonprofit organizations, and networks through grants, impact investments, and recognition programs. In this taxonomy, it functions as an independent private foundation awarding body because it confers named recognitions such as the MacArthur Fellowship and supports work through foundation-administered awards and grantmaking.",
+          historyBackground:
+            "The Foundation's organizing documents were completed on October 18, 1970, after John D. MacArthur was advised that a foundation could put his wealth to public use after his death. John D. MacArthur died in 1978, and the Foundation began awarding grants soon afterward. Its early program areas included the MacArthur Fellows, public radio, peace and security, mental health, and the environment.",
+          purpose:
+            "To invest philanthropic capital in people, institutions, and networks addressing major social challenges, while also recognizing exceptional individual creativity through awards. Current areas highlighted by the Foundation include climate change, criminal justice reform, local news in the United States, equitable participation in artificial intelligence, Native communities, Nigeria-focused work, journalism, Chicago, impact investments, and technology in the public interest.",
+          mission:
+            "To support creative people, effective institutions, and influential networks working toward a more just, verdant, and peaceful world.",
+          governanceLeadership:
+            "The Foundation is governed by a Board of Directors that sets policy and strategic direction, approves grantmaking areas and initiatives, approves grants, and oversees investments and audit processes through committees. John Palfrey has served as President since September 1, 2019. Juan Salgado was elected Chair of the Board and assumed the role in June 2025.",
+          scopeReach:
+            "MacArthur is headquartered in Chicago, with offices in India and Nigeria. Over its 47-year history, it reports awarding more than $9.19 billion to nearly 11,000 organizations and individuals across 119 countries, all 50 U.S. states, Puerto Rico, and the U.S. Virgin Islands. In 2025, it paid out $561.6 million in grants and impact investments.",
+          source: "MacArthur foundationxxx.docx"
+        },
+        criteriaProfiles: {
+          "MacArthur Fellowship": {
+            "Official Name": "MacArthur Fellowship",
+            "Institution/Type": "Private foundation fellowship / unrestricted individual award.",
+            Definition:
+              "The MacArthur Fellowship is an $800,000, no-strings-attached award for extraordinarily talented and creative individuals, intended as an investment in their future potential.",
+            "History/Background":
+              "The MacArthur Fellows Program began in 1981 and has become one of the best-known private foundation fellowship programs in the United States.",
+            Purpose:
+              "To identify and support exceptionally creative people with a track record of significant accomplishment and strong promise for important future advances.",
+            "Awarding Body": "John D. and Catherine T. MacArthur Foundation.",
+            "Organization Type": "Private foundation / independent foundation.",
+            Mission:
+              "To support creative people, effective institutions, and influential networks working toward a more just, verdant, and peaceful world.",
+            Leadership:
+              "The Foundation is governed by its Board of Directors. John Palfrey has served as President since September 1, 2019, and Juan Salgado assumed the Board Chair role in June 2025.",
+            "Committee/Jury Composition":
+              "The selection process is confidential. Candidates are identified by invited nominators and evaluated through confidential review and selection processes; candidates do not apply and are typically unaware they are under consideration.",
+            "Main Field/Scope":
+              "Broadly interdisciplinary. Fellows may come from science, technology, scholarship, public interest work, arts, literature, journalism, social justice, design, education, and other creative fields.",
+            "Geographic Scope": "United States-focused with U.S. citizenship or residency requirements.",
+            "Geographic Distribution":
+              "No public regional quota. Fellows are selected across fields and geographies based on creativity, achievement, and future potential.",
+            "Amount of Members": "Not a membership body; the fellowship has more than 1,000 recipients across its history.",
+            "Type of Recognition": "Unrestricted fellowship / private foundation award.",
+            "Nomination Process":
+              "No applications or unsolicited nominations are accepted. Candidates are identified through a confidential nomination and review process.",
+            "Review/Evaluation Criteria":
+              "Exceptional creativity, a track record of significant achievement, and potential for important future advances that the fellowship may facilitate.",
+            "Nomination Deadline":
+              "No public application deadline. The process is confidential and administered internally by the Foundation.",
+            "Application Requirements":
+              "No applicant-submitted materials. Candidates do not apply; supporting information is gathered through confidential nomination, evaluation, and review.",
+            "Eligibility/Restrictions":
+              "Recipients must generally be U.S. citizens or residents and may not hold elective office or advanced government positions. The award is for individuals rather than organizations.",
+            Frequency: "Annual.",
+            Duration: "Five-year unrestricted fellowship award.",
+            "Prize Money/Material Award":
+              "$800,000, no strings attached, paid over five years.",
+            "Number of Recipients":
+              "The annual cohort size varies; MacArthur typically names a small cohort of Fellows each year.",
+            "Notable Past Recipients":
+              "Examples include Carlos D. Bustamante, Ta-Nehisi Coates, Lin-Manuel Miranda, Ruth Wilson Gilmore, Angela Duckworth, Ibram X. Kendi, and many others across scholarship, science, arts, and public life.",
+            "Career Impact/Outcomes":
+              "A major public prestige signal that provides unrestricted funding, time, and visibility for future creative work. It is widely known as a high-prestige private foundation fellowship.",
+            "Relationship to Other Awards":
+              "Distinct from MacArthur grants and impact investments. It is not a formal prerequisite for other honors, but Fellows often also hold major academic, artistic, civic, or disciplinary recognitions.",
+            "Ranking/Prestige Signal":
+              "Level 2 major fellowship / private foundation distinction in the portal framework; very high prestige, especially in U.S. public-facing recognition."
+          }
+        }
+      },
       { organization: "John Simon Guggenheim Memorial Foundation", recognition: "Guggenheim Fellowship", website: "https://www.gf.org" },
       { organization: "Alexander von Humboldt Foundation", recognition: "Humboldt Research Award", website: "https://www.humboldt-foundation.de" },
       { organization: "Alfred P. Sloan Foundation", recognition: "Sloan Research Fellowship", website: "https://sloan.org" },
