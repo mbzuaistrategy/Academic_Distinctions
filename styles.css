@@ -1082,6 +1082,38 @@ a {
   font-weight: 800;
 }
 
+.faculty-table th:nth-child(1),
+.faculty-table td:nth-child(1) {
+  width: 18%;
+}
+
+.faculty-table th:nth-child(2),
+.faculty-table td:nth-child(2) {
+  width: 42%;
+}
+
+.faculty-table th:nth-child(3),
+.faculty-table td:nth-child(3) {
+  width: 16%;
+}
+
+.faculty-table th:nth-child(4),
+.faculty-table td:nth-child(4) {
+  width: 24%;
+}
+
+.faculty-recognition-list {
+  display: grid;
+  gap: 10px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.faculty-recognition-list li {
+  min-width: 0;
+}
+
 .table-subtext {
   display: block;
   margin-top: 4px;

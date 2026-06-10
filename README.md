@@ -35,7 +35,7 @@ The Institutions tab lists organizations and awarding bodies, such as `Nobel Fou
 
 ## Faculty
 
-The Faculty tab lists faculty-held distinctions with public-facing hybrid category, internal level, and notable status. Each recognition links directly to its criteria profile page.
+The Faculty tab groups faculty-held distinctions by faculty member, with each recognition linking directly to its normal criteria profile page in the recognitions directory.
 
 ## Sections
 
