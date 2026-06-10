@@ -759,21 +759,29 @@ a {
   letter-spacing: 0.02em;
 }
 
-.tier-badge.tier1 {
+.tier-badge.level1a {
   background: #91343a;
 }
 
-.tier-badge.tier2a,
-.tier-badge.tier2b {
+.tier-badge.level1b {
+  background: #6c5b8f;
+}
+
+.tier-badge.level1c {
+  background: #8a5d2b;
+}
+
+.tier-badge.level2 {
   background: #263249;
 }
 
-.tier-badge.tier2b {
-  border-color: #b8ac9d;
+.tier-badge.level3 {
+  background: #0f7f74;
 }
 
-.tier-badge.tier3 {
-  background: #0f7f74;
+.tier-badge.level4 {
+  background: #6d6258;
+  border-color: #b8ac9d;
 }
 
 .view-top {

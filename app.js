@@ -154,7 +154,7 @@ const categories = [
           {
             field: "Framework Classification",
             value:
-              "ACM: governing / awarding institution. ACM Fellow: Tier 3 - Professional Recognition. ACM A.M. Turing Award: Tier 1 - Global Top Distinction. ACM/AAAI Allen Newell Award: Tier 2 - Top Field Prize / Interdisciplinary Leadership."
+              "ACM: governing / awarding institution. ACM Fellow: Level 2 - major society fellowship. ACM A.M. Turing Award: Level 1A - apex global prize. ACM/AAAI Allen Newell Award: Level 1C - elite field-specific prize."
           }
         ],
         criteriaProfiles: {
@@ -202,7 +202,7 @@ const categories = [
             "Relationship to Other Awards":
               "Distinct from the Turing Award; often appears alongside other senior honors in academic profiles.",
             "Ranking/Prestige Signal":
-              "Tier 3 professional recognition in this framework; high prestige within the computing profession, but below global field-defining prizes like the Turing Award."
+              "Level 2 major society fellowship in the hybrid framework; high prestige within the computing profession, but below apex global prizes like the Turing Award."
           },
           "ACM A.M. Turing Award": {
             "Official Name": "ACM A.M. Turing Award",
@@ -247,7 +247,7 @@ const categories = [
             "Relationship to Other Awards":
               "Often regarded as the computing equivalent of a Nobel Prize; many recipients already hold major academic honors and fellowships.",
             "Ranking/Prestige Signal":
-              "Tier 1 global top distinction; field-defining, internationally recognized, highly selective."
+              "Level 1A apex global prize; field-defining, internationally recognized, highly selective."
           },
           "ACM/AAAI Allen Newell Award": {
             "Official Name": "ACM/AAAI Allen Newell Award",
@@ -291,7 +291,7 @@ const categories = [
             "Relationship to Other Awards":
               "Sits below the Turing Award in global prestige but is a major ACM/AAAI recognition for broad and interdisciplinary computing impact.",
             "Ranking/Prestige Signal":
-              "Tier 2 top field prize / interdisciplinary leadership distinction in this framework."
+              "Level 1C elite field-specific prize / interdisciplinary computing distinction in the hybrid framework."
           }
         }
       },
@@ -529,25 +529,39 @@ const bodyProfileFields = [
 ];
 
 const tierDefinitions = {
-  tier1: {
-    label: "Tier 1",
-    title: "Global Top Distinctions",
-    definition: "Field-defining recognition with global impact and high selectivity."
+  level1a: {
+    label: "Level 1A",
+    title: "Apex Academy or Apex Global Prize",
+    definition: "Apex academies and apex global prizes; strongest institutional reputation signals."
   },
-  tier2a: {
-    label: "Tier 2",
-    title: "High Prestige Distinction & Leadership",
-    definition: "Strong international recognition and clear trajectory toward top-tier distinction."
+  level1b: {
+    label: "Level 1B",
+    title: "Global Mega-Prize",
+    definition:
+      "Global mega-prizes below the apex Nobel, Turing, Fields, or Abel class but still carrying very high international prestige."
   },
-  tier2b: {
-    label: "Tier 2",
-    title: "Prizes/Grants & Leadership Roles",
-    definition: "High-prestige prizes, grants, and editorial or scientific leadership roles."
+  level1c: {
+    label: "Level 1C",
+    title: "Elite Field-Specific Prize or Medal",
+    definition:
+      "Elite field-specific prizes or medals in AI, computing, statistics, vision, NLP, bioinformatics, or comparable fields."
   },
-  tier3: {
-    label: "Tier 3",
-    title: "Society Fellowships",
-    definition: "Recognized professional society fellowship distinctions."
+  level2: {
+    label: "Level 2",
+    title: "Major Fellowship, Academy, Senior Distinction, or Field Leadership",
+    definition:
+      "Major elected society fellowships, non-apex academies, senior honors, and major scholarly field leadership roles."
+  },
+  level3: {
+    label: "Level 3",
+    title: "Pipeline, Specialized, Professional, Grant, or Innovation Distinction",
+    definition:
+      "Pipeline, early-career, competitive grant, paper, professional, or innovation distinctions."
+  },
+  level4: {
+    label: "Level 4",
+    title: "Campus Citizenship and Educational Excellence",
+    definition: "Internal teaching, mentorship, service, culture, and campus citizenship excellence."
   }
 };
 
@@ -657,35 +671,29 @@ function tierForRecognition(item, recognition, category) {
   const text = normalizeText(`${item.organization} ${recognition}`);
   const recognitionText = normalizeText(recognition);
 
-  if (category.id === "leading-national-academies") return "tier1";
-  if (category.id === "other-national-academies") return "tier2a";
+  if (category.id === "leading-national-academies") return "level1a";
+  if (category.id === "other-national-academies") return "level2";
 
   if (
     hasAny(recognitionText, [
       "nobel prize",
-      "breakthrough prize",
-      "lasker award",
       "turing award",
-      "fields medal",
-      "wolf prize"
+      "fields medal"
     ])
   ) {
-    return "tier1";
+    return "level1a";
   }
 
   if (
     hasAny(recognitionText, [
-      "macarthur fellowship",
-      "guggenheim fellowship",
-      "humboldt research award",
-      "sloan research",
       "bbva frontiers of knowledge award",
-      "fulbright u s scholar",
-      "distinguished scholar awards",
+      "breakthrough prize",
+      "lasker award",
+      "wolf prize",
       "world laureates association prize"
     ])
   ) {
-    return "tier2a";
+    return "level1b";
   }
 
   if (
@@ -695,17 +703,37 @@ function tierForRecognition(item, recognition, category) {
       "copss presidents award",
       "overton prize",
       "rumelhart prize",
-      "helmholtz prize",
-      "erc advanced",
-      "consolidator grant",
-      "nih r01",
-      "wellcome trust investigator awards",
+      "helmholtz prize"
+    ])
+  ) {
+    return "level1c";
+  }
+
+  if (
+    hasAny(recognitionText, [
+      "macarthur fellowship",
+      "guggenheim fellowship",
+      "humboldt research award",
       "editor for leading journals",
       "senior editor",
       "program chair"
     ])
   ) {
-    return "tier2b";
+    return "level2";
+  }
+
+  if (
+    hasAny(recognitionText, [
+      "sloan research",
+      "fulbright u s scholar",
+      "distinguished scholar awards",
+      "erc advanced",
+      "consolidator grant",
+      "nih r01",
+      "wellcome trust investigator awards"
+    ])
+  ) {
+    return "level3";
   }
 
   if (
@@ -722,7 +750,7 @@ function tierForRecognition(item, recognition, category) {
       "asa fellow"
     ])
   ) {
-    return "tier3";
+    return "level2";
   }
 
   return null;
@@ -737,7 +765,7 @@ function tierBadge(tierKey) {
 
 function tierLabel(tierKey) {
   const tier = tierDefinitions[tierKey];
-  return tier ? `${tier.label}: ${tier.title}` : "Not tiered";
+  return tier ? `${tier.label}: ${tier.title}` : "Not leveled";
 }
 
 function tierKeysForItem(item, category) {
@@ -1359,7 +1387,7 @@ function renderRecognitionCriteria(categoryId, itemIndex, recognitionIndex) {
                 <dd>${escapeHtml(selectedRecognition)}</dd>
                 <dt>Awarding Body</dt>
                 <dd><span class="inline-logo-text">${institutionLogo(item, "tiny")}${escapeHtml(item.organization)}</span></dd>
-                <dt>Tier</dt>
+                <dt>Level</dt>
                 <dd>${tierBadge(selectedTier)} ${escapeHtml(tierLabel(selectedTier))}</dd>
                 <dt>Institution</dt>
                 <dd>${escapeHtml(category.title)}</dd>
@@ -1451,7 +1479,7 @@ function criteriaFieldValue(field, item, category, selectedRecognition) {
     "Notable Past Recipients": "Famous winners and other major achievements of recipients",
     "Career Impact/Outcomes": "Career advancement, publication/citation boost, or other outcome evidence",
     "Relationship to Other Awards": "Prerequisite for other honors or often awarded together",
-    "Ranking/Prestige Signal": "Field, national, or international recognition level; citation impact; tier"
+    "Ranking/Prestige Signal": "Field, national, or international recognition level; citation impact; hybrid level"
   };
 
   return knownValues[field] || completionPrompts[field] || "To be completed";
@@ -1529,7 +1557,7 @@ function directoryTable(items) {
         <tr>
           <th>Organization</th>
           <th>Recognition</th>
-          <th>Tier</th>
+          <th>Level</th>
           <th>Institution</th>
           <th>Note</th>
         </tr>

@@ -18,9 +18,9 @@ The built-in academies, awards, fellowships, funding bodies, and leadership role
 
 Institution logos are rendered from the website domains listed on each item, with custom logo overrides where needed. Generic grouped entries use a small stack of related site icons.
 
-## Tier Tags
+## Level Tags
 
-Recognition types are tagged as Tier 1, Tier 2, or Tier 3 using the tier system in `app.js`. Institution cards show all tiers represented by the recognition types inside that body.
+Recognition types are tagged using the MBZUAI hybrid internal levels in `app.js`: Level 1A, Level 1B, Level 1C, Level 2, Level 3, and Level 4. Institution cards show all levels represented by the recognition types inside that body.
 
 ## Recognition Detail Pages
 
