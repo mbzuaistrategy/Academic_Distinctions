@@ -2542,7 +2542,7 @@ function facultyTable(records) {
       <div class="empty-state">
         <div>
           <strong>No matching faculty recognitions</strong>
-          <span>Try searching by faculty name, recognition, category, or level.</span>
+          <span>Try searching by faculty name, recognition, or level.</span>
         </div>
       </div>
     `;
@@ -2558,14 +2558,12 @@ function facultyTable(records) {
           <th>Faculty</th>
           <th>Recognitions</th>
           <th>Levels</th>
-          <th>Public Categories</th>
         </tr>
       </thead>
       <tbody>
         ${groups
           .map((group) => {
             const levelKeys = [...new Set(group.records.map((record) => record.levelKey).filter(Boolean))];
-            const publicCategories = [...new Set(group.records.map((record) => record.publicCategory).filter(Boolean))];
             return `
               <tr>
                 <td>${escapeHtml(group.faculty)}<span class="table-subtext">${group.records.length} recognition${group.records.length === 1 ? "" : "s"}</span></td>
@@ -2590,7 +2588,6 @@ function facultyTable(records) {
                 <td>
                   <div class="tag-cluster">${levelKeys.map((key) => tierBadge(key)).join("")}</div>
                 </td>
-                <td>${escapeHtml(publicCategories.join("; "))}</td>
               </tr>
             `;
           })
