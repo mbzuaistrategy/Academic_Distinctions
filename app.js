@@ -463,6 +463,48 @@ const categories = [
           scopeReach: "International; supports the Nobel Prize system and its prize-awarding institutions.",
           source: "https://www.nobelprize.org/the-nobel-prize-organisation/the-nobel-foundation/"
         },
+        bodyProfileRows: [
+          { field: "Organization", value: "Nobel Foundation" },
+          { field: "Official Name", value: "The Nobel Foundation" },
+          { field: "Organization Type", value: "Private foundation / private institution." },
+          { field: "Institution", value: "Private Foundations" },
+          {
+            field: "Definition",
+            value:
+              "A private institution with ultimate responsibility for fulfilling the intentions in Alfred Nobel's will. In this portal, it functions as the private foundation context for the Nobel Prize system."
+          },
+          {
+            field: "History/Background",
+            value:
+              "Established on 29 June 1900, four years after Alfred Nobel's death, to invest Nobel's fortune and manage the immaterial value of the Nobel Prize."
+          },
+          {
+            field: "Purpose",
+            value:
+              "To ensure that Alfred Nobel's will is fulfilled and that the Nobel Prize has a secure long-term financial standing."
+          },
+          {
+            field: "Mission",
+            value:
+              "To manage Alfred Nobel's fortune, protect the common interests and independence of the prize-awarding institutions, and administer the Nobel Prize's brands and intangible assets."
+          },
+          {
+            field: "Governance/Leadership",
+            value:
+              "The Nobel Foundation safeguards the Nobel Prize system, while the prize-awarding institutions remain independent in selecting Nobel Laureates."
+          },
+          {
+            field: "Scope/Reach",
+            value:
+              "International; supports the Nobel Prize system and its independent prize-awarding institutions across science, literature, peace, and economic sciences."
+          },
+          { field: "Recognition Types", value: "Nobel Prize" },
+          {
+            field: "Recognition Type Summary",
+            value:
+              "The Nobel Prize is a global apex prize recognizing people and organizations whose work has conferred exceptional benefit to humankind."
+          }
+        ],
         criteriaProfiles: {
           "Nobel Prize": {
             "Official Name": "Nobel Prize",
@@ -2101,6 +2143,7 @@ function renderRecognition(categoryId, index) {
   const category = getCategory(categoryId);
   const item = category?.items?.[index];
   const options = item ? recognitionOptions(item) : [];
+  const showInstitutionContext = category?.id !== "professional-and-scholarly-associations";
 
   if (!category || !item) {
     renderCategoriesPage();
@@ -2130,15 +2173,21 @@ function renderRecognition(categoryId, index) {
         </div>
 
         <div class="detail-grid">
-          <aside class="panel definition-panel">
-            <div class="panel-body">
-              <h2>Institution Context</h2>
-              <p class="definition-text">${escapeHtml(category.definition)}</p>
-              <ul class="criteria-list">
-                ${category.criteria.map((criterion) => `<li>${escapeHtml(criterion)}</li>`).join("")}
-              </ul>
-            </div>
-          </aside>
+          ${
+            showInstitutionContext
+              ? `
+                <aside class="panel definition-panel">
+                  <div class="panel-body">
+                    <h2>Institution Context</h2>
+                    <p class="definition-text">${escapeHtml(category.definition)}</p>
+                    <ul class="criteria-list">
+                      ${category.criteria.map((criterion) => `<li>${escapeHtml(criterion)}</li>`).join("")}
+                    </ul>
+                  </div>
+                </aside>
+              `
+              : ""
+          }
 
           <section class="panel">
             <div class="panel-body">
