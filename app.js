@@ -1109,65 +1109,85 @@ function facultyRecord(faculty, distinction, groupKey, levelKey, options = {}) {
 const additionalFacultyRecognitions = [
   facultyRecord("Cesare Stefanini", "Member", "academy", "level2", {
     organization: "MBR Academy of Scientists of the UAE",
-    details: "2017"
+    details: "2017",
+    work: "Pioneering work in biorobotics, surgical microinstrumentation, and bioinspired robotic systems."
   }),
   facultyRecord("David Basin", "Member", "academy", "level2", {
     organization: "Swiss Academy of Engineering Sciences",
-    details: "Year not specified"
+    details: "2020",
+    work: "Foundations, methods, and tools for modeling and validating secure and reliable systems."
   }),
   facultyRecord("Eran Segal", "Member", "academy", "level2", {
     organization: "Young Israeli Academy of Sciences",
-    details: "2012"
+    details: "2012",
+    work: "Machine learning and computational biology applied to gene regulation, microbiome, and personalized medicine."
   }),
   facultyRecord("Éric Moulines", "Member", "academy", "level2", {
     organization: "French Academy of Sciences",
-    details: "Year not specified"
+    details: "2017",
+    work: "Statistical learning, Bayesian inference, Monte Carlo methods, and statistical signal processing."
   }),
   facultyRecord("Fakhreddine Karray", "Fellow", "academy", "level2", {
     organization: "Canadian Academy of Engineering",
-    details: "Approx. 2017-2018, verify"
+    details: "Approx. 2017-2018, verify",
+    work: "Operational AI, cognitive machines, natural human-machine interaction, and intelligent transportation systems."
   }),
   facultyRecord("Xue (Steve) Liu", "Fellow", "academy", "level2", {
     organization: "Canadian Academy of Engineering",
-    details: "Approx. 2017-2018, verify"
+    details: "2021",
+    work: "AI, machine learning, IoT, cyber-physical systems, and mobile and green computing."
   }),
   facultyRecord("Ian Reid", "Fellow", "academy", "level2", {
     organization: "Australian Academy of Technological Sciences and Engineering (ATSE)",
-    details: "Year not specified",
+    details: "2021",
     work:
-      "Robot navigation using computer vision, especially mapping robot environments for autonomous operation in complex urban settings, with applications translated into manufacturing, sport refereeing, and historical-art analysis."
+      "Landmark contributions in visual geometry, tracking, SLAM, and robot navigation via computer vision."
   }),
   facultyRecord("Ian Reid", "Fellow", "academy", "level2", {
     organization: "Australian Academy of Science",
-    details: "2021"
+    details: "2021",
+    work: "Landmark contributions in visual geometry, tracking, SLAM, and robot navigation via computer vision."
   }),
   facultyRecord("Iryna Gurevych", "Member", "academy", "level2", {
     organization: "Academia Europaea",
-    details: "2025"
+    details: "2025",
+    work:
+      "Foundational NLP research in semantic similarity, deep learning for language, and intertextuality modelling."
   }),
   facultyRecord("Nataša Pržulj", "Member", "academy", "level2", {
     organization: "Academia Europaea",
-    details: "Year not specified"
+    details: "2017",
+    work:
+      "Invention of graphlets and biological network analysis methods applied to precision medicine."
   }),
   facultyRecord("Iryna Gurevych", "Member", "academy", "level2", {
     organization: "Leopoldina (German National Academy of Sciences)",
-    details: "Year not specified"
+    details: "Year not specified",
+    work:
+      "Foundational NLP research in semantic similarity, deep learning for language, and intertextuality modelling."
   }),
   facultyRecord("Sami Haddadin", "Member", "academy", "level2", {
     organization: "Leopoldina (German National Academy of Sciences)",
-    details: "Year not specified"
+    details: "2021",
+    work:
+      "Safe human-robot interaction, tactile robotics, and physical intelligence for autonomous robotic systems."
   }),
   facultyRecord("Iryna Gurevych", "Member", "academy", "level2", {
     organization: "Berlin-Brandenburg Academy of Sciences and Humanities",
-    details: "2022"
+    details: "2022",
+    work:
+      "Foundational NLP research in semantic similarity, deep learning for language, and intertextuality modelling."
   }),
   facultyRecord("Kentaro Inui", "Associate Member", "academy", "level2", {
     organization: "Science Council of Japan",
-    details: "2018"
+    details: "2018",
+    work: "Career contributions to natural language processing, text structure analysis, and machine reading comprehension."
   }),
   facultyRecord("Nataša Pržulj", "Member", "academy", "level2", {
     organization: "Serbian Royal Academy / SKANU",
-    details: "Year not specified"
+    details: "2019",
+    work:
+      "Invention of graphlets and biological network analysis methods applied to precision medicine."
   }),
   facultyRecord("Yoshihiko Nakamura", "Foreign Member", "academy", "level2", {
     organization: "Academy of Engineering Sciences of Serbia",
@@ -1175,97 +1195,164 @@ const additionalFacultyRecognitions = [
   }),
   facultyRecord("Sir Michael Brady", "Fellow", "academy", "level1a", {
     organization: "Royal Academy of Engineering (UK)",
-    details: "Year not specified"
+    details: "Year not specified",
+    work: "Vision-based robotics and AI-driven medical image analysis for cancer diagnosis."
   }),
   facultyRecord("Sir Michael Brady", "Fellow", "academy", "level1a", {
     organization: "Academy of Medical Sciences (UK)",
-    details: "Year not specified"
+    details: "Year not specified",
+    work: "Vision-based robotics and AI-driven medical image analysis for cancer diagnosis."
   }),
   facultyRecord("Sir Michael Brady", "Fellow", "academy", "level1a", {
     organization: "The Royal Society (UK)",
-    details: "2004"
+    details: "2004",
+    work: "Vision-based robotics and AI-driven medical image analysis for cancer diagnosis."
   }),
   facultyRecord("Michael I. Jordan", "Foreign Member", "academy", "level1a", {
     organization: "The Royal Society (UK)",
-    details: "2020"
+    details: "2020",
+    work:
+      "Foundational contributions to machine learning, probabilistic graphical models, and Bayesian nonparametric statistics."
   }),
   facultyRecord("Yoshihiko Nakamura", "Fellow", "academy", "level2", {
     organization: "World Academy of Art and Science (WAAS)",
-    details: "Year not specified"
+    details: "Year not specified",
+    work: "Contributions to humanoid robotics, cognitive robotics, and neuro-musculoskeletal human modelling."
   }),
   facultyRecord("Anil K. Jain", "Fellow", "academy", "level2", {
     organization: "The World Academy of Sciences (TWAS)",
-    details: "Year not specified"
+    details: "Year not specified",
+    work:
+      "Contributions to the engineering and practice of biometrics, fingerprint recognition, and pattern recognition."
   }),
   facultyRecord("Michael I. Jordan", "Member", "academy", "level1a", {
     organization: "US National Academy of Sciences (NAS)",
-    details: "Year not specified"
+    details: "Year not specified",
+    work:
+      "Foundational contributions to machine learning, probabilistic graphical models, and Bayesian nonparametric statistics."
   }),
   facultyRecord("Michael I. Jordan", "Member", "academy", "level1a", {
     organization: "US National Academy of Engineering (NAE)",
-    details: "Year not specified"
+    details: "Year not specified",
+    work:
+      "Foundational contributions to machine learning, probabilistic graphical models, and Bayesian nonparametric statistics."
   }),
   facultyRecord("Anil K. Jain", "Member", "academy", "level1a", {
     organization: "US National Academy of Engineering (NAE)",
-    details: "Year not specified"
+    details: "2016",
+    work:
+      "Contributions to the engineering and practice of biometrics, fingerprint recognition, and pattern recognition."
   }),
   facultyRecord("Sir Michael Brady", "International Member", "academy", "level1a", {
     organization: "US National Academy of Engineering (NAE)",
-    details: "2026"
+    details: "2026",
+    work: "Vision-based robotics and AI-driven medical image analysis for cancer diagnosis."
   }),
   facultyRecord("Michael I. Jordan", "Foreign Member", "academy", "level2", {
     organization: "Chinese Academy of Sciences",
-    details: "Year not specified"
+    details: "Year not specified",
+    work:
+      "Foundational contributions to machine learning, probabilistic graphical models, and Bayesian nonparametric statistics."
   }),
   facultyRecord("Anil K. Jain", "Foreign Member", "academy", "level2", {
     organization: "Chinese Academy of Sciences",
-    details: "Year not specified"
+    details: "Year not specified",
+    work:
+      "Contributions to the engineering and practice of biometrics, fingerprint recognition, and pattern recognition."
   }),
   facultyRecord("Anil K. Jain", "Fellow / Foreign Fellow", "academy", "level2", {
     organization: "Indian National Academy of Engineering",
-    details: "Year not specified"
+    details: "Year not specified",
+    work:
+      "Contributions to the engineering and practice of biometrics, fingerprint recognition, and pattern recognition."
   }),
   facultyRecord("Michael I. Jordan", "Fellow", "academy", "level2", {
     organization: "American Academy of Arts and Sciences",
-    details: "Year not specified"
+    details: "Year not specified",
+    work:
+      "Foundational contributions to machine learning, probabilistic graphical models, and Bayesian nonparametric statistics."
   }),
   facultyRecord("Michael I. Jordan", "Member", "academy", "level2", {
     organization: "Italian Academy of Engineering and Technology",
-    details: "Year not specified"
+    details: "Year not specified",
+    work:
+      "Foundational contributions to machine learning, probabilistic graphical models, and Bayesian nonparametric statistics."
   }),
   facultyRecord("Hao Li", "Member", "academy", "level2", {
     organization: "Academy of Motion Picture Arts and Sciences (AMPAS)",
-    details: "2025"
+    details: "2025",
+    work:
+      "Real-time facial performance capture and AI-driven digital human reconstruction for film visual effects."
   }),
   facultyRecord("Sami Haddadin", "Member", "academy", "level2", {
     organization: "German National Academy of Science and Engineering (acatech)",
     details: "Year not specified"
   }),
-  facultyRecord("Carlos D. Bustamante", "MacArthur Fellowship", "fellowshipPrize", "level2", { details: "2010" }),
-  facultyRecord("Anil K. Jain", "Guggenheim Fellowship", "fellowshipPrize", "level2", { details: "2001" }),
-  facultyRecord("Anil K. Jain", "Humboldt Research Award", "fellowshipPrize", "level2", { details: "2002" }),
-  facultyRecord("Eric P. Xing", "Sloan Research Fellowship", "fellowshipPrize", "level3", { details: "Early 2000s, verify" }),
-  facultyRecord("Carlos D. Bustamante", "Sloan Research Fellowship", "fellowshipPrize", "level3", { details: "2007-2009" }),
-  facultyRecord("Ivan Laptev", "Helmholtz Prize (ICCV Test-of-Time)", "fellowshipPrize", "level1c", { details: "2017" }),
+  facultyRecord("Carlos D. Bustamante", "MacArthur Fellowship", "fellowshipPrize", "level2", {
+    details: "2010",
+    work:
+      "Mining DNA sequence data to understand human genetic diversity, population migration, and mechanisms of evolution."
+  }),
+  facultyRecord("Anil K. Jain", "Guggenheim Fellowship", "fellowshipPrize", "level2", {
+    details: "2001",
+    work: "Research in pattern recognition and computer vision."
+  }),
+  facultyRecord("Anil K. Jain", "Humboldt Research Award", "fellowshipPrize", "level2", {
+    details: "2002",
+    work: "Foundational contributions to fingerprint and biometric recognition systems."
+  }),
+  facultyRecord("Eric P. Xing", "Sloan Research Fellowship", "fellowshipPrize", "level3", {
+    details: "2008-2010",
+    work:
+      "Early-career contributions to machine learning algorithms, probabilistic graphical models, and statistical genomics."
+  }),
+  facultyRecord("Carlos D. Bustamante", "Sloan Research Fellowship", "fellowshipPrize", "level3", {
+    details: "2007-2009",
+    work: "Statistical methods for inferring human evolutionary history and population genetics from DNA."
+  }),
+  facultyRecord("Ivan Laptev", "Helmholtz Prize (ICCV Test-of-Time)", "fellowshipPrize", "level1c", {
+    details: "2017",
+    work:
+      'Seminal "Space-Time Interest Points" paper, which introduced STIPs as a foundational technique for video understanding and action recognition.'
+  }),
   facultyRecord("Michael I. Jordan", "BBVA Foundation Frontiers of Knowledge Award", "fellowshipPrize", "level1b", {
     routeRecognition: "BBVA Frontiers of Knowledge Award",
-    details: "2024"
+    details: "2024",
+    work:
+      "Unified algorithms for statistical and probabilistic inference underpinning modern AI."
   }),
   facultyRecord("Anil K. Jain", "BBVA Foundation Frontiers of Knowledge Award", "fellowshipPrize", "level1b", {
     routeRecognition: "BBVA Frontiers of Knowledge Award",
-    details: "2024"
+    details: "2024",
+    work: "Core contributions to machine learning that powered the development of biometrics."
   }),
-  facultyRecord("Michael I. Jordan", "IEEE John von Neumann Medal", "fellowshipPrize", "level1c", { details: "2020" }),
+  facultyRecord("Michael I. Jordan", "IEEE John von Neumann Medal", "fellowshipPrize", "level1c", {
+    details: "2020",
+    work: "Contributions to machine learning and statistics."
+  }),
   facultyRecord("Eran Segal", "Overton Prize", "fellowshipPrize", "level1c", { details: "2012" }),
-  facultyRecord("Michael I. Jordan", "IJCAI Award for Research Excellence", "fellowshipPrize", "level1c", { details: "2016" }),
-  facultyRecord("Michael I. Jordan", "ACM/AAAI Allen Newell Award", "fellowshipPrize", "level1c", { details: "2009" }),
-  facultyRecord("Michael I. Jordan", "World Laureates Association Prize", "fellowshipPrize", "level1b", { details: "2022" }),
+  facultyRecord("Michael I. Jordan", "IJCAI Award for Research Excellence", "fellowshipPrize", "level1c", {
+    details: "2016",
+    work: "Career-long contributions to AI and machine learning."
+  }),
+  facultyRecord("Michael I. Jordan", "ACM/AAAI Allen Newell Award", "fellowshipPrize", "level1c", {
+    details: "2009",
+    work: "Fundamental advances in machine learning, graphical models, and nonparametric Bayesian statistics."
+  }),
+  facultyRecord("Michael I. Jordan", "World Laureates Association Prize", "fellowshipPrize", "level1b", {
+    details: "2022",
+    work: "Pioneering contributions to machine learning."
+  }),
   facultyRecord("Michael I. Jordan", "David E. Rumelhart Prize", "fellowshipPrize", "level1c", {
     routeRecognition: "Rumelhart Prize",
-    details: "2015"
+    details: "2015",
+    work: "Foundational contributions to connectionist models of cognition."
   }),
   facultyRecord("Michael I. Jordan", "AAAI Feigenbaum Prize", "fellowshipPrize", "level1c", { details: "Year not specified" }),
-  facultyRecord("Michael I. Jordan", "COPSS Presidents' Award", "fellowshipPrize", "level1c", { details: "1995" }),
+  facultyRecord("Michael I. Jordan", "COPSS Presidents' Award", "fellowshipPrize", "level1c", {
+    details: "1995",
+    work: "Outstanding early-career contributions to statistics."
+  }),
   facultyRecord("Michael I. Jordan", "Ulf Grenander Prize", "fellowshipPrize", "level1c", {
     routeRecognition: "AMS Ulf Grenander Prize in Stochastic Theory and Modeling",
     details: "2021"
