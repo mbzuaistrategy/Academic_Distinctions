@@ -187,7 +187,47 @@ const categories = [
         organization: "IEEE (Institute of Electrical and Electronics Engineers)",
         website: "https://www.ieee.org",
         recognition:
-          "IEEE Fellow; IEEE John von Neumann Medal; IEEE W. Wallace McDowell Award; IEEE Robotics and Automation Society RAS Pioneer Award; Helmholtz Prize (ICCV Test-of-Time)"
+          "IEEE Fellow; IEEE John von Neumann Medal; IEEE W. Wallace McDowell Award; IEEE Robotics and Automation Society RAS Pioneer Award; Helmholtz Prize (ICCV Test-of-Time)",
+        bodyProfileRows: [
+          { field: "Official Name", value: "Institute of Electrical and Electronics Engineers (IEEE)" },
+          { field: "Organization Type", value: "Professional and technical association; nonprofit organization." },
+          {
+            field: "Definition",
+            value:
+              "IEEE describes itself as the world's largest technical professional organization dedicated to advancing technology for the benefit of humanity."
+          },
+          {
+            field: "History/Background",
+            value:
+              "IEEE was formed in 1963 through the merger of the American Institute of Electrical Engineers (AIEE, founded 1884) and the Institute of Radio Engineers (IRE, founded 1912)."
+          },
+          {
+            field: "Purpose",
+            value:
+              "To foster technological innovation and excellence through publications, conferences, standards, education, professional activities, and recognition programs."
+          },
+          { field: "Mission", value: "Advancing Technology for Humanity." },
+          {
+            field: "Governance/Leadership",
+            value:
+              "IEEE is governed by the IEEE Board of Directors and supported by committees, boards, technical societies, and volunteer leadership structures. IEEE operates as a member-driven organization."
+          },
+          {
+            field: "Scope/Reach",
+            value:
+              "More than 420,000 members in over 160 countries. Supports publications, conferences, standards development, education, professional networking, engineering, computing, electronics, communications, AI, robotics, and related fields."
+          },
+          {
+            field: "Classification Note",
+            value:
+              "IEEE Fellow, IEEE John von Neumann Medal, and IEEE W. Wallace McDowell Award are IEEE-level recognitions. IEEE RAS Pioneer Award is administered by the IEEE Robotics and Automation Society. Helmholtz Prize (ICCV Test-of-Time) is associated with IEEE/CVF ICCV and is not a core IEEE-wide award in the same way."
+          },
+          {
+            field: "Recognition Types",
+            value:
+              "IEEE Fellow; IEEE John von Neumann Medal; IEEE W. Wallace McDowell Award; IEEE Robotics and Automation Society RAS Pioneer Award; Helmholtz Prize (ICCV Test-of-Time)"
+          }
+        ]
       },
       {
         organization: "ACM (Association for Computing Machinery)",
