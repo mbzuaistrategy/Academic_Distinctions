@@ -227,7 +227,50 @@ const categories = [
             value:
               "IEEE Fellow; IEEE John von Neumann Medal; IEEE W. Wallace McDowell Award; IEEE Robotics and Automation Society RAS Pioneer Award; Helmholtz Prize (ICCV Test-of-Time)"
           }
-        ]
+        ],
+        criteriaProfiles: {
+          "IEEE Fellow": {
+            "Official Name": "IEEE Fellow",
+            "Institution/Type": "Highest grade of IEEE membership.",
+            Definition:
+              "IEEE Fellow is the highest grade of IEEE membership. Conferred by the IEEE Board of Directors upon select IEEE members with extraordinary accomplishments in IEEE fields of interest.",
+            "History/Background":
+              "Established after the formation of IEEE in 1963. IEEE's highest membership distinction. Exact 1964 date should be verified before using as formal fact.",
+            Purpose:
+              "Recognize IEEE members whose accomplishments made extraordinary contributions to technology and society.",
+            "Awarding Body": "IEEE Board of Directors.",
+            "Organization Type": "Nonprofit professional and scholarly association.",
+            Mission: "Advancing Technology for Humanity.",
+            Leadership:
+              "IEEE is governed by the IEEE Board of Directors and supported by member-driven volunteer leadership structures.",
+            "Committee/Jury Composition":
+              "Society/Technical Council Fellow Evaluating Committees evaluate nominations. IEEE Fellow Committee reviews. IEEE Board of Directors approves.",
+            "Main Field/Scope":
+              "All IEEE fields of interest: electrical engineering, electronics, computing, AI, machine learning, robotics, communications, signal processing, power systems, and related technical disciplines.",
+            "Geographic Scope": "Global / international.",
+            "Geographic Distribution":
+              "No geographic quota. Merit-based evaluations. IEEE notes fairness regardless of region, gender, employment sector, or affiliation.",
+            "Amount of Members": "Annual elevations cannot exceed 0.1% of IEEE voting membership.",
+            "Type of Recognition": "Lifetime IEEE membership distinction.",
+            "Nomination Process":
+              "Peer nomination and review. Candidates cannot self-apply. Nominations are submitted by others and reviewed in multiple stages.",
+            "Review/Evaluation Criteria":
+              "Extraordinary accomplishments, innovation, impact, significance, and demonstrated influence. Impact must already be evident and documented.",
+            "Nomination Deadline": "Annual cycle.",
+            "Application Requirements": "Peer nomination package submitted by others; candidate cannot self-apply.",
+            "Eligibility/Restrictions":
+              "Candidate must be an IEEE Senior Member or Life Senior Member. Candidate must have been an IEEE member for at least five years.",
+            Frequency: "Annual.",
+            Duration: "Lifetime distinction.",
+            "Prize Money/Material Award":
+              "No prize money. Recipients receive the IEEE Fellow designation, certificate, and recognition.",
+            "Number of Recipients": "Cannot exceed 0.1% of IEEE voting membership each year.",
+            "Notable Past Recipients": "To be completed from IEEE Fellow directories or field-specific examples.",
+            "Career Impact/Outcomes": "Highest IEEE membership grade. Strong professional prestige signal in IEEE fields.",
+            "Relationship to Other Awards": "Distinct from IEEE medals and society awards. Often appears alongside major technical honors.",
+            "Ranking/Prestige Signal": "Level 2 major society fellowship in the portal framework."
+          }
+        }
       },
       {
         organization: "ACM (Association for Computing Machinery)",
