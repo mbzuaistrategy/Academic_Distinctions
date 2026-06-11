@@ -550,6 +550,32 @@ const categories = [
               "The number varies by prize and year. Some Nobel Prizes are shared by multiple laureates; some years a prize may be reserved or not awarded.",
             "Notable Past Recipients":
               "Examples include Marie Curie, Albert Einstein, Martin Luther King Jr., Dorothy Crowfoot Hodgkin, Amartya Sen, Jennifer Doudna, Emmanuelle Charpentier, Katalin Kariko, Drew Weissman, and many others.",
+            notableRecipients: [
+              {
+                name: "Marie Curie",
+                prize: "Physics 1903; Chemistry 1911",
+                image:
+                  "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c8/Marie_Curie_c._1920s.jpg/330px-Marie_Curie_c._1920s.jpg"
+              },
+              {
+                name: "Albert Einstein",
+                prize: "Physics 1921",
+                image:
+                  "https://upload.wikimedia.org/wikipedia/commons/thumb/2/28/Albert_Einstein_Head_cleaned.jpg/330px-Albert_Einstein_Head_cleaned.jpg"
+              },
+              {
+                name: "Martin Luther King Jr.",
+                prize: "Peace 1964",
+                image:
+                  "https://upload.wikimedia.org/wikipedia/commons/thumb/0/05/Martin_Luther_King%2C_Jr..jpg/330px-Martin_Luther_King%2C_Jr..jpg"
+              },
+              {
+                name: "Katalin Kariko",
+                prize: "Physiology or Medicine 2023",
+                image:
+                  "https://upload.wikimedia.org/wikipedia/commons/thumb/2/27/Katalin_Karik%C3%B3_by_Michel_2024_02.jpg/330px-Katalin_Karik%C3%B3_by_Michel_2024_02.jpg"
+              }
+            ],
             "Career Impact/Outcomes":
               "The Nobel Prize is among the strongest global prestige signals in scholarship, science, literature, and peace work. It usually produces major public visibility and durable historical recognition.",
             "Relationship to Other Awards":
@@ -2461,11 +2487,41 @@ function recognitionCriteriaProfile(item, category, selectedRecognition) {
                 .map(
                   (field) => `
                   <dt>${escapeHtml(field)}</dt>
-                  <dd>${formatProfileValue(criteriaFieldValue(field, item, category, selectedRecognition))}</dd>
+                  <dd>${criteriaFieldDisplay(field, item, category, selectedRecognition)}</dd>
                 `
                 )
                 .join("")}
             </dl>
+          </article>
+        `
+        )
+        .join("")}
+    </div>
+  `;
+}
+
+function criteriaFieldDisplay(field, item, category, selectedRecognition) {
+  const customProfile = recognitionProfileFor(item, selectedRecognition);
+
+  if (field === "Notable Past Recipients" && Array.isArray(customProfile.notableRecipients)) {
+    return notableRecipientCards(customProfile.notableRecipients);
+  }
+
+  return formatProfileValue(criteriaFieldValue(field, item, category, selectedRecognition));
+}
+
+function notableRecipientCards(recipients) {
+  return `
+    <div class="notable-recipient-grid">
+      ${recipients
+        .map(
+          (recipient) => `
+          <article class="notable-recipient-card">
+            <img src="${escapeHtml(recipient.image)}" alt="${escapeHtml(recipient.name)}" loading="lazy" />
+            <div>
+              <strong>${escapeHtml(recipient.name)}</strong>
+              <span>${escapeHtml(recipient.prize)}</span>
+            </div>
           </article>
         `
         )

@@ -1111,6 +1111,47 @@ a {
   margin-top: 0.3rem;
 }
 
+.notable-recipient-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 0.75rem;
+}
+
+.notable-recipient-card {
+  display: grid;
+  grid-template-columns: 52px 1fr;
+  align-items: center;
+  gap: 0.65rem;
+  padding: 0.65rem;
+  border: 1px solid var(--border);
+  background: #fff;
+}
+
+.notable-recipient-card img {
+  width: 52px;
+  height: 52px;
+  object-fit: cover;
+  border: 1px solid var(--border);
+  background: #f6f1ea;
+}
+
+.notable-recipient-card strong,
+.notable-recipient-card span {
+  display: block;
+}
+
+.notable-recipient-card strong {
+  color: var(--ink);
+  font-size: 0.92rem;
+}
+
+.notable-recipient-card span {
+  margin-top: 0.18rem;
+  color: var(--muted);
+  font-size: 0.82rem;
+  line-height: 1.35;
+}
+
 .body-profile-row a,
 .directory-table a {
   color: var(--maroon);
