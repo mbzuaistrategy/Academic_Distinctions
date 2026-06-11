@@ -522,7 +522,30 @@ const categories = [
       {
         organization: "AAAI (Association for the Advancement of Artificial Intelligence)",
         website: "https://aaai.org",
-        recognition: "AAAI Fellow; ACM/AAAI Allen Newell Award; AAAI Feigenbaum Prize"
+        recognition: "AAAI Fellow; ACM/AAAI Allen Newell Award; AAAI Feigenbaum Prize",
+        bodyProfileRows: [
+          { field: "Official Name", value: "Association for the Advancement of Artificial Intelligence (AAAI)" },
+          { field: "Organization Type", value: "Professional and scholarly association." },
+          { field: "Definition", value: "Leading international scientific society dedicated to artificial intelligence." },
+          {
+            field: "History/Background",
+            value: "Founded in 1979 as the American Association for Artificial Intelligence."
+          },
+          {
+            field: "Purpose",
+            value: "Advance scientific understanding of AI and promote responsible AI development."
+          },
+          { field: "Mission", value: "Promote research, education, and applications of artificial intelligence." },
+          {
+            field: "Governance/Leadership",
+            value: "Governed by elected officers, Executive Council, and standing committees."
+          },
+          { field: "Scope/Reach", value: "Global. Covers all AI research and applications." },
+          {
+            field: "Recognition Types",
+            value: "AAAI Fellow; AAAI Feigenbaum Prize; ACM/AAAI Allen Newell Award."
+          }
+        ]
       },
       {
         organization: "AAAS (American Association for the Advancement of Science)",
@@ -567,12 +590,127 @@ const categories = [
           }
         ]
       },
-      { organization: "IMS (Institute of Mathematical Statistics)", recognition: "IMS Fellow", website: "https://imstat.org" },
-      { organization: "ACL (Association for Computational Linguistics)", recognition: "ACL Fellow", website: "https://www.aclweb.org" },
-      { organization: "ISCB (International Society for Computational Biology)", recognition: "ISCB Fellow; Overton Prize", website: "https://www.iscb.org" },
-      { organization: "ASME (American Society of Mechanical Engineers)", recognition: "ASME Fellow; ASME Machine Design Award", website: "https://www.asme.org" },
+      {
+        organization: "IMS (Institute of Mathematical Statistics)",
+        recognition: "IMS Fellow",
+        website: "https://imstat.org",
+        bodyProfileRows: [
+          { field: "Official Name", value: "Institute of Mathematical Statistics (IMS)" },
+          { field: "Organization Type", value: "Professional and scholarly association." },
+          { field: "Definition", value: "International society dedicated to probability, statistics, and data science." },
+          { field: "History/Background", value: "Founded in 1935." },
+          {
+            field: "Purpose",
+            value: "Foster the development and dissemination of statistical and probabilistic knowledge."
+          },
+          { field: "Mission", value: "Advance research in statistics, probability, and related disciplines." },
+          { field: "Governance/Leadership", value: "Governed by elected officers and IMS Council." },
+          {
+            field: "Scope/Reach",
+            value: "International. Statistics, probability, machine learning theory, and data science."
+          },
+          { field: "Recognition Types", value: "IMS Fellow." }
+        ]
+      },
+      {
+        organization: "ACL (Association for Computational Linguistics)",
+        recognition: "ACL Fellow",
+        website: "https://www.aclweb.org",
+        bodyProfileRows: [
+          { field: "Official Name", value: "Association for Computational Linguistics (ACL)" },
+          { field: "Organization Type", value: "Professional and scholarly association." },
+          {
+            field: "Definition",
+            value:
+              "The leading international scientific society for computational linguistics and natural language processing."
+          },
+          { field: "History/Background", value: "Founded in 1962." },
+          { field: "Purpose", value: "Advance research in computational linguistics and NLP." },
+          {
+            field: "Mission",
+            value: "Promote scientific progress in language technologies and language understanding."
+          },
+          { field: "Governance/Leadership", value: "Governed by elected Executive Committee and ACL Board." },
+          {
+            field: "Scope/Reach",
+            value: "Global. NLP, computational linguistics, language technologies, LLMs, and speech processing."
+          },
+          { field: "Recognition Types", value: "ACL Fellow." }
+        ]
+      },
+      {
+        organization: "ISCB (International Society for Computational Biology)",
+        recognition: "ISCB Fellow; Overton Prize",
+        website: "https://www.iscb.org",
+        bodyProfileRows: [
+          { field: "Official Name", value: "International Society for Computational Biology (ISCB)" },
+          { field: "Organization Type", value: "Professional and scholarly association." },
+          { field: "Definition", value: "Leading international society for computational biology and bioinformatics." },
+          { field: "History/Background", value: "Founded in 1997." },
+          { field: "Purpose", value: "Advance computational biology through research, education, and collaboration." },
+          { field: "Mission", value: "Promote understanding of living systems through computation and data science." },
+          {
+            field: "Governance/Leadership",
+            value: "Governed by elected officers, Board of Directors, and scientific committees."
+          },
+          {
+            field: "Scope/Reach",
+            value: "International. Computational biology, bioinformatics, genomics, systems biology, AI for biology."
+          },
+          { field: "Recognition Types", value: "ISCB Fellow; ISCB Overton Prize; ISCB Senior Scientist Award." }
+        ]
+      },
+      {
+        organization: "ASME (American Society of Mechanical Engineers)",
+        recognition: "ASME Fellow; ASME Machine Design Award",
+        website: "https://www.asme.org",
+        bodyProfileRows: [
+          { field: "Official Name", value: "American Society of Mechanical Engineers (ASME)" },
+          { field: "Organization Type", value: "Professional engineering society." },
+          {
+            field: "Definition",
+            value: "International professional society for mechanical engineers and related disciplines."
+          },
+          { field: "History/Background", value: "Founded in 1880." },
+          {
+            field: "Purpose",
+            value: "Advance engineering knowledge, standards, innovation, and professional development."
+          },
+          { field: "Mission", value: "Serve engineers and society through engineering advancement and collaboration." },
+          { field: "Governance/Leadership", value: "Governed by elected leadership and Board of Governors." },
+          {
+            field: "Scope/Reach",
+            value: "International. Mechanical engineering, robotics, manufacturing, energy, and related fields."
+          },
+          { field: "Recognition Types", value: "ASME Fellow; ASME Machine Design Award." }
+        ]
+      },
       { organization: "BCS (The Chartered Institute for IT)", recognition: "BCS Fellow", website: "https://www.bcs.org" },
-      { organization: "ASA (American Statistical Association)", recognition: "ASA Fellow; Leo Breiman Junior Award", website: "https://www.amstat.org" },
+      {
+        organization: "ASA (American Statistical Association)",
+        recognition: "ASA Fellow; Leo Breiman Junior Award",
+        website: "https://www.amstat.org",
+        bodyProfileRows: [
+          { field: "Official Name", value: "American Statistical Association (ASA)" },
+          { field: "Organization Type", value: "Professional and scholarly association." },
+          { field: "Definition", value: "The world's largest community of statisticians." },
+          {
+            field: "History/Background",
+            value: "Founded in 1839. One of the oldest professional societies in the United States."
+          },
+          { field: "Purpose", value: "Promote the practice and profession of statistics." },
+          {
+            field: "Mission",
+            value: "Serve statisticians, advance statistical science, and improve decision-making through data."
+          },
+          {
+            field: "Governance/Leadership",
+            value: "Governed by elected officers, Board of Directors, and scientific sections."
+          },
+          { field: "Scope/Reach", value: "International. Statistics, biostatistics, analytics, and data science." },
+          { field: "Recognition Types", value: "ASA Fellow; COPSS Presidents' Award; Leo Breiman Award." }
+        ]
+      },
       { organization: "COPSS (Committee of Presidents of Statistical Societies)", recognition: "COPSS Presidents' Award", website: "https://community.amstat.org/copss/home" },
       { organization: "International Association for Pattern Recognition (IAPR)", recognition: "IAPR Fellow; IAPR King-Sun Fu Prize", website: "https://iapr.org" },
       { organization: "International Society for Optics and Photonics (SPIE)", recognition: "SPIE Fellow", website: "https://spie.org" },
