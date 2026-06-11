@@ -193,7 +193,8 @@ const categories = [
         organization: "ACM (Association for Computing Machinery)",
         website: "https://www.acm.org",
         logoUrl: "assets/acm-logo.svg",
-        recognition: "ACM Fellow; ACM A.M. Turing Award; ACM/AAAI Allen Newell Award",
+        recognition:
+          "The ACM Fellow Recognition Program; The ACM Distinguished Member Recognition Program; The ACM Senior Member Recognition Program; ACM A.M. Turing Award; ACM/AAAI Allen Newell Award",
         bodyProfileRows: [
           { field: "Official Name", value: "Association for Computing Machinery, usually abbreviated as ACM." },
           { field: "Category / Type", value: "Professional and scientific membership society for computing." },
@@ -215,7 +216,7 @@ const categories = [
           {
             field: "Awarding Body",
             value:
-              "ACM itself is the awarding body for ACM awards and recognitions, including ACM Fellow and the Turing Award. The Allen Newell Award is jointly associated with ACM and AAAI."
+              "ACM itself is the awarding body for ACM membership recognition programs and awards, including ACM Fellow, Distinguished Member, Senior Member, and the Turing Award. The Allen Newell Award is jointly associated with ACM and AAAI."
           },
           { field: "Organization Type", value: "Nonprofit professional/scientific society." },
           {
@@ -262,11 +263,11 @@ const categories = [
           {
             field: "Framework Classification",
             value:
-              "ACM: governing / awarding institution. ACM Fellow: Level 2 - major society fellowship. ACM A.M. Turing Award: Level 1A - apex global prize. ACM/AAAI Allen Newell Award: Level 1C - elite field-specific prize."
+              "ACM: governing / awarding institution. ACM Fellow, Distinguished Member, and Senior Member: professional membership recognition programs. ACM A.M. Turing Award: Level 1A - apex global prize. ACM/AAAI Allen Newell Award: Level 1C - elite field-specific prize."
           }
         ],
         criteriaProfiles: {
-          "ACM Fellow": {
+          "The ACM Fellow Recognition Program": {
             "Official Name": "ACM Fellow",
             "Institution/Type": "Professional fellowship / senior membership distinction.",
             Definition:
@@ -311,6 +312,73 @@ const categories = [
               "Distinct from the Turing Award; often appears alongside other senior honors in academic profiles.",
             "Ranking/Prestige Signal":
               "Level 2 major society fellowship in the hybrid framework; high prestige within the computing profession, but below apex global prizes like the Turing Award."
+          },
+          "The ACM Distinguished Member Recognition Program": {
+            "Official Name": "ACM Distinguished Member",
+            "Institution/Type": "Professional membership recognition program.",
+            Definition:
+              "ACM recognition for members with significant professional accomplishments or service to computing.",
+            "History/Background":
+              "Part of ACM's member recognition structure, positioned below ACM Fellow and above Senior Member.",
+            Purpose:
+              "To recognize ACM members whose work shows notable achievement, leadership, or service in computing.",
+            "Awarding Body": "ACM.",
+            "Organization Type": "Professional/scientific society.",
+            Mission: "Supports ACM's mission to advance computing and recognize professional excellence.",
+            Leadership: "Administered through ACM's member recognition structure.",
+            "Committee/Jury Composition":
+              "Reviewed through ACM's member recognition process; committee details should be verified from ACM's current program page.",
+            "Main Field/Scope": "Computing and information technology broadly.",
+            "Geographic Scope": "Global / international among ACM members.",
+            "Geographic Distribution": "No formal regional quota identified.",
+            "Amount of Members": "Membership recognition program; exact annual count varies by cycle.",
+            "Type of Recognition": "Professional membership distinction.",
+            "Nomination Process": "Nomination and ACM review process.",
+            "Review/Evaluation Criteria": "Professional achievement, leadership, and service in computing.",
+            "Nomination Deadline": "Annual cycle; deadline should be verified from ACM's current program page.",
+            "Application Requirements": "Nomination materials required by ACM.",
+            "Eligibility/Restrictions": "ACM membership and program eligibility requirements apply.",
+            Frequency: "Annual.",
+            Duration: "Continuing membership recognition.",
+            "Prize Money/Material Award": "No regular prize money identified.",
+            "Number of Recipients": "Varies by cycle.",
+            "Notable Past Recipients": "To be completed from ACM's Distinguished Member list.",
+            "Career Impact/Outcomes": "Professional recognition signal within the computing community.",
+            "Relationship to Other Awards": "Sits below ACM Fellow in ACM's recognition structure.",
+            "Ranking/Prestige Signal": "Professional membership recognition; below ACM Fellow and ACM's major field awards."
+          },
+          "The ACM Senior Member Recognition Program": {
+            "Official Name": "ACM Senior Member",
+            "Institution/Type": "Professional membership recognition program.",
+            Definition:
+              "ACM recognition for experienced members with demonstrated performance and professional accomplishment in computing.",
+            "History/Background": "Part of ACM's member recognition structure for experienced computing professionals.",
+            Purpose:
+              "To recognize sustained professional accomplishment among ACM members.",
+            "Awarding Body": "ACM.",
+            "Organization Type": "Professional/scientific society.",
+            Mission: "Supports ACM's mission to advance computing and recognize professional growth.",
+            Leadership: "Administered through ACM's member recognition structure.",
+            "Committee/Jury Composition":
+              "Reviewed through ACM's member recognition process; committee details should be verified from ACM's current program page.",
+            "Main Field/Scope": "Computing and information technology broadly.",
+            "Geographic Scope": "Global / international among ACM members.",
+            "Geographic Distribution": "No formal regional quota identified.",
+            "Amount of Members": "Membership recognition program; exact annual count varies by cycle.",
+            "Type of Recognition": "Professional membership distinction.",
+            "Nomination Process": "Application or nomination route defined by ACM's current program rules.",
+            "Review/Evaluation Criteria": "Professional experience, accomplishment, and sustained contribution.",
+            "Nomination Deadline": "Cycle and deadline should be verified from ACM's current program page.",
+            "Application Requirements": "Materials required by ACM's Senior Member program.",
+            "Eligibility/Restrictions": "ACM membership and program eligibility requirements apply.",
+            Frequency: "Annual or periodic cycle.",
+            Duration: "Continuing membership recognition.",
+            "Prize Money/Material Award": "No regular prize money identified.",
+            "Number of Recipients": "Varies by cycle.",
+            "Notable Past Recipients": "To be completed from ACM's Senior Member list.",
+            "Career Impact/Outcomes": "Professional recognition signal within ACM and the computing community.",
+            "Relationship to Other Awards": "Sits below Distinguished Member and ACM Fellow in ACM's recognition structure.",
+            "Ranking/Prestige Signal": "Professional membership recognition; early senior recognition level within ACM."
           },
           "ACM A.M. Turing Award": {
             "Official Name": "ACM A.M. Turing Award",
@@ -1438,12 +1506,30 @@ const additionalFacultyRecognitions = [
   facultyRecord("Sami Haddadin", "IEEE Fellow", "societyFellow", "level2", { details: "Year not specified" }),
   facultyRecord("Yoshihiko Nakamura", "IEEE Fellow", "societyFellow", "level2", { details: "Life Fellow, year not specified" }),
   facultyRecord("Mohsen Guizani", "IEEE Fellow", "societyFellow", "level2", { details: "2009" }),
-  facultyRecord("Michael I. Jordan", "ACM Fellow", "societyFellow", "level2", { details: "1999" }),
-  facultyRecord("Anil K. Jain", "ACM Fellow", "societyFellow", "level2", { details: "2017" }),
-  facultyRecord("Elizabeth Churchill", "ACM Fellow", "societyFellow", "level2", { details: "2020" }),
-  facultyRecord("Eric P. Xing", "ACM Fellow", "societyFellow", "level2", { details: "2024" }),
-  facultyRecord("Chih-Jen Lin", "ACM Fellow", "societyFellow", "level2", { details: "2019" }),
-  facultyRecord("David Basin", "ACM Fellow", "societyFellow", "level2", { details: "2018" }),
+  facultyRecord("Michael I. Jordan", "ACM Fellow", "societyFellow", "level2", {
+    routeRecognition: "The ACM Fellow Recognition Program",
+    details: "1999"
+  }),
+  facultyRecord("Anil K. Jain", "ACM Fellow", "societyFellow", "level2", {
+    routeRecognition: "The ACM Fellow Recognition Program",
+    details: "2017"
+  }),
+  facultyRecord("Elizabeth Churchill", "ACM Fellow", "societyFellow", "level2", {
+    routeRecognition: "The ACM Fellow Recognition Program",
+    details: "2020"
+  }),
+  facultyRecord("Eric P. Xing", "ACM Fellow", "societyFellow", "level2", {
+    routeRecognition: "The ACM Fellow Recognition Program",
+    details: "2024"
+  }),
+  facultyRecord("Chih-Jen Lin", "ACM Fellow", "societyFellow", "level2", {
+    routeRecognition: "The ACM Fellow Recognition Program",
+    details: "2019"
+  }),
+  facultyRecord("David Basin", "ACM Fellow", "societyFellow", "level2", {
+    routeRecognition: "The ACM Fellow Recognition Program",
+    details: "2018"
+  }),
   facultyRecord("Michael I. Jordan", "AAAS Fellow", "societyFellow", "level2", { details: "Year not specified" }),
   facultyRecord("Anil K. Jain", "AAAS Fellow", "societyFellow", "level2", { details: "Year not specified" }),
   facultyRecord("Peter Song", "AAAS Fellow", "societyFellow", "level2", { details: "2025" }),
