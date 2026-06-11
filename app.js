@@ -2143,7 +2143,6 @@ function renderRecognition(categoryId, index) {
   const category = getCategory(categoryId);
   const item = category?.items?.[index];
   const options = item ? recognitionOptions(item) : [];
-  const showInstitutionContext = category?.id !== "professional-and-scholarly-associations";
 
   if (!category || !item) {
     renderCategoriesPage();
@@ -2173,22 +2172,6 @@ function renderRecognition(categoryId, index) {
         </div>
 
         <div class="detail-grid">
-          ${
-            showInstitutionContext
-              ? `
-                <aside class="panel definition-panel">
-                  <div class="panel-body">
-                    <h2>Institution Context</h2>
-                    <p class="definition-text">${escapeHtml(category.definition)}</p>
-                    <ul class="criteria-list">
-                      ${category.criteria.map((criterion) => `<li>${escapeHtml(criterion)}</li>`).join("")}
-                    </ul>
-                  </div>
-                </aside>
-              `
-              : ""
-          }
-
           <section class="panel">
             <div class="panel-body">
               <h2>Body Information</h2>
