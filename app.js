@@ -537,7 +537,7 @@ const categories = [
             "Review/Evaluation Criteria":
               "Exceptional discoveries, achievements, literary work, or peace contributions aligned with Alfred Nobel's will and evaluated by the relevant Nobel category process.",
             "Nomination Deadline":
-              "The nomination cycle is annual and confidential. Invitations are typically sent in the year before the award, and each committee sets its own deadline for invited nominations.",
+              "Annual and confidential. Invitations sent a year before. Deadline depends on committee.",
             "Application Requirements":
               "No open application. Nominations are confidential and submitted by invited nominators with supporting rationale and materials required by the relevant committee.",
             "Eligibility/Restrictions":
@@ -2252,7 +2252,7 @@ function bodyProfile(item, category) {
           (row) => `
           <article class="body-profile-row">
             <h3>${escapeHtml(row.field)}</h3>
-            <p>${formatProfileValue(row.value)}</p>
+            <div class="profile-value">${formatProfileValue(row.value)}</div>
           </article>
         `
         )
@@ -2272,7 +2272,38 @@ function formatProfileValue(value) {
     return `<a href="${escapeHtml(text)}" target="_blank" rel="noreferrer">${escapeHtml(text)}</a>`;
   }
 
+  const points = compactProfilePoints(text);
+  if (points.length > 1) {
+    return `
+      <ul class="compact-info-list">
+        ${points.map((point) => `<li>${escapeHtml(point)}</li>`).join("")}
+      </ul>
+    `;
+  }
+
   return escapeHtml(text);
+}
+
+function compactProfilePoints(text) {
+  const normalized = String(text || "").replace(/\s+/g, " ").trim();
+  if (normalized.length < 145) return [normalized];
+
+  const protectedText = normalized
+    .replace(/\bU\.S\./g, "US")
+    .replace(/\bA\.M\./g, "AM")
+    .replace(/\bD\./g, "D");
+  const parts = protectedText
+    .split(/(?<=[.!?])\s+/)
+    .map((part) => part.trim())
+    .filter(Boolean)
+    .map((part) =>
+      part
+        .replace(/\bUS\b/g, "U.S.")
+        .replace(/\bAM\b/g, "A.M.")
+        .replace(/\bD\b/g, "D.")
+    );
+
+  return parts.length > 1 ? parts : [normalized];
 }
 
 function bodyProfileValue(field, item, category) {
@@ -2447,7 +2478,7 @@ function recognitionCriteriaProfile(item, category, selectedRecognition) {
                 .map(
                   (field) => `
                   <dt>${escapeHtml(field)}</dt>
-                  <dd>${escapeHtml(criteriaFieldValue(field, item, category, selectedRecognition))}</dd>
+                  <dd>${formatProfileValue(criteriaFieldValue(field, item, category, selectedRecognition))}</dd>
                 `
                 )
                 .join("")}

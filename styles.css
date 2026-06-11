@@ -1094,10 +1094,21 @@ a {
   text-transform: uppercase;
 }
 
-.body-profile-row p {
+.body-profile-row p,
+.profile-value {
   margin: 0;
   color: var(--ink);
   overflow-wrap: anywhere;
+}
+
+.compact-info-list {
+  margin: 0;
+  padding-left: 1.05rem;
+  color: var(--ink);
+}
+
+.compact-info-list li + li {
+  margin-top: 0.3rem;
 }
 
 .body-profile-row a,
