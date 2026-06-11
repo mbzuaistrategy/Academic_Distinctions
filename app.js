@@ -189,43 +189,41 @@ const categories = [
         recognition:
           "IEEE Fellow; IEEE John von Neumann Medal; IEEE W. Wallace McDowell Award; IEEE Robotics and Automation Society RAS Pioneer Award; Helmholtz Prize (ICCV Test-of-Time)",
         bodyProfileRows: [
-          { field: "Official Name", value: "Institute of Electrical and Electronics Engineers (IEEE)" },
-          { field: "Organization Type", value: "Professional and technical association; nonprofit organization." },
           {
-            field: "Definition",
-            value:
-              "IEEE describes itself as the world's largest technical professional organization dedicated to advancing technology for the benefit of humanity."
+            "field": "Official Name",
+            "value": "Institute of Electrical and Electronics Engineers (IEEE)"
           },
           {
-            field: "History/Background",
-            value:
-              "IEEE was formed in 1963 through the merger of the American Institute of Electrical Engineers (AIEE, founded 1884) and the Institute of Radio Engineers (IRE, founded 1912)."
+            "field": "Organization Type",
+            "value": "Professional and scholarly association; nonprofit technical society."
           },
           {
-            field: "Purpose",
-            value:
-              "To foster technological innovation and excellence through publications, conferences, standards, education, professional activities, and recognition programs."
-          },
-          { field: "Mission", value: "Advancing Technology for Humanity." },
-          {
-            field: "Governance/Leadership",
-            value:
-              "IEEE is governed by the IEEE Board of Directors and supported by committees, boards, technical societies, and volunteer leadership structures. IEEE operates as a member-driven organization."
+            "field": "Definition",
+            "value": "The world's largest technical professional organization dedicated to advancing technology for the benefit of humanity."
           },
           {
-            field: "Scope/Reach",
-            value:
-              "More than 420,000 members in over 160 countries. Supports publications, conferences, standards development, education, professional networking, engineering, computing, electronics, communications, AI, robotics, and related fields."
+            "field": "History/Background",
+            "value": "Formed in 1963 through the merger of the American Institute of Electrical Engineers (AIEE) and the Institute of Radio Engineers (IRE)."
           },
           {
-            field: "Classification Note",
-            value:
-              "IEEE Fellow, IEEE John von Neumann Medal, and IEEE W. Wallace McDowell Award are IEEE-level recognitions. IEEE RAS Pioneer Award is administered by the IEEE Robotics and Automation Society. Helmholtz Prize (ICCV Test-of-Time) is associated with IEEE/CVF ICCV and is not a core IEEE-wide award in the same way."
+            "field": "Purpose",
+            "value": "Advance technology, engineering, and computing through research, standards, education, conferences, publications, and professional recognition."
           },
           {
-            field: "Recognition Types",
-            value:
-              "IEEE Fellow; IEEE John von Neumann Medal; IEEE W. Wallace McDowell Award; IEEE Robotics and Automation Society RAS Pioneer Award; Helmholtz Prize (ICCV Test-of-Time)"
+            "field": "Mission",
+            "value": "Advancing Technology for Humanity."
+          },
+          {
+            "field": "Governance/Leadership",
+            "value": "Governed by the IEEE Board of Directors. Led by elected officers and volunteer leadership."
+          },
+          {
+            "field": "Scope/Reach",
+            "value": "Global. 400,000+ members worldwide. Covers engineering, computing, AI, robotics, communications, electronics, and related fields."
+          },
+          {
+            "field": "Recognition Types",
+            "value": "IEEE Fellow; IEEE John von Neumann Medal; IEEE W. Wallace McDowell Award."
           }
         ],
         criteriaProfiles: {
@@ -279,74 +277,41 @@ const categories = [
         recognition:
           "The ACM Fellow Recognition Program; The ACM Distinguished Member Recognition Program; The ACM Senior Member Recognition Program; ACM A.M. Turing Award; ACM/AAAI Allen Newell Award",
         bodyProfileRows: [
-          { field: "Official Name", value: "Association for Computing Machinery, usually abbreviated as ACM." },
-          { field: "Category / Type", value: "Professional and scientific membership society for computing." },
           {
-            field: "Definition",
-            value:
-              "ACM is a global computing society that brings together computing educators, researchers, and professionals to share resources, publish research, organize conferences, support professional development, and recognize technical excellence."
+            "field": "Official Name",
+            "value": "Association for Computing Machinery (ACM)"
           },
           {
-            field: "History / Background",
-            value:
-              "ACM was founded in 1947 and is described by ACM as the world's largest educational and scientific computing society."
+            "field": "Organization Type",
+            "value": "Professional and scholarly association."
           },
           {
-            field: "Purpose",
-            value:
-              "To advance computing as a science and profession through publications, conferences, education, public policy, professional development, standards, and recognition programs. ACM states that it delivers resources that advance computing as a science and profession."
+            "field": "Definition",
+            "value": "The world's largest educational and scientific computing society."
           },
           {
-            field: "Awarding Body",
-            value:
-              "ACM itself is the awarding body for ACM membership recognition programs and awards, including ACM Fellow, Distinguished Member, Senior Member, and the Turing Award. The Allen Newell Award is jointly associated with ACM and AAAI."
-          },
-          { field: "Organization Type", value: "Nonprofit professional/scientific society." },
-          {
-            field: "Mission",
-            value:
-              "ACM's mission is centered on advancing computing as a science and profession; it also supports publications, conferences, education, public policy, professional growth, and recognition of excellence."
+            "field": "History/Background",
+            "value": "Founded in 1947."
           },
           {
-            field: "Leadership",
-            value:
-              "ACM is volunteer-led and member-driven. Yannis Ioannidis is ACM President for the 2024-2026 term, according to ACM-related election announcements."
+            "field": "Purpose",
+            "value": "Advance computing as a science and profession."
           },
           {
-            field: "Committee / Jury Composition",
-            value:
-              "ACM has awards committees and a Fellows Committee; detailed size and selection process vary by award and should be verified from the relevant ACM committee page."
+            "field": "Mission",
+            "value": "Advance computing through research, publications, conferences, education, and professional development."
           },
           {
-            field: "Main Field / Scope",
-            value:
-              "Computing, computer science, information technology, AI, software, systems, theory, HCI, data, security, education, and related computing subfields."
+            "field": "Governance/Leadership",
+            "value": "Member-driven organization governed by elected officers and ACM Council."
           },
           {
-            field: "Geographic Scope",
-            value:
-              "Global / international. ACM states that more than half of its more than 100,000 members reside outside the U.S."
+            "field": "Scope/Reach",
+            "value": "Global. 100,000+ members worldwide. Covers all computing disciplines."
           },
           {
-            field: "Geographic Distribution",
-            value:
-              "Global membership, chapters, councils, conferences, and SIGs; no quota system identified in the sources reviewed."
-          },
-          { field: "Amount of Members", value: "More than 100,000 members globally, according to ACM." },
-          {
-            field: "Type of Recognition",
-            value:
-              "ACM administers major awards, fellowships, distinguished member grades, publications, conferences, and professional recognitions."
-          },
-          {
-            field: "Prestige Signal",
-            value:
-              "Very high in computing. ACM's awards include the Turing Award, often described as computing's highest honor, and ACM Fellow, its most prestigious member grade."
-          },
-          {
-            field: "Framework Classification",
-            value:
-              "ACM: governing / awarding institution. ACM Fellow, Distinguished Member, and Senior Member: professional membership recognition programs. ACM A.M. Turing Award: Level 1A - apex global prize. ACM/AAAI Allen Newell Award: Level 1C - elite field-specific prize."
+            "field": "Recognition Types",
+            "value": "ACM Fellow; ACM A.M. Turing Award; ACM/AAAI Allen Newell Award."
           }
         ],
         criteriaProfiles: {
@@ -559,7 +524,49 @@ const categories = [
         website: "https://aaai.org",
         recognition: "AAAI Fellow; ACM/AAAI Allen Newell Award; AAAI Feigenbaum Prize"
       },
-      { organization: "AAAS (American Association for the Advancement of Science)", recognition: "AAAS Fellow", website: "https://www.aaas.org" },
+      {
+        organization: "AAAS (American Association for the Advancement of Science)",
+        recognition: "AAAS Fellow",
+        website: "https://www.aaas.org",
+        bodyProfileRows: [
+          {
+            "field": "Official Name",
+            "value": "American Association for the Advancement of Science (AAAS)"
+          },
+          {
+            "field": "Organization Type",
+            "value": "Scientific society."
+          },
+          {
+            "field": "Definition",
+            "value": "One of the world's largest multidisciplinary scientific societies."
+          },
+          {
+            "field": "History/Background",
+            "value": "Founded in 1848. Publisher of the journal Science."
+          },
+          {
+            "field": "Purpose",
+            "value": "Advance science, engineering, and innovation for the benefit of society."
+          },
+          {
+            "field": "Mission",
+            "value": "Advance science and serve society through science."
+          },
+          {
+            "field": "Governance/Leadership",
+            "value": "Governed by a Board of Directors and elected scientific sections."
+          },
+          {
+            "field": "Scope/Reach",
+            "value": "International. Covers all scientific disciplines."
+          },
+          {
+            "field": "Recognition Types",
+            "value": "AAAS Fellow."
+          }
+        ]
+      },
       { organization: "IMS (Institute of Mathematical Statistics)", recognition: "IMS Fellow", website: "https://imstat.org" },
       { organization: "ACL (Association for Computational Linguistics)", recognition: "ACL Fellow", website: "https://www.aclweb.org" },
       { organization: "ISCB (International Society for Computational Biology)", recognition: "ISCB Fellow; Overton Prize", website: "https://www.iscb.org" },
