@@ -2265,7 +2265,7 @@ const additionalFacultyRecognitions = [
   }),
   facultyRecord("Michael I. Jordan", "Member", "academy", "level1a", {
     organization: "US National Academy of Engineering (NAE)",
-    details: "Year not specified",
+    details: "2010",
     work:
       "Foundational contributions to machine learning, probabilistic graphical models, and Bayesian nonparametric statistics."
   }),
