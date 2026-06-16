@@ -219,7 +219,7 @@ const categories = [
           },
           {
             "field": "Scope/Reach",
-            "value": "Global. 400,000+ members worldwide. Covers engineering, computing, AI, robotics, communications, electronics, and related fields."
+            "value": "Global. 500,000+ members in more than 190 countries. Covers engineering, computing, AI, robotics, communications, electronics, and related fields."
           },
           {
             "field": "Recognition Types",
