@@ -91,6 +91,48 @@ const categories = [
         }
       },
       { organization: "US National Academy of Engineering (NAE)", recognition: "Member; International Member", website: "https://www.nae.edu" ,
+                bodyProfileRows: [
+          {
+            "field": "Official Name",
+            "value": "US National Academy of Engineering (NAE)"
+          },
+          {
+            "field": "Organization Type",
+            "value": "Leading national academy; private, independent, nonprofit institution."
+          },
+          {
+            "field": "Definition",
+            "value": "A U.S. national academy that elects distinguished engineers and provides independent engineering advice to the nation."
+          },
+          {
+            "field": "History/Background",
+            "value": "Founded in 1964 as part of the U.S. National Academies system to provide engineering leadership and independent advice."
+          },
+          {
+            "field": "Purpose",
+            "value": "To advance the welfare and prosperity of the United States by providing objective engineering advice, promoting a strong engineering profession, and recognizing outstanding engineering achievement."
+          },
+          {
+            "field": "Mission",
+            "value": "To advance engineering leadership in service to the nation."
+          },
+          {
+            "field": "Governance/Leadership",
+            "value": "Governed through the National Academy structure. Tsu-Jae Liu became President of NAE on July 1, 2025."
+          },
+          {
+            "field": "Scope/Reach",
+            "value": "Covers all engineering fields, including computing, AI, electrical engineering, mechanical engineering, biomedical engineering, systems, infrastructure, and technology policy."
+          },
+          {
+            "field": "Recognition Types",
+            "value": "Member; International Member."
+          },
+          {
+            "field": "Source",
+            "value": "https://www.nae.edu"
+          }
+        ],
         criteriaProfiles: {
           "Member": {
             "Official Name": "Member of the National Academy of Engineering",
@@ -160,6 +202,48 @@ const categories = [
       },
       { organization: "US National Academy of Medicine (NAM)", recognition: "Member", website: "https://nam.edu" },
       { organization: "The Royal Society (UK)", recognition: "Fellow; Foreign Member; Royal Society Milner Award", website: "https://royalsociety.org" ,
+                bodyProfileRows: [
+          {
+            "field": "Official Name",
+            "value": "The Royal Society"
+          },
+          {
+            "field": "Organization Type",
+            "value": "Leading national academy / independent scientific fellowship; incorporated by Royal Charter."
+          },
+          {
+            "field": "Definition",
+            "value": "The UK's national academy of sciences, made up of distinguished scientists, engineers, and technologists elected for major contributions to natural knowledge."
+          },
+          {
+            "field": "History/Background",
+            "value": "Founded in 1660 and incorporated by Royal Charter. Its current governing document is the Supplemental Charter approved in 2012."
+          },
+          {
+            "field": "Purpose",
+            "value": "To promote excellence in science, support scientific discovery, provide policy advice, and recognize outstanding scientific achievement."
+          },
+          {
+            "field": "Mission",
+            "value": "To promote and support excellence in science and the development and use of science for the benefit of humanity."
+          },
+          {
+            "field": "Governance/Leadership",
+            "value": "Governed by a Council elected by and from the Fellowship. Sir Paul Nurse became President on 1 December 2025."
+          },
+          {
+            "field": "Scope/Reach",
+            "value": "Global scientific reach; covers mathematics, physical sciences, biological sciences, engineering science, medical science, technology, and related areas."
+          },
+          {
+            "field": "Recognition Types",
+            "value": "Fellow; Foreign Member; Honorary Fellow; Royal Fellow."
+          },
+          {
+            "field": "Source",
+            "value": "https://royalsociety.org"
+          }
+        ],
         criteriaProfiles: {
           "Fellow": {
             "Official Name": "Fellow of the Royal Society (FRS)",
@@ -228,6 +312,48 @@ const categories = [
         }
       },
       { organization: "Royal Academy of Engineering (UK)", recognition: "Fellow; Royal Academy of Engineering Whittle Medal", website: "https://raeng.org.uk" ,
+                bodyProfileRows: [
+          {
+            "field": "Official Name",
+            "value": "Royal Academy of Engineering"
+          },
+          {
+            "field": "Organization Type",
+            "value": "Leading national academy; charity; professional engineering fellowship."
+          },
+          {
+            "field": "Definition",
+            "value": "The UK's national academy for engineering and technology, bringing together leading engineers, innovators, entrepreneurs, and business leaders."
+          },
+          {
+            "field": "History/Background",
+            "value": "Founded in 1976 as the Fellowship of Engineering and later became the Royal Academy of Engineering."
+          },
+          {
+            "field": "Purpose",
+            "value": "To advance engineering excellence, support innovation, provide policy advice, and use engineering to benefit society and the economy."
+          },
+          {
+            "field": "Mission",
+            "value": "To harness the power of engineering to build a sustainable society and inclusive economy."
+          },
+          {
+            "field": "Governance/Leadership",
+            "value": "Governed by a Trustee Board. The Trustee Board includes Trustees elected by and from the Fellowship and is chaired by the President, Sir John Lazar CBE FREng."
+          },
+          {
+            "field": "Scope/Reach",
+            "value": "Covers all engineering and technology fields, including AI, computing, robotics, energy, manufacturing, infrastructure, biomedical engineering, entrepreneurship, and engineering policy."
+          },
+          {
+            "field": "Recognition Types",
+            "value": "Fellow; International Fellow; Honorary Fellow; Royal Fellow."
+          },
+          {
+            "field": "Source",
+            "value": "https://raeng.org.uk"
+          }
+        ],
         criteriaProfiles: {
           "Fellow": {
             "Official Name": "Fellow of the Royal Academy of Engineering (FREng)",
@@ -287,6 +413,48 @@ const categories = [
         website: "https://www.ae-info.org",
         logoUrl: "https://www.clipartkey.com/mpngs/m/166-1660711_academia-europaea-logo.png"
       ,
+                bodyProfileRows: [
+          {
+            "field": "Official Name",
+            "value": "Academia Europaea / The Academy of Europe"
+          },
+          {
+            "field": "Organization Type",
+            "value": "Pan-European academy / learned society."
+          },
+          {
+            "field": "Definition",
+            "value": "A European academy of humanities, law, social sciences, mathematics, medicine, natural sciences, and technological sciences."
+          },
+          {
+            "field": "History/Background",
+            "value": "Founded in 1988 as a Europe-wide academy covering all fields of scholarly inquiry."
+          },
+          {
+            "field": "Purpose",
+            "value": "To advance and propagate excellence in scholarship across Europe and internationally."
+          },
+          {
+            "field": "Mission",
+            "value": "To promote excellence in humanities, law, social sciences, mathematics, medicine, natural sciences, and technological sciences for public benefit and public education."
+          },
+          {
+            "field": "Governance/Leadership",
+            "value": "Governed through a Board of Trustees, Council, academic classes, and section committees. The official site lists Donald B. Dingwell as President."
+          },
+          {
+            "field": "Scope/Reach",
+            "value": "Pan-European and international; covers all major scholarly disciplines, including science, engineering, medicine, social sciences, humanities, and law."
+          },
+          {
+            "field": "Recognition Types",
+            "value": "Member."
+          },
+          {
+            "field": "Source",
+            "value": "https://www.ae-info.org"
+          }
+        ],
         criteriaProfiles: {
           "Member": {
             "Official Name": "Member of Academia Europaea (MAE)",
@@ -323,6 +491,48 @@ const categories = [
         }
       },
       { organization: "Leopoldina (German National Academy of Sciences)", recognition: "Member", website: "https://www.leopoldina.org" ,
+                bodyProfileRows: [
+          {
+            "field": "Official Name",
+            "value": "German National Academy of Sciences Leopoldina"
+          },
+          {
+            "field": "Organization Type",
+            "value": "Leading national academy; independent learned academy."
+          },
+          {
+            "field": "Definition",
+            "value": "Germany's national academy of sciences, representing German science internationally and providing science-based advice to policymakers and the public."
+          },
+          {
+            "field": "History/Background",
+            "value": "Originated in 1652 as a scholarly society and was appointed Germany's National Academy of Sciences in 2008."
+          },
+          {
+            "field": "Purpose",
+            "value": "To represent the German scientific community internationally and provide evidence-based advice on major scientific and societal questions."
+          },
+          {
+            "field": "Mission",
+            "value": "To champion freedom and appreciation of science, promote a scientifically enlightened society, and support responsible use of scientific insight for the benefit of people and the natural world."
+          },
+          {
+            "field": "Governance/Leadership",
+            "value": "Led by an elected academy president and governance bodies. Prof. Dr. Bettina Rockenbach has served as President since March 2025."
+          },
+          {
+            "field": "Scope/Reach",
+            "value": "Covers almost all branches of science, including natural sciences, life sciences, medicine, mathematics, engineering-related fields, social sciences, and humanities."
+          },
+          {
+            "field": "Recognition Types",
+            "value": "Member."
+          },
+          {
+            "field": "Source",
+            "value": "https://www.leopoldina.org"
+          }
+        ],
         criteriaProfiles: {
           "Member": {
             "Official Name": "Member of the German National Academy of Sciences Leopoldina",
@@ -368,6 +578,48 @@ const categories = [
       },
       { organization: "Chinese Academy of Engineering", recognition: "Member", note: "State owned", website: "https://www.cae.cn" },
       { organization: "French Academy of Sciences", recognition: "Member; Orange Prize / French Academy Grand Prix", note: "State sponsored, Institut de France", website: "https://www.academie-sciences.fr" ,
+                bodyProfileRows: [
+          {
+            "field": "Official Name",
+            "value": "Academie des sciences / French Academy of Sciences"
+          },
+          {
+            "field": "Organization Type",
+            "value": "Leading national academy; learned society within the Institut de France."
+          },
+          {
+            "field": "Definition",
+            "value": "France's national academy for the sciences, recognizing leading scientists and contributing to the advancement and public understanding of science."
+          },
+          {
+            "field": "History/Background",
+            "value": "Founded in 1666 under Louis XIV and Jean-Baptiste Colbert to encourage and protect French scientific research. It is one of Europe's oldest scientific academies."
+          },
+          {
+            "field": "Purpose",
+            "value": "To promote scientific research, advise public authorities, support education and scientific communication, and foster international scientific collaboration."
+          },
+          {
+            "field": "Mission",
+            "value": "To encourage scientific life, promote science, advise decision-makers, and contribute to public debate on scientific matters."
+          },
+          {
+            "field": "Governance/Leadership",
+            "value": "Led by elected academy leadership. Francoise Combes was elected President for 2025-2026; Anne Ephrussi was elected Vice President for 2026 and is set to succeed as President in 2027."
+          },
+          {
+            "field": "Scope/Reach",
+            "value": "Covers mathematics, physics, chemistry, biology, medicine, engineering, environmental sciences, and related scientific fields."
+          },
+          {
+            "field": "Recognition Types",
+            "value": "Member; Foreign Associate / Foreign Member; Correspondent; awards and medals."
+          },
+          {
+            "field": "Source",
+            "value": "https://www.academie-sciences.fr"
+          }
+        ],
         criteriaProfiles: {
           "Member": {
             "Official Name": "Member of the Académie des sciences / French Academy of Sciences",
@@ -406,6 +658,48 @@ const categories = [
       { organization: "Swiss Academy of Engineering Sciences", recognition: "Member", note: "Funded by Swiss government", website: "https://www.satw.ch" },
       { organization: "Canadian Academy of Engineering", recognition: "Fellow", note: "Registered charity", website: "https://www.cae-acg.ca" },
       { organization: "Australian Academy of Science", recognition: "Fellow", note: "Registered charity", website: "https://www.science.org.au" ,
+                bodyProfileRows: [
+          {
+            "field": "Official Name",
+            "value": "Australian Academy of Science"
+          },
+          {
+            "field": "Organization Type",
+            "value": "Leading national academy; independent learned academy."
+          },
+          {
+            "field": "Definition",
+            "value": "Australia's national academy of science, composed of distinguished research scientists elected by their peers for exceptional contributions to knowledge."
+          },
+          {
+            "field": "History/Background",
+            "value": "Founded on 16 February 1954 and established by Royal Charter as an independent body with government endorsement."
+          },
+          {
+            "field": "Purpose",
+            "value": "To champion science for the benefit of all, recognize excellence, support science policy, and promote public understanding of science."
+          },
+          {
+            "field": "Mission",
+            "value": "To advance Australia as a nation that embraces scientific knowledge and whose people enjoy the benefits of science."
+          },
+          {
+            "field": "Governance/Leadership",
+            "value": "Overseen by a Council of Fellows elected at the Annual General Meeting. The official Council page lists Professor Samuel Berkovic AC PresAA FAHMS FRS as President for 2026-2030."
+          },
+          {
+            "field": "Scope/Reach",
+            "value": "Covers Australia's scientific research fields, including physical sciences, biological sciences, mathematics, medical science, environmental science, engineering-related sciences, and emerging fields such as AI and data science."
+          },
+          {
+            "field": "Recognition Types",
+            "value": "Fellow; Corresponding Member / international recognition categories where applicable."
+          },
+          {
+            "field": "Source",
+            "value": "https://www.science.org.au"
+          }
+        ],
         criteriaProfiles: {
           "Fellow": {
             "Official Name": "Fellow of the Australian Academy of Science",
@@ -473,6 +767,48 @@ const categories = [
       { organization: "World Academy of Art and Science (WAAS)", recognition: "Fellow", website: "https://worldacademy.org" },
       { organization: "The World Academy of Sciences (TWAS)", recognition: "Fellow", website: "https://twas.org" },
       { organization: "American Academy of Arts and Sciences", recognition: "Fellow", website: "https://www.amacad.org" ,
+                bodyProfileRows: [
+          {
+            "field": "Official Name",
+            "value": "American Academy of Arts and Sciences"
+          },
+          {
+            "field": "Organization Type",
+            "value": "Honorary society and independent research center."
+          },
+          {
+            "field": "Definition",
+            "value": "A U.S.-based honorary academy that elects leaders from science, engineering, medicine, humanities, arts, public affairs, business, and civil society, while also conducting policy-oriented research."
+          },
+          {
+            "field": "History/Background",
+            "value": "Founded in 1780 by John Adams, John Hancock, and other scholar-patriots during the American Revolution."
+          },
+          {
+            "field": "Purpose",
+            "value": "To recognize excellence and convene leaders from multiple disciplines to address major challenges facing society."
+          },
+          {
+            "field": "Mission",
+            "value": "To cultivate and advance knowledge in service of the public good."
+          },
+          {
+            "field": "Governance/Leadership",
+            "value": "Led by its members through a Board of Directors, Council, Trust, governance committees, and President. The official governance page lists Laurie L. Patton as President and Goodwin Liu as Chair of the Board."
+          },
+          {
+            "field": "Scope/Reach",
+            "value": "Broad multidisciplinary reach across sciences, engineering, medicine, humanities, arts, social sciences, public policy, business, and civic leadership."
+          },
+          {
+            "field": "Recognition Types",
+            "value": "Fellow; International Honorary Member."
+          },
+          {
+            "field": "Source",
+            "value": "https://www.amacad.org"
+          }
+        ],
         criteriaProfiles: {
           "Fellow": {
             "Official Name": "Member of the American Academy of Arts and Sciences",
