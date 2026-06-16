@@ -2636,7 +2636,7 @@ const additionalFacultyRecognitions = [
   }),
   facultyRecord("Michael I. Jordan", "Fellow", "academy", "level2", {
     organization: "American Academy of Arts and Sciences",
-    details: "Year not specified",
+    details: "2011",
     work:
       "Foundational contributions to machine learning, probabilistic graphical models, and Bayesian nonparametric statistics."
   }),
