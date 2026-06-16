@@ -2563,7 +2563,7 @@ const additionalFacultyRecognitions = [
   }),
   facultyRecord("Sir Michael Brady", "Fellow", "academy", "level1a", {
     organization: "Royal Academy of Engineering (UK)",
-    details: "Year not specified",
+    details: "1991",
     work: "Vision-based robotics and AI-driven medical image analysis for cancer diagnosis."
   }),
   facultyRecord("Sir Michael Brady", "Fellow", "academy", "level1a", {
