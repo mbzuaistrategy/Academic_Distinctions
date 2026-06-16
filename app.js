@@ -248,7 +248,8 @@ const categories = [
             "Geographic Scope": "Global / international.",
             "Geographic Distribution":
               "No geographic quota. Merit-based evaluations. IEEE notes fairness regardless of region, gender, employment sector, or affiliation.",
-            "Amount of Members": "Annual elevations cannot exceed 0.1% of IEEE voting membership.",
+            "Amount of Members":
+              "7,500+ IEEE Fellows globally. Annual elevations cannot exceed 0.1% of IEEE voting membership.",
             "Type of Recognition": "Lifetime IEEE membership distinction.",
             "Nomination Process":
               "Peer nomination and review. Candidates cannot self-apply. Nominations are submitted by others and reviewed in multiple stages.",
@@ -1205,7 +1206,7 @@ const professionalSocietyFellowProfiles = {
     "Main Field/Scope": "Engineering, computing, AI, ML, robotics, communications, electronics, signal processing, power systems, biomedical engineering.",
     "Geographic Scope": "Global / International",
     "Geographic Distribution": "No formal quotas; merit-based selection with broad representation across regions and disciplines.",
-    "Amount of Members": "IEEE has more than 400,000 members globally; Fellow elevations are capped at 0.1% of IEEE voting membership per year.",
+    "Amount of Members": "7,500+ IEEE Fellows globally; annual elevations are capped at 0.1% of IEEE voting membership per year.",
     "Type of Recognition": "Professional Society Fellow Recognition",
     "Nomination Process": "Peer nomination and multi-stage review; self-nominations are not permitted.",
     "Review/Evaluation Criteria": "Extraordinary accomplishments, documented impact, technical innovation, leadership, education, entrepreneurship, or societal contribution.",
