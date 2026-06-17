@@ -164,7 +164,7 @@ const categories = [
             "Relationship to Other Awards": "Often held alongside NAS membership, IEEE/ACM fellowships, Nobel/Turing/major engineering prizes; not a formal prerequisite.",
             "Ranking/Prestige Signal": "Level 1A / Leading National Academy",
             "Tier": "Level 1A",
-            "Source URLs": "https://www.nae.edu/19579/31222/20095/327741/331605/NAENewClass2025 | https://www.nationalacademies.org/members | https://www.nae.edu/19626/leadership"
+            "Source URLs": "https://www.nae.edu/19579/31222/20095/327741/331605/NAENewClass2025"
           },
           "International Member": {
             "Official Name": "Member of the National Academy of Engineering",
@@ -196,7 +196,7 @@ const categories = [
             "Relationship to Other Awards": "Often held alongside NAS membership, IEEE/ACM fellowships, Nobel/Turing/major engineering prizes; not a formal prerequisite.",
             "Ranking/Prestige Signal": "Level 1A / Leading National Academy",
             "Tier": "Level 1A",
-            "Source URLs": "https://www.nae.edu/19579/31222/20095/327741/331605/NAENewClass2025 | https://www.nationalacademies.org/members | https://www.nae.edu/19626/leadership"
+            "Source URLs": "https://www.nae.edu/19579/31222/20095/327741/331605/NAENewClass2025"
           }
         }
       },
@@ -275,7 +275,7 @@ const categories = [
             "Relationship to Other Awards": "Many Fellows also hold Nobel Prizes, national academy memberships or major disciplinary awards; not a formal prerequisite.",
             "Ranking/Prestige Signal": "Level 1A / Leading National Academy",
             "Tier": "Level 1A",
-            "Source URLs": "https://royalsociety.org/fellows-directory/election/ | https://royalsociety.org/about-us/committees/council-37/"
+            "Source URLs": "https://royalsociety.org/fellows-directory/election/"
           },
           "Foreign Member": {
             "Official Name": "Foreign Member of the Royal Society (ForMemRS)",
@@ -307,7 +307,7 @@ const categories = [
             "Relationship to Other Awards": "Frequently held by Nobel laureates, NAS members and major prize recipients; not a formal prerequisite.",
             "Ranking/Prestige Signal": "Level 1A / Leading National Academy",
             "Tier": "Level 1A",
-            "Source URLs": "https://royalsociety.org/fellows-directory/election/ | https://royalsociety.org/about-us/committees/council-37/"
+            "Source URLs": "https://royalsociety.org/fellows-directory/election/"
           }
         }
       },
@@ -385,7 +385,7 @@ const categories = [
             "Relationship to Other Awards": "Often held with NAE, Royal Society, IEEE/ACM Fellowships and major engineering prizes; not a prerequisite.",
             "Ranking/Prestige Signal": "Level 1B / Leading National Academy for engineering",
             "Tier": "Level 1B",
-            "Source URLs": "https://raeng.org.uk/about-us/fellowship/election-to-the-fellowship | https://raeng.org.uk/media/yifbnsts/guidance-notes-for-nominating-fellows.pdf | https://raeng.org.uk/about-us/fellowship"
+            "Source URLs": "https://raeng.org.uk/about-us/fellowship/election-to-the-fellowship"
           }
         }
       },
@@ -429,7 +429,7 @@ const categories = [
           },
           {
             "field": "Source",
-            "value": "https://acmedsci.ac.uk/about ; https://acmedsci.ac.uk/about/history ; https://acmedsci.ac.uk/about/governance ; https://acmedsci.ac.uk/fellows/election-to-the-fellowship"
+            "value": "https://acmedsci.ac.uk"
           }
         ],
         criteriaProfiles: {
@@ -463,7 +463,7 @@ const categories = [
             "Relationship to Other Awards": "Often co-occurs with Royal Society, Royal Academy of Engineering, NIHR, university chairs, and major biomedical prizes, but is not a prerequisite for them.",
             "Ranking/Prestige Signal": "High-prestige national academy fellowship in biomedical and health sciences.",
             "Tier": "Leading National Academies - Level 1C / major national medical academy fellowship.",
-            "Sources": "https://acmedsci.ac.uk/fellows/election-to-the-fellowship ; https://acmedsci.ac.uk/fellows/election-to-the-fellowship/the-election-process ; https://acmedsci.ac.uk/fellows/election-to-the-fellowship/elect ; https://acmedsci.ac.uk/fellows/election-to-the-fellowship/election-timetable ; https://acmedsci.ac.uk/more/news/academy-new-fellows-2026"
+            "Sources": "https://acmedsci.ac.uk/fellows/election-to-the-fellowship"
           }
         }
       }
@@ -563,7 +563,7 @@ const categories = [
             "Relationship to Other Awards": "Often held alongside national academy memberships and major disciplinary prizes; not a prerequisite.",
             "Ranking/Prestige Signal": "Level 1B / European academy membership",
             "Tier": "Level 1B",
-            "Source URLs": "https://www.interacademies.org/organization/academia-europaea | https://www.acadeuro.org/ae/Acad_Main/Membership/Assessment_Process | https://www2.ae-info.org/attach/Acad_Main/Nominations/Nominations%20rules%20amended%20September%202025-%20for%20approval%20%28applicable%20from%202025-26%20onwards%29%20V3.0.pdf?skin=raw | https://aecardiffknowledgehub.wales/members/"
+            "Source URLs": "https://www.interacademies.org/organization/academia-europaea"
           }
         }
       },
@@ -641,7 +641,7 @@ const categories = [
             "Relationship to Other Awards": "Frequently held alongside Nobel Prizes, academy memberships and major disciplinary prizes; not a formal prerequisite.",
             "Ranking/Prestige Signal": "Level 1A/1B depending framework; Leading National Academy",
             "Tier": "Level 1A or high Level 1B",
-            "Source URLs": "https://www.leopoldina.org/fileadmin/user_upload/Dokumente/Election_Regulations_Leopoldina_09_2023.pdf | https://www.leopoldina.org/en/academy/president-committees | https://www.tum.de/en/about-tum/facts-and-figures/awards-and-honors/further-awards-for-members-of-the-university/german-academy-of-sciences-leopoldina"
+            "Source URLs": "https://www.leopoldina.org/fileadmin/user_upload/Dokumente/Election_Regulations_Leopoldina_09_2023.pdf"
           }
         }
       },
@@ -692,7 +692,7 @@ const categories = [
           },
           {
             "field": "Source",
-            "value": "https://english.cas.cn/about-cas/ ; https://english.casad.cas.cn/newsroom/nc/202511/t20251121_1132700.html"
+            "value": "https://english.cas.cn"
           }
         ],
         criteriaProfiles: {
@@ -726,7 +726,7 @@ const categories = [
             "Relationship to Other Awards": "Often held by Nobel laureates, national academy members, and major international prize recipients; not a formal prerequisite for other honors.",
             "Ranking/Prestige Signal": "Very high prestige as foreign membership in a major national academy.",
             "Tier": "Leading National Academies - Level 1B/1C international foreign academy membership.",
-            "Sources": "https://english.casad.cas.cn/members/ ; https://english.casad.cas.cn/au/me/ ; https://english.casad.cas.cn/newsroom/nc/202511/t20251121_1132700.html"
+            "Sources": "https://english.casad.cas.cn/members/"
           }
         }
       },
@@ -805,7 +805,7 @@ const categories = [
             "Relationship to Other Awards": "Often accompanies major prizes and other academy memberships; not a formal prerequisite.",
             "Ranking/Prestige Signal": "Level 1A/1B depending framework; Leading National Academy",
             "Tier": "Level 1A or high Level 1B",
-            "Source URLs": "https://academie-sciences.fr/en/academics | https://www.academie-sciences.fr/en/organization-and-governance | https://www.universite-paris-saclay.fr/en/news/academie-des-sciences-announces-its-new-members-2026"
+            "Source URLs": "https://academie-sciences.fr/en/academics"
           }
         }
       },
@@ -849,7 +849,7 @@ const categories = [
           },
           {
             "field": "Source",
-            "value": "https://www.satw.ch/en/the-academy/the-academy ; https://www.satw.ch/en/the-academy/full-members ; https://academies-suisses.ch/news/45-years-of-satw-from-vision-to-shaping-force"
+            "value": "https://www.satw.ch"
           }
         ],
         criteriaProfiles: {
@@ -883,7 +883,7 @@ const categories = [
             "Relationship to Other Awards": "May co-occur with IEEE/ACM/academy fellowships and Swiss national honors; not a prerequisite.",
             "Ranking/Prestige Signal": "National engineering academy membership with strong Swiss policy/industry signal.",
             "Tier": "Leading National Academies / National Engineering Academy - Level 2.",
-            "Sources": "https://www.satw.ch/en/the-academy/full-members ; https://www.satw.ch/en/news/satw-welcomes-19-new-members ; https://www.satw.ch/en/the-academy/the-academy"
+            "Sources": "https://www.satw.ch/en/the-academy/full-members"
           }
         }
       },
@@ -927,7 +927,7 @@ const categories = [
           },
           {
             "field": "Source",
-            "value": "https://cae-acg.ca/ ; https://cae-acg.ca/the-academy/ ; https://cae-acg.ca/fellows/fellowship-procedure-categories-of-fellowship/"
+            "value": "https://www.cae-acg.ca"
           }
         ],
         criteriaProfiles: {
@@ -961,7 +961,7 @@ const categories = [
             "Relationship to Other Awards": "Often co-occurs with IEEE Fellow, Royal Society of Canada, engineering medals, and university leadership roles.",
             "Ranking/Prestige Signal": "High national engineering academy prestige.",
             "Tier": "Leading National Academies - Level 1C.",
-            "Sources": "https://cae-acg.ca/the-academy/ ; https://cae-acg.ca/fellows/fellowship-procedure-categories-of-fellowship/ ; https://cae-acg.ca/wp-content/uploads/2025-New-Fellows-Media-Release-EN.pdf"
+            "Sources": "https://cae-acg.ca/the-academy/"
           }
         }
       },
@@ -1039,7 +1039,7 @@ const categories = [
             "Relationship to Other Awards": "Often held alongside Nobel Prizes, Royal Society, NAS and other academy memberships; not a prerequisite.",
             "Ranking/Prestige Signal": "Level 1B / Leading National Academy",
             "Tier": "Level 1B",
-            "Source URLs": "https://www.science.org.au/about-us/academy-fellows | https://www.science.org.au/fellowship/election-to-the-academy | https://www.science.org.au/news-events/news-views/26-aussie-scientists-join-best-best"
+            "Source URLs": "https://www.science.org.au/about-us/academy-fellows"
           }
         }
       },
@@ -1083,7 +1083,7 @@ const categories = [
           },
           {
             "field": "Source",
-            "value": "https://www.inae.in/nomination-information/inae-fellowship/ ; https://www.inae.in/fellowship-criteria/ ; https://www.inae.in/forms/"
+            "value": "https://www.inae.in"
           }
         ],
         criteriaProfiles: {
@@ -1117,7 +1117,7 @@ const categories = [
             "Relationship to Other Awards": "Often co-occurs with IEEE/ACM/ASME fellowships, national awards, and major engineering leadership honors.",
             "Ranking/Prestige Signal": "Major national engineering academy fellowship.",
             "Tier": "Leading National Academies - Level 1C.",
-            "Sources": "https://www.inae.in/nomination-information/ ; https://www.inae.in/forms/ ; https://www.inae.in/nomination-information/inae-fellowship/"
+            "Sources": "https://www.inae.in/nomination-information/"
           },
           "Member": {
             "Official Name": "Fellow / Foreign Fellow of the Indian National Academy of Engineering (INAE).",
@@ -1149,7 +1149,7 @@ const categories = [
             "Relationship to Other Awards": "Often co-occurs with IEEE/ACM/ASME fellowships, national awards, and major engineering leadership honors.",
             "Ranking/Prestige Signal": "Major national engineering academy fellowship.",
             "Tier": "Leading National Academies - Level 1C.",
-            "Sources": "https://www.inae.in/nomination-information/ ; https://www.inae.in/forms/ ; https://www.inae.in/nomination-information/inae-fellowship/"
+            "Sources": "https://www.inae.in/nomination-information/"
           }
         }
       },
@@ -1198,7 +1198,7 @@ const categories = [
           },
           {
             "field": "Source",
-            "value": "https://www.sc.gov.ae/ ; https://science.gov.ae/en/scientist-residence ; https://mbrf.ae/en/read/sharing-worlds/5"
+            "value": "https://mbras.ae"
           }
         ],
         criteriaProfiles: {
@@ -1232,7 +1232,7 @@ const categories = [
             "Relationship to Other Awards": "Related to UAE science policy and Mohammed bin Rashid Medal/awards ecosystem, but not a prerequisite.",
             "Ranking/Prestige Signal": "Important national science academy signal in the UAE; lower global visibility than older national academies.",
             "Tier": "Leading National Academies / National Science Academy - Level 2.",
-            "Sources": "https://www.sc.gov.ae/ ; https://science.gov.ae/en/scientist-residence ; https://www.zawya.com/en/press-release/emirates-scientists-council-accepts-nominations-for-mohammed-bin-rashid-academy-of-scientists-xp95kxnb"
+            "Sources": "https://www.sc.gov.ae/"
           }
         }
       },
@@ -1276,7 +1276,7 @@ const categories = [
           },
           {
             "field": "Source",
-            "value": "https://academy.ac.il/RichText/GeneralPage.aspx?nodeId=853 ; https://en-lifesci.tau.ac.il/news/2023/adis/youngacd"
+            "value": "https://www.young.academy.ac.il"
           }
         ],
         criteriaProfiles: {
@@ -1310,7 +1310,7 @@ const categories = [
             "Relationship to Other Awards": "Often co-occurs with ERC grants, national prizes, and academic leadership roles; not a prerequisite.",
             "Ranking/Prestige Signal": "High early-career academy recognition in Israel, not directly comparable to senior lifetime academies.",
             "Tier": "Young Academy / Early-Career National Academy - Level 2/3.",
-            "Sources": "https://academy.ac.il/RichText/GeneralPage.aspx?nodeId=853 ; https://academy.ac.il/News/NewsItem.aspx?id=3172&nodeId=837"
+            "Sources": "https://academy.ac.il/RichText/GeneralPage.aspx?nodeId=853"
           }
         }
       },
@@ -1359,7 +1359,7 @@ const categories = [
           },
           {
             "field": "Source",
-            "value": "https://www.atse.org.au/who-we-are/about-us/ ; https://www.atse.org.au/who-we-are/governance/strategic-plan/ ; https://www.atse.org.au/who-we-are/our-fellows/"
+            "value": "https://www.atse.org.au"
           }
         ],
         criteriaProfiles: {
@@ -1393,7 +1393,7 @@ const categories = [
             "Relationship to Other Awards": "Often co-occurs with Australian Academy of Science, IEEE Fellow, national honors, and industry leadership awards.",
             "Ranking/Prestige Signal": "High national academy fellowship in applied science/engineering.",
             "Tier": "Leading National Academies - Level 1C.",
-            "Sources": "https://atse.org.au/who-we-are/our-fellows/becoming-a-fellow/ ; https://www.atse.org.au/who-we-are/our-fellows/ ; https://www.atse.org.au/"
+            "Sources": "https://atse.org.au/who-we-are/our-fellows/becoming-a-fellow/"
           }
         }
       },
@@ -1438,7 +1438,7 @@ const categories = [
           },
           {
             "field": "Source",
-            "value": "https://www.bbaw.de/en/ ; https://www.bbaw.de/en/the-academy/history-of-the-academy ; https://www.bbaw.de/en/the-academy/presidency-and-committees/the-assembly"
+            "value": "https://www.bbaw.de"
           }
         ],
         criteriaProfiles: {
@@ -1472,7 +1472,7 @@ const categories = [
             "Relationship to Other Awards": "Often co-occurs with German academy memberships, university chairs, and major research awards.",
             "Ranking/Prestige Signal": "High-prestige German learned academy, especially in Berlin-Brandenburg and German scholarship.",
             "Tier": "Leading National Academies / Regional Learned Academy - Level 1C/2.",
-            "Sources": "https://www.akademienunion.de/en/acadamy/bbaw ; https://www.bbaw.de/en/the-academy/presidency-and-committees/the-assembly ; https://www.bbaw.de/en/the-academy/presidency-and-committees/council"
+            "Sources": "https://www.akademienunion.de/en/acadamy/bbaw"
           }
         }
       },
@@ -1521,7 +1521,7 @@ const categories = [
           },
           {
             "field": "Source",
-            "value": "https://www.scj.go.jp/en/scj/index.html ; https://www.scj.go.jp/en/scj/members.html ; https://www.japaneselawtranslation.go.jp/en/laws/view/4327/en"
+            "value": "https://www.scj.go.jp"
           }
         ],
         criteriaProfiles: {
@@ -1555,7 +1555,7 @@ const categories = [
             "Relationship to Other Awards": "May co-occur with national academy memberships, Japanese awards, and university leadership roles; not a prerequisite.",
             "Ranking/Prestige Signal": "Important national science advisory membership, but Associate Member is below full Council Member in governance level.",
             "Tier": "Leading National Academies / National Advisory Council - Level 2.",
-            "Sources": "https://www.scj.go.jp/en/scj/index.html ; https://www.scj.go.jp/en/scj/members.html ; https://www.japaneselawtranslation.go.jp/en/laws/view/4327/en"
+            "Sources": "https://www.scj.go.jp/en/scj/index.html"
           }
         }
       },
@@ -1604,7 +1604,7 @@ const categories = [
           },
           {
             "field": "Source",
-            "value": "Recognition evidence only: https://mbzuai.ac.ae/study/faculty/natasa-przulj-2/ ; https://www.icrea.cat/community/icreas/24061/natasa-przulj/ . Related official Serbian national academy, not the same body: https://www.sanu.ac.rs/en/"
+            "value": "https://www.sanu.ac.rs/en/"
           }
         ],
         criteriaProfiles: {
@@ -1638,7 +1638,7 @@ const categories = [
             "Relationship to Other Awards": "Often co-occurs with national honors, academy memberships, and major artistic/scientific awards; not a prerequisite.",
             "Ranking/Prestige Signal": "High national academy signal in Serbia. If the intended body is SKANU rather than official SANU/SASA, classification should be reviewed.",
             "Tier": "Leading National Academies - Level 1C for SANU/SASA; SKANU status requires verification.",
-            "Sources": "https://www.sanu.ac.rs/en/about-the-academy/members/ ; https://www.sanu.ac.rs/en/about-the-academy/members/full-corresponding-and-external-members/ ; https://www.sanu.ac.rs/en/about-the-academy/history-of-the-academy/ ; https://www.interacademies.org/organization/serbian-academy-sciences-and-arts"
+            "Sources": "https://www.sanu.ac.rs/en/about-the-academy/members/"
           }
         }
       },
@@ -1683,7 +1683,7 @@ const categories = [
           },
           {
             "field": "Source",
-            "value": "https://worldacademy.org/ ; https://worldacademy.org/about-us/ ; https://worldacademy.org/waas-election-2025/"
+            "value": "https://worldacademy.org"
           }
         ],
         criteriaProfiles: {
@@ -1717,7 +1717,7 @@ const categories = [
             "Relationship to Other Awards": "Often co-occurs with academy memberships, UN or global policy roles, and major honors, but is not a prerequisite.",
             "Ranking/Prestige Signal": "Global interdisciplinary academy; prestige is broad but generally lower in technical research ranking than NAS/RS/NAE.",
             "Tier": "Global Interdisciplinary Academy - Level 2.",
-            "Sources": "https://worldacademy.org/ ; https://worldacademy.org/wp-content/uploads/2025/04/WAAS_Bylaws_amended_on_14-June-2020.pdf ; https://worldacademy.org/waas-election-2025/ ; https://www.interacademies.org/organization/world-academy-art-and-science-waas"
+            "Sources": "https://worldacademy.org/"
           }
         }
       },
@@ -1761,7 +1761,7 @@ const categories = [
           },
           {
             "field": "Source",
-            "value": "https://twas.org/ ; https://twas.org/directory/founding-fellows ; https://council.science/member/twas-the-world-academy-of-sciences/"
+            "value": "https://twas.org"
           }
         ],
         criteriaProfiles: {
@@ -1795,7 +1795,7 @@ const categories = [
             "Relationship to Other Awards": "Often coexists with national academy memberships and international prizes; not a prerequisite.",
             "Ranking/Prestige Signal": "High international academy prestige, especially for developing-world science leadership.",
             "Tier": "Leading National Academies / International Academies - Level 1C.",
-            "Sources": "https://twas.org/criteria-membership ; https://twas.org/directory ; https://www.interacademies.org/organization/world-academy-sciences-twas"
+            "Sources": "https://twas.org/criteria-membership"
           }
         }
       },
@@ -1873,7 +1873,7 @@ const categories = [
             "Relationship to Other Awards": "Often held alongside Nobel, Pulitzer, academy memberships and major field honors; not a prerequisite.",
             "Ranking/Prestige Signal": "Level 1B / Leading National Academy or elite honorary society",
             "Tier": "Level 1B",
-            "Source URLs": "https://www.amacad.org/election-process | https://www.amacad.org/members | https://www.amacad.org/history/members | https://www.amacad.org/"
+            "Source URLs": "https://www.amacad.org/election-process"
           },
           "Member": {
             "Official Name": "Member of the American Academy of Arts and Sciences",
@@ -1905,7 +1905,7 @@ const categories = [
             "Relationship to Other Awards": "Often held alongside Nobel, Pulitzer, academy memberships and major field honors; not a prerequisite.",
             "Ranking/Prestige Signal": "Level 1B / Leading National Academy or elite honorary society",
             "Tier": "Level 1B",
-            "Source URLs": "https://www.amacad.org/election-process | https://www.amacad.org/members | https://www.amacad.org/history/members | https://www.amacad.org/"
+            "Source URLs": "https://www.amacad.org/election-process"
           }
         }
       },
@@ -1949,7 +1949,7 @@ const categories = [
           },
           {
             "field": "Source",
-            "value": "https://www.euro-case.org/member-academies-italy/ ; https://www.euro-case.org/new-italian-academy-of-engineering-and-technology/ ; https://portale.units.it/en/news/federico-rosei-appointed-member-italian-academy-engineering-and-technology"
+            "value": "https://www.aiti.it"
           }
         ],
         criteriaProfiles: {
@@ -1983,7 +1983,7 @@ const categories = [
             "Relationship to Other Awards": "Related to national and Euro-CASE academy networks; not a prerequisite for other awards.",
             "Ranking/Prestige Signal": "Emerging national engineering academy membership; lower global visibility than older academies such as Royal Academy of Engineering or NAE.",
             "Tier": "Leading National Academies / Emerging National Engineering Academy - Level 2.",
-            "Sources": "https://www.euro-case.org/member-academies-italy/ ; https://www.euro-case.org/new-italian-academy-of-engineering-and-technology/ ; https://portale.units.it/en/news/federico-rosei-appointed-member-italian-academy-engineering-and-technology"
+            "Sources": "https://www.euro-case.org/member-academies-italy/"
           }
         }
       },
@@ -2027,7 +2027,7 @@ const categories = [
           },
           {
             "field": "Source",
-            "value": "https://www.oscars.org/about ; https://www.oscars.org/academy-history-and-structure ; https://www.oscars.org/about/join-academy ; https://www.oscars.org/about/board-governors"
+            "value": "https://www.oscars.org"
           }
         ],
         criteriaProfiles: {
@@ -2061,7 +2061,7 @@ const categories = [
             "Relationship to Other Awards": "Related to Oscars participation; not a prerequisite for an Oscar nomination, but nominees may be considered for membership.",
             "Ranking/Prestige Signal": "Very high prestige in film/visual effects/creative technology; not a scientific academy honor.",
             "Tier": "Professional/Industry Academy - Level 2 field-specific prestige.",
-            "Sources": "https://www.oscars.org/about/join-academy ; https://www.oscars.org/about/become-new-member ; https://www.oscars.org/about/becoming-new-member/branch-requirements ; https://www.oscars.org/academy-history-and-structure ; https://press.oscars.org/news/academy-invites-534-membership"
+            "Sources": "https://www.oscars.org/about/join-academy"
           }
         }
       }
@@ -2160,7 +2160,7 @@ const categories = [
             "Relationship to Other Awards": "Comparable to other top-conference test-of-time awards such as CVPR Longuet-Higgins Prize.",
             "Ranking/Prestige Signal": "Elite field-specific test-of-time award.",
             "Tier": "Global Prizes / Conference Test-of-Time Awards",
-            "Source URLs": "https://tc.computer.org/tcpami/awards/the-helmholtz-prize/ ; https://tc.computer.org/tcpami/awards/ ; https://iccv2021.thecvf.com/iccv-2021-paper-awards"
+            "Source URLs": "https://tc.computer.org/tcpami/awards/the-helmholtz-prize/"
           },
           "IEEE John von Neumann Medal": {
             "Official Name": "IEEE John von Neumann Medal",
@@ -2192,7 +2192,7 @@ const categories = [
             "Relationship to Other Awards": "Often held by IEEE Fellows, ACM Fellows, Turing Award recipients, and academy members.",
             "Ranking/Prestige Signal": "Elite global computing/engineering medal.",
             "Tier": "Global Prizes / Professional Society Major Awards",
-            "Source URLs": "https://ieee.secure-platform.com/a/page/ieeemedals_recognitions_techfieldawards/ieee_medals ; https://ethw.org/IEEE_John_von_Neumann_Medal"
+            "Source URLs": "https://ieee.secure-platform.com/a/page/ieeemedals_recognitions_techfieldawards/ieee_medals"
           },
           "IEEE Fellow": {
             "Official Name": "IEEE Fellow",
@@ -2475,7 +2475,7 @@ const categories = [
             "Relationship to Other Awards": "Often held by researchers with ACM Fellow, AAAI Fellow, academy membership, or major AI/computing awards.",
             "Ranking/Prestige Signal": "Elite interdisciplinary computing award.",
             "Tier": "Global Prizes / Professional Society Major Awards",
-            "Source URLs": "https://awards.acm.org/newell ; https://aaai.org/about-aaai/aaai-awards/"
+            "Source URLs": "https://awards.acm.org/newell"
           }
         }
       },
@@ -2522,7 +2522,7 @@ const categories = [
           },
           {
             "field": "Source",
-            "value": "https://aaai.org/ ; https://aaai.org/about-aaai/aaai-awards/ ; https://aaai.org/about-aaai/aaai-awards/aaai-feigenbaum-prize/"
+            "value": "https://aaai.org"
           }
         ]
       ,
@@ -2557,7 +2557,7 @@ const categories = [
             "Relationship to Other Awards": "Often held by researchers who are AAAI Fellows, ACM/IEEE Fellows, or recipients of other AI/computing prizes; not a prerequisite.",
             "Ranking/Prestige Signal": "Elite AI field-specific prize.",
             "Tier": "Global Prizes / AI Field Award - Level 1C.",
-            "Sources": "https://aaai.org/about-aaai/aaai-awards/aaai-feigenbaum-prize/ ; https://new.aaai.org/Awards/awards.php ; https://www.aaaipress.org/Pressroom/Releases/release-09-0915.php"
+            "Sources": "https://aaai.org/about-aaai/aaai-awards/aaai-feigenbaum-prize/"
           }
         }
       },
@@ -2695,7 +2695,7 @@ const categories = [
           },
           {
             "field": "Source",
-            "value": "https://www.iscb.org/about-iscb ; https://www.iscb.org/about-iscb/history-of-iscb ; https://www.iscb.org/about-iscb/awards-and-competitions ; https://transition.iscb.org/iscb-awards/overton-prize"
+            "value": "https://www.iscb.org"
           }
         ]
       ,
@@ -2730,7 +2730,7 @@ const categories = [
             "Relationship to Other Awards": "Often precedes or accompanies ISCB Fellow, academy memberships, and major genomics/AI-biology recognitions.",
             "Ranking/Prestige Signal": "Major early/mid-career computational biology award.",
             "Tier": "Global Prizes / Field-Specific Early-Career Award - Level 2/1C.",
-            "Sources": "https://www.iscb.org/about-iscb/policy-statements-bylaws-and-legal-documents/awards-policies-procedures ; https://transition.iscb.org/iscb-awards/overton-prize"
+            "Sources": "https://www.iscb.org/about-iscb/policy-statements-bylaws-and-legal-documents/awards-policies-procedures"
           }
         }
       },
@@ -2803,7 +2803,7 @@ const categories = [
           },
           {
             "field": "Source",
-            "value": "https://community.amstat.org/slds/home ; https://community.amstat.org/slds/awards/breiman-award ; https://magazine.amstat.org/blog/2026/05/01/breiman-award/"
+            "value": "https://www.amstat.org"
           }
         ]
       ,
@@ -2838,7 +2838,7 @@ const categories = [
             "Relationship to Other Awards": "May co-occur with Sloan, IMS/ASA Fellow later in career, COPSS awards, and major ML/statistics honors.",
             "Ranking/Prestige Signal": "Important junior award in statistical learning/data science.",
             "Tier": "Global Prizes / Field-Specific Junior Award - Level 2.",
-            "Sources": "https://community.amstat.org/slds/awards/breiman-award ; https://stattrak.amstat.org/2019/11/01/breiman-award/ ; https://biostat.duke.edu/news/zhang-receives-leo-breiman-junior-award ; https://www.cs.cmu.edu/news/2024/kolar-breiman-award"
+            "Sources": "https://community.amstat.org/slds/awards/breiman-award"
           }
         }
       },
@@ -2882,7 +2882,7 @@ const categories = [
           },
           {
             "field": "Source",
-            "value": "https://community.amstat.org/copss"
+            "value": "https://community.amstat.org/copss/home"
           }
         ],
         criteriaProfiles: {
@@ -2916,7 +2916,7 @@ const categories = [
             "Relationship to Other Awards": "Many recipients later receive IMS/ASA fellowships, academy memberships, or major statistics awards.",
             "Ranking/Prestige Signal": "Elite statistics award.",
             "Tier": "Global Prizes / Statistical Science Major Awards",
-            "Source URLs": "https://imstat.org/ims-awards/copss-awards/ ; https://community.amstat.org/copss/awards/presidents"
+            "Source URLs": "https://imstat.org/ims-awards/copss-awards/"
           }
         }
       },
@@ -2999,7 +2999,7 @@ const categories = [
             "Relationship to Other Awards": "Many recipients also hold Turing Awards, academy memberships, AAAI Fellow, ACM Fellow, or IEEE Fellow distinctions.",
             "Ranking/Prestige Signal": "Elite global AI career award.",
             "Tier": "Global Prizes / AI Field Awards",
-            "Source URLs": "https://www.ijcai.org/awards ; https://2026.ijcai.org/call-for-nominations-ijcai-2026-awards/"
+            "Source URLs": "https://www.ijcai.org/awards"
           }
         }
       },
@@ -3077,7 +3077,7 @@ const categories = [
             "Relationship to Other Awards": "Often associated with researchers who also hold major AI/statistics prizes or academy memberships.",
             "Ranking/Prestige Signal": "Elite field-specific mathematics/statistics prize.",
             "Tier": "Global Prizes / Field-Specific Major Awards",
-            "Source URLs": "https://www.ams.org/about-us/governance/committees/grenander-charge ; https://www.ams.org/about-us/grenander-charge.pdf"
+            "Source URLs": "https://www.ams.org/about-us/governance/committees/grenander-charge"
           }
         }
       },
@@ -3119,7 +3119,7 @@ const categories = [
           governanceLeadership:
             "The Nobel Foundation safeguards the Nobel Prize system, while the prize-awarding institutions remain independent in selecting Nobel Laureates.",
           scopeReach: "International; supports the Nobel Prize system and its prize-awarding institutions.",
-          source: "https://www.nobelprize.org/the-nobel-prize-organisation/the-nobel-foundation/"
+          source: "https://www.nobelprize.org"
         },
         bodyProfileRows: [
           { field: "Organization", value: "Nobel Foundation" },
@@ -3263,7 +3263,7 @@ const categories = [
             "The Foundation is governed by a Board of Directors that sets policy and strategic direction, approves grantmaking areas and initiatives, approves grants, and oversees investments and audit processes through committees. John Palfrey has served as President since September 1, 2019. Juan Salgado was elected Chair of the Board and assumed the role in June 2025.",
           scopeReach:
             "MacArthur is headquartered in Chicago, with offices in India and Nigeria. Over its 47-year history, it reports awarding more than $9.19 billion to nearly 11,000 organizations and individuals across 119 countries, all 50 U.S. states, Puerto Rico, and the U.S. Virgin Islands. In 2025, it paid out $561.6 million in grants and impact investments.",
-          source: "MacArthur foundationxxx.docx"
+          source: "https://www.macfound.org"
         },
         bodyProfileRows: [
           { field: "Organization", value: "MF - MacArthur Foundation" },
@@ -3403,7 +3403,7 @@ const categories = [
           },
           {
             "field": "Source",
-            "value": "Official site: https://www.gf.org ; supporting trusted sources: https://fconline.foundationcenter.org/fdo-grantmaker-profile?key=GUGG001 ; https://research.fas.harvard.edu/resource/john-simon-guggenheim-memorial-foundation-guggenheim-fellowship"
+            "value": "https://www.gf.org"
           }
         ],
         criteriaProfiles: {
@@ -3437,7 +3437,7 @@ const categories = [
             "Relationship to Other Awards": "Often co-occurs with academy memberships, major artistic/scientific prizes, MacArthur Fellowships, and university honors, but not a prerequisite.",
             "Ranking/Prestige Signal": "Very high U.S./Canada private foundation fellowship prestige.",
             "Tier": "Global Prizes / Private Foundation Fellowships - Level 2.",
-            "Sources": "https://competition.gf.org/assets/Guide-to-the-JSGMF-2026.pdf ; https://www.prweb.com/releases/the-john-simon-guggenheim-memorial-foundation-announces-the-2025-guggenheim-fellows-302428610.html ; https://www.uoguelph.ca/research/alerts/content/john-simon-guggenheim-fellowship-2026"
+            "Sources": "https://competition.gf.org/assets/Guide-to-the-JSGMF-2026.pdf"
           }
         }
       },
@@ -3481,7 +3481,7 @@ const categories = [
           },
           {
             "field": "Source",
-            "value": "https://www.humboldt-foundation.de/en/ ; https://www.humboldt-foundation.de/en/apply/sponsorship-programmes/humboldt-research-award"
+            "value": "https://www.humboldt-foundation.de"
           }
         ],
         criteriaProfiles: {
@@ -3515,7 +3515,7 @@ const categories = [
             "Relationship to Other Awards": "Often co-occurs with academy memberships, major society fellowships, and national/international prizes.",
             "Ranking/Prestige Signal": "Major international research award.",
             "Tier": "Global Prizes / International Research Awards - Level 2.",
-            "Sources": "https://www.humboldt-foundation.de/en/apply/sponsorship-programmes/humboldt-research-award ; https://www.humboldt-foundation.de/en/apply/sponsorship-programmes/humboldt-research-award/information-for-nominators"
+            "Sources": "https://www.humboldt-foundation.de/en/apply/sponsorship-programmes/humboldt-research-award"
           }
         }
       },
@@ -3559,7 +3559,7 @@ const categories = [
           },
           {
             "field": "Source",
-            "value": "https://sloan.org/ ; https://sloan.org/fellowships ; https://sloan.org/programs/research"
+            "value": "https://sloan.org"
           }
         ],
         criteriaProfiles: {
@@ -3593,7 +3593,7 @@ const categories = [
             "Relationship to Other Awards": "Often held alongside NSF CAREER, PECASE, MacArthur, ACM/IEEE fellowships, and later academy honors, but not a prerequisite.",
             "Ranking/Prestige Signal": "Major early-career fellowship in U.S./Canada research.",
             "Tier": "Global Prizes / Early-Career Research Fellowships - Level 2.",
-            "Sources": "https://sloan.org/fellowships ; https://sloan.org/fellowships/faq/ ; https://sloan.org/fellowships/2026-Fellows ; https://apsloan.smapply.io/prog/2026_sloan_research_fellowships/ ; https://sloan.org/storage/app/media/files/press_releases/2026_Sloan%20Research%20Fellowship_Announcement.pdf"
+            "Sources": "https://sloan.org/fellowships"
           }
         }
       },
@@ -3671,7 +3671,7 @@ const categories = [
             "Relationship to Other Awards": "Often associated with researchers who also hold academy memberships, Nobel-level recognition, or major field prizes.",
             "Ranking/Prestige Signal": "Elite global multidisciplinary prize.",
             "Tier": "Global Prizes",
-            "Source URLs": "https://www.frontiersofknowledgeawards-fbbva.es/conditions/ ; https://www.premiosfronterasdelconocimiento.es/wp-content/uploads/sites/2/2025/12/19th-edition-bbva-foundation-frontiers-knowledge-awards-call-conditions-pdf.pdf"
+            "Source URLs": "https://www.frontiersofknowledgeawards-fbbva.es/conditions/"
           }
         }
       },
@@ -3728,7 +3728,7 @@ const categories = [
           },
           {
             "field": "Source",
-            "value": "Foundation Directory / Cognitive Science Society sources."
+            "value": "https://glushkofoundation.org"
           }
         ],
         criteriaProfiles: {
@@ -3762,7 +3762,7 @@ const categories = [
             "Relationship to Other Awards": "Often held by researchers with academy memberships and major AI, neuroscience, or cognitive science awards.",
             "Ranking/Prestige Signal": "Elite cognitive science prize.",
             "Tier": "Global Prizes / Field-Specific Major Awards",
-            "Source URLs": "https://cognitivesciencesociety.org/rumelhart-prize/ ; https://prizes.research.ubc.ca/awards/david-e-rumelhart-prize"
+            "Source URLs": "https://cognitivesciencesociety.org/rumelhart-prize/"
           }
         }
       },
@@ -3846,7 +3846,7 @@ const categories = [
             "Relationship to Other Awards": "Often co-occurs with ERC grants, Israel Prize trajectories, academy memberships, and institutional leadership; not a prerequisite.",
             "Ranking/Prestige Signal": "Major Israeli mid-career scholarly award.",
             "Tier": "Global Prizes / National Scholarly Prize - Level 2.",
-            "Sources": "https://iias.huji.ac.il/about-bruno-award ; https://iias.huji.ac.il/open-call/bruno ; https://iias.huji.ac.il/sites/default/files/iias/files/bruno_open_call_stem_2024.pdf ; https://www.yadhanadiv.org.il/fellowships-prizes/"
+            "Sources": "https://iias.huji.ac.il/about-bruno-award"
           }
         }
       }
@@ -3981,7 +3981,7 @@ const categories = [
             "Relationship to Other Awards": "Committees include major global laureates; positioned as a high-level international science prize.",
             "Ranking/Prestige Signal": "Emerging elite global science prize.",
             "Tier": "Global Prizes",
-            "Source URLs": "https://nomination.thewlaprize.org/ ; https://english.shanghai.gov.cn/en-Latest-WhatsNew/20250303/0e1744c66e2a419a8e4f7500f7986695.html"
+            "Source URLs": "https://nomination.thewlaprize.org/"
           }
         }
       },
@@ -4122,7 +4122,7 @@ const professionalSocietyFellowProfiles = {
     "Relationship to Other Awards": "Distinct from IEEE medals and prizes; many major IEEE award winners are also Fellows, but it is not a prerequisite.",
     "Ranking/Prestige Signal": "Level 2 / Tier 2; major professional society fellowship and senior distinction.",
     "Institution Category": "Professional and Scholarly Associations",
-    "Source URLs": "https://www.ieee.org | https://www.ieee.org/membership/fellows/index.html"
+    "Source URLs": "https://www.ieee.org"
   },
   "The ACM Fellow Recognition Program": {
     "Official Name": "ACM Fellow",
@@ -4154,7 +4154,7 @@ const professionalSocietyFellowProfiles = {
     "Relationship to Other Awards": "Distinct from the ACM A.M. Turing Award; often appears alongside other senior computing honors.",
     "Ranking/Prestige Signal": "Level 2 / Tier 2; major professional society fellowship.",
     "Institution Category": "Professional and Scholarly Associations",
-    "Source URLs": "https://awards.acm.org/fellows | https://awards.acm.org/fellows/nominations"
+    "Source URLs": "https://awards.acm.org/fellows"
   },
   "AAAS Fellow": {
     "Official Name": "AAAS Fellow",
@@ -4186,7 +4186,7 @@ const professionalSocietyFellowProfiles = {
     "Relationship to Other Awards": "Often held with academy memberships, disciplinary fellowships, and major scientific awards; not a prerequisite.",
     "Ranking/Prestige Signal": "Level 2 / Tier 2; major multidisciplinary scientific society fellowship.",
     "Institution Category": "Professional and Scholarly Associations",
-    "Source URLs": "https://www.aaas.org/programs/fellows | https://www.aaas.org"
+    "Source URLs": "https://www.aaas.org/programs/fellows"
   },
   "AAAI Fellow": {
     "Official Name": "AAAI Fellow",
@@ -4218,7 +4218,7 @@ const professionalSocietyFellowProfiles = {
     "Relationship to Other Awards": "Distinct from AAAI awards and ACM/AAAI Allen Newell Award; often held alongside ACM/IEEE fellowships.",
     "Ranking/Prestige Signal": "Level 2 / Tier 2; major AI professional society fellowship.",
     "Institution Category": "Professional and Scholarly Associations",
-    "Source URLs": "https://aaai.org | https://aaai.org/aaai-awards/aaai-fellows/"
+    "Source URLs": "https://aaai.org"
   },
   "IMS Fellow": {
     "Official Name": "IMS Fellow",
@@ -4250,7 +4250,7 @@ const professionalSocietyFellowProfiles = {
     "Relationship to Other Awards": "Often held with ASA Fellow and major statistics prizes; not a prerequisite.",
     "Ranking/Prestige Signal": "Level 2 / Tier 2; major professional society fellowship in statistics/probability.",
     "Institution Category": "Professional and Scholarly Associations",
-    "Source URLs": "https://imstat.org | https://imstat.org/honored-ims-fellows/"
+    "Source URLs": "https://imstat.org"
   },
   "ASA Fellow": {
     "Official Name": "ASA Fellow",
@@ -4282,7 +4282,7 @@ const professionalSocietyFellowProfiles = {
     "Relationship to Other Awards": "Often held with IMS Fellow and major statistics awards; not a prerequisite.",
     "Ranking/Prestige Signal": "Level 2 / Tier 2; major professional society fellowship in statistics.",
     "Institution Category": "Professional and Scholarly Associations",
-    "Source URLs": "https://www.amstat.org | https://community.amstat.org/fellows/home"
+    "Source URLs": "https://www.amstat.org"
   },
   "ASME Fellow": {
     "Official Name": "ASME Fellow",
@@ -4314,7 +4314,7 @@ const professionalSocietyFellowProfiles = {
     "Relationship to Other Awards": "Distinct from ASME medals/prizes; often held with other engineering honors.",
     "Ranking/Prestige Signal": "Level 2 / Tier 2; major engineering professional society fellowship.",
     "Institution Category": "Professional and Scholarly Associations",
-    "Source URLs": "https://www.asme.org | https://www.asme.org/about-asme/honors-awards/fellows"
+    "Source URLs": "https://www.asme.org"
   },
   "ACL Fellow": {
     "Official Name": "ACL Fellow",
@@ -4346,7 +4346,7 @@ const professionalSocietyFellowProfiles = {
     "Relationship to Other Awards": "Distinct from ACL Lifetime Achievement Award; often held by senior NLP leaders.",
     "Ranking/Prestige Signal": "Level 2 / Tier 2; major professional society fellowship in NLP/computational linguistics.",
     "Institution Category": "Professional and Scholarly Associations",
-    "Source URLs": "https://www.aclweb.org | https://www.aclweb.org/portal/content/acl-fellows"
+    "Source URLs": "https://www.aclweb.org"
   },
   "ISCB Fellow": {
     "Official Name": "ISCB Fellow",
@@ -4378,7 +4378,7 @@ const professionalSocietyFellowProfiles = {
     "Relationship to Other Awards": "Distinct from ISCB Overton Prize and Accomplishment by a Senior Scientist Award; often complements major bioinformatics honors.",
     "Ranking/Prestige Signal": "Level 2 / Tier 2; major computational biology professional society fellowship.",
     "Institution Category": "Professional and Scholarly Associations",
-    "Source URLs": "https://www.iscb.org | https://www.iscb.org/iscb-fellows"
+    "Source URLs": "https://www.iscb.org"
   }
 };
 
