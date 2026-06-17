@@ -2242,8 +2242,7 @@ const categories = [
         organization: "ACM (Association for Computing Machinery)",
         website: "https://www.acm.org",
         logoUrl: "assets/acm-logo.svg",
-        recognition:
-          "The ACM Fellow Recognition Program; The ACM Distinguished Member Recognition Program; The ACM Senior Member Recognition Program; ACM A.M. Turing Award; ACM/AAAI Allen Newell Award",
+        recognition: "ACM Fellow; ACM/AAAI Allen Newell Award",
         bodyProfileRows: [
           {
             "field": "Official Name",
@@ -2287,7 +2286,7 @@ const categories = [
           }
         ],
         criteriaProfiles: {
-          "The ACM Fellow Recognition Program": {
+          "ACM Fellow": {
             "Official Name": "ACM Fellow",
             "Institution/Type": "Professional fellowship / senior membership distinction.",
             Definition:
@@ -2482,7 +2481,7 @@ const categories = [
       {
         organization: "AAAI (Association for the Advancement of Artificial Intelligence)",
         website: "https://aaai.org",
-        recognition: "AAAI Fellow; ACM/AAAI Allen Newell Award; AAAI Feigenbaum Prize",
+        recognition: "AAAI Fellow; AAAI Feigenbaum Prize",
         bodyProfileRows: [
           {
             "field": "Official Name",
@@ -5058,10 +5057,79 @@ const replacedLegacyFacultyKeys = new Set(
   ].map(normalizeText)
 );
 
+const allowedRecognitionPairs = [
+  ["US National Academy of Sciences (NAS)", "Member"],
+  ["US National Academy of Engineering (NAE)", "Member"],
+  ["The Royal Society (UK)", "Fellow"],
+  ["The Royal Society (UK)", "Foreign Member"],
+  ["French Academy of Sciences", "Member"],
+  ["Leopoldina (German National Academy of Sciences)", "Member"],
+  ["American Academy of Arts and Sciences", "Fellow"],
+  ["Academia Europaea", "Member"],
+  ["Royal Academy of Engineering (UK)", "Fellow"],
+  ["Australian Academy of Science", "Fellow"],
+  ["Academy of Medical Sciences (UK)", "Fellow"],
+  ["Chinese Academy of Sciences", "Foreign Member"],
+  ["The World Academy of Sciences (TWAS)", "Fellow"],
+  ["Canadian Academy of Engineering", "Fellow"],
+  ["Australian Academy of Technological Sciences and Engineering (ATSE)", "Fellow"],
+  ["Italian Academy of Engineering and Technology", "Member"],
+  ["Berlin-Brandenburg Academy of Sciences and Humanities", "Member"],
+  ["Indian National Academy of Engineering", "Fellow / Foreign Fellow"],
+  ["Academy of Motion Picture Arts and Sciences (AMPAS)", "Member"],
+  ["World Academy of Art and Science (WAAS)", "Fellow"],
+  ["Swiss Academy of Engineering Sciences", "Member"],
+  ["Science Council of Japan", "Associate Member"],
+  ["MBR Academy of Scientists of the UAE", "Member"],
+  ["Young Israeli Academy of Sciences", "Member"],
+  ["Serbian Royal Academy / SKANU", "Member"]
+];
+
+const allowedStandaloneRecognitions = [
+  "BBVA Foundation Frontiers of Knowledge Award",
+  "BBVA Frontiers of Knowledge Award",
+  "IEEE John von Neumann Medal",
+  "IJCAI Award for Research Excellence",
+  "World Laureates Association Prize",
+  "ACM/AAAI Allen Newell Award",
+  "David E. Rumelhart Prize",
+  "Rumelhart Prize",
+  "COPSS Presidents' Award",
+  "Ulf Grenander Prize",
+  "AMS Ulf Grenander Prize in Stochastic Theory and Modeling",
+  "Helmholtz Prize (ICCV Test-of-Time)",
+  "MacArthur Fellowship",
+  "Humboldt Research Award",
+  "Guggenheim Fellowship",
+  "Sloan Research Fellowship",
+  "Overton Prize",
+  "AAAI Feigenbaum Prize",
+  "Michael Bruno Award",
+  "Leo Breiman Junior Award",
+  "IEEE Fellow",
+  "ACM Fellow",
+  "AAAS Fellow",
+  "AAAI Fellow",
+  "IMS Fellow",
+  "ASA Fellow",
+  "ASME Fellow",
+  "ACL Fellow",
+  "ISCB Fellow",
+  "BCS Fellow",
+  "British Computer Society Fellow"
+];
+
+const allowedRecognitionPairKeys = new Set(
+  allowedRecognitionPairs.map(([organization, recognition]) => `${normalizeText(organization)}||${normalizeText(recognition)}`)
+);
+
+const allowedStandaloneRecognitionKeys = new Set(allowedStandaloneRecognitions.map(normalizeText));
+
 const facultyRecognitions = [
   ...legacyFacultyRecognitions.filter((record) => !replacedLegacyFacultyKeys.has(facultyRecordKey(record))),
   ...additionalFacultyRecognitions
-].map(normalizeFacultyRecognitionRecord);
+].map(normalizeFacultyRecognitionRecord)
+  .filter((record) => facultyRecognitionTarget(record));
 
 const app = document.querySelector("#app");
 
@@ -5082,17 +5150,33 @@ function getCategory(id) {
   return categories.find((category) => category.id === id);
 }
 
+function activeCategoryItems(category) {
+  return (category.items || [])
+    .map((item, itemIndex) => ({ item, itemIndex }))
+    .filter(({ item }) => recognitionOptions(item).length);
+}
+
+function isAllowedRecognition(item, recognition) {
+  const recognitionKey = normalizeText(recognition);
+  const organizationKey = normalizeText(item.organization);
+
+  return (
+    allowedStandaloneRecognitionKeys.has(recognitionKey) ||
+    allowedRecognitionPairKeys.has(`${organizationKey}||${recognitionKey}`)
+  );
+}
+
 function recognitionCount(category) {
-  return (category.items || []).reduce((total, item) => total + recognitionOptions(item).length, 0);
+  return activeCategoryItems(category).reduce((total, { item }) => total + recognitionOptions(item).length, 0);
 }
 
 function bodyCount(category) {
-  return category.items?.length || 0;
+  return activeCategoryItems(category).length;
 }
 
 function allInstitutions() {
   return categories.flatMap((category) =>
-    (category.items || []).map((item, itemIndex) => ({
+    activeCategoryItems(category).map(({ item, itemIndex }) => ({
       ...item,
       itemIndex,
       categoryId: category.id,
@@ -5106,7 +5190,7 @@ function allInstitutions() {
 
 function allRecognitions() {
   return categories.flatMap((category) =>
-    (category.items || []).flatMap((item, itemIndex) =>
+    activeCategoryItems(category).flatMap(({ item, itemIndex }) =>
       recognitionOptions(item).map((recognition, recognitionIndex) => ({
         organization: item.organization,
         recognition,
@@ -5126,14 +5210,14 @@ function allRecognitions() {
 }
 
 function recognitionOptions(item) {
-  if (Array.isArray(item.recognitions)) {
-    return item.recognitions;
-  }
-
-  return String(item.recognition || "")
+  const options = Array.isArray(item.recognitions)
+    ? item.recognitions
+    : String(item.recognition || "")
     .split(";")
     .map((option) => option.trim())
     .filter(Boolean);
+
+  return options.filter((recognition) => isAllowedRecognition(item, recognition));
 }
 
 function recognitionTypeLabel(recognition) {
@@ -5684,7 +5768,7 @@ function renderCategory(id) {
 }
 
 function recognitionList(category) {
-  const items = category.items || [];
+  const items = activeCategoryItems(category);
 
   if (!items.length) {
     return `
@@ -5701,8 +5785,8 @@ function recognitionList(category) {
     <div class="recognition-list">
       ${items
         .map(
-          (item, index) => `
-          <a class="recognition-card" href="#recognition/${category.id}/${index}">
+          ({ item, itemIndex }) => `
+          <a class="recognition-card" href="#recognition/${category.id}/${itemIndex}">
             <div class="institution-card-head">
               ${institutionLogo(item)}
               <div class="tag-cluster">
@@ -5726,7 +5810,7 @@ function renderRecognition(categoryId, index) {
   const item = category?.items?.[index];
   const options = item ? recognitionOptions(item) : [];
 
-  if (!category || !item) {
+  if (!category || !item || !options.length) {
     renderCategoriesPage();
     return;
   }
@@ -6477,7 +6561,7 @@ function exportData(scope) {
     scope,
     categories: selectedCategories,
     recognitions: selectedCategories.flatMap((category) =>
-      (category.items || []).flatMap((item, itemIndex) =>
+      activeCategoryItems(category).flatMap(({ item, itemIndex }) =>
         recognitionOptions(item).map((recognition, recognitionIndex) => ({
           organization: item.organization,
           recognition,
