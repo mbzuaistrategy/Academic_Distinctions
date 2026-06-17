@@ -4913,7 +4913,7 @@ const additionalFacultyRecognitions = [
     routeRecognition: "AMS Ulf Grenander Prize in Stochastic Theory and Modeling",
     details: "2021"
   }),
-  facultyRecord("Eran Segal", "Michael Bruno Award", "fellowshipPrize", "level2", { details: "Year not specified" }),
+  facultyRecord("Eran Segal", "Michael Bruno Award", "fellowshipPrize", "level2", { details: "2015" }),
   facultyRecord("Mladen Kolar", "Leo Breiman Junior Award", "fellowshipPrize", "level3", { details: "2024" }),
   facultyRecord("Michael I. Jordan", "IEEE Fellow", "societyFellow", "level2", { details: "2005" }),
   facultyRecord("Anil K. Jain", "IEEE Fellow", "societyFellow", "level2", { details: "2018" }),
