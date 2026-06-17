@@ -5156,6 +5156,273 @@ const allowedRecognitionPairKeys = new Set(
 
 const allowedStandaloneRecognitionKeys = new Set(allowedStandaloneRecognitions.map(normalizeText));
 
+const selectedAwardingBodyProfiles = {
+  [criteriaProfileKey("IEEE (Institute of Electrical and Electronics Engineers)", "IEEE W. Wallace McDowell Award")]: [
+    { field: "Official Name", value: "IEEE Computer Society" },
+    { field: "Organization Type", value: "Professional and scholarly association; IEEE technical society; nonprofit technical community." },
+    { field: "Definition", value: "A global computing society within IEEE that supports computing research, practice, standards, publications, conferences, education, professional development, and awards." },
+    { field: "History/Background", value: "The IEEE Computer Society traces its origins to the AIEE Subcommittee on Large-Scale Computing Devices formed in 1946 and the IRE Professional Group on Electronic Computers formed in 1951. It later became the computing-focused society within IEEE." },
+    { field: "Purpose", value: "To advance the theory, practice, and application of computer and information-processing science and technology, and to recognize major achievement and service in computing." },
+    { field: "Mission", value: "Advance computing and computer/information-processing technology through research dissemination, standards, conferences, publications, education, professional community, and awards." },
+    { field: "Governance/Leadership", value: "Operates within IEEE through elected volunteer leadership, a Board of Governors, technical committees, publications and conference boards, and awards committees. Major awards are administered through IEEE Computer Society awards procedures." },
+    { field: "Scope/Reach", value: "Global computing scope: computer science, computer engineering, AI, machine learning, software, hardware, systems, data, security, information processing, and related technologies." },
+    { field: "Recognition Types", value: "IEEE W. Wallace McDowell Award; IEEE Computer Society technical awards, service awards, paper awards, and professional recognitions." },
+    { field: "Source", value: "https://www.computer.org/" },
+  ],
+  [criteriaProfileKey("French Academy of Sciences", "Orange Prize / French Academy Grand Prix")]: [
+    { field: "Official Name", value: "Academie des sciences / French Academy of Sciences" },
+    { field: "Organization Type", value: "Leading national academy; learned society within the Institut de France." },
+    { field: "Definition", value: "France's national academy of sciences, recognizing scientific excellence, supporting scientific life, and contributing expertise and advice across the sciences." },
+    { field: "History/Background", value: "Founded in 1666 under Louis XIV and Jean-Baptiste Colbert to encourage and organize scientific research in France." },
+    { field: "Purpose", value: "To celebrate scientific excellence, reward outstanding contributions, promote science, support scientific dialogue, and advise public authorities and society." },
+    { field: "Mission", value: "Encourage scientific life, promote the teaching and transmission of science, foster international cooperation, and provide scientific expertise and advice." },
+    { field: "Governance/Leadership", value: "Governed through academy members, sections, committees, and leadership within the Institut de France. Academy prizes are selected by juries operating under rules designed to avoid conflicts of interest; larger grand prizes use specific juries that may involve members from several sections or outside experts." },
+    { field: "Scope/Reach", value: "National academy with international scientific reach; covers mathematics, physical sciences, chemical sciences, biological and medical sciences, engineering, mechanics, computer sciences, Earth and environmental sciences, and applied sciences." },
+    { field: "Recognition Types", value: "Orange Prize / French Academy Grand Prix; Academy grand prizes; thematic prizes; medals; member and foreign associate elections." },
+    { field: "Source", value: "https://www.academie-sciences.fr/en/history-academy" },
+  ],
+  [criteriaProfileKey("ASME (American Society of Mechanical Engineers)", "ASME Machine Design Award")]: [
+    { field: "Official Name", value: "American Society of Mechanical Engineers (ASME)" },
+    { field: "Organization Type", value: "Professional engineering society; nonprofit professional association and standards organization." },
+    { field: "Definition", value: "A global professional society for mechanical and multidisciplinary engineering that supports codes and standards, conferences, publications, education, training, professional development, and honors." },
+    { field: "History/Background", value: "Founded in 1880 as the American Society of Mechanical Engineers to provide a forum for engineers during the rise of industrialization and mechanization." },
+    { field: "Purpose", value: "To enable collaboration, knowledge sharing, skill development, technical standards, and recognition across mechanical and multidisciplinary engineering." },
+    { field: "Mission", value: "Promote engineering excellence and collaboration in service of society, including standards, education, publications, conferences, and professional recognition." },
+    { field: "Governance/Leadership", value: "Governed by ASME's volunteer and professional leadership, including a Board of Governors, divisions, committees, and honors/awards committees." },
+    { field: "Scope/Reach", value: "International scope across mechanical engineering, design, manufacturing, robotics, energy, thermal sciences, mechanics, pressure technology, bioengineering, and related multidisciplinary fields." },
+    { field: "Recognition Types", value: "ASME Machine Design Award; ASME Fellow; ASME medals, achievement awards, paper awards, and division awards." },
+    { field: "Source", value: "https://www.asme.org/about-asme" },
+  ],
+  [criteriaProfileKey("The Royal Society (UK)", "Royal Society Milner Award")]: [
+    { field: "Official Name", value: "The Royal Society" },
+    { field: "Organization Type", value: "Leading national academy; independent scientific fellowship; Royal Charter learned society." },
+    { field: "Definition", value: "The United Kingdom's national academy of sciences and an independent fellowship of distinguished scientists, engineers, and technologists." },
+    { field: "History/Background", value: "Founded in 1660 and incorporated by Royal Charter. The Society's modern governance operates under its Charter, Statutes, and Standing Orders." },
+    { field: "Purpose", value: "To recognize excellence in science, support scientific discovery, provide scientific advice, and promote the use of science for the benefit of humanity." },
+    { field: "Mission", value: "To promote and support excellence in science and the development and use of science for the benefit of humanity." },
+    { field: "Governance/Leadership", value: "Governed by a Council elected by and from the Fellowship. Medals and awards are administered through the Society's medals and prizes processes and relevant award committees." },
+    { field: "Scope/Reach", value: "UK national academy with global reach; covers the natural sciences, mathematics, engineering sciences, technology, computer science, medicine-related sciences, and interdisciplinary scientific fields." },
+    { field: "Recognition Types", value: "Royal Society Milner Award and Lecture; Fellow; Foreign Member; Royal Society medals, awards, prize lectures, and research fellowships." },
+    { field: "Source", value: "https://royalsociety.org/about-us/how-we-are-governed/governance/" },
+  ],
+  [criteriaProfileKey("Royal Academy of Engineering (UK)", "Royal Academy of Engineering Whittle Medal")]: [
+    { field: "Official Name", value: "Royal Academy of Engineering" },
+    { field: "Organization Type", value: "Leading national academy; engineering fellowship; UK charity." },
+    { field: "Definition", value: "The UK's national academy for engineering and technology, bringing together leading engineers, innovators, entrepreneurs, and technology leaders." },
+    { field: "History/Background", value: "Founded in 1976 as the Fellowship of Engineering, later incorporated by Royal Charter and renamed the Royal Academy of Engineering." },
+    { field: "Purpose", value: "To advance engineering excellence, support innovation, provide policy advice, recognize outstanding engineers, and use engineering to benefit society and the economy." },
+    { field: "Mission", value: "Harness the power of engineering to build a sustainable society and inclusive economy." },
+    { field: "Governance/Leadership", value: "Governed by a Trustee Board and supported by committees. The Awards Committee leads the selection process for Royal Academy of Engineering awards, including medals and prizes." },
+    { field: "Scope/Reach", value: "UK national academy with international reach; covers all areas of engineering and technology, including AI, computing, robotics, biomedical engineering, infrastructure, energy, manufacturing, and engineering policy." },
+    { field: "Recognition Types", value: "Sir Frank Whittle Medal; Fellow; International Fellow; Honorary Fellow; Royal Fellow; engineering prizes and medals." },
+    { field: "Source", value: "https://raeng.org.uk/about-us" },
+  ],
+  [criteriaProfileKey("IEEE (Institute of Electrical and Electronics Engineers)", "IEEE Robotics and Automation Society RAS Pioneer Award")]: [
+    { field: "Official Name", value: "IEEE Robotics and Automation Society (IEEE RAS)" },
+    { field: "Organization Type", value: "Professional and scholarly association; IEEE technical society." },
+    { field: "Definition", value: "An IEEE technical society serving the robotics and automation research and engineering community through conferences, publications, technical activities, standards, and awards." },
+    { field: "History/Background", value: "IEEE RAS developed as IEEE's professional home for robotics and automation, supporting major conferences such as ICRA and IROS and a portfolio of society awards." },
+    { field: "Purpose", value: "To advance theory, practice, research, development, and engineering in robotics and automation and to recognize influential contributions to those fields." },
+    { field: "Mission", value: "Support the global robotics and automation community through technical exchange, publications, conferences, education, and recognition." },
+    { field: "Governance/Leadership", value: "Governed through IEEE RAS elected leadership, administrative committees, technical committees, and awards committees. Society awards follow published RAS nomination and review processes." },
+    { field: "Scope/Reach", value: "Global scope across robotics, automation, AI for robotics, control, mechatronics, autonomous systems, human-robot interaction, manipulation, perception, and related fields." },
+    { field: "Recognition Types", value: "IEEE RAS Pioneer in Robotics and Automation Award; IEEE RAS society awards; conference awards; publication awards." },
+    { field: "Source", value: "https://www.ieee-ras.org/awards-recognition/" },
+  ],
+  [criteriaProfileKey("International Association for Pattern Recognition (IAPR)", "IAPR Fellow")]: [
+    { field: "Official Name", value: "International Association for Pattern Recognition (IAPR)" },
+    { field: "Organization Type", value: "International professional/scientific association of nonprofit member organizations." },
+    { field: "Definition", value: "An international association of nonprofit scientific and professional organizations concerned with pattern recognition, computer vision, and image processing in a broad sense." },
+    { field: "History/Background", value: "IAPR was established as an international umbrella association for national, multinational, or international organizations in pattern recognition and related fields. It admits one member organization from a country or territory, with individuals participating through their member society." },
+    { field: "Purpose", value: "To promote research, collaboration, conferences, publications, and professional recognition in pattern recognition, computer vision, image processing, machine intelligence, and related areas." },
+    { field: "Mission", value: "Advance pattern recognition and related scientific fields through international cooperation, dissemination, and community recognition." },
+    { field: "Governance/Leadership", value: "Governed through IAPR officers, a Governing Board, national/member societies, standing committees, and prize/fellow committees." },
+    { field: "Scope/Reach", value: "Global scope across pattern recognition, computer vision, image processing, document analysis, biometrics, machine intelligence, and AI-related recognition methods." },
+    { field: "Recognition Types", value: "IAPR Fellow; IAPR King-Sun Fu Prize; J. K. Aggarwal Prize; Maria Petrou Prize; other IAPR awards." },
+    { field: "Source", value: "https://iapr.org/about-us/" },
+  ],
+  [criteriaProfileKey("International Association for Pattern Recognition (IAPR)", "IAPR King-Sun Fu Prize")]: [
+    { field: "Official Name", value: "International Association for Pattern Recognition (IAPR)" },
+    { field: "Organization Type", value: "International professional/scientific association of nonprofit member organizations." },
+    { field: "Definition", value: "An international association of nonprofit scientific and professional organizations concerned with pattern recognition, computer vision, and image processing in a broad sense." },
+    { field: "History/Background", value: "IAPR was established as an international umbrella association for national, multinational, or international organizations in pattern recognition and related fields. It admits one member organization from a country or territory, with individuals participating through their member society." },
+    { field: "Purpose", value: "To promote research, collaboration, conferences, publications, and professional recognition in pattern recognition, computer vision, image processing, machine intelligence, and related areas." },
+    { field: "Mission", value: "Advance pattern recognition and related scientific fields through international cooperation, dissemination, and community recognition." },
+    { field: "Governance/Leadership", value: "Governed through IAPR officers, a Governing Board, national/member societies, standing committees, and prize/fellow committees." },
+    { field: "Scope/Reach", value: "Global scope across pattern recognition, computer vision, image processing, document analysis, biometrics, machine intelligence, and AI-related recognition methods." },
+    { field: "Recognition Types", value: "IAPR Fellow; IAPR King-Sun Fu Prize; J. K. Aggarwal Prize; Maria Petrou Prize; other IAPR awards." },
+    { field: "Source", value: "https://iapr.org/about-us/" },
+  ],
+  [criteriaProfileKey("International Society for Optics and Photonics (SPIE)", "SPIE Fellow")]: [
+    { field: "Official Name", value: "SPIE, the International Society for Optics and Photonics" },
+    { field: "Organization Type", value: "International nonprofit professional society." },
+    { field: "Definition", value: "A professional society serving the optics, photonics, imaging, and light-based science and technology community through conferences, publications, education, community programmes, and recognition." },
+    { field: "History/Background", value: "SPIE has operated as a not-for-profit society since its founding in 1955, connecting researchers, engineers, students, educators, and industry leaders in optics and photonics." },
+    { field: "Purpose", value: "To advance light-based research and technologies, support the global optics and photonics community, and recognize technical achievement and service." },
+    { field: "Mission", value: "Partner with researchers, educators, and industry to advance light-based research and technologies for the betterment of the human condition." },
+    { field: "Governance/Leadership", value: "Governed by a Board of Directors and volunteer leadership structures, supported by committees and professional staff. Fellow nominations are handled through SPIE member-recognition processes." },
+    { field: "Scope/Reach", value: "Global scope across optics, photonics, imaging, optical engineering, biomedical optics, lasers, sensors, remote sensing, lithography, quantum optics, and related technologies." },
+    { field: "Recognition Types", value: "SPIE Fellow; SPIE awards, medals, scholarships, society honours, and member recognitions." },
+    { field: "Source", value: "https://spie.org/about-spie/the-society/mission-and-values" },
+  ],
+  [criteriaProfileKey("Real-World Cryptography", "Levchin Prize for Real-World Cryptography")]: [
+    { field: "Official Name", value: "Real World Crypto Steering Committee / International Association for Cryptologic Research context" },
+    { field: "Organization Type", value: "Scholarly conference prize committee within the cryptology research community; associated with IACR." },
+    { field: "Definition", value: "The prize-awarding structure for the Levchin Prize, connected to the Real World Crypto conference and the International Association for Cryptologic Research ecosystem." },
+    { field: "History/Background", value: "The Levchin Prize was established in 2016 through a donation from Max Levchin to recognize practical cryptography with real-world impact." },
+    { field: "Purpose", value: "To recognize major innovations in cryptography that have significantly affected the practice of cryptography and its use in real-world systems." },
+    { field: "Mission", value: "Support practical, deployable, and scientifically sound cryptography through recognition at the Real World Crypto conference." },
+    { field: "Governance/Leadership", value: "Prize awardees are selected annually by the Real World Crypto steering or award selection committee. The public prize page lists the committee members for the current cycle." },
+    { field: "Scope/Reach", value: "Global cryptography and security community, especially deployed protocols, cryptographic engineering, privacy systems, secure communication, public-key infrastructure, and real-world cryptographic standards." },
+    { field: "Recognition Types", value: "Levchin Prize for Real-World Cryptography." },
+    { field: "Source", value: "https://rwc.iacr.org/LevchinPrize/" },
+  ],
+  [criteriaProfileKey("European Molecular Biology Organization (EMBO)", "European Molecular Biology Organization EMBO Member")]: [
+    { field: "Official Name", value: "European Molecular Biology Organization (EMBO)" },
+    { field: "Organization Type", value: "International life-science organization; learned membership organization." },
+    { field: "Definition", value: "An organization of leading life scientists that promotes excellence in the life sciences in Europe and beyond." },
+    { field: "History/Background", value: "EMBO was awarded legal status on 12 July 1964 after planning efforts by European molecular biologists; its first activities included fellowships, courses, and election of members." },
+    { field: "Purpose", value: "To support talented researchers, stimulate exchange of scientific information, strengthen research communities, and help build an environment where scientists can achieve their best work." },
+    { field: "Mission", value: "Promote excellence in the life sciences in Europe and beyond through membership, fellowships, scientific exchange, training, publications, and policy input." },
+    { field: "Governance/Leadership", value: "Governed by the EMBO Council, which is responsible for the development of the organization. Members also serve on Council, committees, advisory editorial boards, and evaluation panels." },
+    { field: "Scope/Reach", value: "Europe-centered with global reach; covers molecular biology, cell biology, genetics, genomics, systems biology, developmental biology, neuroscience, computational biology, and the full range of life sciences." },
+    { field: "Recognition Types", value: "EMBO Member; EMBO Associate Member; EMBO Young Investigator; EMBO fellowships and programme recognitions." },
+    { field: "Source", value: "https://www.embo.org/about-embo/" },
+  ],
+  [criteriaProfileKey("Centre national de la recherche scientifique (CNRS)", "CNRS Silver Medal")]: [
+    { field: "Official Name", value: "Centre national de la recherche scientifique (CNRS) / French National Centre for Scientific Research" },
+    { field: "Organization Type", value: "Public research organization; national research institution." },
+    { field: "Definition", value: "France's major multidisciplinary public research organization, active across all fields of knowledge and responsible for major scientific research, innovation, and national scientific recognition." },
+    { field: "History/Background", value: "CNRS was created in 1939 and has since become one of the world's leading multidisciplinary research organizations." },
+    { field: "Purpose", value: "To conduct and support scientific research, advance French and international research, foster innovation, and recognize outstanding researchers and research support." },
+    { field: "Mission", value: "Serve research and innovation across all fields of knowledge and contribute to the visibility and advancement of French science." },
+    { field: "Governance/Leadership", value: "CNRS is led by scientific and administrative leadership and organized through institutes, regional delegations, laboratories, and international offices. CNRS distinctions are administered through CNRS awards processes." },
+    { field: "Scope/Reach", value: "National and international scope across mathematics, physics, chemistry, life sciences, humanities, social sciences, engineering, information sciences, Earth sciences, environment, and interdisciplinary research." },
+    { field: "Recognition Types", value: "CNRS Silver Medal; CNRS Gold Medal; CNRS Bronze Medal; CNRS Innovation Medal; CNRS Crystal Medal; CNRS Talents distinctions." },
+    { field: "Source", value: "https://www.cnrs.fr/en/le-cnrs/distinctions" },
+  ],
+  [criteriaProfileKey("European Association for Signal Processing (EURASIP)", "European Association for Signal Processing EURASIP Fellow")]: [
+    { field: "Official Name", value: "European Association for Signal Processing (EURASIP)" },
+    { field: "Organization Type", value: "International scientific and professional association; nonprofit learned society." },
+    { field: "Definition", value: "A scientific association dedicated to the theory and applications of signal processing, supporting conferences, publications, membership, awards, and professional community." },
+    { field: "History/Background", value: "EURASIP was founded in 1978 to improve communication among groups and individuals working in signal processing in Europe and elsewhere." },
+    { field: "Purpose", value: "To exchange and disseminate information in signal processing and provide a learned and professional platform for discussion and dissemination without aiming to generate profit." },
+    { field: "Mission", value: "Support the dynamic development of signal-processing research and community activities through journals, conferences, awards, education, and international collaboration." },
+    { field: "Governance/Leadership", value: "Governed by a Board of Directors and association committees. Members participate in Board elections. Fellow nominations and other recognitions are handled through EURASIP awards processes." },
+    { field: "Scope/Reach", value: "European-led but international signal-processing community; covers signal processing, machine learning for signals, communications, audio, speech, image/video processing, biomedical signals, sensing, and related areas." },
+    { field: "Recognition Types", value: "EURASIP Fellow; EURASIP Technical Achievement Award; Best Paper Awards; other association awards." },
+    { field: "Source", value: "https://eurasip.org/organization/" },
+  ],
+  [criteriaProfileKey("German Cancer Prize", "German Cancer Prize")]: [
+    { field: "Official Name", value: "Deutsche Krebsgesellschaft and Deutsche Krebsstiftung / German Cancer Society and German Cancer Foundation" },
+    { field: "Organization Type", value: "Medical/scientific society and nonprofit foundation." },
+    { field: "Definition", value: "German oncology organizations that jointly support and confer the German Cancer Prize, one of Germany's major recognitions in oncology research." },
+    { field: "History/Background", value: "The German Cancer Prize has been developed as a major German science prize in oncology and is awarded in several categories of cancer research." },
+    { field: "Purpose", value: "To recognize outstanding, forward-looking work in cancer research and cancer medicine, including experimental, translational, clinical, and health-services research." },
+    { field: "Mission", value: "Advance oncology research and cancer medicine, recognize excellence, and support progress in cancer care and research." },
+    { field: "Governance/Leadership", value: "The prize is conferred by the German Cancer Society and supported together with the German Cancer Foundation. Selection and award administration occur through the prize's scientific and organizational structures." },
+    { field: "Scope/Reach", value: "Primarily Germany, with relevance to international oncology; covers experimental cancer research, translational cancer research, clinical cancer research, and health-services research." },
+    { field: "Recognition Types", value: "German Cancer Prize / Deutscher Krebspreis; Ernst von Leyden Prize and other oncology recognitions." },
+    { field: "Source", value: "https://www.krebsgesellschaft.de/ueber-uns/preise-awards" },
+  ],
+  [criteriaProfileKey("van Niel International Prize", "van Niel International Prize")]: [
+    { field: "Official Name", value: "International Committee on Systematics of Prokaryotes (ICSP) and The University of Queensland Senate" },
+    { field: "Organization Type", value: "International scientific committee and university-awarded scientific prize structure." },
+    { field: "Definition", value: "The recognized awarding structure for the van Niel International Prize, in which the University of Queensland Senate presents the prize on recommendation of the ICSP Executive Board." },
+    { field: "History/Background", value: "The van Niel International Prize was established in 1986 and is associated with studies in bacterial/prokaryote systematics." },
+    { field: "Purpose", value: "To recognize major contributions to bacterial and prokaryotic systematics." },
+    { field: "Mission", value: "Support excellence, nomenclature, classification, and systematics in prokaryotic microbiology through international scientific governance and recognition." },
+    { field: "Governance/Leadership", value: "The prize has been presented by the University of Queensland Senate on the recommendation of the Executive Board of the International Committee on Systematics of Prokaryotes." },
+    { field: "Scope/Reach", value: "Global microbiology scope; bacterial systematics, prokaryote taxonomy, microbial classification, microbial genomics, nomenclature, and related microbiological sciences." },
+    { field: "Recognition Types", value: "van Niel International Prize for Studies in Bacterial Systematics." },
+    { field: "Source", value: "https://pubmed.ncbi.nlm.nih.gov/32956033/" },
+  ],
+  [criteriaProfileKey("American Academy of Microbiology", "American Academy of Microbiology Fellow")]: [
+    { field: "Official Name", value: "American Academy of Microbiology (AAM), within the American Society for Microbiology (ASM)" },
+    { field: "Organization Type", value: "Honorific academy and scientific think tank within a professional scientific society." },
+    { field: "Definition", value: "The honorific leadership group within ASM that elects exceptional microbiologists to fellowship and provides microbiological expertise for science and the public." },
+    { field: "History/Background", value: "The Academy has elected distinguished microbiologists for decades and functions as ASM's honorific leadership group and scientific think tank." },
+    { field: "Purpose", value: "To recognize scientists for outstanding contributions to microbiology and to provide microbiological expertise in service of science and society." },
+    { field: "Mission", value: "Recognize excellence and original contributions in microbiology while supporting scientific leadership and public understanding of microbial sciences." },
+    { field: "Governance/Leadership", value: "Governors of the Academy elect fellows from a pool of nominated candidates. Election occurs through a selective peer-review process based on scientific achievement and original contributions." },
+    { field: "Scope/Reach", value: "Global microbiology scope; research, education, public health, industry, government service, microbial sciences, genomics, infectious disease, environmental microbiology, and related fields." },
+    { field: "Recognition Types", value: "American Academy of Microbiology Fellow." },
+    { field: "Source", value: "https://asm.org/academy/academy" },
+  ],
+  [criteriaProfileKey("German Future Prize", "German Future Prize")]: [
+    { field: "Official Name", value: "Deutscher Zukunftspreis - Federal President's Award for Innovation and Technology" },
+    { field: "Organization Type", value: "National innovation prize under the patronage/award authority of the Federal President of Germany." },
+    { field: "Definition", value: "Germany's Federal President's prize recognizing outstanding technical, engineering, and scientific innovations with application-ready impact." },
+    { field: "History/Background", value: "The German Future Prize has been awarded annually since 1997 and is one of Germany's most prominent science and innovation prizes." },
+    { field: "Purpose", value: "To honor innovations that turn ideas into successful technologies and products, creating benefits for people, the economy, and society." },
+    { field: "Mission", value: "Highlight outstanding innovation in science and technology and strengthen the connection between research, industry, and public benefit." },
+    { field: "Governance/Leadership", value: "The Federal President awards the prize. The programme includes patrons/supporters, a board of trustees, and a jury; nominated teams are selected from proposals by major science and industry organizations." },
+    { field: "Scope/Reach", value: "Germany-focused national innovation prize with international visibility; covers technology, engineering, natural sciences, applied research, AI, robotics, medical technology, materials, energy, and industrial innovation." },
+    { field: "Recognition Types", value: "German Future Prize / Deutscher Zukunftspreis." },
+    { field: "Source", value: "https://www.deutscher-zukunftspreis.de/en" },
+  ],
+  [criteriaProfileKey("German Research Foundation (DFG)", "Gottfried Wilhelm Leibniz Prize")]: [
+    { field: "Official Name", value: "Deutsche Forschungsgemeinschaft (DFG) / German Research Foundation" },
+    { field: "Organization Type", value: "Self-governing research funding organization; association under private law; science funding body." },
+    { field: "Definition", value: "Germany's central self-governing research funding organization, supporting research across all disciplines and conferring major research prizes." },
+    { field: "History/Background", value: "DFG developed from earlier German science-support structures and was re-established in postwar Germany as the central self-governing organization of science and research. Its peer-review and statutory bodies reflect scientific self-governance." },
+    { field: "Purpose", value: "To fund excellent research, support scientific quality, promote early-career researchers, foster international cooperation, and recognize outstanding research achievement." },
+    { field: "Mission", value: "Serve all branches of science and the humanities by funding research projects and promoting excellence and quality through competitive, science-led review." },
+    { field: "Governance/Leadership", value: "Governed through statutory bodies including the General Assembly, Executive Committee, Joint Committee, review boards/committees, and other scientific self-governance bodies." },
+    { field: "Scope/Reach", value: "Germany-centered with international cooperation; all disciplines including science, engineering, humanities, social sciences, medicine, AI, ML, mathematics, and computer science." },
+    { field: "Recognition Types", value: "Gottfried Wilhelm Leibniz Prize; Heinz Maier-Leibnitz Prize; Communicator Prize; other DFG prizes and funding distinctions." },
+    { field: "Source", value: "https://www.dfg.de/en/about-us" },
+  ],
+  [criteriaProfileKey("German National Academy of Science and Engineering (acatech)", "Member")]: [
+    { field: "Official Name", value: "acatech - National Academy of Science and Engineering" },
+    { field: "Organization Type", value: "Leading national academy; independent science and engineering academy." },
+    { field: "Definition", value: "Germany's National Academy of Science and Engineering, providing independent, evidence-based advice to policymakers and society and recognizing leading figures through academy membership." },
+    { field: "History/Background", value: "acatech developed as Germany's national academy for science and engineering and has become the country's voice for technological sciences at home and abroad." },
+    { field: "Purpose", value: "To provide independent advice, support innovation policy, promote sustainable growth through innovation, and connect science, engineering, industry, and society." },
+    { field: "Mission", value: "Provide policymakers and society with independent, evidence-based advice in the public interest and promote sustainable growth through innovation." },
+    { field: "Governance/Leadership", value: "Composed of several organs including the General Assembly, Topic Networks and Working Groups, Executive Board, Management Board, Senate, and Board of Trustees." },
+    { field: "Scope/Reach", value: "Germany-focused national academy with international cooperation; engineering sciences, natural sciences, medicine, humanities, social sciences, technology policy, AI, robotics, digitalization, energy, and innovation." },
+    { field: "Recognition Types", value: "acatech Member; Senate participation; academy projects and advisory roles." },
+    { field: "Source", value: "https://en.acatech.de/" },
+  ],
+  [criteriaProfileKey("Institution of Engineering and Technology (IET)", "Institution of Engineering and Technology IET Faraday Prize / Medal")]: [
+    { field: "Official Name", value: "Institution of Engineering and Technology (IET)" },
+    { field: "Organization Type", value: "Professional engineering institution; learned society; UK charity and Royal Charter body." },
+    { field: "Definition", value: "A global engineering and technology institution that inspires, informs, and influences the engineering community through membership, knowledge, standards, professional registration, events, awards, and public engagement." },
+    { field: "History/Background", value: "The IET traces its history to the Society of Telegraph Engineers founded in 1871 and was formed as the IET in 2006 from predecessor engineering institutions." },
+    { field: "Purpose", value: "To promote the general advancement of science, engineering, and technology and facilitate the exchange of information and ideas among members and the wider community." },
+    { field: "Mission", value: "Inspire, inform, and influence the global engineering community to engineer a better world." },
+    { field: "Governance/Leadership", value: "Governed by an elected Board of Trustees under the Royal Charter and Bye-laws, supported by Council, main boards, committees, and awards/scholarship structures." },
+    { field: "Scope/Reach", value: "International; engineering and technology across electrical, electronic, manufacturing, information, computing, communications, energy, systems, AI, and related fields." },
+    { field: "Recognition Types", value: "IET Faraday Medal / Faraday Prize; IET Achievement Medals; IET Fellow; awards, scholarships, and professional titles." },
+    { field: "Source", value: "https://www.theiet.org/about" },
+  ],
+  [criteriaProfileKey("Japan Society of Mechanical Engineers (JSME)", "Japan Society of Mechanical Engineers JSME Fellow")]: [
+    { field: "Official Name", value: "The Japan Society of Mechanical Engineers (JSME)" },
+    { field: "Organization Type", value: "Professional and scholarly engineering society." },
+    { field: "Definition", value: "Japan's leading mechanical engineering society, supporting mechanical engineering research, professional development, publications, events, divisions, branches, awards, and certification activities." },
+    { field: "History/Background", value: "JSME was founded in 1897 to advance science and technology and contribute to the development of industries. Its membership exceeds 35,000." },
+    { field: "Purpose", value: "To advance science and technology, support engineering research and practice, and contribute to industrial and societal development." },
+    { field: "Mission", value: "Advance mechanical engineering science and technology through community, publications, conferences, awards, professional standards, and technical activities." },
+    { field: "Governance/Leadership", value: "Governed through executive board members, committees, divisions, branches, and society award structures." },
+    { field: "Scope/Reach", value: "Japan-centered with international engineering reach; mechanical engineering, robotics, manufacturing, design, thermal systems, materials, fluids, energy, control, dynamics, and related fields." },
+    { field: "Recognition Types", value: "JSME Fellow; JSME Medal for Distinguished Engineers; JSME Medal for Outstanding Paper; JSME Medal for New Technology; JSME Young Engineers Award; other JSME awards." },
+    { field: "Source", value: "https://www.jsme.or.jp/english/about/about-jsme/" },
+  ],
+  [criteriaProfileKey("Japan Society of Mechanical Engineers (JSME)", "JSME Medal for Distinguished Engineers")]: [
+    { field: "Official Name", value: "The Japan Society of Mechanical Engineers (JSME)" },
+    { field: "Organization Type", value: "Professional and scholarly engineering society." },
+    { field: "Definition", value: "Japan's leading mechanical engineering society, supporting mechanical engineering research, professional development, publications, events, divisions, branches, awards, and certification activities." },
+    { field: "History/Background", value: "JSME was founded in 1897 to advance science and technology and contribute to the development of industries. Its membership exceeds 35,000." },
+    { field: "Purpose", value: "To advance science and technology, support engineering research and practice, and contribute to industrial and societal development." },
+    { field: "Mission", value: "Advance mechanical engineering science and technology through community, publications, conferences, awards, professional standards, and technical activities." },
+    { field: "Governance/Leadership", value: "Governed through executive board members, committees, divisions, branches, and society award structures." },
+    { field: "Scope/Reach", value: "Japan-centered with international engineering reach; mechanical engineering, robotics, manufacturing, design, thermal systems, materials, fluids, energy, control, dynamics, and related fields." },
+    { field: "Recognition Types", value: "JSME Fellow; JSME Medal for Distinguished Engineers; JSME Medal for Outstanding Paper; JSME Medal for New Technology; JSME Young Engineers Award; other JSME awards." },
+    { field: "Source", value: "https://www.jsme.or.jp/english/about/about-jsme/" },
+  ],
+};
+
 const selectedRecognitionCriteriaProfiles = {
   [criteriaProfileKey("IEEE (Institute of Electrical and Electronics Engineers)", "IEEE W. Wallace McDowell Award")]: {
     "Official Name": "IEEE Computer Society W. Wallace McDowell Award",
@@ -6788,6 +7055,7 @@ function renderRecognitionCriteria(categoryId, itemIndex, recognitionIndex) {
                 </div>
               </div>
               ${mbzuaiRecipientSection(item, selectedRecognition)}
+              ${recognitionAwardingBodyProfile(item, selectedRecognition)}
               ${recognitionCriteriaProfile(item, category, selectedRecognition)}
             </div>
           </section>
@@ -6828,6 +7096,33 @@ function mbzuaiRecipientSection(item, selectedRecognition) {
           `
           : ""
       }
+    </article>
+  `;
+}
+
+
+function recognitionAwardingBodyProfile(item, selectedRecognition) {
+  const rows = selectedAwardingBodyProfiles[criteriaProfileKey(item.organization, selectedRecognition)];
+  if (!rows?.length) return "";
+
+  return `
+    <article class="criteria-section awarding-body-detail">
+      <header>
+        <span>${icon("landmark")}</span>
+        <h3>Awarding Body Profile</h3>
+      </header>
+      <div class="body-profile compact-body-profile">
+        ${rows
+          .map(
+            (row) => `
+            <article class="body-profile-row">
+              <h3>${escapeHtml(row.field)}</h3>
+              <div class="profile-value">${formatProfileValue(row.value)}</div>
+            </article>
+          `
+          )
+          .join("")}
+      </div>
     </article>
   `;
 }
