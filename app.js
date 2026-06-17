@@ -3736,7 +3736,9 @@ const categories = [
         organization: "Robert J. Glushko and Pamela Samuelson Foundation",
         recognition: "Rumelhart Prize",
         note: "Presented with, and independent from, the Cognitive Science Society",
-        website: "https://glushkofoundation.org"
+        website: "https://glushkofoundation.org",
+        logoUrl: "assets/glushko-dissertation-prize-logo.png",
+        logoFit: "contain"
       ,
                 bodyProfileRows: [
           {
