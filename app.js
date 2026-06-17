@@ -2759,7 +2759,57 @@ const categories = [
           { field: "Recognition Types", value: "ASME Fellow; ASME Machine Design Award." }
         ]
       },
-      { organization: "BCS (The Chartered Institute for IT)", recognition: "BCS Fellow", website: "https://www.bcs.org" },
+      {
+        organization: "BCS (The Chartered Institute for IT)",
+        recognition: "BCS Fellow",
+        website: "https://www.bcs.org/membership/become-a-member/fellowship/",
+        bodyProfileRows: [
+          { field: "Official Name", value: "BCS, The Chartered Institute for IT." },
+          { field: "Organization Type", value: "Professional and scholarly association; UK chartered professional body for IT." },
+          { field: "Definition", value: "Professional body for computing, IT, software, data, AI, and digital technology professionals." },
+          { field: "History/Background", value: "Founded in 1957 as the British Computer Society. Rebranded as BCS, The Chartered Institute for IT, in 2009." },
+          { field: "Purpose", value: "Advance computing and IT practice through membership, professional standards, education, policy, events, and recognition." },
+          { field: "Mission", value: "Make IT good for society." },
+          { field: "Governance/Leadership", value: "Governed by a Trustee Board, elected officers, Council, specialist groups, and member-led committees." },
+          { field: "Scope/Reach", value: "International. Covers computing, IT, software engineering, cybersecurity, AI, data, digital leadership, and related fields." },
+          { field: "Recognition Types", value: "BCS Fellow; Distinguished Fellow; Honorary Fellow; Lovelace Medal; Needham Award." },
+          { field: "Source", value: "https://www.bcs.org/membership/become-a-member/fellowship/" }
+        ],
+        criteriaProfiles: {
+          "BCS Fellow": {
+            "Official Name": "Fellow of BCS, The Chartered Institute for IT (FBCS).",
+            "Institution/Type": "Professional society fellowship / senior professional membership grade.",
+            "Definition": "BCS Fellow recognizes outstanding achievement and contribution to information technology and the IT profession.",
+            "History/Background": "BCS was founded in 1957. Fellowship is one of its senior professional membership grades.",
+            "Purpose": "Recognize senior IT and computing professionals with strong leadership, expertise, and contribution to the field.",
+            "Awarding Body": "BCS, The Chartered Institute for IT.",
+            "Organization Type": "Professional and scholarly association; chartered professional body.",
+            "Mission": "Make IT good for society.",
+            "Leadership": "BCS is governed by its Trustee Board and supported by elected officers, Council, specialist groups, and committees.",
+            "Committee/Jury Composition": "Applications or nominations are assessed through BCS membership review processes. Detailed reviewer composition is not publicly specified.",
+            "Main Field/Scope": "IT, computing, computer science, software engineering, AI, data, cybersecurity, digital leadership, and related technical fields.",
+            "Geographic Scope": "International, with a UK chartered professional body base.",
+            "Geographic Distribution": "No quota identified. Assessment is based on professional achievement and contribution.",
+            "Amount of Members": "BCS reports a global professional community across the UK and internationally; exact current Fellow count is not publicly summarized on the fellowship page.",
+            "Type of Recognition": "Professional fellowship and post-nominal designation: FBCS.",
+            "Nomination Process": "BCS Fellowship can be pursued through BCS membership routes. Candidates provide evidence of senior achievement and contribution.",
+            "Review/Evaluation Criteria": "Leadership in the profession. Recognized IT expertise. Contribution to knowledge or practice. Seniority, authority, and impact.",
+            "Nomination Deadline": "No fixed public annual deadline identified. Membership applications are handled through BCS routes.",
+            "Application Requirements": "Evidence of career achievement, senior responsibility, contribution to IT, and professional impact. BCS may request supporting information.",
+            "Eligibility/Restrictions": "Senior professionals with substantial IT achievement and contribution. Exact route depends on BCS membership guidance.",
+            "Frequency": "Ongoing membership/fellowship assessment rather than a prize cycle.",
+            "Duration": "Continuing membership grade while membership requirements are maintained.",
+            "Prize Money/Material Award": "No prize money. Recognition is the FBCS designation and professional standing.",
+            "Number of Recipients": "Not publicly listed as a fixed annual number.",
+            "Notable Past Recipients": "Sir Michael Brady; Nataša Pržulj. Other BCS Fellows include senior leaders from academia, industry, and public service.",
+            "Career Impact/Outcomes": "Signals senior professional standing in computing and IT. Supports credibility, leadership roles, and chartered professional recognition.",
+            "Relationship to Other Awards": "Distinct from BCS Distinguished Fellowship and BCS medals. Can sit alongside CITP and other professional registrations.",
+            "Ranking/Prestige Signal": "Level 2 / Tier 2 professional society fellowship in this dashboard.",
+            "Tier": "Disciplinary Society Fellowships & Field Leadership - Level 2 / Tier 2.",
+            "Sources": "https://www.bcs.org/membership/become-a-member/fellowship/"
+          }
+        }
+      },
       {
         organization: "ASA (American Statistical Association)",
         recognition: "ASA Fellow; Leo Breiman Junior Award",
