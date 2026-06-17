@@ -903,23 +903,23 @@ const categories = [
         bodyProfileRows: [
           {
             "field": "Official Name",
-            "value": "Institute of Electrical and Electronics Engineers (IEEE)"
+            "value": "Institute of Electrical and Electronics Engineers"
           },
           {
             "field": "Organization Type",
-            "value": "Professional and scholarly association; nonprofit technical society."
+            "value": "Professional or scholarly association; nonprofit technical society"
           },
           {
             "field": "Definition",
-            "value": "The world's largest technical professional organization dedicated to advancing technology for the benefit of humanity."
+            "value": "The world's largest technical professional organization dedicated to advancing technology for humanity."
           },
           {
             "field": "History/Background",
-            "value": "Formed in 1963 through the merger of the American Institute of Electrical Engineers (AIEE) and the Institute of Radio Engineers (IRE)."
+            "value": "IEEE was formed in 1963 through the merger of the American Institute of Electrical Engineers and the Institute of Radio Engineers. It is a major global organization for engineering, computing, electronics, communications, standards, and technology policy."
           },
           {
             "field": "Purpose",
-            "value": "Advance technology, engineering, and computing through research, standards, education, conferences, publications, and professional recognition."
+            "value": "To foster technological innovation, professional development, technical standards, publications, conferences, and recognition in engineering and related fields."
           },
           {
             "field": "Mission",
@@ -927,15 +927,19 @@ const categories = [
           },
           {
             "field": "Governance/Leadership",
-            "value": "Governed by the IEEE Board of Directors. Led by elected officers and volunteer leadership."
+            "value": "Governed through IEEE's Board of Directors, elected officers, major boards, societies, councils, committees, and volunteer leadership structures."
           },
           {
             "field": "Scope/Reach",
-            "value": "Global. 500,000+ members in more than 190 countries. Covers engineering, computing, AI, robotics, communications, electronics, and related fields."
+            "value": "Global scope with 500,000+ members in more than 190 countries. Covers electrical engineering, electronics, computer science, AI, communications, robotics, signal processing, biomedical engineering, power systems, and related technologies."
           },
           {
             "field": "Recognition Types",
-            "value": "IEEE Fellow; IEEE John von Neumann Medal; IEEE W. Wallace McDowell Award."
+            "value": "IEEE John von Neumann Medal; IEEE Fellow; IEEE medals, technical field awards, society awards, and service awards."
+          },
+          {
+            "field": "Source",
+            "value": "https://www.ieee.org"
           }
         ],
         criteriaProfiles: {
@@ -1056,39 +1060,43 @@ const categories = [
         bodyProfileRows: [
           {
             "field": "Official Name",
-            "value": "Association for Computing Machinery (ACM)"
+            "value": "Association for Computing Machinery"
           },
           {
             "field": "Organization Type",
-            "value": "Professional and scholarly association."
+            "value": "Professional or scholarly association"
           },
           {
             "field": "Definition",
-            "value": "The world's largest educational and scientific computing society."
+            "value": "A global professional association for computing researchers, educators, practitioners, and students."
           },
           {
             "field": "History/Background",
-            "value": "Founded in 1947."
+            "value": "Founded in 1947, ACM is one of the world's leading computing societies and supports computing through publications, conferences, special interest groups, education, public policy, and professional recognition."
           },
           {
             "field": "Purpose",
-            "value": "Advance computing as a science and profession."
+            "value": "To advance computing as a science and profession and to support the global computing community."
           },
           {
             "field": "Mission",
-            "value": "Advance computing through research, publications, conferences, education, and professional development."
+            "value": "To advance computing as a science and profession through knowledge sharing, education, conferences, publications, professional development, and community building."
           },
           {
             "field": "Governance/Leadership",
-            "value": "Member-driven organization governed by elected officers and ACM Council."
+            "value": "Volunteer-led and member-driven. ACM members serve on councils, boards, and committees that govern the organization and guide its global activities."
           },
           {
             "field": "Scope/Reach",
-            "value": "Global. 100,000+ members worldwide. Covers all computing disciplines."
+            "value": "Global scope across computer science, artificial intelligence, machine learning, software engineering, data science, human-computer interaction, systems, theory, security, and computing education."
           },
           {
             "field": "Recognition Types",
-            "value": "ACM Fellow; ACM A.M. Turing Award; ACM/AAAI Allen Newell Award."
+            "value": "ACM/AAAI Allen Newell Award; ACM A.M. Turing Award; ACM Fellow; ACM Prize in Computing; ACM Distinguished Member; ACM awards and SIG awards."
+          },
+          {
+            "field": "Source",
+            "value": "https://www.acm.org"
           }
         ],
         criteriaProfiles: {
@@ -1477,6 +1485,48 @@ const categories = [
         ]
       },
       { organization: "COPSS (Committee of Presidents of Statistical Societies)", recognition: "COPSS Presidents' Award", website: "https://community.amstat.org/copss/home" ,
+                bodyProfileRows: [
+          {
+            "field": "Official Name",
+            "value": "Committee of Presidents of Statistical Societies"
+          },
+          {
+            "field": "Organization Type",
+            "value": "Consortium of professional statistical societies"
+          },
+          {
+            "field": "Definition",
+            "value": "A committee representing major statistical societies that jointly sponsors discipline-wide awards in statistics."
+          },
+          {
+            "field": "History/Background",
+            "value": "COPSS is composed of the presidents of major statistical societies and is known for awards recognizing outstanding contributions to statistics. Its awards are jointly sponsored by the American Statistical Association, Institute of Mathematical Statistics, Eastern and Western North American Regions of the International Biometric Society, and the Statistical Society of Canada."
+          },
+          {
+            "field": "Purpose",
+            "value": "To provide discipline-wide recognition for outstanding statisticians and statistical contributions."
+          },
+          {
+            "field": "Mission",
+            "value": "To recognize excellence in statistics across society boundaries, regardless of affiliation with any single professional statistical society."
+          },
+          {
+            "field": "Governance/Leadership",
+            "value": "Governed through the participating statistical societies and their presidents or representatives. Award administration is conducted through COPSS award committees and sponsoring society structures."
+          },
+          {
+            "field": "Scope/Reach",
+            "value": "Statistics, biostatistics, probability, data science, statistical machine learning, and related methodological fields."
+          },
+          {
+            "field": "Recognition Types",
+            "value": "COPSS Presidents' Award; Elizabeth L. Scott Award; George W. Snedecor Award; Florence Nightingale David Award; Distinguished Achievement Award and Lectureship; Emerging Leader Awards."
+          },
+          {
+            "field": "Source",
+            "value": "https://community.amstat.org/copss"
+          }
+        ],
         criteriaProfiles: {
           "COPSS Presidents' Award": {
             "Official Name": "COPSS Presidents' Award",
@@ -1518,6 +1568,48 @@ const categories = [
       { organization: "European Molecular Biology Organization (EMBO)", recognition: "European Molecular Biology Organization EMBO Member", website: "https://www.embo.org" },
       { organization: "European Association for Signal Processing (EURASIP)", recognition: "European Association for Signal Processing EURASIP Fellow", website: "https://eurasip.org" },
       { organization: "International Joint Conferences on Artificial Intelligence (IJCAI)", recognition: "IJCAI Award for Research Excellence", website: "https://www.ijcai.org" ,
+                bodyProfileRows: [
+          {
+            "field": "Official Name",
+            "value": "International Joint Conferences on Artificial Intelligence Organization"
+          },
+          {
+            "field": "Organization Type",
+            "value": "Professional / scholarly AI conference organization"
+          },
+          {
+            "field": "Definition",
+            "value": "A nonprofit international organization responsible for organizing the IJCAI conference series and supporting global artificial intelligence research exchange."
+          },
+          {
+            "field": "History/Background",
+            "value": "IJCAI conferences began in 1969. They were historically held biennially and have been held annually since 2016. IJCAI consists of a Conference Division and an Artificial Intelligence Journal Division."
+          },
+          {
+            "field": "Purpose",
+            "value": "To advance artificial intelligence research through premier international conferences, scholarly exchange, awards, and support for the AI research community."
+          },
+          {
+            "field": "Mission",
+            "value": "To promote science and education in artificial intelligence through international conferences, publications, and related activities."
+          },
+          {
+            "field": "Governance/Leadership",
+            "value": "Governed by a Board of Trustees, with the IJCAI Secretariat responsible for operations. IJCAI also hosts the editorial operations of the Artificial Intelligence Journal through its AI Journal Division."
+          },
+          {
+            "field": "Scope/Reach",
+            "value": "Global scope across artificial intelligence, machine learning, reasoning, planning, natural language processing, robotics, knowledge representation, multi-agent systems, and related AI fields."
+          },
+          {
+            "field": "Recognition Types",
+            "value": "IJCAI Award for Research Excellence; IJCAI Computers and Thought Award; Donald E. Walker Distinguished Service Award; IJCAI Best Paper Awards."
+          },
+          {
+            "field": "Source",
+            "value": "https://www.ijcai.org"
+          }
+        ],
         criteriaProfiles: {
           "IJCAI Award for Research Excellence": {
             "Official Name": "IJCAI Award for Research Excellence",
@@ -1554,6 +1646,48 @@ const categories = [
         }
       },
       { organization: "American Mathematical Society (AMS)", recognition: "AMS Ulf Grenander Prize in Stochastic Theory and Modeling", website: "https://www.ams.org" ,
+                bodyProfileRows: [
+          {
+            "field": "Official Name",
+            "value": "American Mathematical Society"
+          },
+          {
+            "field": "Organization Type",
+            "value": "Professional or scholarly association"
+          },
+          {
+            "field": "Definition",
+            "value": "A professional society for mathematicians and mathematical researchers dedicated to advancing mathematical research, scholarship, learning, careers, and community."
+          },
+          {
+            "field": "History/Background",
+            "value": "Founded in 1888. The AMS has grown into a major mathematical society supporting publications, meetings, grants, advocacy, education resources, and professional recognition."
+          },
+          {
+            "field": "Purpose",
+            "value": "To advance mathematical research, support mathematics education and careers, publish scholarly work, organize meetings, and strengthen the mathematical community."
+          },
+          {
+            "field": "Mission",
+            "value": "To advance research, support learning and careers, and build the mathematical community through meetings, programs, grants, publications, education resources, and advocacy."
+          },
+          {
+            "field": "Governance/Leadership",
+            "value": "The AMS has a bicameral governance structure consisting of the Council and the Board of Trustees. These bodies hold ultimate responsibility and authority for representing the AMS membership and broader mathematical community."
+          },
+          {
+            "field": "Scope/Reach",
+            "value": "National and international scope across mathematics, applied mathematics, probability, statistics, stochastic theory, mathematical modeling, mathematical physics, and related fields."
+          },
+          {
+            "field": "Recognition Types",
+            "value": "AMS Ulf Grenander Prize in Stochastic Theory and Modeling; AMS prizes, lectureships, fellowships, and awards across mathematics and related disciplines."
+          },
+          {
+            "field": "Source",
+            "value": "https://www.ams.org"
+          }
+        ],
         criteriaProfiles: {
           "AMS Ulf Grenander Prize in Stochastic Theory and Modeling": {
             "Official Name": "Ulf Grenander Prize in Stochastic Theory and Modeling",
@@ -1875,6 +2009,48 @@ const categories = [
       { organization: "Alexander von Humboldt Foundation", recognition: "Humboldt Research Award", website: "https://www.humboldt-foundation.de" },
       { organization: "Alfred P. Sloan Foundation", recognition: "Sloan Research Fellowship", website: "https://sloan.org" },
       { organization: "BBVA Foundation", recognition: "BBVA Frontiers of Knowledge Award", website: "https://www.fbbva.es" ,
+                bodyProfileRows: [
+          {
+            "field": "Official Name",
+            "value": "BBVA Foundation"
+          },
+          {
+            "field": "Organization Type",
+            "value": "Private foundation"
+          },
+          {
+            "field": "Definition",
+            "value": "A private foundation established by BBVA to promote knowledge, research, culture, and social progress."
+          },
+          {
+            "field": "History/Background",
+            "value": "The BBVA Foundation was created as BBVA's philanthropic and knowledge-focused foundation. Its work centers on research, cultural creation, environmental protection, social sciences, and public dissemination of knowledge."
+          },
+          {
+            "field": "Purpose",
+            "value": "To support knowledge as a tool for addressing major social, scientific, environmental, and cultural challenges."
+          },
+          {
+            "field": "Mission",
+            "value": "To promote knowledge as an effective means to address society's challenges and to connect research with decision-making in the public and private sectors."
+          },
+          {
+            "field": "Governance/Leadership",
+            "value": "Governed through BBVA Foundation leadership and foundation governance structures. Program areas and awards are administered by the foundation and specialist juries."
+          },
+          {
+            "field": "Scope/Reach",
+            "value": "International scope across science, technology, environment, economics, humanities, social sciences, and culture."
+          },
+          {
+            "field": "Recognition Types",
+            "value": "BBVA Foundation Frontiers of Knowledge Awards."
+          },
+          {
+            "field": "Source",
+            "value": "https://www.fbbva.es"
+          }
+        ],
         criteriaProfiles: {
           "BBVA Frontiers of Knowledge Award": {
             "Official Name": "BBVA Foundation Frontiers of Knowledge Awards",
@@ -1924,6 +2100,48 @@ const categories = [
         note: "Presented with, and independent from, the Cognitive Science Society",
         website: "https://glushkofoundation.org"
       ,
+                bodyProfileRows: [
+          {
+            "field": "Official Name",
+            "value": "Robert J. Glushko and Pamela Samuelson Foundation"
+          },
+          {
+            "field": "Organization Type",
+            "value": "Private foundation / family foundation"
+          },
+          {
+            "field": "Definition",
+            "value": "A private foundation supporting higher education, cognitive science, digital technology, privacy, intellectual property, and related areas."
+          },
+          {
+            "field": "History/Background",
+            "value": "Established in 2000 in California. The foundation has supported higher education and organizations concerned with privacy rights, digital technology, telecommunications, the internet, and prizes in cognitive science."
+          },
+          {
+            "field": "Purpose",
+            "value": "To support research, education, and recognition in areas including cognitive science, digital technology, privacy, and intellectual property."
+          },
+          {
+            "field": "Mission",
+            "value": "Public mission wording is limited, but foundation records describe its giving as primarily supporting higher education and organizations focused on privacy rights and digital technology, including support for the Rumelhart Prize."
+          },
+          {
+            "field": "Governance/Leadership",
+            "value": "Private foundation governance; detailed current governance structure is not broadly public. The Cognitive Science Society notes that Robert J. Glushko and Pamela Samuelson fund prizes including the David E. Rumelhart Prize and Glushko Dissertation Prize."
+          },
+          {
+            "field": "Scope/Reach",
+            "value": "Primarily education, cognitive science, privacy, intellectual property, digital technology, telecommunications, and internet-related public interest fields."
+          },
+          {
+            "field": "Recognition Types",
+            "value": "Supports the David E. Rumelhart Prize; supports Robert J. Glushko Dissertation / Ph.D. Thesis Prizes in Cognitive Science."
+          },
+          {
+            "field": "Source",
+            "value": "Foundation Directory / Cognitive Science Society sources."
+          }
+        ],
         criteriaProfiles: {
           "Rumelhart Prize": {
             "Official Name": "David E. Rumelhart Prize",
@@ -2024,6 +2242,48 @@ const categories = [
         website: "https://www.wlasci.org",
         logoUrl: "https://www.wlasci.org/skin/images/logo.png"
       ,
+                bodyProfileRows: [
+          {
+            "field": "Official Name",
+            "value": "World Laureates Association"
+          },
+          {
+            "field": "Organization Type",
+            "value": "International science organization / foundation-linked scientific association"
+          },
+          {
+            "field": "Definition",
+            "value": "An international association of leading scientists and laureates established to promote excellence in science and global scientific collaboration."
+          },
+          {
+            "field": "History/Background",
+            "value": "Founded in 2017, the World Laureates Association brings together eminent laureates and scientific leaders to support scientific development and international collaboration."
+          },
+          {
+            "field": "Purpose",
+            "value": "To advance science, encourage scientific excellence, support young scientists, and foster international scientific dialogue."
+          },
+          {
+            "field": "Mission",
+            "value": "To promote excellence in science and guide scientific development through the expertise of world-leading laureates and scientists."
+          },
+          {
+            "field": "Governance/Leadership",
+            "value": "Led by eminent world-leading laureates and experts from science, technology, medicine, science policy, and education. Its governance includes an Executive Committee and other leadership structures."
+          },
+          {
+            "field": "Scope/Reach",
+            "value": "Global scientific scope, especially in fundamental science, computer science, mathematics, life sciences, medicine, and technology."
+          },
+          {
+            "field": "Recognition Types",
+            "value": "World Laureates Association Prize / WLA Prize."
+          },
+          {
+            "field": "Source",
+            "value": "https://www.wlasci.org"
+          }
+        ],
         criteriaProfiles: {
           "World Laureates Association Prize": {
             "Official Name": "World Laureates Association Prize / WLA Prize",
