@@ -390,6 +390,48 @@ const categories = [
         }
       },
       { organization: "Academy of Medical Sciences (UK)", recognition: "Fellow", website: "https://acmedsci.ac.uk" ,
+                bodyProfileRows: [
+          {
+            "field": "Official Name",
+            "value": "Academy of Medical Sciences"
+          },
+          {
+            "field": "Organization Type",
+            "value": "Leading national academy; independent UK learned academy / charity for biomedical and health research."
+          },
+          {
+            "field": "Definition",
+            "value": "The independent body in the UK representing medical science, bringing together leading biomedical and health researchers through its Fellowship and policy, grants, career-support and public-engagement work."
+          },
+          {
+            "field": "History/Background",
+            "value": "Established in 1998 following recommendations of a working group chaired by Sir Michael Atiyah; created to bring biomedical scientists and clinical academics into a single national organization promoting translation of medical science into benefits for patients and the population."
+          },
+          {
+            "field": "Purpose",
+            "value": "Improve health through biomedical research by promoting excellence, influencing policy, nurturing researchers, linking academia and industry, supporting international opportunities and public dialogue."
+          },
+          {
+            "field": "Mission",
+            "value": "To help create an open and progressive research sector that improves health, with the vision of improving health through biomedical research."
+          },
+          {
+            "field": "Governance/Leadership",
+            "value": "Governed by a Council of Fellows, including Honorary Officers. Fellowship election is conducted through Academy nomination and election processes, with final formal election by Council."
+          },
+          {
+            "field": "Scope/Reach",
+            "value": "United Kingdom national academy with international engagement; covers biomedical science, clinical academic medicine, public and population health, health technology, veterinary science, dentistry, medical/nursing care, and related mathematical, physical, engineering, ethics, social science and law interfaces."
+          },
+          {
+            "field": "Recognition Types",
+            "value": "Fellow; Honorary Fellow."
+          },
+          {
+            "field": "Source",
+            "value": "https://acmedsci.ac.uk/about ; https://acmedsci.ac.uk/about/history ; https://acmedsci.ac.uk/about/governance ; https://acmedsci.ac.uk/fellows/election-to-the-fellowship"
+          }
+        ],
         criteriaProfiles: {
           "Fellow": {
             "Official Name": "Fellow of the Academy of Medical Sciences (FMedSci)",
@@ -611,6 +653,48 @@ const categories = [
         logoUrl: "https://upload.wikimedia.org/wikipedia/commons/d/de/Seal_of_the_Chinese_Academy_of_Sciences.png",
         logoFit: "cover-top"
       ,
+                bodyProfileRows: [
+          {
+            "field": "Official Name",
+            "value": "Chinese Academy of Sciences (CAS)"
+          },
+          {
+            "field": "Organization Type",
+            "value": "Leading national academy and national scientific institution."
+          },
+          {
+            "field": "Definition",
+            "value": "China's highest academic institution and national think tank in science and technology, and a national strategic force in basic research and integrated high-tech development."
+          },
+          {
+            "field": "History/Background",
+            "value": "Founded in 1949. CAS integrates research institutes, academic divisions and educational institutions into a unified national science and technology system."
+          },
+          {
+            "field": "Purpose",
+            "value": "Advance basic research, high-tech development, strategic science advice and education in China, while connecting Chinese and international scientists through its academic divisions and foreign-member elections."
+          },
+          {
+            "field": "Mission",
+            "value": "To serve as a national strategic science and technology force and highest academic institution supporting science, technology and national development."
+          },
+          {
+            "field": "Governance/Leadership",
+            "value": "Organized through CAS leadership and the Academic Divisions of the Chinese Academy of Sciences (CASAD), the merit-based academic-society component responsible for member and foreign-member recognition."
+          },
+          {
+            "field": "Scope/Reach",
+            "value": "National Chinese institution with international reach; research covers nearly all areas of the natural sciences and high technology, including computing, AI-related sciences, engineering science, life sciences, physical sciences and environmental sciences."
+          },
+          {
+            "field": "Recognition Types",
+            "value": "Member / Academician; Foreign Member."
+          },
+          {
+            "field": "Source",
+            "value": "https://english.cas.cn/about-cas/ ; https://english.casad.cas.cn/newsroom/nc/202511/t20251121_1132700.html"
+          }
+        ],
         criteriaProfiles: {
           "Foreign Member": {
             "Official Name": "Foreign Member of the Chinese Academy of Sciences (CAS).",
@@ -726,6 +810,48 @@ const categories = [
         }
       },
       { organization: "Swiss Academy of Engineering Sciences", recognition: "Member", note: "Funded by Swiss government", website: "https://www.satw.ch" ,
+                bodyProfileRows: [
+          {
+            "field": "Official Name",
+            "value": "Swiss Academy of Engineering Sciences / Schweizerische Akademie der Technischen Wissenschaften (SATW)"
+          },
+          {
+            "field": "Organization Type",
+            "value": "National engineering academy / nonprofit expert network."
+          },
+          {
+            "field": "Definition",
+            "value": "Switzerland's leading expert network in engineering sciences, connecting elected individual members, member societies and experts with science, politics and industry."
+          },
+          {
+            "field": "History/Background",
+            "value": "Founded in 1981 as a private association to serve technical sciences and Switzerland; now operates as an academy at the interface of technology, science and society."
+          },
+          {
+            "field": "Purpose",
+            "value": "Act as a convening power for engineering expertise, advise Swiss science/policy/industry communities, promote responsible technology development and support technological sciences."
+          },
+          {
+            "field": "Mission",
+            "value": "Serve society by using and connecting engineering-science expertise for responsible technological development and evidence-informed dialogue."
+          },
+          {
+            "field": "Governance/Leadership",
+            "value": "Operates through elected individual members, member societies, expert networks, board/academy structures and a secretariat. Individual members are elected from experts committed to SATW goals and/or technical sciences."
+          },
+          {
+            "field": "Scope/Reach",
+            "value": "Swiss national academy with international connections; covers engineering sciences, computer science, AI, robotics, energy, materials, manufacturing, health technologies, security, environment and technology policy."
+          },
+          {
+            "field": "Recognition Types",
+            "value": "Individual Member / Full Member; Honorary Member; member societies and expert roles."
+          },
+          {
+            "field": "Source",
+            "value": "https://www.satw.ch/en/the-academy/the-academy ; https://www.satw.ch/en/the-academy/full-members ; https://academies-suisses.ch/news/45-years-of-satw-from-vision-to-shaping-force"
+          }
+        ],
         criteriaProfiles: {
           "Member": {
             "Official Name": "Full Member of the Swiss Academy of Engineering Sciences (SATW).",
@@ -762,6 +888,48 @@ const categories = [
         }
       },
       { organization: "Canadian Academy of Engineering", recognition: "Fellow", note: "Registered charity", website: "https://www.cae-acg.ca" ,
+                bodyProfileRows: [
+          {
+            "field": "Official Name",
+            "value": "Canadian Academy of Engineering / Academie canadienne du genie (CAE)"
+          },
+          {
+            "field": "Organization Type",
+            "value": "Leading national academy; independent, self-governing nonprofit engineering academy."
+          },
+          {
+            "field": "Definition",
+            "value": "Canada's national institution through which distinguished engineers provide strategic advice on matters of critical importance to the country."
+          },
+          {
+            "field": "History/Background",
+            "value": "Established in 1987 to serve Canada in matters of engineering concern; became a full member of CAETS in 1991."
+          },
+          {
+            "field": "Purpose",
+            "value": "Provide leadership in engineering advice and recognize engineers whose contributions advance social, environmental, economic and technical solutions in Canada and internationally."
+          },
+          {
+            "field": "Mission",
+            "value": "Serve the nation and shape the future of engineering in Canada through independent engineering expertise and advice."
+          },
+          {
+            "field": "Governance/Leadership",
+            "value": "Governed by a Board of Directors and Academy leadership; Fellows are nominated and elected by their peers through CAE fellowship procedures."
+          },
+          {
+            "field": "Scope/Reach",
+            "value": "Canada-focused with international engagement; covers all engineering fields including computing, AI, electrical, mechanical, civil, chemical, biomedical, aerospace, materials, energy and systems engineering."
+          },
+          {
+            "field": "Recognition Types",
+            "value": "Fellow; International Fellow."
+          },
+          {
+            "field": "Source",
+            "value": "https://cae-acg.ca/ ; https://cae-acg.ca/the-academy/ ; https://cae-acg.ca/fellows/fellowship-procedure-categories-of-fellowship/"
+          }
+        ],
         criteriaProfiles: {
           "Fellow": {
             "Official Name": "Fellow of the Canadian Academy of Engineering (FCAE).",
@@ -876,6 +1044,48 @@ const categories = [
         }
       },
       { organization: "Indian National Academy of Engineering", recognition: "Member; Fellow / Foreign Fellow", note: "Supported by government", website: "https://www.inae.in" ,
+                bodyProfileRows: [
+          {
+            "field": "Official Name",
+            "value": "Indian National Academy of Engineering (INAE)"
+          },
+          {
+            "field": "Organization Type",
+            "value": "National academy or learned body for engineering."
+          },
+          {
+            "field": "Definition",
+            "value": "India's academy comprising eminent engineers, engineer-scientists and technologists, recognizing excellence in engineering and technology and supporting engineering advice, education and professional development."
+          },
+          {
+            "field": "History/Background",
+            "value": "Established in 1987. INAE's Fellowship sections cover civil, computer/IT, mechanical, chemical, electrical, electronics/communication, aerospace, mining/metallurgical/materials, energy, and interdisciplinary/special engineering fields."
+          },
+          {
+            "field": "Purpose",
+            "value": "Promote excellence in engineering, recognize outstanding engineers and technologists, support engineering education and mentorship, and provide expertise for national technological development."
+          },
+          {
+            "field": "Mission",
+            "value": "Advance engineering, technology and related professional excellence in India and connect eminent engineers across academia, R&D, industry and services."
+          },
+          {
+            "field": "Governance/Leadership",
+            "value": "Governed through Academy leadership, Council/committees and engineering sections; Fellows and Foreign Fellows are elected through nomination and review procedures."
+          },
+          {
+            "field": "Scope/Reach",
+            "value": "India national academy with foreign-fellow recognition; covers all engineering and technology fields including computer engineering, AI-related technologies, mechanical, electrical, electronics, aerospace, materials, energy and interdisciplinary fields."
+          },
+          {
+            "field": "Recognition Types",
+            "value": "Fellow; Foreign Fellow; related membership/young associate distinctions."
+          },
+          {
+            "field": "Source",
+            "value": "https://www.inae.in/nomination-information/inae-fellowship/ ; https://www.inae.in/fellowship-criteria/ ; https://www.inae.in/forms/"
+          }
+        ],
         criteriaProfiles: {
           "Fellow / Foreign Fellow": {
             "Official Name": "Fellow / Foreign Fellow of the Indian National Academy of Engineering (INAE).",
@@ -949,6 +1159,48 @@ const categories = [
         website: "https://mbras.ae",
         logoUrl: "assets/mbr-academy-scientists-logo.png"
       ,
+                bodyProfileRows: [
+          {
+            "field": "Official Name",
+            "value": "Mohammed bin Rashid Academy of Scientists (MBRAS)"
+          },
+          {
+            "field": "Organization Type",
+            "value": "National science academy / UAE science-community body."
+          },
+          {
+            "field": "Definition",
+            "value": "The primary body representing the UAE's science community, composed of top researchers from several institutions in the country across natural sciences, engineering and technology, and health and medical sciences."
+          },
+          {
+            "field": "History/Background",
+            "value": "Created as part of the UAE science ecosystem to connect the scientific community with government and industry and to elevate scientific expertise in the country."
+          },
+          {
+            "field": "Purpose",
+            "value": "Establish a link between the science community, government and industry through evidence-based policies, solutions to challenges, and opportunities for scientists and students."
+          },
+          {
+            "field": "Mission",
+            "value": "Represent and mobilize the UAE science community to support evidence-based policy, scientific solutions and national science engagement."
+          },
+          {
+            "field": "Governance/Leadership",
+            "value": "Operates within the UAE science/government ecosystem with academy committees and members; detailed public governance information is limited on the English pages reviewed."
+          },
+          {
+            "field": "Scope/Reach",
+            "value": "United Arab Emirates national scope; natural sciences, engineering and technology, health and medical sciences, AI, cybersecurity, genomics, materials, food and water security, aviation, physics, biology and related fields."
+          },
+          {
+            "field": "Recognition Types",
+            "value": "Member; MBR Medal for Scientific Excellence and related academy recognitions."
+          },
+          {
+            "field": "Source",
+            "value": "https://www.sc.gov.ae/ ; https://science.gov.ae/en/scientist-residence ; https://mbrf.ae/en/read/sharing-worlds/5"
+          }
+        ],
         criteriaProfiles: {
           "Member": {
             "Official Name": "Member of the Mohammed bin Rashid Academy of Scientists (MBRAS).",
@@ -985,6 +1237,48 @@ const categories = [
         }
       },
       { organization: "Young Israeli Academy of Sciences", recognition: "Member", website: "https://www.young.academy.ac.il" ,
+                bodyProfileRows: [
+          {
+            "field": "Official Name",
+            "value": "Israel Young Academy / The Israel Young Academy of Sciences and Humanities"
+          },
+          {
+            "field": "Organization Type",
+            "value": "Young academy under a national academy / learned body for early-career scholars."
+          },
+          {
+            "field": "Definition",
+            "value": "An academy of outstanding young scholars in Israel, elected for research excellence and commitment to advancing science and society."
+          },
+          {
+            "field": "History/Background",
+            "value": "Established under the framework of the Israel Academy of Sciences and Humanities to promote the status of young scientists and strengthen their engagement with Israeli society, decision-makers and young researchers worldwide."
+          },
+          {
+            "field": "Purpose",
+            "value": "Advance science in Israel, increase academic-system involvement in Israeli society and provide a voice and network for leading young scholars."
+          },
+          {
+            "field": "Mission",
+            "value": "Support outstanding young scholars and promote their contribution to science, academic policy and society in Israel."
+          },
+          {
+            "field": "Governance/Leadership",
+            "value": "Operates under the Israel Academy of Sciences and Humanities. Membership is limited to 30; members are up to age 45 at election and serve four-year terms."
+          },
+          {
+            "field": "Scope/Reach",
+            "value": "Israel national young academy with international engagement; all fields of scholarship, science and humanities, including computer science, AI, ML, engineering, life sciences, social sciences and humanities."
+          },
+          {
+            "field": "Recognition Types",
+            "value": "Member."
+          },
+          {
+            "field": "Source",
+            "value": "https://academy.ac.il/RichText/GeneralPage.aspx?nodeId=853 ; https://en-lifesci.tau.ac.il/news/2023/adis/youngacd"
+          }
+        ],
         criteriaProfiles: {
           "Member": {
             "Official Name": "Member of the Israel Young Academy / Young Israeli Academy of Sciences.",
@@ -1026,6 +1320,48 @@ const categories = [
         website: "https://www.atse.org.au",
         logoUrl: "assets/atse-logo.png"
       ,
+                bodyProfileRows: [
+          {
+            "field": "Official Name",
+            "value": "Australian Academy of Technological Sciences and Engineering (company name); Australian Academy of Technology and Engineering (business name), abbreviated ATSE"
+          },
+          {
+            "field": "Organization Type",
+            "value": "Leading national academy; independent learned academy / nonprofit academy for technology and engineering."
+          },
+          {
+            "field": "Definition",
+            "value": "An Australian learned academy of independent experts helping Australians understand and use technology to solve complex problems."
+          },
+          {
+            "field": "History/Background",
+            "value": "Founded in the 1970s as the Australian Academy of Technological Sciences and later expanded to include engineering in its name; now operates publicly as the Australian Academy of Technology and Engineering."
+          },
+          {
+            "field": "Purpose",
+            "value": "Provide robust, impartial and practical advice on technological sciences and engineering; elect diverse leaders to the Fellowship; support STEM education, innovation and evidence-based decision-making."
+          },
+          {
+            "field": "Mission",
+            "value": "A learned academy of independent experts helping Australians understand and use technology to solve complex problems."
+          },
+          {
+            "field": "Governance/Leadership",
+            "value": "Guided by a Board; Fellows collaborate with the professional team through divisions, forums and committees. New Fellows are elected by the existing Fellowship."
+          },
+          {
+            "field": "Scope/Reach",
+            "value": "Australia-focused with international networks; covers applied science, technology, engineering, AI, computing, robotics, energy, manufacturing, health technologies, environment and STEM education."
+          },
+          {
+            "field": "Recognition Types",
+            "value": "Fellow; Honorary Fellow; related academy awards."
+          },
+          {
+            "field": "Source",
+            "value": "https://www.atse.org.au/who-we-are/about-us/ ; https://www.atse.org.au/who-we-are/governance/strategic-plan/ ; https://www.atse.org.au/who-we-are/our-fellows/"
+          }
+        ],
         criteriaProfiles: {
           "Fellow": {
             "Official Name": "Fellow of the Australian Academy of Technological Sciences and Engineering (FTSE).",
@@ -1063,6 +1399,48 @@ const categories = [
       },
       { organization: "German National Academy of Science and Engineering (acatech)", recognition: "Member", website: "https://www.acatech.de" },
       { organization: "Berlin-Brandenburg Academy of Sciences and Humanities", recognition: "Member", website: "https://www.bbaw.de" ,
+                bodyProfileRows: [
+          {
+            "field": "Official Name",
+            "value": "Berlin-Brandenburg Academy of Sciences and Humanities / Berlin-Brandenburgische Akademie der Wissenschaften (BBAW)"
+          },
+          {
+            "field": "Organization Type",
+            "value": "Regional/national learned academy and public-law research institution."
+          },
+          {
+            "field": "Definition",
+            "value": "An academy of sciences and humanities in the Berlin-Brandenburg region, combining elected membership, long-term research projects and public scholarly dialogue."
+          },
+          {
+            "field": "History/Background",
+            "value": "Traces its history to the Society of Sciences founded in 1700 by Gottfried Wilhelm Leibniz under Elector Frederick III of Brandenburg; reconstituted in modern form in 1992."
+          },
+          {
+            "field": "Purpose",
+            "value": "Preserve and reveal cultural inheritance, pursue research, provide advice on future-facing societal questions, and offer a forum for dialogue between scholarship and the public."
+          },
+          {
+            "field": "Mission",
+            "value": "Advance scholarship across sciences and humanities, conduct major long-term research projects, and serve as a forum for scholarly/public dialogue."
+          },
+          {
+            "field": "Governance/Leadership",
+            "value": "Governed through the Presidency, committees and the Assembly of Members. Ordinary members have voting rights; extraordinary members participate without voting rights in the Assembly."
+          },
+          {
+            "field": "Scope/Reach",
+            "value": "Berlin-Brandenburg/German academy with international scholarly reach; covers natural sciences, humanities, social sciences, mathematics, language, history, cultural heritage and interdisciplinary research."
+          },
+          {
+            "field": "Recognition Types",
+            "value": "Ordinary Member; Extraordinary Member; Corresponding/related membership categories where applicable."
+          },
+          {
+            "field": "Source",
+            "value": "https://www.bbaw.de/en/ ; https://www.bbaw.de/en/the-academy/history-of-the-academy ; https://www.bbaw.de/en/the-academy/presidency-and-committees/the-assembly"
+          }
+        ],
         criteriaProfiles: {
           "Member": {
             "Official Name": "Member of the Berlin-Brandenburg Academy of Sciences and Humanities (BBAW).",
@@ -1104,6 +1482,48 @@ const categories = [
         website: "https://www.scj.go.jp",
         logoUrl: "assets/science-council-japan-logo.png"
       ,
+                bodyProfileRows: [
+          {
+            "field": "Official Name",
+            "value": "Science Council of Japan (SCJ)"
+          },
+          {
+            "field": "Organization Type",
+            "value": "National scientific council; special organization under Japan's Cabinet Office."
+          },
+          {
+            "field": "Definition",
+            "value": "Japan's representative organization of scientists nationwide, covering all scientific fields and providing policy recommendations, international activities, science literacy support and scientific networks."
+          },
+          {
+            "field": "History/Background",
+            "value": "Established by the Act on the Science Council of Japan, Act No. 121 of July 10, 1948, on the basis that science is the foundation of a cultured nation."
+          },
+          {
+            "field": "Purpose",
+            "value": "Represent scientists in Japan, contribute to academic progress, support peaceful revitalization and welfare, and coordinate with global academic communities."
+          },
+          {
+            "field": "Mission",
+            "value": "Contribute to the peaceful revitalization of Japan, the welfare of human society and academic progress, in coordination with global academic communities."
+          },
+          {
+            "field": "Governance/Leadership",
+            "value": "SCJ consists of 210 Council Members and approximately 2,000 Associate Members elected as representatives of around 870,000 scientists nationwide; it works through committees and divisions."
+          },
+          {
+            "field": "Scope/Reach",
+            "value": "Japan national scope with international activities; covers all fields of science, including humanities, social sciences, life sciences, natural sciences, engineering, computing, AI and medicine."
+          },
+          {
+            "field": "Recognition Types",
+            "value": "Council Member; Associate Member."
+          },
+          {
+            "field": "Source",
+            "value": "https://www.scj.go.jp/en/scj/index.html ; https://www.scj.go.jp/en/scj/members.html ; https://www.japaneselawtranslation.go.jp/en/laws/view/4327/en"
+          }
+        ],
         criteriaProfiles: {
           "Associate Member": {
             "Official Name": "Associate Member of the Science Council of Japan (SCJ).",
@@ -1145,6 +1565,48 @@ const categories = [
         logoUrl: "assets/serbian-royal-academy-logo.png",
         logoFit: "wide"
       ,
+                bodyProfileRows: [
+          {
+            "field": "Official Name",
+            "value": "Serbian Royal Academy of Scientists and Artists (SKANU) / Serbian Royal Academy (as cited in institutional biographies)"
+          },
+          {
+            "field": "Organization Type",
+            "value": "Learned body; public official-source verification limited."
+          },
+          {
+            "field": "Definition",
+            "value": "Recognition body cited in institutional biographies of Nataša Pržulj. A stable official English organizational profile could not be verified from trusted public sources during this review."
+          },
+          {
+            "field": "History/Background",
+            "value": "To be verified from an official SKANU source. Do not confuse this body with the Serbian Academy of Sciences and Arts (SANU/SASA), which is the official national academy of Serbia and a separate institution."
+          },
+          {
+            "field": "Purpose",
+            "value": "To be verified. Use only if the database can attach a reliable institutional or official source for SKANU membership."
+          },
+          {
+            "field": "Mission",
+            "value": "Not publicly verified from a reliable official source in the English-language sources reviewed."
+          },
+          {
+            "field": "Governance/Leadership",
+            "value": "Not publicly verified from a reliable official source in the English-language sources reviewed."
+          },
+          {
+            "field": "Scope/Reach",
+            "value": "Likely Serbian learned/academic recognition context, but exact scope requires verification. Related but distinct official Serbian academy source: SANU/SASA."
+          },
+          {
+            "field": "Recognition Types",
+            "value": "Member (as cited in MBZUAI and ICREA biographies); details require verification."
+          },
+          {
+            "field": "Source",
+            "value": "Recognition evidence only: https://mbzuai.ac.ae/study/faculty/natasa-przulj-2/ ; https://www.icrea.cat/community/icreas/24061/natasa-przulj/ . Related official Serbian national academy, not the same body: https://www.sanu.ac.rs/en/"
+          }
+        ],
         criteriaProfiles: {
           "Member": {
             "Official Name": "Source caveat: trusted public sources support Serbian Academy of Sciences and Arts (SANU/SASA) membership; the user label Serbian Royal Academy / SKANU should be verified before final database use.",
@@ -1182,6 +1644,48 @@ const categories = [
       },
       { organization: "Academy of Engineering Sciences of Serbia", recognition: "Foreign Member", website: "https://ains.rs" },
       { organization: "World Academy of Art and Science (WAAS)", recognition: "Fellow", website: "https://worldacademy.org" ,
+                bodyProfileRows: [
+          {
+            "field": "Official Name",
+            "value": "World Academy of Art and Science (WAAS)"
+          },
+          {
+            "field": "Organization Type",
+            "value": "International nonprofit learned academy / NGO."
+          },
+          {
+            "field": "Definition",
+            "value": "A global academy of elected Fellows from science, arts, humanities, professions and public service, focused on transdisciplinary solutions to humanity's pressing challenges."
+          },
+          {
+            "field": "History/Background",
+            "value": "Founded in 1960; current official materials describe more than 560 elected Fellows from more than 90 nations and a global network of partner organizations."
+          },
+          {
+            "field": "Purpose",
+            "value": "Provide a forum where scientists, artists, scholars and leaders can address global challenges objectively, scientifically and independently of political boundaries or vested interests."
+          },
+          {
+            "field": "Mission",
+            "value": "Leadership in thought that leads to action; evolving solutions to global challenges by integrating knowledge with universal values and social responsibility."
+          },
+          {
+            "field": "Governance/Leadership",
+            "value": "Governed through Trustees, officers and Fellows; election processes include Board approval and membership/plenum voting according to WAAS bylaws."
+          },
+          {
+            "field": "Scope/Reach",
+            "value": "Global; natural and technological sciences, social sciences, arts, humanities, public service, law, governance, diplomacy, business and global policy challenges."
+          },
+          {
+            "field": "Recognition Types",
+            "value": "Fellow; Junior Fellow; Associate Fellow; Trustee roles."
+          },
+          {
+            "field": "Source",
+            "value": "https://worldacademy.org/ ; https://worldacademy.org/about-us/ ; https://worldacademy.org/waas-election-2025/"
+          }
+        ],
         criteriaProfiles: {
           "Fellow": {
             "Official Name": "Fellow of the World Academy of Art and Science (WAAS).",
@@ -1218,6 +1722,48 @@ const categories = [
         }
       },
       { organization: "The World Academy of Sciences (TWAS)", recognition: "Fellow", website: "https://twas.org" ,
+                bodyProfileRows: [
+          {
+            "field": "Official Name",
+            "value": "The World Academy of Sciences for the advancement of science in developing countries (TWAS)"
+          },
+          {
+            "field": "Organization Type",
+            "value": "Global science academy / international learned academy."
+          },
+          {
+            "field": "Definition",
+            "value": "A global science academy based in Trieste, Italy, working to advance science and engineering for sustainable prosperity in the developing world."
+          },
+          {
+            "field": "History/Background",
+            "value": "The idea for TWAS was discussed in 1981 among internationally renowned scientists; TWAS was founded in 1983 under the leadership of Nobel Laureate Abdus Salam and other scientists committed to strengthening science in developing countries."
+          },
+          {
+            "field": "Purpose",
+            "value": "Promote scientific excellence, capacity-building, education, policy and science diplomacy for sustainable development in the Global South."
+          },
+          {
+            "field": "Mission",
+            "value": "Advance science and engineering for sustainable prosperity in the developing world."
+          },
+          {
+            "field": "Governance/Leadership",
+            "value": "Governed through TWAS Council, officers and elected Fellows; Fellows represent the academy's merit-based scientific community."
+          },
+          {
+            "field": "Scope/Reach",
+            "value": "Global, with focus on developing countries; covers natural sciences, engineering, mathematics, medicine, agriculture, environmental sciences and related fields."
+          },
+          {
+            "field": "Recognition Types",
+            "value": "Fellow."
+          },
+          {
+            "field": "Source",
+            "value": "https://twas.org/ ; https://twas.org/directory/founding-fellows ; https://council.science/member/twas-the-world-academy-of-sciences/"
+          }
+        ],
         criteriaProfiles: {
           "Fellow": {
             "Official Name": "Fellow of The World Academy of Sciences (TWAS).",
@@ -1364,6 +1910,48 @@ const categories = [
         }
       },
       { organization: "Italian Academy of Engineering and Technology", recognition: "Member", website: "https://www.aiti.it" ,
+                bodyProfileRows: [
+          {
+            "field": "Official Name",
+            "value": "Accademia di Ingegneria e Tecnologia / Italian Academy of Engineering and Technology (ITATEC)"
+          },
+          {
+            "field": "Organization Type",
+            "value": "National engineering and technology academy / learned association."
+          },
+          {
+            "field": "Definition",
+            "value": "Italy's engineering and technology academy, created to promote technical and scientific culture and to link universities, research institutions and industry."
+          },
+          {
+            "field": "History/Background",
+            "value": "Established in September 2022 with support from the Accademia Nazionale dei Lincei, following earlier work by an Italian Euro-CASE consortium."
+          },
+          {
+            "field": "Purpose",
+            "value": "Stimulate knowledge exchange among universities, research institutions and industry, and provide assessments and recommendations to stakeholders, policymakers and companies."
+          },
+          {
+            "field": "Mission",
+            "value": "Promote technical and scientific culture at national and international level and represent Italy in the European engineering-academy ecosystem."
+          },
+          {
+            "field": "Governance/Leadership",
+            "value": "Operates as an academy/association and is represented in Euro-CASE. Publicly available English governance details are limited; use current ITATEC/Euro-CASE pages for updates."
+          },
+          {
+            "field": "Scope/Reach",
+            "value": "Italy-focused with European/international reach through Euro-CASE; engineering, technology, applied sciences, innovation, industrial research and policy advice."
+          },
+          {
+            "field": "Recognition Types",
+            "value": "Member."
+          },
+          {
+            "field": "Source",
+            "value": "https://www.euro-case.org/member-academies-italy/ ; https://www.euro-case.org/new-italian-academy-of-engineering-and-technology/ ; https://portale.units.it/en/news/federico-rosei-appointed-member-italian-academy-engineering-and-technology"
+          }
+        ],
         criteriaProfiles: {
           "Member": {
             "Official Name": "Member of the Italian Academy of Engineering and Technology (ITATEC / Accademia di Ingegneria e Tecnologia).",
@@ -1400,6 +1988,48 @@ const categories = [
         }
       },
       { organization: "Academy of Motion Picture Arts and Sciences (AMPAS)", recognition: "Member", website: "https://www.oscars.org" ,
+                bodyProfileRows: [
+          {
+            "field": "Official Name",
+            "value": "Academy of Motion Picture Arts and Sciences (AMPAS)"
+          },
+          {
+            "field": "Organization Type",
+            "value": "Nonprofit professional academy for the motion picture arts and sciences."
+          },
+          {
+            "field": "Definition",
+            "value": "A global film academy of accomplished film artists and leaders, best known for the Academy Awards/Oscars and for its membership, museum, collection and film preservation activities."
+          },
+          {
+            "field": "History/Background",
+            "value": "Founded in May 1927 by 36 luminaries of the film community; now has a global membership of more than 11,000 accomplished film industry artists and leaders."
+          },
+          {
+            "field": "Purpose",
+            "value": "Recognize and uphold excellence in motion pictures, celebrate artistry and innovation, preserve film history, inspire new generations and connect the world through cinema."
+          },
+          {
+            "field": "Mission",
+            "value": "Recognize and uphold excellence in the motion picture arts and sciences, inspire imagination, and connect the world through the medium of motion pictures."
+          },
+          {
+            "field": "Governance/Leadership",
+            "value": "Governed by a Board of Governors with fiduciary responsibility for the Academy and policy responsibility for governance, membership and awards; executive leadership operates under the CEO and senior staff."
+          },
+          {
+            "field": "Scope/Reach",
+            "value": "Global film and motion-picture community; covers actors, directors, writers, producers, animation, visual effects, production and technology, music, cinematography, editing, documentary, shorts, costume, design, marketing and other branches."
+          },
+          {
+            "field": "Recognition Types",
+            "value": "Member; Academy Awards/Oscars; Scientific and Technical Awards; Governors Awards and related honors."
+          },
+          {
+            "field": "Source",
+            "value": "https://www.oscars.org/about ; https://www.oscars.org/academy-history-and-structure ; https://www.oscars.org/about/join-academy ; https://www.oscars.org/about/board-governors"
+          }
+        ],
         criteriaProfiles: {
           "Member": {
             "Official Name": "Member of the Academy of Motion Picture Arts and Sciences (AMPAS).",
@@ -1854,26 +2484,45 @@ const categories = [
         website: "https://aaai.org",
         recognition: "AAAI Fellow; ACM/AAAI Allen Newell Award; AAAI Feigenbaum Prize",
         bodyProfileRows: [
-          { field: "Official Name", value: "Association for the Advancement of Artificial Intelligence (AAAI)" },
-          { field: "Organization Type", value: "Professional and scholarly association." },
-          { field: "Definition", value: "Leading international scientific society dedicated to artificial intelligence." },
           {
-            field: "History/Background",
-            value: "Founded in 1979 as the American Association for Artificial Intelligence."
+            "field": "Official Name",
+            "value": "Association for the Advancement of Artificial Intelligence (AAAI)"
           },
           {
-            field: "Purpose",
-            value: "Advance scientific understanding of AI and promote responsible AI development."
+            "field": "Organization Type",
+            "value": "Professional and scholarly association / scientific society for AI."
           },
-          { field: "Mission", value: "Promote research, education, and applications of artificial intelligence." },
           {
-            field: "Governance/Leadership",
-            value: "Governed by elected officers, Executive Council, and standing committees."
+            "field": "Definition",
+            "value": "A premier scientific society dedicated to advancing the scientific understanding of thought and intelligent behavior and their embodiment in machines."
           },
-          { field: "Scope/Reach", value: "Global. Covers all AI research and applications." },
           {
-            field: "Recognition Types",
-            value: "AAAI Fellow; AAAI Feigenbaum Prize; ACM/AAAI Allen Newell Award."
+            "field": "History/Background",
+            "value": "Founded in 1979 as the American Association for Artificial Intelligence and later renamed the Association for the Advancement of Artificial Intelligence to reflect the global and broader scope of AI."
+          },
+          {
+            "field": "Purpose",
+            "value": "Promote AI research, education, responsible applications, conferences, publications and recognition of AI achievements."
+          },
+          {
+            "field": "Mission",
+            "value": "Advance the scientific understanding of the mechanisms underlying thought and intelligent behavior and their embodiment in machines."
+          },
+          {
+            "field": "Governance/Leadership",
+            "value": "Governed by elected officers, Executive Council, committees and staff; awards are administered by AAAI award committees and calls for nomination."
+          },
+          {
+            "field": "Scope/Reach",
+            "value": "Global AI community; artificial intelligence, machine learning, reasoning, robotics, NLP, knowledge representation, planning, agents, AI ethics, AI applications and AI education."
+          },
+          {
+            "field": "Recognition Types",
+            "value": "AAAI Feigenbaum Prize; AAAI Fellow; AAAI Classic Paper Award; Dissertation Award; Distinguished Service Award; AAAI/ACM Allen Newell Award and other AI awards."
+          },
+          {
+            "field": "Source",
+            "value": "https://aaai.org/ ; https://aaai.org/about-aaai/aaai-awards/ ; https://aaai.org/about-aaai/aaai-awards/aaai-feigenbaum-prize/"
           }
         ]
       ,
@@ -2008,21 +2657,46 @@ const categories = [
         recognition: "ISCB Fellow; Overton Prize",
         website: "https://www.iscb.org",
         bodyProfileRows: [
-          { field: "Official Name", value: "International Society for Computational Biology (ISCB)" },
-          { field: "Organization Type", value: "Professional and scholarly association." },
-          { field: "Definition", value: "Leading international society for computational biology and bioinformatics." },
-          { field: "History/Background", value: "Founded in 1997." },
-          { field: "Purpose", value: "Advance computational biology through research, education, and collaboration." },
-          { field: "Mission", value: "Promote understanding of living systems through computation and data science." },
           {
-            field: "Governance/Leadership",
-            value: "Governed by elected officers, Board of Directors, and scientific committees."
+            "field": "Official Name",
+            "value": "International Society for Computational Biology (ISCB)"
           },
           {
-            field: "Scope/Reach",
-            value: "International. Computational biology, bioinformatics, genomics, systems biology, AI for biology."
+            "field": "Organization Type",
+            "value": "Professional and scholarly association / learned society."
           },
-          { field: "Recognition Types", value: "ISCB Fellow; ISCB Overton Prize; ISCB Senior Scientist Award." }
+          {
+            "field": "Definition",
+            "value": "A global society for computational biology and bioinformatics, advocating for scholarship, research, training, outreach and inclusive community-building in computational biology and its professions."
+          },
+          {
+            "field": "History/Background",
+            "value": "Founded in 1997 to provide a stable nonprofit home for the ISMB conference and to support the growing computational biology community worldwide."
+          },
+          {
+            "field": "Purpose",
+            "value": "Advance computational biology through conferences, awards, training, publications, communities of special interest, regional affiliates and professional development."
+          },
+          {
+            "field": "Mission",
+            "value": "A global society advocating for and advancing scholarship, research, training, outreach and inclusive community building in computational biology and its professions."
+          },
+          {
+            "field": "Governance/Leadership",
+            "value": "Volunteer-led through officers, a Board of Directors, executive committee, committees and advisory councils; awards are administered through ISCB awards policies and committees."
+          },
+          {
+            "field": "Scope/Reach",
+            "value": "Global; computational biology, bioinformatics, AI for biology, genomics, systems biology, biostatistics, biomedical data science and related computational life sciences."
+          },
+          {
+            "field": "Recognition Types",
+            "value": "ISCB Overton Prize; ISCB Fellow; Accomplishments by a Senior Scientist Award; Innovator Award; Outstanding Contributions to ISCB Award; competitions."
+          },
+          {
+            "field": "Source",
+            "value": "https://www.iscb.org/about-iscb ; https://www.iscb.org/about-iscb/history-of-iscb ; https://www.iscb.org/about-iscb/awards-and-competitions ; https://transition.iscb.org/iscb-awards/overton-prize"
+          }
         ]
       ,
         criteriaProfiles: {
@@ -2091,24 +2765,46 @@ const categories = [
         recognition: "ASA Fellow; Leo Breiman Junior Award",
         website: "https://www.amstat.org",
         bodyProfileRows: [
-          { field: "Official Name", value: "American Statistical Association (ASA)" },
-          { field: "Organization Type", value: "Professional and scholarly association." },
-          { field: "Definition", value: "The world's largest community of statisticians." },
           {
-            field: "History/Background",
-            value: "Founded in 1839. One of the oldest professional societies in the United States."
-          },
-          { field: "Purpose", value: "Promote the practice and profession of statistics." },
-          {
-            field: "Mission",
-            value: "Serve statisticians, advance statistical science, and improve decision-making through data."
+            "field": "Official Name",
+            "value": "Section on Statistical Learning and Data Science (SLDS), American Statistical Association (ASA)"
           },
           {
-            field: "Governance/Leadership",
-            value: "Governed by elected officers, Board of Directors, and scientific sections."
+            "field": "Organization Type",
+            "value": "Professional society section within the American Statistical Association."
           },
-          { field: "Scope/Reach", value: "International. Statistics, biostatistics, analytics, and data science." },
-          { field: "Recognition Types", value: "ASA Fellow; COPSS Presidents' Award; Leo Breiman Award." }
+          {
+            "field": "Definition",
+            "value": "An ASA section serving the fields of statistical learning and data science through meetings, publications, sessions, awards and community resources."
+          },
+          {
+            "field": "History/Background",
+            "value": "The SLDS section evolved within ASA to support statistical learning, machine learning, data science and computational statistics communities; its Leo Breiman Awards honor the legacy of statistician Leo Breiman."
+          },
+          {
+            "field": "Purpose",
+            "value": "Serve statistical learning and data science by sponsoring meetings, seminars and courses; planning sessions at ASA meetings; promoting publications; and serving as a resource for agencies and the broader community."
+          },
+          {
+            "field": "Mission",
+            "value": "Advance statistical learning and data science within the ASA community through research exchange, professional development, conferences and awards."
+          },
+          {
+            "field": "Governance/Leadership",
+            "value": "Operates through ASA section governance and award committees. The Breiman Award Committee selects senior and junior scholars for outstanding theoretical or methodological contributions."
+          },
+          {
+            "field": "Scope/Reach",
+            "value": "National and international statistics/data-science community; statistical learning, machine learning, computational statistics, data science, high-dimensional statistics, causal inference, deep learning and applications."
+          },
+          {
+            "field": "Recognition Types",
+            "value": "Leo Breiman Senior Award; Leo Breiman Junior Award; student/early-career paper awards and section recognitions."
+          },
+          {
+            "field": "Source",
+            "value": "https://community.amstat.org/slds/home ; https://community.amstat.org/slds/awards/breiman-award ; https://magazine.amstat.org/blog/2026/05/01/breiman-award/"
+          }
         ]
       ,
         criteriaProfiles: {
@@ -2668,6 +3364,48 @@ const categories = [
         }
       },
       { organization: "John Simon Guggenheim Memorial Foundation", recognition: "Guggenheim Fellowship", website: "https://www.gf.org" ,
+                bodyProfileRows: [
+          {
+            "field": "Official Name",
+            "value": "John Simon Guggenheim Memorial Foundation"
+          },
+          {
+            "field": "Organization Type",
+            "value": "Private foundation / independent philanthropic foundation."
+          },
+          {
+            "field": "Definition",
+            "value": "A private foundation that awards Guggenheim Fellowships to exceptional individuals in scholarship and the arts who have demonstrated distinguished accomplishment and promise for future achievement."
+          },
+          {
+            "field": "History/Background",
+            "value": "Incorporated in 1925 in New York by U.S. Senator Simon Guggenheim and Olga Hirsh Guggenheim as a memorial to their son John Simon Guggenheim, who died in 1922."
+          },
+          {
+            "field": "Purpose",
+            "value": "Support advanced professionals pursuing scholarship in any field of knowledge and creation in any art form, excluding certain fields such as the performing arts in fellowship eligibility rules."
+          },
+          {
+            "field": "Mission",
+            "value": "Support individuals of exceptional creative ability and scholarly accomplishment under flexible fellowship conditions. Official site details should be checked directly where available."
+          },
+          {
+            "field": "Governance/Leadership",
+            "value": "Administered by a board of trustees and corporate officers; Fellowship selection is through foundation review panels and trustees according to annual competition procedures."
+          },
+          {
+            "field": "Scope/Reach",
+            "value": "Primarily United States and Canada competition; broad fields across natural sciences, social sciences, humanities and creative arts."
+          },
+          {
+            "field": "Recognition Types",
+            "value": "Guggenheim Fellowship."
+          },
+          {
+            "field": "Source",
+            "value": "Official site: https://www.gf.org ; supporting trusted sources: https://fconline.foundationcenter.org/fdo-grantmaker-profile?key=GUGG001 ; https://research.fas.harvard.edu/resource/john-simon-guggenheim-memorial-foundation-guggenheim-fellowship"
+          }
+        ],
         criteriaProfiles: {
           "Guggenheim Fellowship": {
             "Official Name": "Guggenheim Fellowship / John Simon Guggenheim Memorial Foundation Fellowship.",
@@ -2704,6 +3442,48 @@ const categories = [
         }
       },
       { organization: "Alexander von Humboldt Foundation", recognition: "Humboldt Research Award", website: "https://www.humboldt-foundation.de" ,
+                bodyProfileRows: [
+          {
+            "field": "Official Name",
+            "value": "Alexander von Humboldt Foundation / Alexander von Humboldt-Stiftung"
+          },
+          {
+            "field": "Organization Type",
+            "value": "German foundation / publicly funded international academic funding organization."
+          },
+          {
+            "field": "Definition",
+            "value": "A foundation that sponsors researchers regardless of discipline and nationality, strengthens Germany as a research location through international academic exchange, and supports fellows and award winners for life."
+          },
+          {
+            "field": "History/Background",
+            "value": "Modern foundation established in Germany to promote international academic cooperation and named for Alexander von Humboldt. Its official programs include research fellowships, awards and long-term alumni support."
+          },
+          {
+            "field": "Purpose",
+            "value": "Promote international academic exchange, support excellent scientists and scholars, and strengthen Germany's global research connections."
+          },
+          {
+            "field": "Mission",
+            "value": "Sponsor researchers regardless of discipline and nationality; strengthen Germany as a research location; support fellows and award winners for life; and promote international understanding, scientific progress and development."
+          },
+          {
+            "field": "Governance/Leadership",
+            "value": "Operates through foundation leadership, selection committees and German host-nominator structures. Humboldt Research Award nominations are submitted by established academics in Germany."
+          },
+          {
+            "field": "Scope/Reach",
+            "value": "Global; all academic disciplines, with awardees from outside Germany and collaboration with German research institutions."
+          },
+          {
+            "field": "Recognition Types",
+            "value": "Humboldt Research Award; Humboldt Research Fellowship; Alexander von Humboldt Professorship; Georg Forster programs and related fellowships/awards."
+          },
+          {
+            "field": "Source",
+            "value": "https://www.humboldt-foundation.de/en/ ; https://www.humboldt-foundation.de/en/apply/sponsorship-programmes/humboldt-research-award"
+          }
+        ],
         criteriaProfiles: {
           "Humboldt Research Award": {
             "Official Name": "Humboldt Research Award.",
@@ -2740,6 +3520,48 @@ const categories = [
         }
       },
       { organization: "Alfred P. Sloan Foundation", recognition: "Sloan Research Fellowship", website: "https://sloan.org" ,
+                bodyProfileRows: [
+          {
+            "field": "Official Name",
+            "value": "Alfred P. Sloan Foundation"
+          },
+          {
+            "field": "Organization Type",
+            "value": "Private foundation / not-for-profit grantmaking institution."
+          },
+          {
+            "field": "Definition",
+            "value": "A U.S.-based grantmaking foundation that funds research and education in science, technology, engineering, mathematics and economics."
+          },
+          {
+            "field": "History/Background",
+            "value": "Founded in 1934 by industrialist Alfred P. Sloan Jr."
+          },
+          {
+            "field": "Purpose",
+            "value": "Support high-quality, impartial scientific research; foster a robust and diverse scientific workforce; strengthen public understanding of science; and support institutions of scientific endeavor."
+          },
+          {
+            "field": "Mission",
+            "value": "Fund research and education in STEM and economics, support fundamental scientific research and promote public understanding and engagement with science."
+          },
+          {
+            "field": "Governance/Leadership",
+            "value": "Operates through a foundation board, president, program directors and grantmaking staff. Sloan Research Fellowships are administered through the foundation's Careers in Science and Technology program area."
+          },
+          {
+            "field": "Scope/Reach",
+            "value": "United States and Canada-focused research-fellowship eligibility, with foundation grantmaking across STEM, economics, digital information technology, public understanding of science, energy/environment and related areas."
+          },
+          {
+            "field": "Recognition Types",
+            "value": "Sloan Research Fellowship; related grants and fellowship programs."
+          },
+          {
+            "field": "Source",
+            "value": "https://sloan.org/ ; https://sloan.org/fellowships ; https://sloan.org/programs/research"
+          }
+        ],
         criteriaProfiles: {
           "Sloan Research Fellowship": {
             "Official Name": "Sloan Research Fellowship.",
@@ -2951,6 +3773,48 @@ const categories = [
         logoFit: "wide"
       },
       { organization: "Michael Bruno Memorial Award", recognition: "Michael Bruno Award" ,
+                bodyProfileRows: [
+          {
+            "field": "Official Name",
+            "value": "Israel Institute for Advanced Studies (IIAS), with support from Yad Hanadiv / Rothschild Foundation"
+          },
+          {
+            "field": "Organization Type",
+            "value": "Institute for advanced study and philanthropic foundation-supported award program."
+          },
+          {
+            "field": "Definition",
+            "value": "The IIAS administers and selects the Michael Bruno Memorial Award; Yad Hanadiv established and supports the award honoring exceptional Israeli researchers."
+          },
+          {
+            "field": "History/Background",
+            "value": "The Michael Bruno Memorial Award was initiated in 1999 in memory of Professor Michael Bruno. Yad Hanadiv established the award, and since 2012 the Israel Institute for Advanced Studies has been responsible for selecting and awarding it."
+          },
+          {
+            "field": "Purpose",
+            "value": "Recognize outstanding Israeli scholars, usually mid-career or under 50 depending on the call, who show exceptional originality, creativity and potential for major future breakthroughs."
+          },
+          {
+            "field": "Mission",
+            "value": "IIAS fosters advanced research and scholarly excellence; Yad Hanadiv supports excellence as a driver of lasting change in Israel through prizes, fellowships and philanthropic programs."
+          },
+          {
+            "field": "Governance/Leadership",
+            "value": "Administered by IIAS award structures, with support from Yad Hanadiv. Calls invite eligible senior Israeli academics to nominate candidates; selection is conducted by the award program."
+          },
+          {
+            "field": "Scope/Reach",
+            "value": "Israel national scholarly recognition with broad disciplinary coverage; recent calls include STEM fields and earlier descriptions refer to young Israeli scholars across fields."
+          },
+          {
+            "field": "Recognition Types",
+            "value": "Michael Bruno Memorial Award."
+          },
+          {
+            "field": "Source",
+            "value": "https://iias.huji.ac.il/about-bruno-award ; https://iias.huji.ac.il/brunolaureates ; https://www.yadhanadiv.org.il/fellowships-prizes/ ; https://en.economics.huji.ac.il/people/michael-bruno"
+          }
+        ],
         criteriaProfiles: {
           "Michael Bruno Award": {
             "Official Name": "Michael Bruno Memorial Award / Bruno Award.",
