@@ -200,7 +200,6 @@ const categories = [
           }
         }
       },
-      { organization: "US National Academy of Medicine (NAM)", recognition: "Member", website: "https://nam.edu" },
       { organization: "The Royal Society (UK)", recognition: "Fellow; Foreign Member; Royal Society Milner Award", website: "https://royalsociety.org" ,
                 bodyProfileRows: [
           {
@@ -4043,38 +4042,6 @@ const categories = [
         logoFit: "wide"
       }
     ]
-  },
-  {
-    id: "editorial-and-conference-leadership",
-    number: "07",
-    title: "Editorial and Conference Leadership",
-    shortTitle: "Editorial Leadership",
-    accent: "#3d6e75",
-    icon: "podium",
-    definition:
-      "Draft scope: leadership roles that signal scholarly influence through journals, book series, conferences, program committees, steering committees, and major convening responsibilities.",
-    criteria: [
-      "The role involves editorial judgment, conference governance, program leadership, or visible community stewardship.",
-      "The venue, journal, series, or conference has recognized standing in the relevant field.",
-      "Examples may include editor-in-chief, associate editor, general chair, program chair, area chair, steering committee member, and named lecture organizer."
-    ],
-    items: [
-      {
-        organization: "Leading Journals (Nature, Science, Cell, etc.)",
-        recognition: "Editor for leading journals; Senior Editor (Nature, Science, Cell)",
-        logos: [
-          { src: "assets/nature-logo.svg", label: "Nature" },
-          { src: "assets/science-logo.svg", label: "Science" },
-          { src: "assets/cell-logo.svg", label: "Cell" }
-        ],
-        logoDomains: ["nature.com", "science.org", "cell.com"]
-      },
-      {
-        organization: "Major Conferences (NeurIPS, ICLR, ACL, ICCV)",
-        recognition: "Program Chair (NeurIPS, ICLR, ACL, ICCV)",
-        logoDomains: ["neurips.cc", "iclr.cc", "aclweb.org", "thecvf.com"]
-      }
-    ]
   }
 ];
 
@@ -6973,8 +6940,7 @@ function inferredBodyType(category) {
     "professional-and-scholarly-associations": "Professional or scholarly association",
     "private-foundations": "Private foundation",
     "government-and-philanthropic-funding-bodies": "Government or philanthropic funding body",
-    "international-bodies": "International body",
-    "editorial-and-conference-leadership": "Journal, conference, or scholarly leadership venue"
+    "international-bodies": "International body"
   };
 
   return labels[category.id] || category.title;
