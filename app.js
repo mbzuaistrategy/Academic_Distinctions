@@ -279,6 +279,44 @@ const categories = [
             "Prize Money/Material Award": "No standard cash prize; honorific fellowship and post-nominal FRS.",
             "Number of Recipients": "Up to 109 across Fellowship routes annually, including up to 24 Foreign Members.",
             "Notable Past Recipients": "Isaac Newton, Charles Darwin, Albert Einstein, Dorothy Hodgkin, Stephen Hawking, Tim Berners-Lee.",
+            notableRecipients: [
+              {
+                name: "Isaac Newton",
+                prize: "Fellow of the Royal Society",
+                image:
+                  "https://commons.wikimedia.org/wiki/Special:FilePath/Sir_Isaac_Newton_by_Sir_Godfrey_Kneller,_Bt.jpg?width=330"
+              },
+              {
+                name: "Charles Darwin",
+                prize: "Fellow of the Royal Society",
+                image:
+                  "https://commons.wikimedia.org/wiki/Special:FilePath/Charles_Darwin_seated_crop.jpg?width=330"
+              },
+              {
+                name: "Albert Einstein",
+                prize: "Foreign Member of the Royal Society",
+                image:
+                  "https://upload.wikimedia.org/wikipedia/commons/thumb/2/28/Albert_Einstein_Head_cleaned.jpg/330px-Albert_Einstein_Head_cleaned.jpg"
+              },
+              {
+                name: "Dorothy Hodgkin",
+                prize: "Fellow of the Royal Society",
+                image:
+                  "https://commons.wikimedia.org/wiki/Special:FilePath/Dorothy_Hodgkin_Nobel.jpg?width=330"
+              },
+              {
+                name: "Stephen Hawking",
+                prize: "Fellow of the Royal Society",
+                image:
+                  "https://commons.wikimedia.org/wiki/Special:FilePath/Stephen_Hawking.StarChild.jpg?width=330"
+              },
+              {
+                name: "Tim Berners-Lee",
+                prize: "Fellow of the Royal Society",
+                image:
+                  "https://commons.wikimedia.org/wiki/Special:FilePath/Sir_Tim_Berners-Lee.jpg?width=330"
+              }
+            ],
             "Career Impact/Outcomes": "One of the strongest international scientific prestige signals; often supports leadership, visibility and influence.",
             "Relationship to Other Awards": "Many Fellows also hold Nobel Prizes, national academy memberships or major disciplinary awards; not a formal prerequisite.",
             "Ranking/Prestige Signal": "Level 1A / Leading National Academy",
