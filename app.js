@@ -200,7 +200,12 @@ const categories = [
           }
         }
       },
-      { organization: "The Royal Society (UK)", recognition: "Fellow; Foreign Member; Royal Society Milner Award", website: "https://royalsociety.org" ,
+      {
+        organization: "The Royal Society (UK)",
+        recognition: "Fellow; Foreign Member; Royal Society Milner Award",
+        website: "https://royalsociety.org",
+        logoUrl: "assets/royal-society-logo.png",
+        logoFit: "wide",
                 bodyProfileRows: [
           {
             "field": "Official Name",
