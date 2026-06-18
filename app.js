@@ -4453,7 +4453,7 @@ const professionalSocietyFellowProfiles = {
     "Duration": "Lifetime distinction",
     "Prize Money/Material Award": "No standard cash prize; Fellow designation and recognition.",
     "Number of Recipients": "Cohort size varies annually.",
-    "Notable Past Recipients": "Aravind Joshi; Julia Hirschberg; Christopher Manning; Kathleen McKeown; Martha Palmer; Dan Jurafsky; Iryna Gurevych.",
+    "Notable Past Recipients": "Aravind Joshi; Julia Hirschberg; Christopher Manning; Kathleen McKeown; Martha Palmer; Dan Jurafsky.",
     "Career Impact/Outcomes": "High field-specific prestige in NLP; supports community leadership and international visibility.",
     "Relationship to Other Awards": "Distinct from ACL Lifetime Achievement Award; often held by senior NLP leaders.",
     "Ranking/Prestige Signal": "Level 2 / Tier 2; major professional society fellowship in NLP/computational linguistics.",
@@ -5603,7 +5603,7 @@ const selectedRecognitionCriteriaProfiles = {
     "Duration": "One-time award with associated lecture.",
     "Prize Money/Material Award": "Bronze medal and GBP 5,000 gift.",
     "Number of Recipients": "Normally one recipient per year; nomination/success rates not publicly specified.",
-    "Notable Past Recipients": "Iryna Gurevych; other leading European computer scientists are listed by the Royal Society.",
+    "Notable Past Recipients": "Other leading European computer scientists are listed by the Royal Society.",
     "Career Impact/Outcomes": "Major European computer science recognition and public lecture platform; no official citation-boost statistics.",
     "Relationship to Other Awards": "Distinct from Royal Society Fellowship; may accompany other computing and academy recognitions.",
     "Ranking/Prestige Signal": "Elite European computer science prize.",
@@ -7227,7 +7227,8 @@ function criteriaFieldDisplay(field, item, category, selectedRecognition) {
   const customProfile = recognitionProfileFor(item, selectedRecognition);
 
   if (field === "Notable Past Recipients" && Array.isArray(customProfile.notableRecipients)) {
-    return notableRecipientCards(customProfile.notableRecipients);
+    const externalRecipients = customProfile.notableRecipients.filter((recipient) => !isMbzuaiFacultyName(recipient.name));
+    return externalRecipients.length ? notableRecipientCards(externalRecipients) : "";
   }
 
   if (field === "Notable Past Recipients") {
@@ -7329,6 +7330,7 @@ function notableRecipientsFromText(value) {
     .map(normalizeRecipientName)
     .filter((name) => {
       if (!name || name.length > 45) return false;
+      if (isMbzuaiFacultyName(name)) return false;
       if (/^(Fellows|Members|Recipients|Awardees|Past|Other|Examples|Influential|Historical|The|Many|Multiple)\b/i.test(name)) return false;
       return /^([A-Z][A-Za-z.'-]+|Sir|Dame|W\.|E\.)\s+/.test(name);
     });
@@ -7358,6 +7360,27 @@ function initialsForName(name) {
     .map((part) => part[0])
     .join("")
     .toUpperCase();
+}
+
+function isMbzuaiFacultyName(name) {
+  const normalized = normalizePersonName(name);
+  return facultyRecords.some((record) => normalizePersonName(record.faculty) === normalized);
+}
+
+function normalizePersonName(name) {
+  return String(name || "")
+    .replace(/Å¡/g, "s")
+    .replace(/Å¾/g, "z")
+    .replace(/Å½/g, "Z")
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .replace(/[“”"]/g, "")
+    .replace(/\([^)]*\)/g, "")
+    .replace(/\b(Sir|Dame|Dr|Prof)\b\.?/gi, "")
+    .replace(/\b(K|I)\.\s+/g, "")
+    .replace(/\s+/g, " ")
+    .trim()
+    .toLowerCase();
 }
 
 function criteriaFieldValue(field, item, category, selectedRecognition) {
