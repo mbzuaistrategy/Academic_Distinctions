@@ -1118,23 +1118,25 @@ a {
 
 .notable-recipient-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
   gap: 0.75rem;
 }
 
 .notable-recipient-card {
-  display: grid;
-  grid-template-columns: 52px 1fr;
+  display: flex;
+  flex-direction: column;
   align-items: center;
   gap: 0.65rem;
-  padding: 0.65rem;
+  min-height: 170px;
+  padding: 0.75rem;
   border: 1px solid var(--line);
   background: #fff;
+  text-align: center;
 }
 
 .notable-recipient-card img {
-  width: 52px;
-  height: 52px;
+  width: 84px;
+  height: 84px;
   object-fit: cover;
   border: 1px solid var(--line);
   background: #f6f1ea;
@@ -1148,6 +1150,7 @@ a {
 .notable-recipient-card strong {
   color: var(--ink);
   font-size: 0.92rem;
+  line-height: 1.25;
 }
 
 .notable-recipient-card span {
