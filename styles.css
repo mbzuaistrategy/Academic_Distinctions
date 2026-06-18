@@ -1134,21 +1134,21 @@ a {
   text-align: center;
 }
 
-.notable-recipient-card img {
+.notable-recipient-card img,
+.notable-recipient-initials {
   width: 84px;
   height: 84px;
-  object-fit: cover;
   border: 1px solid var(--line);
   background: #f6f1ea;
 }
 
+.notable-recipient-card img {
+  object-fit: cover;
+}
+
 .notable-recipient-initials {
   display: grid;
-  width: 84px;
-  height: 84px;
   place-items: center;
-  border: 1px solid var(--line);
-  background: #f6f1ea;
   color: var(--maroon);
   font-family: var(--font-heading);
   font-size: 1.35rem;

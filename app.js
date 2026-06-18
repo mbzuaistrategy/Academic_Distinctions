@@ -7223,7 +7223,7 @@ function notableRecipientCards(recipients) {
           (recipient) => `
           <article class="notable-recipient-card">
             ${recipient.image
-              ? `<img src="${escapeHtml(recipient.image)}" alt="${escapeHtml(recipient.name)}" loading="lazy" />`
+              ? `<img src="${escapeHtml(recipient.image)}" alt="${escapeHtml(recipient.name)}" data-initials="${escapeHtml(initialsForName(recipient.name))}" loading="lazy" onerror="this.replaceWith(Object.assign(document.createElement('div'), { className: 'notable-recipient-initials', textContent: this.dataset.initials }))" />`
               : `<div class="notable-recipient-initials" aria-hidden="true">${escapeHtml(initialsForName(recipient.name))}</div>`}
             <div>
               <strong>${escapeHtml(recipient.name)}</strong>
