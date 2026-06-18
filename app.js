@@ -6876,10 +6876,9 @@ function renderRecognition(categoryId, index) {
 
 function bodyProfile(item, category) {
   const recognitionTypes = recognitionOptions(item);
-  const recognitionSpecificRows =
-    recognitionTypes.length === 1
-      ? selectedAwardingBodyProfiles[criteriaProfileKey(item.organization, recognitionTypes[0])]
-      : null;
+  const recognitionSpecificRows = recognitionTypes
+    .map((recognition) => selectedAwardingBodyProfiles[criteriaProfileKey(item.organization, recognition)])
+    .find((rows) => rows?.length);
   const rows =
     item.bodyProfileRows ||
     recognitionSpecificRows ||
