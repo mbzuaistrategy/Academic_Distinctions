@@ -3933,7 +3933,13 @@ const categories = [
       { organization: "Wellcome Trust", recognition: "Wellcome Trust Investigator Awards", website: "https://wellcome.org" },
       { organization: "Centre national de la recherche scientifique (CNRS)", recognition: "CNRS Silver Medal", website: "https://www.cnrs.fr" },
       { organization: "German Research Foundation (DFG)", recognition: "Gottfried Wilhelm Leibniz Prize", website: "https://www.dfg.de" },
-      { organization: "German Future Prize", recognition: "German Future Prize", website: "https://www.deutscher-zukunftspreis.de" }
+      {
+        organization: "German Future Prize",
+        recognition: "German Future Prize",
+        website: "https://www.deutscher-zukunftspreis.de",
+        logoUrl: "assets/german-future-prize-logo.png",
+        logoFit: "wide"
+      }
     ]
   },
   {
