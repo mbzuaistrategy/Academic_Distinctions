@@ -7654,12 +7654,11 @@ function facultyTable(records) {
                   <ul class="faculty-recognition-list">
                     ${group.records
                       .map((record) => {
-                        const match = facultyRecognitionTarget(record, recognitions);
-                        const href = match ? `#criteria/${match.categoryId}/${match.itemIndex}/${match.recognitionIndex}` : "#directory";
+                        const href = facultyRecognitionHref(record, recognitions);
                         const title = facultyRecognitionTitle(record);
                         return `
                           <li>
-                            <a href="${href}">${escapeHtml(title)}</a>
+                            <a href="${href}" data-faculty-link="${href}">${escapeHtml(title)}</a>
                             ${record.details ? `<span class="table-subtext">${escapeHtml(record.details)}</span>` : ""}
                             ${record.work ? `<span class="table-work-note"><strong>Related work:</strong> ${escapeHtml(record.work)}</span>` : ""}
                           </li>
@@ -7764,6 +7763,19 @@ function directoryTable(items) {
 }
 
 function handleClick(event) {
+  const facultyLink = event.target.closest("[data-faculty-link]");
+  if (facultyLink) {
+    const targetHash = facultyLink.dataset.facultyLink;
+    if (targetHash && targetHash !== "#directory") {
+      event.preventDefault();
+      if (window.location.hash === targetHash) {
+        render();
+      } else {
+        window.location.hash = targetHash;
+      }
+    }
+  }
+
   const exportButton = event.target.closest("[data-export]");
   if (exportButton) {
     exportData(exportButton.dataset.export);
