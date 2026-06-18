@@ -90,7 +90,11 @@ const categories = [
           }
         }
       },
-      { organization: "US National Academy of Engineering (NAE)", recognition: "Member; International Member", website: "https://www.nae.edu" ,
+      {
+        organization: "US National Academy of Engineering (NAE)",
+        recognition: "Member; International Member",
+        website: "https://www.nae.edu",
+        logoUrl: "assets/nae-logo.png",
                 bodyProfileRows: [
           {
             "field": "Official Name",
