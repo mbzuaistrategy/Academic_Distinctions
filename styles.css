@@ -1142,6 +1142,19 @@ a {
   background: #f6f1ea;
 }
 
+.notable-recipient-initials {
+  display: grid;
+  width: 84px;
+  height: 84px;
+  place-items: center;
+  border: 1px solid var(--line);
+  background: #f6f1ea;
+  color: var(--maroon);
+  font-family: var(--font-heading);
+  font-size: 1.35rem;
+  font-weight: 800;
+}
+
 .notable-recipient-card strong,
 .notable-recipient-card span {
   display: block;

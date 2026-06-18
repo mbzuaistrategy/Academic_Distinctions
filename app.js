@@ -7203,6 +7203,15 @@ function criteriaFieldDisplay(field, item, category, selectedRecognition) {
     return notableRecipientCards(customProfile.notableRecipients);
   }
 
+  if (field === "Notable Past Recipients") {
+    const value = criteriaFieldValue(field, item, category, selectedRecognition);
+    const recipients = notableRecipientsFromText(value);
+    if (recipients.length) {
+      return notableRecipientCards(recipients);
+    }
+    return formatProfileValue(value);
+  }
+
   return formatProfileValue(criteriaFieldValue(field, item, category, selectedRecognition));
 }
 
@@ -7213,10 +7222,12 @@ function notableRecipientCards(recipients) {
         .map(
           (recipient) => `
           <article class="notable-recipient-card">
-            <img src="${escapeHtml(recipient.image)}" alt="${escapeHtml(recipient.name)}" loading="lazy" />
+            ${recipient.image
+              ? `<img src="${escapeHtml(recipient.image)}" alt="${escapeHtml(recipient.name)}" loading="lazy" />`
+              : `<div class="notable-recipient-initials" aria-hidden="true">${escapeHtml(initialsForName(recipient.name))}</div>`}
             <div>
               <strong>${escapeHtml(recipient.name)}</strong>
-              <span>${escapeHtml(recipient.prize)}</span>
+              ${recipient.prize ? `<span>${escapeHtml(recipient.prize)}</span>` : ""}
             </div>
           </article>
         `
@@ -7224,6 +7235,102 @@ function notableRecipientCards(recipients) {
         .join("")}
     </div>
   `;
+}
+
+const notableRecipientImages = {
+  "Adi Shamir": "https://commons.wikimedia.org/wiki/Special:FilePath/Adi_Shamir_2009_crop.jpg?width=330",
+  "Albert Einstein": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/28/Albert_Einstein_Head_cleaned.jpg/330px-Albert_Einstein_Head_cleaned.jpg",
+  "Allen Newell": "https://commons.wikimedia.org/wiki/Special:FilePath/Allen_Newell_1978.jpg?width=330",
+  "Andrew Viterbi": "https://commons.wikimedia.org/wiki/Special:FilePath/Andrew_Viterbi_2005.jpg?width=330",
+  "Barbara Grosz": "https://commons.wikimedia.org/wiki/Special:FilePath/Barbara_Grosz_2016.jpg?width=330",
+  "Benjamin Franklin": "https://commons.wikimedia.org/wiki/Special:FilePath/Benjamin_Franklin_by_Joseph_Duplessis_1778.jpg?width=330",
+  "Bjarne Stroustrup": "https://commons.wikimedia.org/wiki/Special:FilePath/Bjarne-stroustrup_%28cropped%29.jpg?width=330",
+  "Brian Schmidt": "https://commons.wikimedia.org/wiki/Special:FilePath/Brian_Schmidt.jpg?width=330",
+  "Charles Darwin": "https://commons.wikimedia.org/wiki/Special:FilePath/Charles_Darwin_seated_crop.jpg?width=330",
+  "Christos Papadimitriou": "https://commons.wikimedia.org/wiki/Special:FilePath/Christos_Papadimitriou_2009.jpg?width=330",
+  "David Patterson": "https://commons.wikimedia.org/wiki/Special:FilePath/David_Patterson_CHM_2013.jpg?width=330",
+  "Donald Knuth": "https://commons.wikimedia.org/wiki/Special:FilePath/Donald_Ervin_Knuth_%282005%29.jpg?width=330",
+  "Dorothy Hodgkin": "https://commons.wikimedia.org/wiki/Special:FilePath/Dorothy_Hodgkin_Nobel.jpg?width=330",
+  "Ellen Ochoa": "https://commons.wikimedia.org/wiki/Special:FilePath/Ellen_Ochoa.jpg?width=330",
+  "Frances Arnold": "https://commons.wikimedia.org/wiki/Special:FilePath/Frances_Arnold_%2842989440724%29_%28cropped%29.jpg?width=330",
+  "Geoffrey Hinton": "https://commons.wikimedia.org/wiki/Special:FilePath/Geoffrey_Hinton_at_UBC.jpg?width=330",
+  "George Washington": "https://commons.wikimedia.org/wiki/Special:FilePath/Gilbert_Stuart_Williamstown_Portrait_of_George_Washington.jpg?width=330",
+  "Herbert Simon": "https://commons.wikimedia.org/wiki/Special:FilePath/Herbert_A._Simon_%281978%29.jpg?width=330",
+  "Isaac Newton": "https://commons.wikimedia.org/wiki/Special:FilePath/Sir_Isaac_Newton_by_Sir_Godfrey_Kneller,_Bt.jpg?width=330",
+  "Jane Goodall": "https://commons.wikimedia.org/wiki/Special:FilePath/Jane_Goodall_2019.jpg?width=330",
+  "Jennifer Doudna": "https://commons.wikimedia.org/wiki/Special:FilePath/Jennifer_Doudna_2016.jpg?width=330",
+  "John Hennessy": "https://commons.wikimedia.org/wiki/Special:FilePath/John_L._Hennessy.jpg?width=330",
+  "John McCarthy": "https://commons.wikimedia.org/wiki/Special:FilePath/John_McCarthy_Stanford.jpg?width=330",
+  "Judea Pearl": "https://commons.wikimedia.org/wiki/Special:FilePath/Judea_Pearl.jpg?width=330",
+  "Katalin Kariko": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/27/Katalin_Karik%C3%B3_by_Michel_2024_02.jpg/330px-Katalin_Karik%C3%B3_by_Michel_2024_02.jpg",
+  "Martin Luther King Jr.": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/05/Martin_Luther_King%2C_Jr..jpg/330px-Martin_Luther_King%2C_Jr..jpg",
+  "Marie Curie": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c8/Marie_Curie_c._1920s.jpg/330px-Marie_Curie_c._1920s.jpg",
+  "Max Planck": "https://commons.wikimedia.org/wiki/Special:FilePath/Max_Planck_1933.jpg?width=330",
+  "Michael I. Jordan": "https://commons.wikimedia.org/wiki/Special:FilePath/Michael_I._Jordan_2016.jpg?width=330",
+  "Robert Langer": "https://commons.wikimedia.org/wiki/Special:FilePath/Robert_Langer_WEF_2013.jpg?width=330",
+  "Robert Metcalfe": "https://commons.wikimedia.org/wiki/Special:FilePath/Robert_Metcalfe_2010.jpg?width=330",
+  "Stephen Hawking": "https://commons.wikimedia.org/wiki/Special:FilePath/Stephen_Hawking.StarChild.jpg?width=330",
+  "Stuart Russell": "https://commons.wikimedia.org/wiki/Special:FilePath/Stuart_Russell_%28computer_scientist%29.jpg?width=330",
+  "Tim Berners-Lee": "https://commons.wikimedia.org/wiki/Special:FilePath/Sir_Tim_Berners-Lee.jpg?width=330",
+  "Vinton Cerf": "https://commons.wikimedia.org/wiki/Special:FilePath/Vint_Cerf_-_2010.jpg?width=330",
+  "Vladimir Vapnik": "https://commons.wikimedia.org/wiki/Special:FilePath/Vladimir_Vapnik_2014.jpg?width=330",
+  "Yann LeCun": "https://commons.wikimedia.org/wiki/Special:FilePath/Yann_LeCun_-_2018.jpg?width=330",
+  "Yoshua Bengio": "https://commons.wikimedia.org/wiki/Special:FilePath/Yoshua_Bengio_2019.jpg?width=330"
+};
+
+function notableRecipientsFromText(value) {
+  if (typeof value !== "string") return [];
+  if (/to be completed|no individual|not public|examples vary|include leading|prominent international|globally recognized|many leading|multiple nobel/i.test(value)) {
+    return [];
+  }
+
+  const cleaned = value
+    .replace(/^(Examples include|Past recipients include|Recipients include|Past Fellows include|Fellows include|Members include|Foreign Members include|Associate Members include|TWAS Fellows include|Historical tradition includes|SANU\/SASA historical membership includes)\s+/i, "")
+    .replace(/\band many others\b\.?/gi, "")
+    .replace(/\band others\b\.?/gi, "")
+    .replace(/\bofficial page lists winners by award year\b\.?/gi, "")
+    .trim();
+
+  const pieces = cleaned
+    .split(/;|,(?!\s*(?:Jr\.|Bt\.))/)
+    .flatMap((piece) => piece.split(/\s+\band\b\s+/i))
+    .map((piece) => piece.replace(/\.$/, "").trim())
+    .filter(Boolean);
+
+  const names = pieces
+    .map(normalizeRecipientName)
+    .filter((name) => {
+      if (!name || name.length > 45) return false;
+      if (/^(Fellows|Members|Recipients|Awardees|Past|Other|Examples|Influential|Historical|The|Many|Multiple)\b/i.test(name)) return false;
+      return /^([A-Z][A-Za-z.'-]+|Sir|Dame|W\.|E\.)\s+/.test(name);
+    });
+
+  return [...new Set(names)].map((name) => ({
+    name,
+    prize: "",
+    image: notableRecipientImages[name] || ""
+  }));
+}
+
+function normalizeRecipientName(name) {
+  return name
+    .replace(/^such as\s+/i, "")
+    .replace(/^including\s+/i, "")
+    .replace(/^and\s+/i, "")
+    .replace(/\s+are documented recipients$/i, "")
+    .replace(/\s+is an MBZUAI-linked example$/i, "")
+    .replace(/\s+appear in the award recipient list$/i, "")
+    .trim();
+}
+
+function initialsForName(name) {
+  return name
+    .split(/\s+/)
+    .filter((part) => !/^(Sir|Dame|Dr\.?|Prof\.?)$/i.test(part))
+    .slice(0, 2)
+    .map((part) => part[0])
+    .join("")
+    .toUpperCase();
 }
 
 function criteriaFieldValue(field, item, category, selectedRecognition) {
