@@ -7556,7 +7556,7 @@ function facultyRecognitionTarget(record, recognitions = allRecognitions()) {
     recognitions.find((match) => {
       const matchRecognition = normalizeText(match.recognition);
       return (
-        organizationMatches(match) &&
+        organizationMatches(normalizeText(match.organization)) &&
         (matchRecognition.includes(targetRecognition) || targetRecognition.includes(matchRecognition))
       );
     })
