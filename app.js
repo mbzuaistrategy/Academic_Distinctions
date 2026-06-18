@@ -1720,7 +1720,12 @@ const categories = [
           }
         }
       },
-      { organization: "The World Academy of Sciences (TWAS)", recognition: "Fellow", website: "https://twas.org" ,
+      {
+        organization: "The World Academy of Sciences (TWAS)",
+        recognition: "Fellow",
+        website: "https://twas.org",
+        logoUrl: "assets/twas-logo.png",
+        logoFit: "wide",
                 bodyProfileRows: [
           {
             "field": "Official Name",
