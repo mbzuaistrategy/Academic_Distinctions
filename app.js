@@ -245,7 +245,7 @@ const categories = [
           },
           {
             "field": "Recognition Types",
-            "value": "Fellow; Foreign Member; Honorary Fellow; Royal Fellow."
+            "value": "Fellow; Foreign Member; Honorary Fellow; Royal Fellow; The Milner Award."
           },
           {
             "field": "Source",
@@ -273,12 +273,12 @@ const categories = [
             "Review/Evaluation Criteria": "Scientific excellence and substantial contribution to natural knowledge; ability to contribute to the Society's work.",
             "Nomination Deadline": "Annual election cycle; not a public applicant deadline.",
             "Application Requirements": "Nomination materials are submitted through the Society's process by Fellows; nominee self-application is not used.",
-            "Eligibility/Restrictions": "For the Fellow route, candidates are normally from the UK, Commonwealth or Ireland; scientific excellence is the central criterion.",
+            "Eligibility/Restrictions": "Fellows are normally from the UK, Commonwealth, or Ireland route. Foreign Members are outside that route.",
             "Frequency": "Annual",
             "Duration": "Lifetime fellowship",
             "Prize Money/Material Award": "No standard cash prize; honorific fellowship and post-nominal FRS.",
             "Number of Recipients": "Up to 109 across Fellowship routes annually, including up to 24 Foreign Members.",
-            "Notable Past Recipients": "Isaac Newton, Charles Darwin, Albert Einstein, Dorothy Hodgkin, Stephen Hawking, Tim Berners-Lee.",
+            "Notable Past Recipients": "Isaac Newton, Charles Darwin, Dorothy Hodgkin, Stephen Hawking, Tim Berners-Lee.",
             notableRecipients: [
               {
                 name: "Isaac Newton",
@@ -291,12 +291,6 @@ const categories = [
                 prize: "Fellow of the Royal Society",
                 image:
                   "https://commons.wikimedia.org/wiki/Special:FilePath/Charles_Darwin_seated_crop.jpg?width=330"
-              },
-              {
-                name: "Albert Einstein",
-                prize: "Foreign Member of the Royal Society",
-                image:
-                  "https://upload.wikimedia.org/wikipedia/commons/thumb/2/28/Albert_Einstein_Head_cleaned.jpg/330px-Albert_Einstein_Head_cleaned.jpg"
               },
               {
                 name: "Dorothy Hodgkin",
@@ -349,6 +343,37 @@ const categories = [
             "Prize Money/Material Award": "No standard cash prize; honorific foreign membership and post-nominal ForMemRS.",
             "Number of Recipients": "Up to 24 Foreign Members may be elected each year.",
             "Notable Past Recipients": "Albert Einstein, Marie Curie, Subrahmanyan Chandrasekhar, Jane Goodall, Jennifer Doudna.",
+            notableRecipients: [
+              {
+                name: "Albert Einstein",
+                prize: "Foreign Member of the Royal Society",
+                image:
+                  "https://upload.wikimedia.org/wikipedia/commons/thumb/2/28/Albert_Einstein_Head_cleaned.jpg/330px-Albert_Einstein_Head_cleaned.jpg"
+              },
+              {
+                name: "Marie Curie",
+                prize: "Foreign Member of the Royal Society",
+                image:
+                  "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c8/Marie_Curie_c._1920s.jpg/330px-Marie_Curie_c._1920s.jpg"
+              },
+              {
+                name: "Subrahmanyan Chandrasekhar",
+                prize: "Foreign Member of the Royal Society",
+                image: ""
+              },
+              {
+                name: "Jane Goodall",
+                prize: "Foreign Member of the Royal Society",
+                image:
+                  "https://commons.wikimedia.org/wiki/Special:FilePath/Jane_Goodall_2019.jpg?width=330"
+              },
+              {
+                name: "Jennifer Doudna",
+                prize: "Foreign Member of the Royal Society",
+                image:
+                  "https://commons.wikimedia.org/wiki/Special:FilePath/Jennifer_Doudna_2016.jpg?width=330"
+              }
+            ],
             "Career Impact/Outcomes": "One of the strongest global scientific prestige signals for non-UK scientists.",
             "Relationship to Other Awards": "Frequently held by Nobel laureates, NAS members and major prize recipients; not a formal prerequisite.",
             "Ranking/Prestige Signal": "Level 1A / Leading National Academy",
@@ -4848,7 +4873,7 @@ const additionalFacultyRecognitions = [
   }),
   facultyRecord("Sir Michael Brady", "Fellow", "academy", "level1a", {
     organization: "The Royal Society (UK)",
-    details: "2004",
+    details: "1997",
     work: "Vision-based robotics and AI-driven medical image analysis for cancer diagnosis."
   }),
   facultyRecord("Michael I. Jordan", "Foreign Member", "academy", "level1a", {
@@ -5238,7 +5263,7 @@ const selectedAwardingBodyProfiles = {
     { field: "Mission", value: "To promote and support excellence in science and the development and use of science for the benefit of humanity." },
     { field: "Governance/Leadership", value: "Governed by a Council elected by and from the Fellowship. Medals and awards are administered through the Society's medals and prizes processes and relevant award committees." },
     { field: "Scope/Reach", value: "UK national academy with global reach; covers the natural sciences, mathematics, engineering sciences, technology, computer science, medicine-related sciences, and interdisciplinary scientific fields." },
-    { field: "Recognition Types", value: "Royal Society Milner Award and Lecture; Fellow; Foreign Member; Royal Society medals, awards, prize lectures, and research fellowships." },
+    { field: "Recognition Types", value: "Fellow; Foreign Member; Honorary Fellow; Royal Fellow; The Milner Award." },
     { field: "Source", value: "https://royalsociety.org/about-us/how-we-are-governed/governance/" },
   ],
   [criteriaProfileKey("Royal Academy of Engineering (UK)", "Royal Academy of Engineering Whittle Medal")]: [
@@ -5573,7 +5598,7 @@ const selectedRecognitionCriteriaProfiles = {
     "Review/Evaluation Criteria": "Outstanding achievement in computer science; substantial contribution; future top-level achievement potential.",
     "Nomination Deadline": "For the 2026 round, opening date 1 December 2025 and closing date 20 February 2026; cycles are annual.",
     "Application Requirements": "Nomination materials through the Royal Society awards portal; exact requirements follow the current guidance document.",
-    "Eligibility/Restrictions": "European citizen or resident in Europe for at least 12 months; nominees cannot be employed by Microsoft or have had a remunerative relationship with Microsoft in the prior 12 months; nominees should be active and not retired from the research post being recognized.",
+    "Eligibility/Restrictions": "Eligible nominees are European citizens or researchers who have been resident in Europe for at least 12 months prior to nomination. Nominees must be active researchers and must not be Microsoft employees or have had a remunerative relationship with Microsoft in the previous 12 months.",
     "Frequency": "Annual.",
     "Duration": "One-time award with associated lecture.",
     "Prize Money/Material Award": "Bronze medal and GBP 5,000 gift.",
