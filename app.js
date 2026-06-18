@@ -529,7 +529,7 @@ const categories = [
             "Duration": "Lifetime fellowship, subject to Academy rules and conduct expectations.",
             "Prize Money/Material Award": "No routine monetary prize; honorific Fellowship and post-nominal title.",
             "Number of Recipients": "The Academy has elected annual cohorts; official process pages currently reference up to 44 new Fellows through the annual process, while the 2026 announced cohort contained 60 new Fellows during a transition/expansion period. Success rate is not public.",
-            "Notable Past Recipients": "Fellows include leading UK and international medical scientists, clinicians, public-health researchers, and biomedical innovators; Sir Michael Brady is an MBZUAI-linked example.",
+            "Notable Past Recipients": "Fellows include leading UK and international medical scientists, clinicians, public-health researchers, and biomedical innovators.",
             "Career Impact/Outcomes": "Major UK medical-science prestige signal; may strengthen visibility, leadership credibility, and influence in policy/advisory settings. No official citation-boost statistics found.",
             "Relationship to Other Awards": "Often co-occurs with Royal Society, Royal Academy of Engineering, NIHR, university chairs, and major biomedical prizes, but is not a prerequisite for them.",
             "Ranking/Prestige Signal": "High-prestige national academy fellowship in biomedical and health sciences.",
@@ -3568,7 +3568,7 @@ const categories = [
             "Duration": "One-time fellowship; duration/amount can vary according to project needs and Foundation rules.",
             "Prize Money/Material Award": "Monetary stipend; amount varies by project and candidate circumstances rather than a fixed public amount.",
             "Number of Recipients": "The 2025 class included 198 Fellows selected from nearly 3,500 applicants across 53 disciplines; success rates vary by year.",
-            "Notable Past Recipients": "Past Fellows include major artists, writers, scholars, scientists, and public intellectuals; Anil K. Jain is an MBZUAI-linked example.",
+            "Notable Past Recipients": "Past Fellows include major artists, writers, scholars, scientists, and public intellectuals.",
             "Career Impact/Outcomes": "Major public prestige and flexible support for independent research/creative work; no official citation-boost statistics found.",
             "Relationship to Other Awards": "Often co-occurs with academy memberships, major artistic/scientific prizes, MacArthur Fellowships, and university honors, but not a prerequisite.",
             "Ranking/Prestige Signal": "Very high U.S./Canada private foundation fellowship prestige.",
@@ -3646,7 +3646,7 @@ const categories = [
             "Duration": "Research stay of up to one year in Germany; stay can typically be divided into periods.",
             "Prize Money/Material Award": "EUR 80,000 award value; invitation to conduct a research project in Germany.",
             "Number of Recipients": "Up to 100 awards per year; nomination/success rate not public.",
-            "Notable Past Recipients": "Awardees include globally prominent scientists and scholars across disciplines; Anil K. Jain is an MBZUAI-linked example.",
+            "Notable Past Recipients": "Awardees include globally prominent scientists and scholars across disciplines.",
             "Career Impact/Outcomes": "Major international research prestige and access to Humboldt Network/Germany collaborations; no official citation-boost statistics found.",
             "Relationship to Other Awards": "Often co-occurs with academy memberships, major society fellowships, and national/international prizes.",
             "Ranking/Prestige Signal": "Major international research award.",
@@ -3979,7 +3979,7 @@ const categories = [
             "Duration": "One-time personal prize with possible IIAS engagement.",
             "Prize Money/Material Award": "Recent IIAS open call lists a personal prize of NIS 200,000.",
             "Number of Recipients": "Typically up to three scholars per year; success rate not public.",
-            "Notable Past Recipients": "Recipients include distinguished Israeli scholars across physics, life sciences, humanities, computational biology, and other fields; Eran Segal is an MBZUAI-linked example.",
+            "Notable Past Recipients": "Recipients include distinguished Israeli scholars across physics, life sciences, humanities, computational biology, and other fields.",
             "Career Impact/Outcomes": "High Israeli scholarly prestige and flexible personal support; no official citation-boost statistics found.",
             "Relationship to Other Awards": "Often co-occurs with ERC grants, Israel Prize trajectories, academy memberships, and institutional leadership; not a prerequisite.",
             "Ranking/Prestige Signal": "Major Israeli mid-career scholarly award.",
@@ -7205,12 +7205,14 @@ function recognitionCriteriaProfile(item, category, selectedRecognition) {
             </header>
             <dl>
               ${section.fields
-                .map(
-                  (field) => `
-                  <dt>${escapeHtml(field)}</dt>
-                  <dd>${criteriaFieldDisplay(field, item, category, selectedRecognition)}</dd>
-                `
-                )
+                .map((field) => {
+                  const displayValue = criteriaFieldDisplay(field, item, category, selectedRecognition);
+                  if (!displayValue) return "";
+                  return `
+                    <dt>${escapeHtml(field)}</dt>
+                    <dd>${displayValue}</dd>
+                  `;
+                })
                 .join("")}
             </dl>
           </article>
@@ -7234,7 +7236,7 @@ function criteriaFieldDisplay(field, item, category, selectedRecognition) {
     if (recipients.length) {
       return notableRecipientCards(recipients);
     }
-    return formatProfileValue(value);
+    return "";
   }
 
   return formatProfileValue(criteriaFieldValue(field, item, category, selectedRecognition));
@@ -7305,7 +7307,7 @@ const notableRecipientImages = {
 
 function notableRecipientsFromText(value) {
   if (typeof value !== "string") return [];
-  if (/to be completed|no individual|not public|examples vary|include leading|prominent international|globally recognized|many leading|multiple nobel/i.test(value)) {
+  if (/to be completed|no individual|not public|examples vary|include leading|prominent international|globally recognized|many leading|multiple nobel|\band other\b|MBZUAI-linked example/i.test(value)) {
     return [];
   }
 
@@ -7320,6 +7322,7 @@ function notableRecipientsFromText(value) {
     .split(/;|,(?!\s*(?:Jr\.|Bt\.))/)
     .flatMap((piece) => piece.split(/\s+\band\b\s+/i))
     .map((piece) => piece.replace(/\.$/, "").trim())
+    .filter((piece) => !/MBZUAI-linked example/i.test(piece))
     .filter(Boolean);
 
   const names = pieces
@@ -7343,7 +7346,6 @@ function normalizeRecipientName(name) {
     .replace(/^including\s+/i, "")
     .replace(/^and\s+/i, "")
     .replace(/\s+are documented recipients$/i, "")
-    .replace(/\s+is an MBZUAI-linked example$/i, "")
     .replace(/\s+appear in the award recipient list$/i, "")
     .trim();
 }
@@ -7367,13 +7369,9 @@ function criteriaFieldValue(field, item, category, selectedRecognition) {
 
   const facultyMatches = facultyRecordsForRecognition(item, selectedRecognition);
   if (facultyMatches.length) {
-    const facultyHolders = facultyMatches
-      .map((record) => `${record.faculty}${record.details ? ` (${record.details})` : ""}`)
-      .join("; ");
     const facultyCategories = [...new Set(facultyMatches.map((record) => record.publicCategory))].join("; ");
     const facultyLevels = [...new Set(facultyMatches.map((record) => record.internalLevel))].join("; ");
     const facultyKnownValues = {
-      "Notable Past Recipients": `MBZUAI faculty holders listed in the Faculty tab: ${facultyHolders}.`,
       "Relationship to Other Awards": `Faculty-table classification: ${facultyLevels}.`,
       "Ranking/Prestige Signal": `${tierLabel(tierForRecognition(item, selectedRecognition, category))}. Faculty category: ${facultyCategories}.`
     };
