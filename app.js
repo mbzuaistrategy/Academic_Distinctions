@@ -152,7 +152,7 @@ const categories = [
             "Main Field/Scope": "Engineering and technology broadly; includes computing, AI, ML, robotics, systems, biomedical, materials, energy and related engineering fields.",
             "Geographic Scope": "United States national membership; international members elected separately.",
             "Geographic Distribution": "No public regional quota; selection is based on engineering achievement and service.",
-            "Amount of Members": "After the 2025 class, NAE reported 2,454 U.S. members and 334 international members.",
+            "Amount of Members": "After the 2026 class, NAE reported 2,534 U.S. members and 356 international members.",
             "Type of Recognition": "Elected academy membership",
             "Nomination Process": "Member nomination and election by current members; not an open application.",
             "Review/Evaluation Criteria": "Outstanding achievement and commitment to service; superior engineering contributions.",
@@ -162,7 +162,7 @@ const categories = [
             "Frequency": "Annual",
             "Duration": "Lifetime membership",
             "Prize Money/Material Award": "No standard cash prize; honorific elected membership.",
-            "Number of Recipients": "In 2025, NAE elected 129 new members and 21 international members.",
+            "Number of Recipients": "In 2026, NAE elected its new member and international member class.",
             "Notable Past Recipients": "Frances Arnold, Vinton Cerf, John Hennessy, David Patterson, Robert Langer, Andrew Viterbi.",
             "Career Impact/Outcomes": "Top-tier engineering prestige signal; increases authority in engineering, policy and national advisory work.",
             "Relationship to Other Awards": "Often held alongside NAS membership, IEEE/ACM fellowships, Nobel/Turing/major engineering prizes; not a formal prerequisite.",
@@ -184,7 +184,7 @@ const categories = [
             "Main Field/Scope": "Engineering and technology broadly; includes computing, AI, ML, robotics, systems, biomedical, materials, energy and related engineering fields.",
             "Geographic Scope": "United States national membership; international members elected separately.",
             "Geographic Distribution": "No public regional quota; selection is based on engineering achievement and service.",
-            "Amount of Members": "After the 2025 class, NAE reported 2,454 U.S. members and 334 international members.",
+            "Amount of Members": "After the 2026 class, NAE reported 2,534 U.S. members and 356 international members.",
             "Type of Recognition": "Elected academy membership",
             "Nomination Process": "Member nomination and election by current members; not an open application.",
             "Review/Evaluation Criteria": "Outstanding achievement and commitment to service; superior engineering contributions.",
@@ -194,7 +194,7 @@ const categories = [
             "Frequency": "Annual",
             "Duration": "Lifetime membership",
             "Prize Money/Material Award": "No standard cash prize; honorific elected membership.",
-            "Number of Recipients": "In 2025, NAE elected 129 new members and 21 international members.",
+            "Number of Recipients": "In 2026, NAE elected its new member and international member class.",
             "Notable Past Recipients": "Frances Arnold, Vinton Cerf, John Hennessy, David Patterson, Robert Langer, Andrew Viterbi.",
             "Career Impact/Outcomes": "Top-tier engineering prestige signal; increases authority in engineering, policy and national advisory work.",
             "Relationship to Other Awards": "Often held alongside NAS membership, IEEE/ACM fellowships, Nobel/Turing/major engineering prizes; not a formal prerequisite.",
@@ -4840,13 +4840,13 @@ const additionalFacultyRecognitions = [
     organization: "US National Academy of Engineering (NAE)",
     details: "2010",
     work:
-      "Foundational contributions to machine learning, probabilistic graphical models, and Bayesian nonparametric statistics."
+      "For contributions to the foundations and applications of machine learning."
   }),
   facultyRecord("Anil K. Jain", "Member", "academy", "level1a", {
     organization: "US National Academy of Engineering (NAE)",
     details: "2016",
     work:
-      "Contributions to the engineering and practice of biometrics, fingerprint recognition, and pattern recognition."
+      "For contributions to the engineering and practice of biometrics."
   }),
   facultyRecord("Sir Michael Brady", "International Member", "academy", "level1a", {
     organization: "US National Academy of Engineering (NAE)",
