@@ -1991,7 +1991,12 @@ const categories = [
           }
         }
       },
-      { organization: "Academy of Motion Picture Arts and Sciences (AMPAS)", recognition: "Member", website: "https://www.oscars.org" ,
+      {
+        organization: "Academy of Motion Picture Arts and Sciences (AMPAS)",
+        recognition: "Member",
+        website: "https://www.oscars.org",
+        logoUrl: "assets/ampas-logo.png",
+        logoFit: "contain",
                 bodyProfileRows: [
           {
             "field": "Official Name",
