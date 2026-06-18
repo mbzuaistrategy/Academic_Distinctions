@@ -6238,7 +6238,9 @@ function allInstitutions() {
 }
 
 function allRecognitions() {
-  return categories.flatMap((category) =>
+  if (allRecognitions.cache) return allRecognitions.cache;
+
+  allRecognitions.cache = categories.flatMap((category) =>
     activeCategoryItems(category).flatMap(({ item, itemIndex }) =>
       recognitionOptions(item).map((recognition, recognitionIndex) => ({
         organization: item.organization,
@@ -6256,6 +6258,8 @@ function allRecognitions() {
       }))
     )
   );
+
+  return allRecognitions.cache;
 }
 
 function recognitionOptions(item) {
@@ -7364,7 +7368,10 @@ function initialsForName(name) {
 
 function isMbzuaiFacultyName(name) {
   const normalized = normalizePersonName(name);
-  return facultyRecords.some((record) => normalizePersonName(record.faculty) === normalized);
+  if (!isMbzuaiFacultyName.cache) {
+    isMbzuaiFacultyName.cache = new Set(facultyRecords.map((record) => normalizePersonName(record.faculty)));
+  }
+  return isMbzuaiFacultyName.cache.has(normalized);
 }
 
 function normalizePersonName(name) {
@@ -7481,8 +7488,8 @@ function sharedRecognitionProfile(selectedRecognition) {
   return matchingKey ? professionalSocietyFellowProfiles[matchingKey] : null;
 }
 
-function facultyRecognitionTitle(record) {
-  const match = facultyRecognitionTarget(record);
+function facultyRecognitionTitle(record, recognitions = allRecognitions()) {
+  const match = facultyRecognitionTarget(record, recognitions);
   const organization = record.organization || match?.organization || "";
   const distinction = record.distinction;
 
@@ -7510,19 +7517,21 @@ function recognitionIncludesOrganization(recognition, organization) {
   return organizationAliases.some((alias) => recognitionText.startsWith(alias));
 }
 
-function sortFacultyRecords(records) {
+function sortFacultyRecords(records, recognitions = allRecognitions()) {
   return [...records].sort((a, b) => {
     const facultySort = normalizeText(a.faculty).localeCompare(normalizeText(b.faculty));
     if (facultySort !== 0) return facultySort;
 
-    return normalizeText(facultyRecognitionTitle(a)).localeCompare(normalizeText(facultyRecognitionTitle(b)));
+    return normalizeText(facultyRecognitionTitle(a, recognitions)).localeCompare(
+      normalizeText(facultyRecognitionTitle(b, recognitions))
+    );
   });
 }
 
-function groupFacultyRecords(records) {
+function groupFacultyRecords(records, recognitions = allRecognitions()) {
   const groups = new Map();
 
-  sortFacultyRecords(records).forEach((record) => {
+  sortFacultyRecords(records, recognitions).forEach((record) => {
     const key = normalizeText(record.faculty);
     if (!groups.has(key)) {
       groups.set(key, { faculty: record.faculty, records: [] });
@@ -7581,8 +7590,9 @@ function facultyRecordsForRecognition(item, selectedRecognition) {
 }
 
 function renderFacultyPage() {
-  const sortedRecords = sortFacultyRecords(facultyRecognitions);
-  const facultyCount = groupFacultyRecords(sortedRecords).length;
+  const recognitions = allRecognitions();
+  const sortedRecords = sortFacultyRecords(facultyRecognitions, recognitions);
+  const facultyCount = groupFacultyRecords(sortedRecords, recognitions).length;
 
   app.innerHTML = `
     <section class="band compact">
@@ -7602,7 +7612,7 @@ function renderFacultyPage() {
         </div>
 
         <div id="faculty-results">
-          ${facultyTable(sortedRecords)}
+          ${facultyTable(sortedRecords, recognitions)}
         </div>
       </div>
     </section>
@@ -7615,11 +7625,14 @@ function renderFacultyPage() {
       normalizeText([record.faculty, record.distinction, record.organization, record.details, record.work, record.publicCategory, record.internalLevel].join(" "))
         .includes(query)
     );
-    document.querySelector("#faculty-results").innerHTML = facultyTable(sortFacultyRecords(query ? filtered : facultyRecognitions));
+    document.querySelector("#faculty-results").innerHTML = facultyTable(
+      sortFacultyRecords(query ? filtered : facultyRecognitions, recognitions),
+      recognitions
+    );
   });
 }
 
-function facultyTable(records) {
+function facultyTable(records, recognitions = allRecognitions()) {
   if (!records.length) {
     return `
       <div class="empty-state">
@@ -7631,8 +7644,7 @@ function facultyTable(records) {
     `;
   }
 
-  const recognitions = allRecognitions();
-  const groups = groupFacultyRecords(records);
+  const groups = groupFacultyRecords(records, recognitions);
 
   return `
     <table class="directory-table faculty-table">
@@ -7655,7 +7667,7 @@ function facultyTable(records) {
                     ${group.records
                       .map((record) => {
                         const href = facultyRecognitionHref(record, recognitions);
-                        const title = facultyRecognitionTitle(record);
+                        const title = facultyRecognitionTitle(record, recognitions);
                         return `
                           <li>
                             <a href="${href}" data-faculty-link="${href}">${escapeHtml(title)}</a>
