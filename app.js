@@ -2983,7 +2983,13 @@ const categories = [
           }
         }
       },
-      { organization: "International Association for Pattern Recognition (IAPR)", recognition: "IAPR Fellow; IAPR King-Sun Fu Prize", website: "https://iapr.org" },
+      {
+        organization: "International Association for Pattern Recognition (IAPR)",
+        recognition: "IAPR Fellow; IAPR King-Sun Fu Prize",
+        website: "https://iapr.org",
+        logoUrl: "assets/iapr-logo.png",
+        logoFit: "wide"
+      },
       { organization: "International Society for Optics and Photonics (SPIE)", recognition: "SPIE Fellow", website: "https://spie.org" },
       { organization: "Real-World Cryptography", recognition: "Levchin Prize for Real-World Cryptography", website: "https://rwc.iacr.org" },
       { organization: "European Molecular Biology Organization (EMBO)", recognition: "European Molecular Biology Organization EMBO Member", website: "https://www.embo.org" },
