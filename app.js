@@ -7701,13 +7701,16 @@ function askAnswerView(question) {
   const query = String(question || "").trim();
   if (!query) return askEmptyState();
 
-  const matches = askSearchMatches(query).slice(0, 5);
+  const levelFilter = askLevelFromQuery(normalizeText(query));
+  const matches = askSearchMatches(query)
+    .filter((match) => !levelFilter || normalizeText(match.tierCode) === levelFilter)
+    .slice(0, 5);
   if (!matches.length) {
     return `
       <div class="empty-state">
         <div>
           <strong>No answer found for "${escapeHtml(query)}"</strong>
-          <span>Try a recognition name, faculty name, institution, level, or criterion such as eligibility or prize money.</span>
+          <span>${levelFilter ? "No recognitions match that exact level in the current portal data." : "Try a recognition name, faculty name, institution, level, or criterion such as eligibility or prize money."}</span>
         </div>
       </div>
     `;
@@ -7916,6 +7919,10 @@ function askResultCard(match, query) {
 function askRelevantFields(match, query) {
   const normalized = normalizeText(query);
   const preferred = [];
+  const levelFilter = askLevelFromQuery(normalized);
+  if (levelFilter) {
+    preferred.push("Awarding Body", "Type of Recognition", "Main Field/Scope", "Geographic Scope", "Number of Recipients");
+  }
   if (/nomination|apply|application|deadline|selection|review|criteria/.test(normalized)) {
     preferred.push("Nomination Process", "Review/Evaluation Criteria", "Nomination Deadline", "Application Requirements", "Eligibility/Restrictions");
   }
@@ -7925,7 +7932,7 @@ function askRelevantFields(match, query) {
   if (/who|faculty|recipient|member|mbzuai|notable/.test(normalized)) {
     preferred.push("Notable Past Recipients", "Number of Recipients", "Type of Recognition");
   }
-  if (/level|tier|prestige|impact|ranking/.test(normalized)) {
+  if (!levelFilter && /level|tier|prestige|impact|ranking/.test(normalized)) {
     preferred.push("Ranking/Prestige Signal", "Career Impact/Outcomes", "Relationship to Other Awards");
   }
 
