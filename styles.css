@@ -1552,12 +1552,18 @@ a {
 }
 
 .benchmark-header-filter summary::after {
-  content: "Filter";
-  color: var(--maroon);
-  font-size: 0.66rem;
-  font-weight: 800;
-  letter-spacing: 0;
-  text-transform: none;
+  content: "";
+  width: 7px;
+  height: 7px;
+  flex: 0 0 auto;
+  border-right: 2px solid var(--maroon);
+  border-bottom: 2px solid var(--maroon);
+  transform: rotate(45deg);
+  transition: transform 0.15s ease;
+}
+
+.benchmark-header-filter[open] summary::after {
+  transform: rotate(225deg);
 }
 
 .benchmark-header-filter summary b {
@@ -1565,10 +1571,16 @@ a {
   place-items: center;
   min-width: 18px;
   height: 18px;
+  flex: 0 0 auto;
+  margin-left: auto;
   border-radius: 50%;
   background: var(--maroon);
   color: #fffefa;
   font-size: 0.68rem;
+}
+
+.benchmark-header-filter summary span {
+  min-width: 0;
 }
 
 .benchmark-filter-menu {
