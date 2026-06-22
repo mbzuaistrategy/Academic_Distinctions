@@ -7369,7 +7369,7 @@ function initialsForName(name) {
 function isMbzuaiFacultyName(name) {
   const normalized = normalizePersonName(name);
   if (!isMbzuaiFacultyName.cache) {
-    isMbzuaiFacultyName.cache = new Set(facultyRecords.map((record) => normalizePersonName(record.faculty)));
+    isMbzuaiFacultyName.cache = new Set(facultyRecognitions.map((record) => normalizePersonName(record.faculty)));
   }
   return isMbzuaiFacultyName.cache.has(normalized);
 }
