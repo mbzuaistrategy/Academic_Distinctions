@@ -1625,18 +1625,58 @@ a {
 }
 
 .benchmark-table-wrap {
-  max-height: calc(100vh - 290px);
-  min-height: 360px;
   overflow: auto;
   border: 1px solid var(--line);
   background: #fff;
   touch-action: pan-x pan-y;
 }
 
+.benchmark-sections {
+  display: grid;
+  gap: 16px;
+}
+
+.benchmark-section-table {
+  overflow: visible;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--surface);
+  box-shadow: var(--shadow);
+}
+
+.benchmark-section-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+  border-bottom: 1px solid var(--line);
+  padding: 12px 14px;
+  background: var(--surface-soft);
+}
+
+.benchmark-section-head h3 {
+  margin: 0;
+  font-family: inherit;
+  font-size: 1rem;
+  font-weight: 850;
+}
+
+.benchmark-section-head p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.82rem;
+  font-weight: 650;
+}
+
 .benchmark-table {
   min-width: 2600px;
   border: 0;
   box-shadow: none;
+}
+
+.compact-benchmark-table {
+  min-width: 0;
+  table-layout: fixed;
 }
 
 .benchmark-table th,
@@ -1646,6 +1686,27 @@ a {
   vertical-align: top;
   font-size: 0.78rem;
   line-height: 1.35;
+}
+
+.compact-benchmark-table th,
+.compact-benchmark-table td {
+  width: auto;
+  max-width: none;
+  padding: 10px 12px;
+  font-size: 0.8rem;
+}
+
+.compact-benchmark-table th:first-child,
+.compact-benchmark-table td:first-child,
+.compact-benchmark-table td:nth-child(2),
+.compact-benchmark-table th:nth-child(2) {
+  position: static;
+  width: auto;
+  background: inherit;
+}
+
+.compact-benchmark-table thead th {
+  background: var(--surface-soft);
 }
 
 .benchmark-table thead th {
@@ -1775,6 +1836,21 @@ a {
 .benchmark-table td:nth-child(2),
 .benchmark-table th:nth-child(2) {
   width: 180px;
+}
+
+.compact-benchmark-table th:first-child,
+.compact-benchmark-table td:first-child,
+.compact-benchmark-table th:nth-child(2),
+.compact-benchmark-table td:nth-child(2) {
+  position: static;
+  z-index: auto;
+  width: auto;
+  background: inherit;
+}
+
+.compact-benchmark-table thead th:first-child,
+.compact-benchmark-table thead th:nth-child(2) {
+  background: var(--surface-soft);
 }
 
 .benchmark-info-list {

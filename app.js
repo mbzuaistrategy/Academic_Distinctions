@@ -8358,11 +8358,13 @@ function benchmarkingTable(rows, page = 1) {
   const start = (currentPage - 1) * pageSize;
   const visibleRows = rows.slice(start, start + pageSize);
 
+  const sections = benchmarkSectionGroups();
+
   return `
     <div class="benchmark-results-head">
       <div>
         <div class="benchmark-count">${rows.length} recognition${rows.length === 1 ? "" : "s"}</div>
-        <div class="benchmark-page-note">Showing ${start + 1}-${Math.min(start + pageSize, rows.length)}. Swipe horizontally to compare criteria.</div>
+        <div class="benchmark-page-note">Showing ${start + 1}-${Math.min(start + pageSize, rows.length)}. Criteria are grouped into focused tables for easier reading.</div>
       </div>
       <div class="benchmark-pagination" aria-label="Benchmarking pagination">
         <button class="button light" type="button" data-benchmark-page="${currentPage - 1}" ${currentPage === 1 ? "disabled" : ""}>Previous</button>
@@ -8370,31 +8372,103 @@ function benchmarkingTable(rows, page = 1) {
         <button class="button light" type="button" data-benchmark-page="${currentPage + 1}" ${currentPage === pageCount ? "disabled" : ""}>Next</button>
       </div>
     </div>
-    <div class="benchmark-table-wrap">
-      <table class="directory-table benchmark-table">
-        <thead>
-          <tr>
-            ${benchmarkHeaderCell({ key: "recognition", label: "Recognition" })}
-            ${benchmarkHeaderCell({ key: "organization", label: "Organization" })}
-            ${benchmarkingCriteria.map((criterion) => benchmarkHeaderCell(criterion)).join("")}
-          </tr>
-        </thead>
-        <tbody>
-          ${visibleRows
-            .map(
-              (row) => `
-              <tr>
-                <td><a href="${benchmarkRecognitionHref(row)}">${escapeHtml(row.recognition)}</a></td>
-                <td>${escapeHtml(row.organization)}</td>
-                ${benchmarkingCriteria.map((criterion) => `<td>${formatBenchmarkCell(row[criterion.key] || "N/A")}</td>`).join("")}
-              </tr>
-            `
-            )
-            .join("")}
-        </tbody>
-      </table>
+    <div class="benchmark-sections">
+      ${sections.map((section) => benchmarkSectionTable(section, visibleRows)).join("")}
     </div>
   `;  
+}
+
+function benchmarkSectionGroups() {
+  return [
+    {
+      title: "Overview",
+      description: "Identity, awarding body, level, and type.",
+      columns: [
+        { key: "recognition", label: "Recognition" },
+        { key: "organization", label: "Organization" },
+        { key: "categoryTier", label: "Level" },
+        { key: "type", label: "Type" },
+        { key: "awardingBody", label: "Awarding Body" }
+      ]
+    },
+    {
+      title: "Scope",
+      description: "Field and geographic reach.",
+      columns: [
+        { key: "recognition", label: "Recognition" },
+        { key: "scopeField", label: "Scope and Field" },
+        { key: "geographicScope", label: "Geographic Scope" }
+      ]
+    },
+    {
+      title: "Selection",
+      description: "How candidates are nominated and evaluated.",
+      columns: [
+        { key: "recognition", label: "Recognition" },
+        { key: "selectionProcess", label: "Nomination" },
+        { key: "evaluationCriteria", label: "Evaluation" },
+        { key: "eligibility", label: "Eligibility" }
+      ]
+    },
+    {
+      title: "Award Details",
+      description: "Duration, award value, and selectivity.",
+      columns: [
+        { key: "recognition", label: "Recognition" },
+        { key: "selectivity", label: "Recipients / Selectivity" },
+        { key: "duration", label: "Duration" },
+        { key: "prizeMoney", label: "Prize / Material Award" }
+      ]
+    },
+    {
+      title: "Impact",
+      description: "Notable recipients, prestige, and related awards.",
+      columns: [
+        { key: "recognition", label: "Recognition" },
+        { key: "notableRecipients", label: "Notable Recipients" },
+        { key: "careerImpact", label: "Impact / Prestige" },
+        { key: "relationship", label: "Relationship" }
+      ]
+    }
+  ];
+}
+
+function benchmarkSectionTable(section, rows) {
+  return `
+    <section class="benchmark-section-table">
+      <div class="benchmark-section-head">
+        <h3>${escapeHtml(section.title)}</h3>
+        <p>${escapeHtml(section.description)}</p>
+      </div>
+      <div class="benchmark-table-wrap">
+        <table class="directory-table benchmark-table compact-benchmark-table">
+          <thead>
+            <tr>
+              ${section.columns.map((column) => benchmarkHeaderCell(column)).join("")}
+            </tr>
+          </thead>
+          <tbody>
+            ${rows.map((row) => benchmarkSectionRow(row, section.columns)).join("")}
+          </tbody>
+        </table>
+      </div>
+    </section>
+  `;
+}
+
+function benchmarkSectionRow(row, columns) {
+  return `
+    <tr>
+      ${columns
+        .map((column) => {
+          if (column.key === "recognition") {
+            return `<td><a href="${benchmarkRecognitionHref(row)}">${escapeHtml(row.recognition)}</a></td>`;
+          }
+          return `<td>${formatBenchmarkCell(row[column.key] || "N/A")}</td>`;
+        })
+        .join("")}
+    </tr>
+  `;
 }
 
 function formatBenchmarkCell(value) {
