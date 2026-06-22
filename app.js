@@ -5145,7 +5145,8 @@ const allowedRecognitionPairs = [
   ["Science Council of Japan", "Associate Member"],
   ["MBR Academy of Scientists of the UAE", "Member"],
   ["Young Israeli Academy of Sciences", "Member"],
-  ["Serbian Royal Academy / SKANU", "Member"]
+  ["Serbian Royal Academy / SKANU", "Member"],
+  ["Academy of Engineering Sciences of Serbia", "Foreign Member"]
 ];
 
 const allowedStandaloneRecognitions = [
@@ -5180,36 +5181,7 @@ const allowedStandaloneRecognitions = [
   "ISCB Fellow",
   "BCS Fellow",
   "British Computer Society Fellow"
-,
-  "IEEE W. Wallace McDowell Award",
-  "Orange Prize / French Academy Grand Prix",
-  "ASME Machine Design Award",
-  "Royal Society Milner Award",
-  "Royal Academy of Engineering Whittle Medal",
-  "IEEE Robotics and Automation Society RAS Pioneer Award",
-  "IAPR Fellow",
-  "SPIE Fellow",
-  "IAPR King-Sun Fu Prize",
-  "Levchin Prize for Real-World Cryptography",
-  "European Molecular Biology Organization EMBO Member",
-  "CNRS Silver Medal",
-  "European Association for Signal Processing EURASIP Fellow",
-  "German Cancer Prize",
-  "van Niel International Prize",
-  "American Academy of Microbiology Fellow",
-  "German Future Prize",
-  "Gottfried Wilhelm Leibniz Prize",
-  "Member",
-  "Institution of Engineering and Technology IET Faraday Prize / Medal",
-  "Japan Society of Mechanical Engineers JSME Fellow",
-  "JSME Medal for Distinguished Engineers",
-  "International Association for Pattern Recognition IAPR Fellow",
-  "International Society for Optics and Photonics SPIE Fellow",
-  "EMBO Member",
-  "EURASIP Fellow",
-  "acatech Member",
-  "IET Faraday Prize / Medal",
-  "JSME Fellow"];
+];
 
 const allowedRecognitionPairKeys = new Set(
   allowedRecognitionPairs.map(([organization, recognition]) => `${normalizeText(organization)}||${normalizeText(recognition)}`)
