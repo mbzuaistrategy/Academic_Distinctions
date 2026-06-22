@@ -8607,40 +8607,27 @@ function directoryTable(items) {
   }
 
   return `
-    <div class="directory-table-wrap recognition-directory-wrap">
-      <table class="directory-table recognition-directory-table">
-        <colgroup>
-          <col class="recognition-directory-org" />
-          <col class="recognition-directory-name" />
-          <col class="recognition-directory-level" />
-          <col class="recognition-directory-institution" />
-          <col class="recognition-directory-note" />
-        </colgroup>
-        <thead>
-          <tr>
-            <th>Organization</th>
-            <th>Recognition</th>
-            <th>Level</th>
-            <th>Institution</th>
-            <th>Note</th>
-          </tr>
-        </thead>
-        <tbody>
-          ${items
-            .map(
-              (item) => `
-              <tr>
-                <td><a class="table-logo-link" href="#recognition/${item.categoryId}/${item.itemIndex}">${institutionLogo(item, "tiny")}<span>${escapeHtml(item.organization)}</span></a></td>
-                <td><a href="#criteria/${item.categoryId}/${item.itemIndex}/${item.recognitionIndex}">${escapeHtml(item.recognition)}</a></td>
-                <td>${tierBadge(item.tierKey)}</td>
-                <td>${escapeHtml(item.category)}</td>
-                <td>${escapeHtml(item.note || "")}</td>
-              </tr>
-            `
-            )
-            .join("")}
-        </tbody>
-      </table>
+    <div class="recognition-directory-grid">
+      ${items
+        .map(
+          (item) => `
+          <article class="recognition-directory-card">
+            <a class="recognition-directory-card-head" href="#recognition/${item.categoryId}/${item.itemIndex}">
+              ${institutionLogo(item, "tiny")}
+              <span>${escapeHtml(item.organization)}</span>
+            </a>
+            <a class="recognition-directory-card-title" href="#criteria/${item.categoryId}/${item.itemIndex}/${item.recognitionIndex}">
+              ${escapeHtml(item.recognition)}
+            </a>
+            <div class="recognition-directory-card-meta">
+              ${tierBadge(item.tierKey)}
+              <span>${escapeHtml(item.category)}</span>
+            </div>
+            <p>${escapeHtml(item.note || "N/A")}</p>
+          </article>
+        `
+        )
+        .join("")}
     </div>
   `;
 }
