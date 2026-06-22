@@ -7835,7 +7835,10 @@ function askNameMatchesQuery(name, normalizedQuery) {
 }
 
 function askLevelFromQuery(normalizedQuery) {
-  const match = normalizedQuery.match(/\blevel\s*([123])\s*([abc])?\b/) || normalizedQuery.match(/\btier\s*([123])\s*([abc])?\b/);
+  const match =
+    normalizedQuery.match(/\blevel\s*([123])\s*([abc])?\b/) ||
+    normalizedQuery.match(/\btier\s*([123])\s*([abc])?\b/) ||
+    normalizedQuery.match(/\b([123])\s*([abc])\b/);
   if (!match) return "";
   return normalizeText(`Level ${match[1]}${match[2] || ""}`);
 }
