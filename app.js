@@ -7753,7 +7753,6 @@ function renderBenchmarkingPage() {
   const rows = benchmarkingRows();
   const categories = [...new Set(rows.map((row) => row.institution))].sort();
   const levels = [...new Set(rows.map((row) => row.level).filter(Boolean))].sort();
-  const types = [...new Set(rows.map((row) => row.type).filter((value) => value !== "N/A"))].sort();
   activeBenchmarkColumnFilters = {};
   benchmarkSourceRows = rows;
   const recognitionOptions = rows
@@ -7800,13 +7799,6 @@ function renderBenchmarkingPage() {
               ${levels.map((level) => `<option value="${escapeHtml(level)}">${escapeHtml(level)}</option>`).join("")}
             </select>
           </label>
-          <label>
-            <span>Type</span>
-            <select id="benchmark-type">
-              <option value="">All types</option>
-              ${types.map((type) => `<option value="${escapeHtml(type)}">${escapeHtml(type)}</option>`).join("")}
-            </select>
-          </label>
         </div>
 
         <div id="benchmark-results">
@@ -7821,7 +7813,6 @@ function renderBenchmarkingPage() {
   const clearRecognitions = document.querySelector("#benchmark-clear-recognitions");
   const institution = document.querySelector("#benchmark-institution");
   const level = document.querySelector("#benchmark-level");
-  const type = document.querySelector("#benchmark-type");
   let currentPage = 1;
   let filteredRows = rows;
 
@@ -7834,7 +7825,6 @@ function renderBenchmarkingPage() {
     const selectedRecognitions = new Set([...recognition.selectedOptions].map((option) => option.value));
     const selectedInstitution = institution.value;
     const selectedLevel = level.value;
-    const selectedType = type.value;
     filteredRows = rows.filter((row) => {
       const matchesQuery =
         !query ||
@@ -7844,16 +7834,15 @@ function renderBenchmarkingPage() {
         matchesBenchmarkColumnFilters(row, activeBenchmarkColumnFilters) &&
         (!selectedRecognitions.size || selectedRecognitions.has(row.id)) &&
         (!selectedInstitution || row.institution === selectedInstitution) &&
-        (!selectedLevel || row.level === selectedLevel) &&
-        (!selectedType || row.type === selectedType)
+        (!selectedLevel || row.level === selectedLevel)
       );
     });
     currentPage = 1;
     renderResults();
   };
 
-  [search, recognition, institution, level, type].forEach((control) => control.addEventListener("input", update));
-  [recognition, institution, level, type].forEach((control) => control.addEventListener("change", update));
+  [search, recognition, institution, level].forEach((control) => control.addEventListener("input", update));
+  [recognition, institution, level].forEach((control) => control.addEventListener("change", update));
   clearRecognitions.addEventListener("click", () => {
     [...recognition.options].forEach((option) => {
       option.selected = false;
