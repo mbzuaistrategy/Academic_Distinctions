@@ -8475,10 +8475,9 @@ function formatBenchmarkCell(value) {
   const text = String(value || "N/A").trim();
   if (!text || text === "N/A") return "N/A";
 
-  const pipeParts = splitCompactParts(text, /\s+\|\s+/);
-  const points = pipeParts.length > 1 ? pipeParts : compactProfilePoints(text);
+  const points = benchmarkCompactPoints(text);
 
-  if (points.length > 1 || text.length > 85) {
+  if (points.length > 1 || text.length > 75) {
     return `
       <ul class="benchmark-info-list">
         ${points.map((point) => `<li>${escapeHtml(point)}</li>`).join("")}
@@ -8487,6 +8486,66 @@ function formatBenchmarkCell(value) {
   }
 
   return escapeHtml(text);
+}
+
+function benchmarkCompactPoints(text) {
+  const clean = benchmarkConciseText(text);
+  if (!clean || clean === "N/A") return ["N/A"];
+
+  const pipeParts = splitCompactParts(clean, /\s+\|\s+/);
+  const baseParts = pipeParts.length > 1 ? pipeParts : compactProfilePoints(clean);
+  const points = baseParts
+    .flatMap((part) => splitBenchmarkPoint(part))
+    .map((part) => benchmarkConciseText(part))
+    .filter(Boolean);
+
+  return points.length ? points.slice(0, 4) : [clean];
+}
+
+function splitBenchmarkPoint(text) {
+  const clean = String(text || "").trim();
+  if (!clean) return [];
+  if (clean.length <= 78) return [clean];
+
+  const colonParts = splitCompactParts(clean, /:\s+/);
+  if (colonParts.length === 2 && colonParts[0].length <= 32) {
+    return [`${colonParts[0]}: ${colonParts[1]}`];
+  }
+
+  const connectorParts = splitByReadableConnector(clean);
+  if (connectorParts.length > 1) return connectorParts;
+
+  const commaParts = splitCompactParts(clean, /,\s+/);
+  if (commaParts.length >= 3) return commaParts;
+
+  return [trimBenchmarkPoint(clean)];
+}
+
+function benchmarkConciseText(text) {
+  return trimBenchmarkPoint(
+    String(text || "")
+      .replace(/\baccording to (the )?official sources?/gi, "")
+      .replace(/\baccording to [^.;]+/gi, "")
+      .replace(/\bthe reviewed sources? (did|do) not (identify|show|provide|publish)\b/gi, "No official source found for")
+      .replace(/\bshould be verified from the current\b/gi, "Verify current")
+      .replace(/\bis described as\b/gi, "is")
+      .replace(/\bis intended to\b/gi, "aims to")
+      .replace(/\bNomination Process\b/g, "Nomination")
+      .replace(/\bReview\/Evaluation Criteria\b/g, "Evaluation")
+      .replace(/\bPrize Money\/Material Award\b/g, "Prize")
+      .replace(/\s+/g, " ")
+      .trim()
+  );
+}
+
+function trimBenchmarkPoint(text) {
+  const clean = String(text || "").replace(/\s+/g, " ").trim();
+  if (clean.length <= 96) return clean;
+
+  const sentence = clean.split(/(?<=[.!?])\s+/)[0];
+  if (sentence && sentence.length <= 110) return sentence.replace(/[.;:]$/, "");
+
+  return `${clean.slice(0, 93).trim()}...`;
 }
 
 function benchmarkRecognitionHref(row) {
