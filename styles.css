@@ -1453,17 +1453,49 @@ a {
   text-transform: uppercase;
 }
 
-.benchmark-count {
+.benchmark-results-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
   margin: 0 0 0.65rem;
+}
+
+.benchmark-count {
+  margin: 0;
   color: var(--muted);
   font-size: 0.86rem;
   font-weight: 800;
 }
 
+.benchmark-page-note {
+  margin-top: 0.25rem;
+  color: #6d6258;
+  font-size: 0.82rem;
+}
+
+.benchmark-pagination {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  color: var(--muted);
+  font-size: 0.84rem;
+  font-weight: 800;
+  white-space: nowrap;
+}
+
+.benchmark-pagination button:disabled {
+  cursor: not-allowed;
+  opacity: 0.45;
+}
+
 .benchmark-table-wrap {
-  overflow-x: auto;
+  max-height: calc(100vh - 290px);
+  min-height: 360px;
+  overflow: auto;
   border: 1px solid var(--line);
   background: #fff;
+  touch-action: pan-x pan-y;
 }
 
 .benchmark-table {
@@ -1481,6 +1513,12 @@ a {
   line-height: 1.35;
 }
 
+.benchmark-table thead th {
+  position: sticky;
+  top: 0;
+  z-index: 4;
+}
+
 .benchmark-table th:first-child,
 .benchmark-table td:first-child {
   position: sticky;
@@ -1491,7 +1529,7 @@ a {
 }
 
 .benchmark-table th:first-child {
-  z-index: 3;
+  z-index: 5;
   background: var(--surface-soft);
 }
 

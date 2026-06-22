@@ -7767,12 +7767,19 @@ function renderBenchmarkingPage() {
   const institution = document.querySelector("#benchmark-institution");
   const level = document.querySelector("#benchmark-level");
   const type = document.querySelector("#benchmark-type");
+  let currentPage = 1;
+  let filteredRows = rows;
+
+  const renderResults = () => {
+    document.querySelector("#benchmark-results").innerHTML = benchmarkingTable(filteredRows, currentPage);
+  };
+
   const update = () => {
     const query = normalizeText(search.value);
     const selectedInstitution = institution.value;
     const selectedLevel = level.value;
     const selectedType = type.value;
-    const filtered = rows.filter((row) => {
+    filteredRows = rows.filter((row) => {
       const matchesQuery =
         !query ||
         normalizeText([row.recognition, row.organization, row.institution, ...benchmarkingCriteria.map((criterion) => row[criterion.key])].join(" ")).includes(query);
@@ -7783,11 +7790,18 @@ function renderBenchmarkingPage() {
         (!selectedType || row.type === selectedType)
       );
     });
-    document.querySelector("#benchmark-results").innerHTML = benchmarkingTable(filtered);
+    currentPage = 1;
+    renderResults();
   };
 
   [search, institution, level, type].forEach((control) => control.addEventListener("input", update));
   [institution, level, type].forEach((control) => control.addEventListener("change", update));
+  document.querySelector("#benchmark-results").addEventListener("click", (event) => {
+    const button = event.target.closest("[data-benchmark-page]");
+    if (!button) return;
+    currentPage = Number(button.dataset.benchmarkPage);
+    renderResults();
+  });
 }
 
 function benchmarkingRows() {
@@ -7829,7 +7843,7 @@ function benchmarkingRows() {
   return benchmarkingRows.cache;
 }
 
-function benchmarkingTable(rows) {
+function benchmarkingTable(rows, page = 1) {
   if (!rows.length) {
     return `
       <div class="empty-state">
@@ -7841,8 +7855,24 @@ function benchmarkingTable(rows) {
     `;
   }
 
+  const pageSize = 5;
+  const pageCount = Math.max(1, Math.ceil(rows.length / pageSize));
+  const currentPage = Math.min(Math.max(1, page), pageCount);
+  const start = (currentPage - 1) * pageSize;
+  const visibleRows = rows.slice(start, start + pageSize);
+
   return `
-    <div class="benchmark-count">${rows.length} recognition${rows.length === 1 ? "" : "s"}</div>
+    <div class="benchmark-results-head">
+      <div>
+        <div class="benchmark-count">${rows.length} recognition${rows.length === 1 ? "" : "s"}</div>
+        <div class="benchmark-page-note">Showing ${start + 1}-${Math.min(start + pageSize, rows.length)}. Swipe horizontally to compare criteria.</div>
+      </div>
+      <div class="benchmark-pagination" aria-label="Benchmarking pagination">
+        <button class="button light" type="button" data-benchmark-page="${currentPage - 1}" ${currentPage === 1 ? "disabled" : ""}>Previous</button>
+        <span>Page ${currentPage} of ${pageCount}</span>
+        <button class="button light" type="button" data-benchmark-page="${currentPage + 1}" ${currentPage === pageCount ? "disabled" : ""}>Next</button>
+      </div>
+    </div>
     <div class="benchmark-table-wrap">
       <table class="directory-table benchmark-table">
         <thead>
@@ -7853,7 +7883,7 @@ function benchmarkingTable(rows) {
           </tr>
         </thead>
         <tbody>
-          ${rows
+          ${visibleRows
             .map(
               (row) => `
               <tr>
