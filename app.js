@@ -6978,7 +6978,7 @@ function formatProfileValue(value) {
   }
 
   const points = compactProfilePoints(text);
-  if (points.length > 1) {
+  if (points.length > 1 || text.length > 95) {
     return `
       <ul class="compact-info-list">
         ${points.map((point) => `<li>${escapeHtml(point)}</li>`).join("")}
@@ -6991,13 +6991,16 @@ function formatProfileValue(value) {
 
 function compactProfilePoints(text) {
   const normalized = String(text || "").replace(/\s+/g, " ").trim();
-  if (normalized.length < 145) return [normalized];
+  if (!normalized || normalized === "To be completed") return [normalized];
+
+  const semicolonParts = splitCompactParts(normalized, /;\s+/);
+  if (semicolonParts.length > 1) return semicolonParts;
 
   const protectedText = normalized
     .replace(/\bU\.S\./g, "US")
     .replace(/\bA\.M\./g, "AM")
     .replace(/\bD\./g, "D");
-  const parts = protectedText
+  const sentenceParts = protectedText
     .split(/(?<=[.!?])\s+/)
     .map((part) => part.trim())
     .filter(Boolean)
@@ -7008,7 +7011,43 @@ function compactProfilePoints(text) {
         .replace(/\bD\b/g, "D.")
     );
 
-  return parts.length > 1 ? parts : [normalized];
+  if (sentenceParts.length > 1) return sentenceParts;
+  if (normalized.length < 95) return [normalized];
+
+  const connectorParts = splitByReadableConnector(normalized);
+  if (connectorParts.length > 1) return connectorParts;
+
+  const commaParts = splitCompactParts(normalized, /,\s+/);
+  if (normalized.length > 135 && commaParts.length >= 3) {
+    return commaParts;
+  }
+
+  return [normalized];
+}
+
+function splitByReadableConnector(text) {
+  const connectors = [
+    { pattern: /\s+through\s+/i, prefix: "Through " },
+    { pattern: /,\s+including\s+/i, prefix: "Includes " },
+    { pattern: /,\s+especially\s+/i, prefix: "Especially " },
+    { pattern: /,\s+with\s+/i, prefix: "With " }
+  ];
+
+  for (const connector of connectors) {
+    const parts = text.split(connector.pattern).map((part) => part.trim()).filter(Boolean);
+    if (parts.length === 2 && parts.every((part) => part.length >= 18)) {
+      return [parts[0], `${connector.prefix}${parts[1]}`];
+    }
+  }
+
+  return [text];
+}
+
+function splitCompactParts(text, splitter) {
+  return String(text || "")
+    .split(splitter)
+    .map((part) => part.trim())
+    .filter((part) => part.length > 1);
 }
 
 function bodyProfileValue(field, item, category) {
