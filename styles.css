@@ -1529,11 +1529,25 @@ a {
 .directory-table {
   width: 100%;
   border-collapse: collapse;
-  overflow: hidden;
   border: 1px solid var(--line);
   border-radius: var(--radius);
   background: var(--surface);
   box-shadow: var(--shadow);
+}
+
+.directory-table-wrap {
+  width: 100%;
+  overflow-x: auto;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--surface);
+  box-shadow: var(--shadow);
+}
+
+.directory-table-wrap .directory-table {
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
 }
 
 .directory-table th,
@@ -1560,27 +1574,29 @@ a {
 
 .recognition-directory-table {
   table-layout: fixed;
+  min-width: 980px;
 }
 
 .recognition-directory-table th,
 .recognition-directory-table td {
-  padding: 13px 14px;
+  padding: 14px 16px;
+  vertical-align: middle;
 }
 
 .recognition-directory-table tbody tr {
-  min-height: 64px;
+  height: 72px;
 }
 
 .recognition-directory-org {
-  width: 30%;
+  width: 29%;
 }
 
 .recognition-directory-name {
-  width: 25%;
+  width: 27%;
 }
 
 .recognition-directory-level {
-  width: 12%;
+  width: 11%;
 }
 
 .recognition-directory-institution {
@@ -1619,6 +1635,11 @@ a {
   align-items: center;
   gap: 10px;
   min-height: 38px;
+}
+
+.recognition-directory-table .table-logo-link span {
+  display: block;
+  min-width: 0;
 }
 
 .recognition-directory-table .institution-logo.tiny {
