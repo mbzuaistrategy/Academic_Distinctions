@@ -1714,7 +1714,7 @@ const categories = [
         }
       },
       { organization: "Academy of Engineering Sciences of Serbia", recognition: "Foreign Member", website: "https://ains.rs" },
-      { organization: "World Academy of Art and Science (WAAS)", recognition: "Fellow", website: "https://worldacademy.org" ,
+      { organization: "World Academy of Art and Science (WAAS)", recognition: "Fellow", website: "https://worldacademy.org", logoUrl: "assets/waas-logo.png",
                 bodyProfileRows: [
           {
             "field": "Official Name",
