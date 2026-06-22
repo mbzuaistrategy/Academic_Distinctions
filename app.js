@@ -6428,6 +6428,10 @@ function tierLabel(tierKey) {
   return tier ? `${tier.label}: ${tier.title}` : "Not leveled";
 }
 
+function tierCodeLabel(tierKey) {
+  return tierDefinitions[tierKey]?.label || "Not leveled";
+}
+
 function tierKeysForItem(item, category) {
   return [
     ...new Set(
@@ -7899,6 +7903,7 @@ function benchmarkingRows() {
     const sourceItem = category?.items?.[item.itemIndex];
     const recognition = item.recognition;
     const tier = tierLabel(item.tierKey);
+    const tierCode = tierCodeLabel(item.tierKey);
     const awardingBody = benchmarkField(sourceItem, category, recognition, "Awarding Body");
     const row = {
       id: benchmarkRowId(item.organization, recognition),
@@ -7909,7 +7914,7 @@ function benchmarkingRows() {
       officialName: benchmarkField(sourceItem, category, recognition, "Official Name"),
       type: benchmarkField(sourceItem, category, recognition, "Type of Recognition"),
       awardingBody: awardingBody !== "N/A" ? awardingBody : item.organization || "N/A",
-      categoryTier: `${item.category}; ${tier}`,
+      categoryTier: tierCode,
       scopeField: benchmarkField(sourceItem, category, recognition, "Main Field/Scope"),
       geographicScope: benchmarkField(sourceItem, category, recognition, "Geographic Scope"),
       selectionProcess: benchmarkField(sourceItem, category, recognition, "Nomination Process"),
