@@ -7751,6 +7751,12 @@ function renderBenchmarkingPage() {
   const categories = [...new Set(rows.map((row) => row.institution))].sort();
   const levels = [...new Set(rows.map((row) => row.level).filter(Boolean))].sort();
   const types = [...new Set(rows.map((row) => row.type).filter((value) => value !== "N/A"))].sort();
+  const recognitionOptions = rows
+    .map((row) => ({
+      id: row.id,
+      label: `${row.recognition} — ${row.organization}`
+    }))
+    .sort((a, b) => a.label.localeCompare(b.label));
 
   app.innerHTML = `
     <section class="band compact">
@@ -7768,6 +7774,13 @@ function renderBenchmarkingPage() {
             ${icon("search")}
             <input id="benchmark-search" type="search" placeholder="Search recognitions, bodies, fields" autocomplete="off" />
           </label>
+          <label>
+            <span>Recognition</span>
+            <select id="benchmark-recognition" multiple size="4">
+              ${recognitionOptions.map((option) => `<option value="${escapeHtml(option.id)}">${escapeHtml(option.label)}</option>`).join("")}
+            </select>
+          </label>
+          <button class="button light benchmark-clear" type="button" id="benchmark-clear-recognitions">Clear selected</button>
           <label>
             <span>Institution</span>
             <select id="benchmark-institution">
@@ -7799,6 +7812,8 @@ function renderBenchmarkingPage() {
   `;
 
   const search = document.querySelector("#benchmark-search");
+  const recognition = document.querySelector("#benchmark-recognition");
+  const clearRecognitions = document.querySelector("#benchmark-clear-recognitions");
   const institution = document.querySelector("#benchmark-institution");
   const level = document.querySelector("#benchmark-level");
   const type = document.querySelector("#benchmark-type");
@@ -7811,6 +7826,7 @@ function renderBenchmarkingPage() {
 
   const update = () => {
     const query = normalizeText(search.value);
+    const selectedRecognitions = new Set([...recognition.selectedOptions].map((option) => option.value));
     const selectedInstitution = institution.value;
     const selectedLevel = level.value;
     const selectedType = type.value;
@@ -7820,6 +7836,7 @@ function renderBenchmarkingPage() {
         normalizeText([row.recognition, row.organization, row.institution, ...benchmarkingCriteria.map((criterion) => row[criterion.key])].join(" ")).includes(query);
       return (
         matchesQuery &&
+        (!selectedRecognitions.size || selectedRecognitions.has(row.id)) &&
         (!selectedInstitution || row.institution === selectedInstitution) &&
         (!selectedLevel || row.level === selectedLevel) &&
         (!selectedType || row.type === selectedType)
@@ -7829,8 +7846,14 @@ function renderBenchmarkingPage() {
     renderResults();
   };
 
-  [search, institution, level, type].forEach((control) => control.addEventListener("input", update));
-  [institution, level, type].forEach((control) => control.addEventListener("change", update));
+  [search, recognition, institution, level, type].forEach((control) => control.addEventListener("input", update));
+  [recognition, institution, level, type].forEach((control) => control.addEventListener("change", update));
+  clearRecognitions.addEventListener("click", () => {
+    [...recognition.options].forEach((option) => {
+      option.selected = false;
+    });
+    update();
+  });
   document.querySelector("#benchmark-results").addEventListener("click", (event) => {
     const button = event.target.closest("[data-benchmark-page]");
     if (!button) return;
@@ -7849,6 +7872,7 @@ function benchmarkingRows() {
     const tier = tierLabel(item.tierKey);
     const awardingBody = benchmarkField(sourceItem, category, recognition, "Awarding Body");
     const row = {
+      id: benchmarkRowId(item.organization, recognition),
       recognition,
       organization: item.organization,
       institution: item.category,
@@ -7876,6 +7900,10 @@ function benchmarkingRows() {
   });
 
   return benchmarkingRows.cache;
+}
+
+function benchmarkRowId(organization, recognition) {
+  return `${normalizeText(organization)}||${normalizeText(recognition)}`;
 }
 
 function benchmarkingTable(rows, page = 1) {

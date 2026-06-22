@@ -1453,6 +1453,16 @@ a {
   text-transform: uppercase;
 }
 
+.benchmark-toolbar select[multiple] {
+  min-height: 92px;
+  padding: 8px;
+}
+
+.benchmark-clear {
+  align-self: end;
+  white-space: nowrap;
+}
+
 .benchmark-results-head {
   display: flex;
   align-items: center;
