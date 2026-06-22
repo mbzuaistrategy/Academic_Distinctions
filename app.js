@@ -7746,11 +7746,16 @@ const benchmarkingCriteria = [
   { key: "relationship", label: "Relationship to Other Awards" }
 ];
 
+let activeBenchmarkColumnFilters = {};
+let benchmarkSourceRows = [];
+
 function renderBenchmarkingPage() {
   const rows = benchmarkingRows();
   const categories = [...new Set(rows.map((row) => row.institution))].sort();
   const levels = [...new Set(rows.map((row) => row.level).filter(Boolean))].sort();
   const types = [...new Set(rows.map((row) => row.type).filter((value) => value !== "N/A"))].sort();
+  activeBenchmarkColumnFilters = {};
+  benchmarkSourceRows = rows;
   const recognitionOptions = rows
     .map((row) => ({
       id: row.id,
@@ -7836,6 +7841,7 @@ function renderBenchmarkingPage() {
         normalizeText([row.recognition, row.organization, row.institution, ...benchmarkingCriteria.map((criterion) => row[criterion.key])].join(" ")).includes(query);
       return (
         matchesQuery &&
+        matchesBenchmarkColumnFilters(row, activeBenchmarkColumnFilters) &&
         (!selectedRecognitions.size || selectedRecognitions.has(row.id)) &&
         (!selectedInstitution || row.institution === selectedInstitution) &&
         (!selectedLevel || row.level === selectedLevel) &&
@@ -7855,10 +7861,44 @@ function renderBenchmarkingPage() {
     update();
   });
   document.querySelector("#benchmark-results").addEventListener("click", (event) => {
+    const applyFilters = event.target.closest("[data-benchmark-apply-filters]");
+    if (applyFilters) {
+      currentPage = 1;
+      update();
+      return;
+    }
+
+    const clearColumn = event.target.closest("[data-benchmark-clear-column]");
+    if (clearColumn) {
+      delete activeBenchmarkColumnFilters[clearColumn.dataset.benchmarkClearColumn];
+      currentPage = 1;
+      update();
+      return;
+    }
+
     const button = event.target.closest("[data-benchmark-page]");
     if (!button) return;
     currentPage = Number(button.dataset.benchmarkPage);
     renderResults();
+  });
+  document.querySelector("#benchmark-results").addEventListener("change", (event) => {
+    const checkbox = event.target.closest("[data-benchmark-column]");
+    if (!checkbox) return;
+    const column = checkbox.dataset.benchmarkColumn;
+    if (!activeBenchmarkColumnFilters[column]) activeBenchmarkColumnFilters[column] = new Set();
+    if (checkbox.checked) {
+      activeBenchmarkColumnFilters[column].add(checkbox.value);
+    } else {
+      activeBenchmarkColumnFilters[column].delete(checkbox.value);
+      if (!activeBenchmarkColumnFilters[column].size) delete activeBenchmarkColumnFilters[column];
+    }
+  });
+}
+
+function matchesBenchmarkColumnFilters(row, columnFilters) {
+  return Object.entries(columnFilters).every(([column, selectedValues]) => {
+    if (!selectedValues.size) return true;
+    return selectedValues.has(String(row[column] || "N/A"));
   });
 }
 
@@ -7906,6 +7946,49 @@ function benchmarkRowId(organization, recognition) {
   return `${normalizeText(organization)}||${normalizeText(recognition)}`;
 }
 
+function benchmarkHeaderCell(column) {
+  const selectedValues = activeBenchmarkColumnFilters[column.key] || new Set();
+  const options = [...new Set(benchmarkSourceRows.map((row) => String(row[column.key] || "N/A")))]
+    .filter(Boolean)
+    .sort((a, b) => a.localeCompare(b));
+  const selectedCount = selectedValues.size;
+
+  return `
+    <th>
+      <details class="benchmark-header-filter">
+        <summary>
+          <span>${escapeHtml(column.label)}</span>
+          ${selectedCount ? `<b>${selectedCount}</b>` : ""}
+        </summary>
+        <div class="benchmark-filter-menu">
+          <div class="benchmark-filter-actions">
+            <button type="button" data-benchmark-apply-filters>Apply</button>
+            <button type="button" data-benchmark-clear-column="${escapeHtml(column.key)}">Clear</button>
+          </div>
+          <div class="benchmark-filter-options">
+            ${options
+              .map((option) => {
+                const checked = selectedValues.has(option) ? "checked" : "";
+                return `
+                  <label>
+                    <input type="checkbox" data-benchmark-column="${escapeHtml(column.key)}" value="${escapeHtml(option)}" ${checked} />
+                    <span>${escapeHtml(shortBenchmarkOption(option))}</span>
+                  </label>
+                `;
+              })
+              .join("")}
+          </div>
+        </div>
+      </details>
+    </th>
+  `;
+}
+
+function shortBenchmarkOption(value) {
+  const text = String(value || "N/A");
+  return text.length > 90 ? `${text.slice(0, 87)}...` : text;
+}
+
 function benchmarkingTable(rows, page = 1) {
   if (!rows.length) {
     return `
@@ -7940,9 +8023,9 @@ function benchmarkingTable(rows, page = 1) {
       <table class="directory-table benchmark-table">
         <thead>
           <tr>
-            <th>Recognition</th>
-            <th>Organization</th>
-            ${benchmarkingCriteria.map((criterion) => `<th>${escapeHtml(criterion.label)}</th>`).join("")}
+            ${benchmarkHeaderCell({ key: "recognition", label: "Recognition" })}
+            ${benchmarkHeaderCell({ key: "organization", label: "Organization" })}
+            ${benchmarkingCriteria.map((criterion) => benchmarkHeaderCell(criterion)).join("")}
           </tr>
         </thead>
         <tbody>

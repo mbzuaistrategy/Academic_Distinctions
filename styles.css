@@ -1458,6 +1458,11 @@ a {
   padding: 8px;
 }
 
+.benchmark-toolbar label:has(#benchmark-recognition),
+.benchmark-clear {
+  display: none;
+}
+
 .benchmark-clear {
   align-self: end;
   white-space: nowrap;
@@ -1527,6 +1532,98 @@ a {
   position: sticky;
   top: 0;
   z-index: 4;
+}
+
+.benchmark-header-filter {
+  position: relative;
+}
+
+.benchmark-header-filter summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.35rem;
+  cursor: pointer;
+  list-style: none;
+}
+
+.benchmark-header-filter summary::-webkit-details-marker {
+  display: none;
+}
+
+.benchmark-header-filter summary::after {
+  content: "Filter";
+  color: var(--maroon);
+  font-size: 0.66rem;
+  font-weight: 800;
+  letter-spacing: 0;
+  text-transform: none;
+}
+
+.benchmark-header-filter summary b {
+  display: inline-grid;
+  place-items: center;
+  min-width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: var(--maroon);
+  color: #fffefa;
+  font-size: 0.68rem;
+}
+
+.benchmark-filter-menu {
+  position: absolute;
+  top: calc(100% + 8px);
+  left: 0;
+  z-index: 30;
+  width: min(300px, 80vw);
+  max-height: 310px;
+  overflow: auto;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 10px;
+  background: #fff;
+  box-shadow: var(--shadow);
+}
+
+.benchmark-filter-actions {
+  display: flex;
+  gap: 6px;
+  margin-bottom: 8px;
+}
+
+.benchmark-filter-menu button {
+  margin-bottom: 8px;
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  padding: 5px 8px;
+  background: var(--surface-soft);
+  color: var(--ink);
+  font: inherit;
+  font-size: 0.74rem;
+  font-weight: 800;
+}
+
+.benchmark-filter-actions button {
+  margin-bottom: 0;
+}
+
+.benchmark-filter-options {
+  display: grid;
+  gap: 0.45rem;
+}
+
+.benchmark-filter-options label {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: 0.45rem;
+  align-items: start;
+  color: var(--ink);
+  font-size: 0.74rem;
+  font-weight: 700;
+  letter-spacing: 0;
+  line-height: 1.3;
+  text-transform: none;
 }
 
 .benchmark-table th:first-child,
