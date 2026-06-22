@@ -1857,8 +1857,8 @@ a {
   width: auto;
   max-width: none;
   padding: 11px 13px;
-  font-size: 0.79rem;
-  line-height: 1.32;
+  font-size: 0.77rem;
+  line-height: 1.25;
 }
 
 .compact-benchmark-table th:first-child,
@@ -2020,7 +2020,7 @@ a {
 
 .benchmark-info-list {
   display: grid;
-  gap: 0.34rem;
+  gap: 0.24rem;
   margin: 0;
   padding-left: 0;
   color: inherit;
@@ -2031,6 +2031,7 @@ a {
   position: relative;
   margin: 0;
   padding-left: 0.8rem;
+  max-width: 34rem;
 }
 
 .benchmark-info-list li::before {

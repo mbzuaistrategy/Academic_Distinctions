@@ -8477,7 +8477,7 @@ function formatBenchmarkCell(value) {
 
   const points = benchmarkCompactPoints(text);
 
-  if (points.length > 1 || text.length > 75) {
+  if (points.length > 1 || text.length > 42) {
     return `
       <ul class="benchmark-info-list">
         ${points.map((point) => `<li>${escapeHtml(point)}</li>`).join("")}
@@ -8493,30 +8493,35 @@ function benchmarkCompactPoints(text) {
   if (!clean || clean === "N/A") return ["N/A"];
 
   const pipeParts = splitCompactParts(clean, /\s+\|\s+/);
-  const baseParts = pipeParts.length > 1 ? pipeParts : compactProfilePoints(clean);
+  const semicolonParts = splitCompactParts(clean, /;\s+/);
+  const baseParts = pipeParts.length > 1
+    ? pipeParts
+    : semicolonParts.length > 1
+      ? semicolonParts
+      : compactProfilePoints(clean);
   const points = baseParts
     .flatMap((part) => splitBenchmarkPoint(part))
     .map((part) => benchmarkConciseText(part))
     .filter(Boolean);
 
-  return points.length ? points.slice(0, 4) : [clean];
+  return points.length ? points.slice(0, 6) : [clean];
 }
 
 function splitBenchmarkPoint(text) {
   const clean = String(text || "").trim();
   if (!clean) return [];
-  if (clean.length <= 78) return [clean];
+  if (clean.length <= 42) return [clean];
 
   const colonParts = splitCompactParts(clean, /:\s+/);
   if (colonParts.length === 2 && colonParts[0].length <= 32) {
-    return [`${colonParts[0]}: ${colonParts[1]}`];
+    return [`${colonParts[0]}:`, ...splitBenchmarkPoint(colonParts[1])];
   }
 
-  const connectorParts = splitByReadableConnector(clean);
-  if (connectorParts.length > 1) return connectorParts;
+  const connectorParts = splitBenchmarkConnectors(clean);
+  if (connectorParts.length > 1) return connectorParts.flatMap((part) => splitBenchmarkPoint(part));
 
   const commaParts = splitCompactParts(clean, /,\s+/);
-  if (commaParts.length >= 3) return commaParts;
+  if (commaParts.length >= 2) return commaParts.flatMap((part) => splitBenchmarkPoint(part));
 
   return chunkBenchmarkText(clean);
 }
@@ -8529,6 +8534,11 @@ function benchmarkConciseText(text) {
     .replace(/\bshould be verified from the current\b/gi, "Verify current")
     .replace(/\bis described as\b/gi, "is")
     .replace(/\bis intended to\b/gi, "aims to")
+    .replace(/\bthrough\b/gi, "via")
+    .replace(/\b and related\b/gi, " + related")
+    .replace(/\bmore than\b/gi, "over")
+    .replace(/\bat least\b/gi, "min.")
+    .replace(/\bnot applicable\b/gi, "N/A")
     .replace(/\bNomination Process\b/g, "Nomination")
     .replace(/\bReview\/Evaluation Criteria\b/g, "Evaluation")
     .replace(/\bPrize Money\/Material Award\b/g, "Prize")
@@ -8538,17 +8548,46 @@ function benchmarkConciseText(text) {
 
 function trimBenchmarkPoint(text) {
   const clean = String(text || "").replace(/\s+/g, " ").trim();
-  if (clean.length <= 96) return clean;
+  if (clean.length <= 58) return clean;
 
   const sentence = clean.split(/(?<=[.!?])\s+/)[0];
-  if (sentence && sentence.length <= 110) return sentence.replace(/[.;:]$/, "");
+  if (sentence && sentence.length <= 70) return sentence.replace(/[.;:]$/, "");
 
   return clean;
 }
 
+function splitBenchmarkConnectors(text) {
+  const clean = String(text || "").trim();
+  const protectedText = clean
+    .replace(/\bscience and engineering\b/gi, "science + engineering")
+    .replace(/\bresearch and development\b/gi, "research + development")
+    .replace(/\btechnology and society\b/gi, "technology + society");
+  const connectors = [
+    /\s+including\s+/i,
+    /\s+especially\s+/i,
+    /\s+with\s+/i,
+    /\s+via\s+/i,
+    /\s+for\s+/i,
+    /\s+across\s+/i,
+    /\s+and\s+/i
+  ];
+
+  for (const connector of connectors) {
+    const parts = splitCompactParts(protectedText, connector).map((part) =>
+      part
+        .replace(/\bscience \+ engineering\b/gi, "science and engineering")
+        .replace(/\bresearch \+ development\b/gi, "research and development")
+        .replace(/\btechnology \+ society\b/gi, "technology and society")
+    );
+    if (parts.length > 1 && parts.every((part) => part.length >= 8)) return parts;
+  }
+
+  return [clean];
+}
+
 function chunkBenchmarkText(text) {
   const clean = trimBenchmarkPoint(text);
-  if (clean.length <= 110) return [clean];
+  if (clean.length <= 58) return [clean];
 
   const words = clean.split(/\s+/);
   const chunks = [];
@@ -8556,7 +8595,7 @@ function chunkBenchmarkText(text) {
 
   words.forEach((word) => {
     const next = current ? `${current} ${word}` : word;
-    if (next.length > 96 && current) {
+    if (next.length > 58 && current) {
       chunks.push(current);
       current = word;
     } else {
