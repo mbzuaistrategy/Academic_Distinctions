@@ -8337,7 +8337,7 @@ function benchmarkHeaderCell(column) {
 
 function shortBenchmarkOption(value) {
   const text = String(value || "N/A");
-  return text.length > 90 ? `${text.slice(0, 87)}...` : text;
+  return text;
 }
 
 function benchmarkingTable(rows, page = 1) {
@@ -8518,24 +8518,22 @@ function splitBenchmarkPoint(text) {
   const commaParts = splitCompactParts(clean, /,\s+/);
   if (commaParts.length >= 3) return commaParts;
 
-  return [trimBenchmarkPoint(clean)];
+  return chunkBenchmarkText(clean);
 }
 
 function benchmarkConciseText(text) {
-  return trimBenchmarkPoint(
-    String(text || "")
-      .replace(/\baccording to (the )?official sources?/gi, "")
-      .replace(/\baccording to [^.;]+/gi, "")
-      .replace(/\bthe reviewed sources? (did|do) not (identify|show|provide|publish)\b/gi, "No official source found for")
-      .replace(/\bshould be verified from the current\b/gi, "Verify current")
-      .replace(/\bis described as\b/gi, "is")
-      .replace(/\bis intended to\b/gi, "aims to")
-      .replace(/\bNomination Process\b/g, "Nomination")
-      .replace(/\bReview\/Evaluation Criteria\b/g, "Evaluation")
-      .replace(/\bPrize Money\/Material Award\b/g, "Prize")
-      .replace(/\s+/g, " ")
-      .trim()
-  );
+  return String(text || "")
+    .replace(/\baccording to (the )?official sources?/gi, "")
+    .replace(/\baccording to [^.;]+/gi, "")
+    .replace(/\bthe reviewed sources? (did|do) not (identify|show|provide|publish)\b/gi, "No official source found for")
+    .replace(/\bshould be verified from the current\b/gi, "Verify current")
+    .replace(/\bis described as\b/gi, "is")
+    .replace(/\bis intended to\b/gi, "aims to")
+    .replace(/\bNomination Process\b/g, "Nomination")
+    .replace(/\bReview\/Evaluation Criteria\b/g, "Evaluation")
+    .replace(/\bPrize Money\/Material Award\b/g, "Prize")
+    .replace(/\s+/g, " ")
+    .trim();
 }
 
 function trimBenchmarkPoint(text) {
@@ -8545,7 +8543,29 @@ function trimBenchmarkPoint(text) {
   const sentence = clean.split(/(?<=[.!?])\s+/)[0];
   if (sentence && sentence.length <= 110) return sentence.replace(/[.;:]$/, "");
 
-  return `${clean.slice(0, 93).trim()}...`;
+  return clean;
+}
+
+function chunkBenchmarkText(text) {
+  const clean = trimBenchmarkPoint(text);
+  if (clean.length <= 110) return [clean];
+
+  const words = clean.split(/\s+/);
+  const chunks = [];
+  let current = "";
+
+  words.forEach((word) => {
+    const next = current ? `${current} ${word}` : word;
+    if (next.length > 96 && current) {
+      chunks.push(current);
+      current = word;
+    } else {
+      current = next;
+    }
+  });
+
+  if (current) chunks.push(current);
+  return chunks;
 }
 
 function benchmarkRecognitionHref(row) {
