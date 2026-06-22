@@ -8607,7 +8607,14 @@ function directoryTable(items) {
   }
 
   return `
-    <table class="directory-table">
+    <table class="directory-table recognition-directory-table">
+      <colgroup>
+        <col class="recognition-directory-org" />
+        <col class="recognition-directory-name" />
+        <col class="recognition-directory-level" />
+        <col class="recognition-directory-institution" />
+        <col class="recognition-directory-note" />
+      </colgroup>
       <thead>
         <tr>
           <th>Organization</th>

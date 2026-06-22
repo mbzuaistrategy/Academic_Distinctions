@@ -1558,6 +1558,78 @@ a {
   border-bottom: 0;
 }
 
+.recognition-directory-table {
+  table-layout: fixed;
+}
+
+.recognition-directory-table th,
+.recognition-directory-table td {
+  padding: 13px 14px;
+}
+
+.recognition-directory-table tbody tr {
+  min-height: 64px;
+}
+
+.recognition-directory-org {
+  width: 30%;
+}
+
+.recognition-directory-name {
+  width: 25%;
+}
+
+.recognition-directory-level {
+  width: 12%;
+}
+
+.recognition-directory-institution {
+  width: 18%;
+}
+
+.recognition-directory-note {
+  width: 15%;
+}
+
+.recognition-directory-table td:nth-child(3) {
+  text-align: left;
+}
+
+.recognition-directory-table td:nth-child(1),
+.recognition-directory-table td:nth-child(2),
+.recognition-directory-table td:nth-child(4) {
+  font-size: 0.88rem;
+  line-height: 1.35;
+}
+
+.recognition-directory-table td:nth-child(2) a {
+  display: inline-block;
+  max-width: 100%;
+}
+
+.recognition-directory-table td:nth-child(5) {
+  color: var(--muted);
+  font-size: 0.82rem;
+  line-height: 1.35;
+}
+
+.recognition-directory-table .table-logo-link {
+  display: grid;
+  grid-template-columns: 32px minmax(0, 1fr);
+  align-items: center;
+  gap: 10px;
+  min-height: 38px;
+}
+
+.recognition-directory-table .institution-logo.tiny {
+  width: 32px;
+  height: 32px;
+}
+
+.recognition-directory-table .tier-badge {
+  white-space: normal;
+}
+
 .benchmark-toolbar {
   align-items: end;
 }
