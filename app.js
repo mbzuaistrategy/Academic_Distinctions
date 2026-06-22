@@ -6554,6 +6554,8 @@ function render() {
     renderFacultyPage();
   } else if (route === "benchmarking") {
     renderBenchmarkingPage();
+  } else if (route === "ask") {
+    renderAskPage();
   } else if (route === "institutions" || route === "categories") {
     renderCategoriesPage();
   } else if (route === "directory") {
@@ -6574,9 +6576,13 @@ function updateActiveNavigation(route, value) {
       ? "directory"
       : route === "faculty"
         ? "faculty"
+        : route === "ask"
+          ? "ask"
         : route === "home"
           ? "home"
-          : "institutions";
+          : route === "benchmarking"
+            ? "benchmarking"
+            : "institutions";
   document.querySelector(`[data-nav="${primaryRoute}"]`)?.classList.add("active");
 
 }
@@ -7628,6 +7634,241 @@ function facultyRecordsForRecognition(item, selectedRecognition) {
 
     return recordRecognition === recognition && organizationsMatch(recordOrganization, organization);
   });
+}
+
+function renderAskPage() {
+  app.innerHTML = `
+    <section class="band compact">
+      <div class="section-inner">
+        <div class="section-heading">
+          <div>
+            <h2>Ask</h2>
+            <p>Ask a question about recognitions, levels, selection criteria, award details, or MBZUAI recipients. Answers are generated from the dashboard data.</p>
+          </div>
+        </div>
+
+        <section class="ask-panel">
+          <form class="ask-form" id="ask-form">
+            <label class="search ask-search" for="ask-question">
+              ${icon("search")}
+              <input id="ask-question" type="search" placeholder="Ask about a recognition, e.g. nomination process for IEEE Fellow" autocomplete="off" />
+            </label>
+            <button class="button" type="submit">Ask</button>
+          </form>
+          <div class="ask-examples" aria-label="Example questions">
+            ${["Which recognitions are Level 1A?", "Who at MBZUAI has IEEE Fellow?", "What is the nomination process for Royal Society Fellow?", "Compare ACM Fellow and IEEE Fellow"]
+              .map((example) => `<button type="button" data-ask-example="${escapeHtml(example)}">${escapeHtml(example)}</button>`)
+              .join("")}
+          </div>
+        </section>
+
+        <div id="ask-results">
+          ${askEmptyState()}
+        </div>
+      </div>
+    </section>
+  `;
+
+  const form = document.querySelector("#ask-form");
+  const input = document.querySelector("#ask-question");
+  const results = document.querySelector("#ask-results");
+
+  form.addEventListener("submit", (event) => {
+    event.preventDefault();
+    results.innerHTML = askAnswerView(input.value);
+  });
+
+  document.querySelectorAll("[data-ask-example]").forEach((button) => {
+    button.addEventListener("click", () => {
+      input.value = button.dataset.askExample;
+      results.innerHTML = askAnswerView(input.value);
+    });
+  });
+}
+
+function askEmptyState() {
+  return `
+    <div class="empty-state ask-empty">
+      <div>
+        <strong>Ask about any recognition in the portal</strong>
+        <span>Use recognition names, institutions, faculty names, levels, fields, or criteria terms.</span>
+      </div>
+    </div>
+  `;
+}
+
+function askAnswerView(question) {
+  const query = String(question || "").trim();
+  if (!query) return askEmptyState();
+
+  const matches = askSearchMatches(query).slice(0, 5);
+  if (!matches.length) {
+    return `
+      <div class="empty-state">
+        <div>
+          <strong>No answer found for "${escapeHtml(query)}"</strong>
+          <span>Try a recognition name, faculty name, institution, level, or criterion such as eligibility or prize money.</span>
+        </div>
+      </div>
+    `;
+  }
+
+  return `
+    <section class="ask-answer">
+      <div class="ask-answer-head">
+        <p class="eyebrow">Dashboard answer</p>
+        <h3>${escapeHtml(query)}</h3>
+        <span>${matches.length} relevant recognition${matches.length === 1 ? "" : "s"}</span>
+      </div>
+      <div class="ask-result-list">
+        ${matches.map((match) => askResultCard(match, query)).join("")}
+      </div>
+    </section>
+  `;
+}
+
+function askSearchMatches(query) {
+  const normalizedQuery = normalizeText(query);
+  const tokens = askTokens(query);
+  const rows = allRecognitions().map((recognitionItem) => askRecordForRecognition(recognitionItem));
+
+  return rows
+    .map((record) => ({ ...record, score: askRecordScore(record, normalizedQuery, tokens) }))
+    .filter((record) => record.score > 0)
+    .sort((a, b) => b.score - a.score || a.recognition.localeCompare(b.recognition));
+}
+
+function askRecordForRecognition(recognitionItem) {
+  const category = getCategory(recognitionItem.categoryId);
+  const item = category?.items?.[recognitionItem.itemIndex];
+  const recognition = recognitionItem.recognition;
+  const fields = askFieldNames().map((field) => ({
+    field,
+    value: benchmarkCleanValue(criteriaFieldValue(field, item, category, recognition))
+  }));
+  const faculty = facultyRecordsForRecognition(item, recognition);
+
+  return {
+    ...recognitionItem,
+    href: `#criteria/${recognitionItem.categoryId}/${recognitionItem.itemIndex}/${recognitionItem.recognitionIndex}`,
+    tierCode: tierCodeLabel(recognitionItem.tierKey),
+    fields,
+    faculty,
+    searchText: [
+      recognitionItem.recognition,
+      recognitionItem.organization,
+      recognitionItem.category,
+      tierCodeLabel(recognitionItem.tierKey),
+      ...fields.map((entry) => `${entry.field} ${entry.value}`),
+      ...faculty.map((record) => `${record.faculty} ${record.details} ${record.work}`)
+    ].join(" ")
+  };
+}
+
+function askRecordScore(record, normalizedQuery, tokens) {
+  const text = normalizeText(record.searchText);
+  let score = 0;
+  if (normalizeText(record.recognition) === normalizedQuery) score += 120;
+  if (normalizeText(record.organization) === normalizedQuery) score += 70;
+  if (normalizeText(record.recognition).includes(normalizedQuery)) score += 65;
+  if (normalizeText(record.organization).includes(normalizedQuery)) score += 35;
+  if (normalizeText(record.category).includes(normalizedQuery)) score += 15;
+  tokens.forEach((token) => {
+    if (text.includes(token)) score += 8;
+    if (normalizeText(record.recognition).includes(token)) score += 12;
+    if (normalizeText(record.organization).includes(token)) score += 8;
+  });
+  return score;
+}
+
+function askResultCard(match, query) {
+  const selectedFields = askRelevantFields(match, query);
+  const facultyLine = askFacultyLine(match.faculty);
+
+  return `
+    <article class="ask-result-card">
+      <div class="ask-result-top">
+        ${institutionLogo(match, "tiny")}
+        <div>
+          <h4>${escapeHtml(match.recognition)}</h4>
+          <p>${escapeHtml(match.organization)}</p>
+        </div>
+        <span class="tier-badge">${escapeHtml(match.tierCode)}</span>
+      </div>
+      <ul class="compact-info-list">
+        ${selectedFields.map((entry) => `<li><strong>${escapeHtml(entry.field)}:</strong> ${escapeHtml(entry.value)}</li>`).join("")}
+        ${facultyLine ? `<li><strong>MBZUAI recipient/member:</strong> ${escapeHtml(facultyLine)}</li>` : ""}
+      </ul>
+      <a class="card-link" href="${match.href}">Open full recognition ${icon("arrowRight")}</a>
+    </article>
+  `;
+}
+
+function askRelevantFields(match, query) {
+  const normalized = normalizeText(query);
+  const preferred = [];
+  if (/nomination|apply|application|deadline|selection|review|criteria/.test(normalized)) {
+    preferred.push("Nomination Process", "Review/Evaluation Criteria", "Nomination Deadline", "Application Requirements", "Eligibility/Restrictions");
+  }
+  if (/money|prize|amount|cash|award/.test(normalized)) {
+    preferred.push("Prize Money/Material Award", "Frequency", "Number of Recipients");
+  }
+  if (/who|faculty|recipient|member|mbzuai|notable/.test(normalized)) {
+    preferred.push("Notable Past Recipients", "Number of Recipients", "Type of Recognition");
+  }
+  if (/level|tier|prestige|impact|ranking/.test(normalized)) {
+    preferred.push("Ranking/Prestige Signal", "Career Impact/Outcomes", "Relationship to Other Awards");
+  }
+
+  preferred.push("Definition", "Awarding Body", "Type of Recognition", "Main Field/Scope", "Geographic Scope");
+  const seen = new Set();
+  return preferred
+    .map((field) => match.fields.find((entry) => entry.field === field && entry.value && entry.value !== "N/A"))
+    .filter(Boolean)
+    .filter((entry) => {
+      if (seen.has(entry.field)) return false;
+      seen.add(entry.field);
+      return true;
+    })
+    .slice(0, 4);
+}
+
+function askFacultyLine(records) {
+  if (!records.length) return "";
+  return records
+    .map((record) => `${record.faculty}${record.details ? ` (${record.details})` : ""}`)
+    .join("; ");
+}
+
+function askFieldNames() {
+  return [
+    "Definition",
+    "Awarding Body",
+    "Type of Recognition",
+    "Main Field/Scope",
+    "Geographic Scope",
+    "Nomination Process",
+    "Review/Evaluation Criteria",
+    "Nomination Deadline",
+    "Application Requirements",
+    "Eligibility/Restrictions",
+    "Frequency",
+    "Duration",
+    "Prize Money/Material Award",
+    "Number of Recipients",
+    "Notable Past Recipients",
+    "Career Impact/Outcomes",
+    "Relationship to Other Awards",
+    "Ranking/Prestige Signal"
+  ];
+}
+
+function askTokens(query) {
+  const stop = new Set(["what", "which", "who", "how", "the", "for", "and", "about", "with", "does", "are", "is", "me", "tell", "show", "give", "of", "to", "in", "a", "an"]);
+  return normalizeText(query)
+    .split(/\s+/)
+    .map((token) => token.trim())
+    .filter((token) => token.length > 2 && !stop.has(token));
 }
 
 function renderFacultyPage() {
