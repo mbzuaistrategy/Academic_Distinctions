@@ -7731,11 +7731,113 @@ function askSearchMatches(query) {
   const normalizedQuery = normalizeText(query);
   const tokens = askTokens(query);
   const rows = allRecognitions().map((recognitionItem) => askRecordForRecognition(recognitionItem));
+  const context = askQueryContext(query, rows);
+  const candidateRows = askCandidateRows(rows, context);
 
-  return rows
-    .map((record) => ({ ...record, score: askRecordScore(record, normalizedQuery, tokens) }))
-    .filter((record) => record.score > 0)
+  return candidateRows
+    .map((record) => ({ ...record, score: askRecordScore(record, normalizedQuery, tokens, context) }))
+    .filter((record) => record.score >= context.minimumScore)
     .sort((a, b) => b.score - a.score || a.recognition.localeCompare(b.recognition));
+}
+
+function askQueryContext(query, rows) {
+  const normalizedQuery = normalizeText(query);
+  const tokens = askTokens(query);
+  const matchedFaculty = facultyRecognitions
+    .filter((record) => askNameMatchesQuery(record.faculty, normalizedQuery))
+    .map((record) => normalizePersonName(record.faculty));
+  const matchedLevel = askLevelFromQuery(normalizedQuery);
+  const matchedRecognitionIds = rows
+    .filter((record) => askRecognitionMatchesQuery(record, normalizedQuery, tokens))
+    .map((record) => record.id);
+
+  return {
+    normalizedQuery,
+    tokens,
+    matchedFaculty: new Set(matchedFaculty),
+    matchedLevel,
+    matchedRecognitionIds: new Set(matchedRecognitionIds),
+    minimumScore: matchedRecognitionIds.length || matchedFaculty.length || matchedLevel ? 1 : 18
+  };
+}
+
+function askCandidateRows(rows, context) {
+  let candidates = rows;
+
+  if (context.matchedRecognitionIds.size) {
+    candidates = candidates.filter((record) => context.matchedRecognitionIds.has(record.id));
+  }
+
+  if (context.matchedFaculty.size) {
+    candidates = candidates.filter((record) =>
+      record.faculty.some((facultyRecord) => context.matchedFaculty.has(normalizePersonName(facultyRecord.faculty)))
+    );
+  }
+
+  if (context.matchedLevel) {
+    candidates = candidates.filter((record) => normalizeText(record.tierCode) === context.matchedLevel);
+  }
+
+  return candidates;
+}
+
+function askRecognitionMatchesQuery(record, normalizedQuery, tokens) {
+  const recognition = normalizeText(record.recognition);
+  const organization = normalizeText(record.organization);
+  const organizationAliases = askOrganizationAliases(record.organization);
+  const compositeMatches = askCompositePhrases(record).some((phrase) => normalizedQuery.includes(phrase));
+  const recognitionIsSpecific = recognition.length > 8 && !["member", "fellow", "foreign member", "associate member"].includes(recognition);
+
+  if (recognitionIsSpecific && normalizedQuery.includes(recognition)) return true;
+  if (compositeMatches) return true;
+
+  const hasGenericRecognition = ["member", "fellow", "foreign member", "associate member"].includes(recognition) && normalizedQuery.includes(recognition);
+  const hasOrganization = organizationAliases.some((alias) => alias && normalizedQuery.includes(alias));
+
+  return hasGenericRecognition && hasOrganization;
+}
+
+function askCompositePhrases(record) {
+  return [
+    `${record.organization} ${record.recognition}`,
+    `${record.recognition} ${record.organization}`,
+    `${record.recognition} ${record.organization.replace(/\([^)]*\)/g, "")}`,
+    `${record.organization.replace(/\([^)]*\)/g, "")} ${record.recognition}`
+  ].map(normalizeText);
+}
+
+function askOrganizationAliases(organization) {
+  const text = String(organization || "");
+  const aliases = [text, text.replace(/\([^)]*\)/g, "")];
+  const parenthetical = [...text.matchAll(/\(([^)]+)\)/g)].map((match) => match[1]);
+  parenthetical.forEach((alias) => aliases.push(alias));
+  return [
+    ...new Set(
+      aliases
+        .flatMap((alias) => {
+          const normalized = normalizeText(alias);
+          return [
+            normalized,
+            normalized.replace(/^the\s+/, ""),
+            normalized.replace(/\b(uk|us|usa|u s|u k)\b/g, "").replace(/\s+/g, " ").trim()
+          ];
+        })
+        .filter((alias) => alias.length > 1)
+    )
+  ];
+}
+
+function askNameMatchesQuery(name, normalizedQuery) {
+  const normalizedName = normalizePersonName(name);
+  if (normalizedQuery.includes(normalizedName)) return true;
+  const parts = normalizedName.split(" ").filter((part) => part.length > 2 && !["michael", "sir"].includes(part));
+  return parts.length >= 2 && parts.every((part) => normalizedQuery.includes(part));
+}
+
+function askLevelFromQuery(normalizedQuery) {
+  const match = normalizedQuery.match(/\blevel\s*([123])\s*([abc])?\b/) || normalizedQuery.match(/\btier\s*([123])\s*([abc])?\b/);
+  if (!match) return "";
+  return normalizeText(`Level ${match[1]}${match[2] || ""}`);
 }
 
 function askRecordForRecognition(recognitionItem) {
@@ -7750,6 +7852,7 @@ function askRecordForRecognition(recognitionItem) {
 
   return {
     ...recognitionItem,
+    id: benchmarkRowId(recognitionItem.organization, recognition),
     href: `#criteria/${recognitionItem.categoryId}/${recognitionItem.itemIndex}/${recognitionItem.recognitionIndex}`,
     tierCode: tierCodeLabel(recognitionItem.tierKey),
     fields,
@@ -7765,7 +7868,7 @@ function askRecordForRecognition(recognitionItem) {
   };
 }
 
-function askRecordScore(record, normalizedQuery, tokens) {
+function askRecordScore(record, normalizedQuery, tokens, context = {}) {
   const text = normalizeText(record.searchText);
   let score = 0;
   if (normalizeText(record.recognition) === normalizedQuery) score += 120;
@@ -7773,6 +7876,9 @@ function askRecordScore(record, normalizedQuery, tokens) {
   if (normalizeText(record.recognition).includes(normalizedQuery)) score += 65;
   if (normalizeText(record.organization).includes(normalizedQuery)) score += 35;
   if (normalizeText(record.category).includes(normalizedQuery)) score += 15;
+  if (context.matchedRecognitionIds?.has(record.id)) score += 140;
+  if (context.matchedLevel && normalizeText(record.tierCode) === context.matchedLevel) score += 90;
+  if (record.faculty.some((facultyRecord) => context.matchedFaculty?.has(normalizePersonName(facultyRecord.faculty)))) score += 110;
   tokens.forEach((token) => {
     if (text.includes(token)) score += 8;
     if (normalizeText(record.recognition).includes(token)) score += 12;
