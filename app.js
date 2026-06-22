@@ -7924,7 +7924,7 @@ function benchmarkingTable(rows, page = 1) {
               <tr>
                 <td><a href="${benchmarkRecognitionHref(row)}">${escapeHtml(row.recognition)}</a></td>
                 <td>${escapeHtml(row.organization)}</td>
-                ${benchmarkingCriteria.map((criterion) => `<td>${escapeHtml(row[criterion.key] || "N/A")}</td>`).join("")}
+                ${benchmarkingCriteria.map((criterion) => `<td>${formatBenchmarkCell(row[criterion.key] || "N/A")}</td>`).join("")}
               </tr>
             `
             )
@@ -7932,7 +7932,25 @@ function benchmarkingTable(rows, page = 1) {
         </tbody>
       </table>
     </div>
-  `;
+  `;  
+}
+
+function formatBenchmarkCell(value) {
+  const text = String(value || "N/A").trim();
+  if (!text || text === "N/A") return "N/A";
+
+  const pipeParts = splitCompactParts(text, /\s+\|\s+/);
+  const points = pipeParts.length > 1 ? pipeParts : compactProfilePoints(text);
+
+  if (points.length > 1 || text.length > 85) {
+    return `
+      <ul class="benchmark-info-list">
+        ${points.map((point) => `<li>${escapeHtml(point)}</li>`).join("")}
+      </ul>
+    `;
+  }
+
+  return escapeHtml(text);
 }
 
 function benchmarkRecognitionHref(row) {

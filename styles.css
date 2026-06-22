@@ -1538,6 +1538,18 @@ a {
   width: 180px;
 }
 
+.benchmark-info-list {
+  display: grid;
+  gap: 0.28rem;
+  margin: 0;
+  padding-left: 1rem;
+  color: inherit;
+}
+
+.benchmark-info-list li {
+  margin: 0;
+}
+
 .toast {
   position: fixed;
   right: 18px;
