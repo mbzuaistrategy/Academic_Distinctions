@@ -1438,6 +1438,68 @@ a {
   border-bottom: 0;
 }
 
+.benchmark-toolbar {
+  align-items: end;
+}
+
+.benchmark-toolbar label:not(.search) {
+  display: grid;
+  gap: 0.35rem;
+  min-width: 170px;
+  color: #6d6258;
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.benchmark-count {
+  margin: 0 0 0.65rem;
+  color: var(--muted);
+  font-size: 0.86rem;
+  font-weight: 800;
+}
+
+.benchmark-table-wrap {
+  overflow-x: auto;
+  border: 1px solid var(--line);
+  background: #fff;
+}
+
+.benchmark-table {
+  min-width: 2600px;
+  border: 0;
+  box-shadow: none;
+}
+
+.benchmark-table th,
+.benchmark-table td {
+  width: 150px;
+  max-width: 220px;
+  vertical-align: top;
+  font-size: 0.78rem;
+  line-height: 1.35;
+}
+
+.benchmark-table th:first-child,
+.benchmark-table td:first-child {
+  position: sticky;
+  left: 0;
+  z-index: 2;
+  width: 190px;
+  background: #fff;
+}
+
+.benchmark-table th:first-child {
+  z-index: 3;
+  background: var(--surface-soft);
+}
+
+.benchmark-table td:nth-child(2),
+.benchmark-table th:nth-child(2) {
+  width: 180px;
+}
+
 .toast {
   position: fixed;
   right: 18px;

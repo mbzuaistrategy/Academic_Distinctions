@@ -6552,6 +6552,8 @@ function render() {
     renderRecognitionCriteria(value, Number(extra), Number(detail));
   } else if (route === "faculty") {
     renderFacultyPage();
+  } else if (route === "benchmarking") {
+    renderBenchmarkingPage();
   } else if (route === "institutions" || route === "categories") {
     renderCategoriesPage();
   } else if (route === "directory") {
@@ -7689,6 +7691,247 @@ function facultyTable(records, recognitions = allRecognitions()) {
       </tbody>
     </table>
   `;
+}
+
+const benchmarkingCriteria = [
+  { key: "officialName", label: "Official Name" },
+  { key: "type", label: "Type of Recognition" },
+  { key: "awardingBody", label: "Awarding Body / Institution" },
+  { key: "categoryTier", label: "Category / Tier (Level)" },
+  { key: "scopeField", label: "Scope and Field" },
+  { key: "geographicScope", label: "Geographic Scope" },
+  { key: "selectionProcess", label: "Selection/Nomination Process" },
+  { key: "evaluationCriteria", label: "Evaluation Criteria" },
+  { key: "eligibility", label: "Eligibility / Restrictions" },
+  { key: "selectivity", label: "Number of Recipients / Selectivity" },
+  { key: "duration", label: "Duration" },
+  { key: "prizeMoney", label: "Prize Money / Material Award" },
+  { key: "notableRecipients", label: "Notable Past Recipients" },
+  { key: "careerImpact", label: "Career Impact / Prestige Signal" },
+  { key: "relationship", label: "Relationship to Other Awards" }
+];
+
+function renderBenchmarkingPage() {
+  const rows = benchmarkingRows();
+  const categories = [...new Set(rows.map((row) => row.institution))].sort();
+  const levels = [...new Set(rows.map((row) => row.level).filter(Boolean))].sort();
+  const types = [...new Set(rows.map((row) => row.type).filter((value) => value !== "N/A"))].sort();
+
+  app.innerHTML = `
+    <section class="band compact">
+      <div class="section-inner">
+        <div class="section-heading">
+          <div>
+            <h2>Benchmarking</h2>
+            <p>Compare every recognition in the portal using the shared criteria from the recognition comparison framework.</p>
+          </div>
+          <button class="button light" type="button" data-export="all">${icon("download")}Export all</button>
+        </div>
+
+        <div class="toolbar benchmark-toolbar">
+          <label class="search" for="benchmark-search">
+            ${icon("search")}
+            <input id="benchmark-search" type="search" placeholder="Search recognitions, bodies, fields" autocomplete="off" />
+          </label>
+          <label>
+            <span>Institution</span>
+            <select id="benchmark-institution">
+              <option value="">All institutions</option>
+              ${categories.map((category) => `<option value="${escapeHtml(category)}">${escapeHtml(category)}</option>`).join("")}
+            </select>
+          </label>
+          <label>
+            <span>Level</span>
+            <select id="benchmark-level">
+              <option value="">All levels</option>
+              ${levels.map((level) => `<option value="${escapeHtml(level)}">${escapeHtml(level)}</option>`).join("")}
+            </select>
+          </label>
+          <label>
+            <span>Type</span>
+            <select id="benchmark-type">
+              <option value="">All types</option>
+              ${types.map((type) => `<option value="${escapeHtml(type)}">${escapeHtml(type)}</option>`).join("")}
+            </select>
+          </label>
+        </div>
+
+        <div id="benchmark-results">
+          ${benchmarkingTable(rows)}
+        </div>
+      </div>
+    </section>
+  `;
+
+  const search = document.querySelector("#benchmark-search");
+  const institution = document.querySelector("#benchmark-institution");
+  const level = document.querySelector("#benchmark-level");
+  const type = document.querySelector("#benchmark-type");
+  const update = () => {
+    const query = normalizeText(search.value);
+    const selectedInstitution = institution.value;
+    const selectedLevel = level.value;
+    const selectedType = type.value;
+    const filtered = rows.filter((row) => {
+      const matchesQuery =
+        !query ||
+        normalizeText([row.recognition, row.organization, row.institution, ...benchmarkingCriteria.map((criterion) => row[criterion.key])].join(" ")).includes(query);
+      return (
+        matchesQuery &&
+        (!selectedInstitution || row.institution === selectedInstitution) &&
+        (!selectedLevel || row.level === selectedLevel) &&
+        (!selectedType || row.type === selectedType)
+      );
+    });
+    document.querySelector("#benchmark-results").innerHTML = benchmarkingTable(filtered);
+  };
+
+  [search, institution, level, type].forEach((control) => control.addEventListener("input", update));
+  [institution, level, type].forEach((control) => control.addEventListener("change", update));
+}
+
+function benchmarkingRows() {
+  if (benchmarkingRows.cache) return benchmarkingRows.cache;
+
+  benchmarkingRows.cache = allRecognitions().map((item) => {
+    const category = getCategory(item.categoryId);
+    const sourceItem = category?.items?.[item.itemIndex];
+    const recognition = item.recognition;
+    const tier = tierLabel(item.tierKey);
+    const awardingBody = benchmarkField(sourceItem, category, recognition, "Awarding Body");
+    const row = {
+      recognition,
+      organization: item.organization,
+      institution: item.category,
+      level: tier,
+      officialName: benchmarkField(sourceItem, category, recognition, "Official Name"),
+      type: benchmarkField(sourceItem, category, recognition, "Type of Recognition"),
+      awardingBody: awardingBody !== "N/A" ? awardingBody : item.organization || "N/A",
+      categoryTier: `${item.category}; ${tier}`,
+      scopeField: benchmarkField(sourceItem, category, recognition, "Main Field/Scope"),
+      geographicScope: benchmarkField(sourceItem, category, recognition, "Geographic Scope"),
+      selectionProcess: benchmarkField(sourceItem, category, recognition, "Nomination Process"),
+      evaluationCriteria: benchmarkField(sourceItem, category, recognition, "Review/Evaluation Criteria"),
+      eligibility: benchmarkField(sourceItem, category, recognition, "Eligibility/Restrictions"),
+      selectivity: benchmarkField(sourceItem, category, recognition, "Number of Recipients"),
+      duration: benchmarkField(sourceItem, category, recognition, "Duration"),
+      prizeMoney: benchmarkField(sourceItem, category, recognition, "Prize Money/Material Award"),
+      notableRecipients: benchmarkNotableRecipients(sourceItem, category, recognition),
+      careerImpact: benchmarkCombinedField(sourceItem, category, recognition, [
+        "Career Impact/Outcomes",
+        "Ranking/Prestige Signal"
+      ]),
+      relationship: benchmarkField(sourceItem, category, recognition, "Relationship to Other Awards")
+    };
+    return row;
+  });
+
+  return benchmarkingRows.cache;
+}
+
+function benchmarkingTable(rows) {
+  if (!rows.length) {
+    return `
+      <div class="empty-state">
+        <div>
+          <strong>No matching recognitions</strong>
+          <span>Try removing one of the filters.</span>
+        </div>
+      </div>
+    `;
+  }
+
+  return `
+    <div class="benchmark-count">${rows.length} recognition${rows.length === 1 ? "" : "s"}</div>
+    <div class="benchmark-table-wrap">
+      <table class="directory-table benchmark-table">
+        <thead>
+          <tr>
+            <th>Recognition</th>
+            <th>Organization</th>
+            ${benchmarkingCriteria.map((criterion) => `<th>${escapeHtml(criterion.label)}</th>`).join("")}
+          </tr>
+        </thead>
+        <tbody>
+          ${rows
+            .map(
+              (row) => `
+              <tr>
+                <td><a href="${benchmarkRecognitionHref(row)}">${escapeHtml(row.recognition)}</a></td>
+                <td>${escapeHtml(row.organization)}</td>
+                ${benchmarkingCriteria.map((criterion) => `<td>${escapeHtml(row[criterion.key] || "N/A")}</td>`).join("")}
+              </tr>
+            `
+            )
+            .join("")}
+        </tbody>
+      </table>
+    </div>
+  `;
+}
+
+function benchmarkRecognitionHref(row) {
+  const match = allRecognitions().find(
+    (item) => item.recognition === row.recognition && item.organization === row.organization
+  );
+  return match ? `#criteria/${match.categoryId}/${match.itemIndex}/${match.recognitionIndex}` : "#directory";
+}
+
+function benchmarkField(item, category, recognition, field) {
+  if (!item || !category || !recognition) return "N/A";
+  const value = criteriaFieldValue(field, item, category, recognition);
+  return benchmarkCleanValue(value);
+}
+
+function benchmarkCombinedField(item, category, recognition, fields) {
+  const values = fields
+    .map((field) => benchmarkField(item, category, recognition, field))
+    .filter((value) => value && value !== "N/A");
+  return values.length ? [...new Set(values)].join(" | ") : "N/A";
+}
+
+function benchmarkNotableRecipients(item, category, recognition) {
+  const profile = recognitionProfileFor(item, recognition);
+  if (Array.isArray(profile.notableRecipients)) {
+    const names = profile.notableRecipients
+      .filter((recipient) => !isMbzuaiFacultyName(recipient.name))
+      .map((recipient) => recipient.name);
+    return names.length ? names.join("; ") : "N/A";
+  }
+
+  const value = benchmarkField(item, category, recognition, "Notable Past Recipients");
+  const names = notableRecipientsFromText(value).map((recipient) => recipient.name);
+  return names.length ? names.join("; ") : "N/A";
+}
+
+function benchmarkCleanValue(value) {
+  if (value === null || value === undefined) return "N/A";
+  const clean = String(value)
+    .replace(/<[^>]+>/g, " ")
+    .replace(/\s+/g, " ")
+    .trim();
+  const placeholderValues = new Set([
+    "Government, private, society, foundation, academy, or scholarly association",
+    "Who makes the final decision; committee size; committee selection process",
+    "C.S, A.I, M.L, medicine, engineering, sciences, or other relevant field",
+    "Global/international, regional, national, or institutional",
+    "Preference for diversity, regional quotas, or no geographic distribution rule",
+    "Election by members, nomination plus review, open application, or appointment",
+    "Application window, multiple rounds, or rolling cycle",
+    "Required documents, recommendation letters, CV, publications, or nomination package",
+    "Career stage, age limit, citizenship, institutional affiliation, or prior achievements",
+    "How often awarded and number per cycle",
+    "One-time, lifetime, short-term, or long-term recognition",
+    "Amount, currency, and conditions",
+    "Total awarded per cycle, success rate, or total recipients all-time",
+    "Famous winners and other major achievements of recipients",
+    "Career advancement, publication/citation boost, or other outcome evidence",
+    "Prerequisite for other honors or often awarded together",
+    "Field, national, or international recognition level; citation impact; hybrid level"
+  ]);
+  if (!clean || clean === "To be completed" || /^To be completed from/i.test(clean)) return "N/A";
+  if (placeholderValues.has(clean)) return "N/A";
+  return clean;
 }
 
 function renderDirectoryPage() {
