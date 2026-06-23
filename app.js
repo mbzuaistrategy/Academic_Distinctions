@@ -4115,7 +4115,7 @@ const categories = [
             "Review/Evaluation Criteria": "Eminent scientific or technological contributions with major global significance.",
             "Nomination Deadline": "Recent calls opened on 1 March and closed on 15 June.",
             "Application Requirements": "Nomination through official platform with required supporting materials.",
-            "Eligibility/Restrictions": "Researchers and technologists worldwide; category-specific rules apply.",
+            "Eligibility/Restrictions": "Researchers and technologists worldwide. Excludes previous winners of the Nobel Prize, Turing Award, Abel Prize, Lasker Award, Canada Gairdner International Award, or Breakthrough Prize. Category-specific rules apply.",
             "Frequency": "Annual",
             "Duration": "One-time prize",
             "Prize Money/Material Award": "RMB 10 million per prize category, which may be divided among up to four laureates.",
