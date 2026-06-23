@@ -4566,6 +4566,7 @@ const legacyFacultyRecognitions = [
   {
     faculty: "Anil K. Jain",
     distinction: "IEEE W. Wallace McDowell Award",
+    details: "2007",
     work:
       "Pioneering contributions to the theory, techniques, and practice of pattern recognition, computer vision, and biometric recognition systems.",
     publicCategory: "Global / Disciplinary Field Leadership",
@@ -5482,7 +5483,7 @@ const selectedAwardingBodyProfiles = {
 
 const selectedRecognitionCriteriaProfiles = {
   [criteriaProfileKey("IEEE (Institute of Electrical and Electronics Engineers)", "IEEE W. Wallace McDowell Award")]: {
-    "Official Name": "IEEE Computer Society W. Wallace McDowell Award",
+    "Official Name": "IEEE Computer Society W. Wallace McDowell Award / IEEE W. Wallace McDowell Award",
     "Institution/Type": "Professional society technical award / computer science award",
     "Definition": "A major IEEE Computer Society award recognizing outstanding recent theoretical, design, educational, practical, or similarly innovative contributions within the scope of the Computer Society's interests.",
     "History/Background": "Long-running IEEE Computer Society technical award; official recipient listings go back to the 1960s. It is named for W. Wallace McDowell.",
@@ -5497,11 +5498,11 @@ const selectedRecognitionCriteriaProfiles = {
     "Geographic Distribution": "No public regional quota; selection is based on technical contribution and impact.",
     "Amount of Members": "Not a membership recognition. IEEE has a large global membership; this award is a technical award rather than a member grade.",
     "Type of Recognition": "One-time technical award / medal.",
-    "Nomination Process": "Formal nomination through the IEEE Computer Society awards platform; not an open self-application award.",
+    "Nomination Process": "Peer nomination through the IEEE Computer Society awards platform; not an open self-application award.",
     "Review/Evaluation Criteria": "Outstanding recent theoretical, design, educational, practical, or other innovative contributions within the Computer Society's scope.",
     "Nomination Deadline": "Annual cycle; the IEEE Computer Society awards page lists the W. Wallace McDowell Award deadline as October 1.",
     "Application Requirements": "Nomination form and supporting material submitted through the IEEE Computer Society awards platform; exact documentation can vary by year.",
-    "Eligibility/Restrictions": "No public citizenship restriction found. Specific IEEE Computer Society award rules and conflict-of-interest rules apply.",
+    "Eligibility/Restrictions": "No public citizenship restriction found. IEEE Computer Society conflict rules apply: voting Board of Governors members and current Award Committee members cannot nominate, endorse, or receive major named Society awards.",
     "Frequency": "Annual, if a suitable recipient is selected.",
     "Duration": "One-time award with lifetime prestige.",
     "Prize Money/Material Award": "Bronze medal and USD 2,000 honorarium, according to the IEEE Computer Society awards page.",
