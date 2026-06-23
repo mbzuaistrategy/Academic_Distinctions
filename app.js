@@ -3787,7 +3787,7 @@ const categories = [
             "Organization Type": "Private foundation",
             "Mission": "Supports research, culture, scientific dissemination, and knowledge creation.",
             "Leadership": "Administered by the BBVA Foundation.",
-            "Committee/Jury Composition": "Separate juries are appointed for each category; final decisions are made by the category jury. Exact jury size varies by category and edition.",
+            "Committee/Jury Composition": "Separate juries are appointed for each category. The BBVA Foundation is aided by the Spanish National Research Council (CSIC), which appoints evaluation support panels for initial assessment and reasoned shortlists. Final decisions are made by the award committees.",
             "Main Field/Scope": "Basic Sciences; Biology and Biomedicine; Information and Communication Technologies; Climate Change and Environmental Sciences; Economics Finance and Management; Humanities; Social Sciences; Music and Opera.",
             "Geographic Scope": "Global / international",
             "Geographic Distribution": "No public regional quotas.",
