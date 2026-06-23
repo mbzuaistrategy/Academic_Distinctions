@@ -267,7 +267,7 @@ const categories = [
             "Main Field/Scope": "Natural knowledge broadly: sciences, mathematics, engineering science and medical science; includes CS, AI and ML where contributions are scientific or engineering research.",
             "Geographic Scope": "UK, Commonwealth and Ireland route for Fellows; separate Foreign Member route for scientists outside that constituency.",
             "Geographic Distribution": "No public regional quota; election is based on scientific excellence and contribution.",
-            "Amount of Members": "The Society elects up to 109 new Fellows per year across routes, including up to 24 Foreign Members.",
+            "Amount of Members": "Annual cap after the 2024 reform: 85 Fellows plus 24 Foreign Members.",
             "Type of Recognition": "Elected fellowship / lifetime academy membership",
             "Nomination Process": "Election by existing Fellows; not an open application.",
             "Review/Evaluation Criteria": "Scientific excellence and substantial contribution to natural knowledge; ability to contribute to the Society's work.",
@@ -277,7 +277,7 @@ const categories = [
             "Frequency": "Annual",
             "Duration": "Lifetime fellowship",
             "Prize Money/Material Award": "No standard cash prize; honorific fellowship and post-nominal FRS.",
-            "Number of Recipients": "Up to 109 across Fellowship routes annually, including up to 24 Foreign Members.",
+            "Number of Recipients": "Annual cap after the 2024 reform: 85 Fellows plus 24 Foreign Members.",
             "Notable Past Recipients": "Isaac Newton, Charles Darwin, Dorothy Hodgkin, Stephen Hawking, Tim Berners-Lee.",
             notableRecipients: [
               {
@@ -331,7 +331,7 @@ const categories = [
             "Main Field/Scope": "Sciences, mathematics, engineering science and medical science; includes CS, AI and ML.",
             "Geographic Scope": "Global route for scientists outside the UK, Commonwealth and Ireland.",
             "Geographic Distribution": "No public regional quota; based on scientific excellence.",
-            "Amount of Members": "The Society elects up to 109 new Fellows annually across routes, including up to 24 Foreign Members.",
+            "Amount of Members": "Annual cap after the 2024 reform: 85 Fellows plus 24 Foreign Members.",
             "Type of Recognition": "Elected foreign membership / lifetime academy recognition",
             "Nomination Process": "Election by existing Fellows; not an open application.",
             "Review/Evaluation Criteria": "Scientific excellence and substantial contribution to natural knowledge.",
@@ -341,7 +341,7 @@ const categories = [
             "Frequency": "Annual",
             "Duration": "Lifetime membership",
             "Prize Money/Material Award": "No standard cash prize; honorific foreign membership and post-nominal ForMemRS.",
-            "Number of Recipients": "Up to 24 Foreign Members may be elected each year.",
+            "Number of Recipients": "Annual cap after the 2024 reform: 24 Foreign Members, alongside 85 Fellows.",
             "Notable Past Recipients": "Albert Einstein, Marie Curie, Subrahmanyan Chandrasekhar, Jane Goodall, Jennifer Doudna.",
             notableRecipients: [
               {
