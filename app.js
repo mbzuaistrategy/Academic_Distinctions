@@ -5609,7 +5609,7 @@ const selectedRecognitionCriteriaProfiles = {
     "Official Name": "Sir Frank Whittle Medal",
     "Institution/Type": "Engineering lifetime achievement medal",
     "Definition": "Royal Academy of Engineering medal awarded to a UK-resident engineer whose outstanding and sustained achievements have had a profound impact on their engineering discipline.",
-    "History/Background": "Named for Sir Frank Whittle, British pioneer of the jet engine and a Founding Fellow of the Royal Academy of Engineering.",
+    "History/Background": "Named in honour of Sir Frank Whittle OM KBE FRS FREng, British pioneer of the jet engine and a Founding Fellow of the Academy.",
     "Purpose": "To recognize lifetime engineering achievement and sustained contributions shaping a discipline.",
     "Awarding Body": "Royal Academy of Engineering",
     "Organization Type": "National academy / engineering fellowship / charity.",
