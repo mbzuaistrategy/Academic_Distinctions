@@ -2252,8 +2252,8 @@ const categories = [
             "Awarding Body": "IEEE",
             "Organization Type": "Professional society / nonprofit technical association",
             "Mission": "Advancing Technology for Humanity.",
-            "Leadership": "Administered through IEEE medals and awards governance.",
-            "Committee/Jury Composition": "Reviewed through IEEE awards committees and governance structures; final approval follows IEEE awards procedures. Exact committee size for this medal is not publicly specified.",
+            "Leadership": "Administered by the IEEE Awards Board under IEEE Board of Directors award governance.",
+            "Committee/Jury Composition": "Administered by the IEEE Awards Board under IEEE Board of Directors award governance. Exact medal-specific committee size is not publicly listed.",
             "Main Field/Scope": "Computer science, AI, ML, computing systems, algorithms, computer engineering, software/hardware systems.",
             "Geographic Scope": "Global / international",
             "Geographic Distribution": "No public geographic quota.",
@@ -2264,10 +2264,10 @@ const categories = [
             "Nomination Deadline": "IEEE medals nominations are open annually from 8 December to 15 June, with endorsement letters due by 1 July.",
             "Application Requirements": "Nomination form and endorsement/supporting letters through IEEE platform.",
             "Eligibility/Restrictions": "Individual or team up to three people; no public citizenship restriction.",
-            "Frequency": "Annual, if a suitable recipient is selected.",
+            "Frequency": "Normally annual, if a suitable recipient is selected.",
             "Duration": "One-time medal",
             "Prize Money/Material Award": "IEEE medal and recognition; monetary component not clearly specified on public medal summary.",
-            "Number of Recipients": "Usually one individual or small team; success rate not publicly available.",
+            "Number of Recipients": "Awarded to one individual or a team of up to three; success rate not publicly available.",
             "Notable Past Recipients": "Michael I. Jordan, Jeffrey Dean, Vladimir Vapnik, Christos Papadimitriou, Donald Knuth, John Hennessy, David Patterson.",
             "Career Impact/Outcomes": "Major international recognition in computing and engineering; no official career-outcome statistics published.",
             "Relationship to Other Awards": "Often held by IEEE Fellows, ACM Fellows, Turing Award recipients, and academy members.",
@@ -4996,7 +4996,7 @@ const additionalFacultyRecognitions = [
   }),
   facultyRecord("Michael I. Jordan", "IEEE John von Neumann Medal", "fellowshipPrize", "level1c", {
     details: "2020",
-    work: "Contributions to machine learning and statistics."
+    work: "For contributions to machine learning and data science."
   }),
   facultyRecord("Eran Segal", "Overton Prize", "fellowshipPrize", "level1c", { details: "2012" }),
   facultyRecord("Michael I. Jordan", "IJCAI Award for Research Excellence", "fellowshipPrize", "level1c", {
