@@ -2215,7 +2215,7 @@ const categories = [
             "Official Name": "Helmholtz Prize / ICCV Test-of-Time Award",
             "Institution/Type": "Computer vision test-of-time paper award",
             "Definition": "Biennial prize recognizing ICCV papers from ten or more years earlier that have had significant impact on computer vision research.",
-            "History/Background": "Named after Hermann von Helmholtz; known as the ICCV Test-of-Time Award before 2013.",
+            "History/Background": "Named after Hermann von Helmholtz; known as the ICCV Test-of-Time Award before 2013. It can recognize multiple papers in a given year; in 2017, the official TCPAMI list shows multiple winning papers.",
             "Purpose": "To recognize foundational computer vision papers whose influence has endured over time.",
             "Awarding Body": "IEEE Computer Society Technical Committee on Pattern Analysis and Machine Intelligence, TCPAMI, at ICCV",
             "Organization Type": "Professional society technical committee / conference award",
@@ -2235,7 +2235,7 @@ const categories = [
             "Frequency": "Biennial, at ICCV",
             "Duration": "One-time paper award",
             "Prize Money/Material Award": "Public official sources emphasize recognition; standard prize money not publicly specified.",
-            "Number of Recipients": "One or more papers/authors may be recognized; success rate not publicly available.",
+            "Number of Recipients": "One or more papers/authors may be recognized. In 2017, multiple winning papers were listed by TCPAMI.",
             "Notable Past Recipients": "Influential ICCV papers and authors in computer vision, including ORB, HMDB, and other major foundational works.",
             "Career Impact/Outcomes": "Strong signal that a paper became foundational in computer vision; no official career-outcome statistics published.",
             "Relationship to Other Awards": "Comparable to other top-conference test-of-time awards such as CVPR Longuet-Higgins Prize.",
@@ -4983,7 +4983,7 @@ const additionalFacultyRecognitions = [
   facultyRecord("Ivan Laptev", "Helmholtz Prize (ICCV Test-of-Time)", "fellowshipPrize", "level1c", {
     details: "2017",
     work:
-      'Seminal "Space-Time Interest Points" paper, which introduced STIPs as a foundational technique for video understanding and action recognition.'
+      '"Space-time interest points" by I. Laptev and T. Lindeberg was listed among the 2017 Helmholtz Prize awardees.'
   }),
   facultyRecord("Michael I. Jordan", "BBVA Foundation Frontiers of Knowledge Award", "fellowshipPrize", "level1b", {
     routeRecognition: "BBVA Frontiers of Knowledge Award",
