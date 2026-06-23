@@ -8480,12 +8480,22 @@ function formatBenchmarkCell(value) {
   if (points.length > 1 || text.length > 42) {
     return `
       <ul class="benchmark-info-list">
-        ${points.map((point) => `<li>${escapeHtml(point)}</li>`).join("")}
+        ${points.map((point) => `<li>${escapeHtml(capitalizeBenchmarkPoint(point))}</li>`).join("")}
       </ul>
     `;
   }
 
   return escapeHtml(text);
+}
+
+function capitalizeBenchmarkPoint(text) {
+  const clean = String(text || "").trim();
+  const match = clean.match(/[A-Za-z]/);
+  if (!match) return clean;
+
+  const index = match.index;
+  const char = clean[index];
+  return `${clean.slice(0, index)}${char.toUpperCase()}${clean.slice(index + 1)}`;
 }
 
 function benchmarkCompactPoints(text) {
