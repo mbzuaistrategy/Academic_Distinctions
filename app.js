@@ -4737,6 +4737,7 @@ const legacyFacultyRecognitions = [
   {
     faculty: "Yoshihiko Nakamura",
     distinction: "IEEE Robotics and Automation Society RAS Pioneer Award",
+    details: "2021",
     publicCategory: "Global / Disciplinary Field Leadership",
     internalLevel: "Level 1C / Tier 1C",
     levelKey: "level1c"
@@ -5641,7 +5642,7 @@ const selectedRecognitionCriteriaProfiles = {
     "Official Name": "IEEE RAS Pioneer in Robotics and Automation Award",
     "Institution/Type": "Professional society robotics award",
     "Definition": "Award recognizing individuals who initiated new areas of research, development, or engineering and had significant impact on robotics and/or automation.",
-    "History/Background": "Established in 1998 by the IEEE Robotics and Automation Society.",
+    "History/Background": "Established in 1998 by the IEEE Robotics and Automation Society. The award is commonly presented at ICRA; the 2025 RAS awards were recognized at ICRA 2025.",
     "Purpose": "To recognize pioneering mid- or late-career contributions that shaped robotics and automation.",
     "Awarding Body": "IEEE Robotics and Automation Society (IEEE RAS)",
     "Organization Type": "Professional society within IEEE.",
@@ -5658,7 +5659,7 @@ const selectedRecognitionCriteriaProfiles = {
     "Nomination Deadline": "IEEE RAS lists September 1 of the year preceding the award for society awards.",
     "Application Requirements": "Nomination form and supporting materials; exact requirements follow current IEEE RAS award forms.",
     "Eligibility/Restrictions": "Any person active in robotics and/or automation is eligible, whether or not an IEEE RAS member. Intended for people in mid or late career.",
-    "Frequency": "Annual, presented at ICRA.",
+    "Frequency": "Annual; commonly presented at ICRA when a suitable recipient is selected.",
     "Duration": "One-time award.",
     "Prize Money/Material Award": "USD 2,000, plaque, and certificate; up to two awards per year; no award if no qualified candidate is identified.",
     "Number of Recipients": "Up to two recipients per year; nomination/success rates not publicly specified.",
