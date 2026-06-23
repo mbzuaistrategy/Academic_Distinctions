@@ -8384,7 +8384,7 @@ function benchmarkSectionGroups() {
       title: "Overview",
       description: "Identity, awarding body, level, and type.",
       columns: [
-        { key: "recognition", label: "Recognition" },
+        { key: "recognition", label: "Recognition / Organization" },
         { key: "organization", label: "Organization" },
         { key: "categoryTier", label: "Level" },
         { key: "type", label: "Type" },
@@ -8395,7 +8395,7 @@ function benchmarkSectionGroups() {
       title: "Scope",
       description: "Field and geographic reach.",
       columns: [
-        { key: "recognition", label: "Recognition" },
+        { key: "recognition", label: "Recognition / Organization" },
         { key: "scopeField", label: "Scope and Field" },
         { key: "geographicScope", label: "Geographic Scope" }
       ]
@@ -8404,7 +8404,7 @@ function benchmarkSectionGroups() {
       title: "Selection",
       description: "How candidates are nominated and evaluated.",
       columns: [
-        { key: "recognition", label: "Recognition" },
+        { key: "recognition", label: "Recognition / Organization" },
         { key: "selectionProcess", label: "Nomination" },
         { key: "evaluationCriteria", label: "Evaluation" },
         { key: "eligibility", label: "Eligibility" }
@@ -8414,7 +8414,7 @@ function benchmarkSectionGroups() {
       title: "Award Details",
       description: "Duration, award value, and selectivity.",
       columns: [
-        { key: "recognition", label: "Recognition" },
+        { key: "recognition", label: "Recognition / Organization" },
         { key: "selectivity", label: "Recipients / Selectivity" },
         { key: "duration", label: "Duration" },
         { key: "prizeMoney", label: "Prize / Material Award" }
@@ -8424,7 +8424,7 @@ function benchmarkSectionGroups() {
       title: "Impact",
       description: "Notable recipients, prestige, and related awards.",
       columns: [
-        { key: "recognition", label: "Recognition" },
+        { key: "recognition", label: "Recognition / Organization" },
         { key: "notableRecipients", label: "Notable Recipients" },
         { key: "careerImpact", label: "Impact / Prestige" },
         { key: "relationship", label: "Relationship" }
@@ -8462,7 +8462,12 @@ function benchmarkSectionRow(row, columns) {
       ${columns
         .map((column) => {
           if (column.key === "recognition") {
-            return `<td><a href="${benchmarkRecognitionHref(row)}">${escapeHtml(row.recognition)}</a></td>`;
+            return `
+              <td>
+                <a class="benchmark-recognition-link" href="${benchmarkRecognitionHref(row)}">${escapeHtml(row.recognition)}</a>
+                <span class="benchmark-organization-context">${escapeHtml(row.organization)}</span>
+              </td>
+            `;
           }
           return `<td>${formatBenchmarkCell(row[column.key] || "N/A")}</td>`;
         })

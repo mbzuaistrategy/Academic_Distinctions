@@ -2018,6 +2018,22 @@ a {
   background: var(--surface-soft);
 }
 
+.benchmark-recognition-link {
+  display: block;
+  color: var(--ink);
+  font-weight: 800;
+  line-height: 1.25;
+}
+
+.benchmark-organization-context {
+  display: block;
+  margin-top: 0.35rem;
+  color: var(--muted);
+  font-size: 0.72rem;
+  font-weight: 700;
+  line-height: 1.25;
+}
+
 .benchmark-info-list {
   display: grid;
   gap: 0.24rem;
