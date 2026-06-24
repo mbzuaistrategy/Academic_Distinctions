@@ -1773,21 +1773,6 @@ a {
   font-size: 0.82rem;
 }
 
-.benchmark-pagination {
-  display: flex;
-  align-items: center;
-  gap: 0.55rem;
-  color: var(--muted);
-  font-size: 0.84rem;
-  font-weight: 800;
-  white-space: nowrap;
-}
-
-.benchmark-pagination button:disabled {
-  cursor: not-allowed;
-  opacity: 0.45;
-}
-
 .benchmark-table-wrap {
   overflow: auto;
   border: 1px solid var(--line);

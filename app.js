@@ -8176,11 +8176,10 @@ function renderBenchmarkingPage() {
   const clearRecognitions = document.querySelector("#benchmark-clear-recognitions");
   const institution = document.querySelector("#benchmark-institution");
   const level = document.querySelector("#benchmark-level");
-  let currentPage = 1;
   let filteredRows = rows;
 
   const renderResults = () => {
-    document.querySelector("#benchmark-results").innerHTML = benchmarkingTable(filteredRows, currentPage);
+    document.querySelector("#benchmark-results").innerHTML = benchmarkingTable(filteredRows);
   };
 
   const update = () => {
@@ -8200,7 +8199,6 @@ function renderBenchmarkingPage() {
         (!selectedLevel || row.level === selectedLevel)
       );
     });
-    currentPage = 1;
     renderResults();
   };
 
@@ -8215,7 +8213,6 @@ function renderBenchmarkingPage() {
   document.querySelector("#benchmark-results").addEventListener("click", (event) => {
     const applyFilters = event.target.closest("[data-benchmark-apply-filters]");
     if (applyFilters) {
-      currentPage = 1;
       update();
       return;
     }
@@ -8223,7 +8220,6 @@ function renderBenchmarkingPage() {
     const clearColumn = event.target.closest("[data-benchmark-clear-column]");
     if (clearColumn) {
       delete activeBenchmarkColumnFilters[clearColumn.dataset.benchmarkClearColumn];
-      currentPage = 1;
       update();
       return;
     }
@@ -8239,11 +8235,6 @@ function renderBenchmarkingPage() {
       renderResults();
       return;
     }
-
-    const button = event.target.closest("[data-benchmark-page]");
-    if (!button) return;
-    currentPage = Number(button.dataset.benchmarkPage);
-    renderResults();
   });
   document.querySelector("#benchmark-results").addEventListener("change", (event) => {
     const checkbox = event.target.closest("[data-benchmark-column]");
@@ -8602,7 +8593,7 @@ function shortBenchmarkOption(value) {
   return text;
 }
 
-function benchmarkingTable(rows, page = 1) {
+function benchmarkingTable(rows) {
   if (!rows.length) {
     return `
       <div class="empty-state">
@@ -8614,12 +8605,6 @@ function benchmarkingTable(rows, page = 1) {
     `;
   }
 
-  const pageSize = 5;
-  const pageCount = Math.max(1, Math.ceil(rows.length / pageSize));
-  const currentPage = Math.min(Math.max(1, page), pageCount);
-  const start = (currentPage - 1) * pageSize;
-  const visibleRows = rows.slice(start, start + pageSize);
-
   const groups = benchmarkColumnGroups();
   const columns = benchmarkVisibleColumns();
 
@@ -8627,12 +8612,7 @@ function benchmarkingTable(rows, page = 1) {
     <div class="benchmark-results-head">
       <div>
         <div class="benchmark-count">${rows.length} recognition${rows.length === 1 ? "" : "s"}</div>
-        <div class="benchmark-page-note">Showing ${start + 1}-${Math.min(start + pageSize, rows.length)}. Swipe horizontally to compare criteria.</div>
-      </div>
-      <div class="benchmark-pagination" aria-label="Benchmarking pagination">
-        <button class="button light" type="button" data-benchmark-page="${currentPage - 1}" ${currentPage === 1 ? "disabled" : ""}>Previous</button>
-        <span>Page ${currentPage} of ${pageCount}</span>
-        <button class="button light" type="button" data-benchmark-page="${currentPage + 1}" ${currentPage === pageCount ? "disabled" : ""}>Next</button>
+        <div class="benchmark-page-note">Showing the full filtered list. Scroll down for more recognitions and swipe horizontally to compare criteria.</div>
       </div>
     </div>
     <div class="benchmark-criteria-bar" aria-label="Visible benchmarking criteria">
@@ -8656,7 +8636,7 @@ function benchmarkingTable(rows, page = 1) {
             </tr>
           </thead>
           <tbody>
-            ${visibleRows.map((row) => benchmarkMatrixRow(row, columns)).join("")}
+            ${rows.map((row) => benchmarkMatrixRow(row, columns)).join("")}
           </tbody>
         </table>
       </div>
