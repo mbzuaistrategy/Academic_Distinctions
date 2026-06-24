@@ -2531,10 +2531,10 @@ const categories = [
             "Definition": "Award for career contributions that have breadth within computer science or bridge computer science and other disciplines.",
             "History/Background": "Established in 1993 to honor Allen Newell, a founder of AI and the first president of AAAI.",
             "Purpose": "To recognize broad, interdisciplinary, high-impact computing contributions.",
-            "Awarding Body": "ACM and AAAI",
+            "Awarding Body": "ACM, with support from AAAI",
             "Organization Type": "Professional / scholarly associations",
             "Mission": "Recognize interdisciplinary computing excellence, especially work bridging AI, computing, and other fields.",
-            "Leadership": "Administered through ACM awards program with AAAI support.",
+            "Leadership": "Administered through ACM's awards program and supported by AAAI.",
             "Committee/Jury Composition": "Reviewed through ACM award committee processes; exact committee size is not publicly specified.",
             "Main Field/Scope": "Computer science, AI, cognitive science, HCI, economics, statistics, biology, social sciences, interdisciplinary computing.",
             "Geographic Scope": "Global / international",
@@ -5007,7 +5007,7 @@ const additionalFacultyRecognitions = [
   }),
   facultyRecord("Michael I. Jordan", "ACM/AAAI Allen Newell Award", "fellowshipPrize", "level1c", {
     details: "2009",
-    work: "Fundamental advances in machine learning, graphical models, and nonparametric Bayesian statistics."
+    work: "For fundamental advances in machine learning, particularly his groundbreaking work on graphical models and nonparametric Bayesian statistics, the broad application of this work across computer science, statistics, and the biological sciences."
   }),
   facultyRecord("Michael I. Jordan", "World Laureates Association Prize", "fellowshipPrize", "level1b", {
     details: "2022",
