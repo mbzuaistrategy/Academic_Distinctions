@@ -8098,9 +8098,9 @@ const benchmarkingCriteria = [
   { key: "geographicScope", label: "Geographic Scope" },
   { key: "electionBased", label: "Election Based" },
   { key: "lifetime", label: "Lifetime" },
-  { key: "formalPrerequisite", label: "Formal Prerequisite" },
-  { key: "citizenship", label: "Citizenship" },
-  { key: "nomination", label: "Nomination" },
+  { key: "formalPrerequisite", label: "Prior title required" },
+  { key: "citizenship", label: "Citizenship/Residency required" },
+  { key: "nomination", label: "How you get in" },
   { key: "applicationRequirements", label: "Application Requirements" },
   { key: "evaluation", label: "Evaluation" },
   { key: "exclusions", label: "Exclusions" },
@@ -8458,20 +8458,20 @@ function benchmarkFormalPrerequisiteValue(relationship, eligibility) {
 function benchmarkCitizenshipValue(eligibility, recognition) {
   const text = normalizeText(`${eligibility} ${recognition}`);
   if (hasAny(text, ["no age citizenship restriction", "no citizenship restriction", "no public citizenship restriction", "no nationality restriction"])) return "—";
-  if (hasAny(text, ["foreign member", "foreign fellow", "separate foreign route", "international member"])) return "Separate foreign route";
+  if (hasAny(text, ["foreign member", "foreign fellow", "separate foreign route", "international member"])) return "Foreign route available";
   if (hasAny(text, ["citizenship", "citizen", "nationality", "resident", "residency", "european", "u s", "us ", "uk", "commonwealth", "ireland", "country requirement"])) return "✓";
   return "—";
 }
 
 function benchmarkNominationValue(value) {
   const text = normalizeText(value);
-  if (hasAny(text, ["no applications or unsolicited nominations", "confidential nomination and review", "confidential nomination"])) return "Invitation only";
-  if (hasAny(text, ["invitation", "invited", "invite"])) return "Invitation only";
-  if (hasAny(text, ["self nominations are not permitted", "self nomination not permitted", "self nominations not accepted", "no self nomination", "cannot self nominate", "candidate cannot self apply"])) return "Peer nomination";
-  if (hasAny(text, ["self nomination", "self-nomination", "self nominated", "self nominate"])) return "Self-nomination allowed";
-  if (hasAny(text, ["open application", "open call", "direct application", "online application"]) && !hasAny(text, ["not an open application", "not a public open application", "no open application", "no application", "direct applications are not accepted", "no self application", "cannot self apply", "does not self apply", "internal process", "not public"])) return "Open application";
-  if (hasAny(text, ["peer", "nomination", "nominated", "election"])) return "Peer nomination";
-  return "Peer nomination";
+  if (hasAny(text, ["no applications or unsolicited nominations", "confidential nomination and review", "confidential nomination", "internal selection", "committee selected", "eligible papers are considered", "committee determines", "selection committee"])) return "Committee selected";
+  if (hasAny(text, ["invitation", "invited", "invite"])) return "Invited";
+  if (hasAny(text, ["self nominations are not permitted", "self nomination not permitted", "self nominations not accepted", "no self nomination", "cannot self nominate", "candidate cannot self apply"])) return "Peer nominated";
+  if (hasAny(text, ["self nomination", "self-nomination", "self nominated", "self nominate"])) return "Self-applied";
+  if (hasAny(text, ["open application", "open call", "direct application", "online application"]) && !hasAny(text, ["not an open application", "not a public open application", "no open application", "no application", "direct applications are not accepted", "no self application", "cannot self apply", "does not self apply", "internal process", "not public"])) return "Self-applied";
+  if (hasAny(text, ["peer", "nomination", "nominated", "election"])) return "Peer nominated";
+  return "Peer nominated";
 }
 
 function benchmarkApplicationRequirementsValue(value, nomination) {
@@ -8797,9 +8797,9 @@ function benchmarkColumnGroups() {
       columns: [
         { key: "electionBased", label: "Election Based" },
         { key: "lifetime", label: "Lifetime" },
-        { key: "formalPrerequisite", label: "Formal Prerequisite" },
-        { key: "citizenship", label: "Citizenship" },
-        { key: "nomination", label: "Nomination" },
+        { key: "formalPrerequisite", label: "Prior title required" },
+        { key: "citizenship", label: "Citizenship/Residency required" },
+        { key: "nomination", label: "How you get in" },
         { key: "applicationRequirements", label: "Application Requirements" },
         { key: "evaluation", label: "Evaluation" },
         { key: "exclusions", label: "Exclusions" }
