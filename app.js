@@ -8106,7 +8106,7 @@ const benchmarkingCriteria = [
   { key: "prize", label: "Prize" },
   { key: "medal", label: "Medal" },
   { key: "prestige", label: "Prestige" },
-  { key: "recipients", label: "Recipients" }
+  { key: "recipients", label: "Approx. Recipients / Year" }
 ];
 
 let activeBenchmarkColumnFilters = {};
@@ -8769,7 +8769,7 @@ function benchmarkColumnGroups() {
         { key: "frequency", label: "Frequency" },
         { key: "prize", label: "Prize" },
         { key: "medal", label: "Medal" },
-        { key: "recipients", label: "Recipients" }
+        { key: "recipients", label: "Approx. Recipients / Year" }
       ]
     },
     {
