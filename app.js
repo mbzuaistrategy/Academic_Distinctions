@@ -8095,11 +8095,15 @@ const benchmarkingCriteria = [
   { key: "aiRelevant", label: "AI Relevant" },
   { key: "geographicScope", label: "Geographic Scope" },
   { key: "elected", label: "Elected" },
+  { key: "electionBased", label: "Election Based" },
   { key: "lifetime", label: "Lifetime" },
+  { key: "formalPrerequisite", label: "Formal Prerequisite" },
   { key: "citizenship", label: "Citizenship" },
   { key: "nomination", label: "Nomination" },
+  { key: "applicationRequirements", label: "Application Requirements" },
   { key: "evaluation", label: "Evaluation" },
   { key: "exclusions", label: "Exclusions" },
+  { key: "frequency", label: "Frequency" },
   { key: "prize", label: "Prize" },
   { key: "medal", label: "Medal" },
   { key: "lecture", label: "Lecture" },
@@ -8320,6 +8324,9 @@ function benchmarkingRows() {
     const duration = benchmarkField(sourceItem, category, recognition, "Duration");
     const prize = benchmarkField(sourceItem, category, recognition, "Prize Money/Material Award");
     const recipients = benchmarkField(sourceItem, category, recognition, "Number of Recipients");
+    const applicationRequirements = benchmarkField(sourceItem, category, recognition, "Application Requirements");
+    const frequency = benchmarkField(sourceItem, category, recognition, "Frequency");
+    const relationship = benchmarkField(sourceItem, category, recognition, "Relationship to Other Awards");
     const row = {
       id: benchmarkRowId(item.organization, recognition),
       recognition,
@@ -8333,11 +8340,15 @@ function benchmarkingRows() {
       aiRelevant: benchmarkAiRelevantValue(scope, recognition, item.organization),
       geographicScope: benchmarkGeographicValue(benchmarkField(sourceItem, category, recognition, "Geographic Scope"), item.categoryId, recognition, item.organization),
       elected: benchmarkElectedValue(nomination, recognition, item.categoryId),
+      electionBased: benchmarkElectionBasedValue(nomination, recognition, item.categoryId),
       lifetime: benchmarkLifetimeValue(duration, recognition),
+      formalPrerequisite: benchmarkFormalPrerequisiteValue(relationship, eligibility),
       citizenship: benchmarkCitizenshipValue(eligibility, recognition),
       nomination: benchmarkNominationValue(nomination),
+      applicationRequirements: benchmarkApplicationRequirementsValue(applicationRequirements, nomination),
       evaluation: benchmarkEvaluationValue(evaluation, recognition, item.organization),
       exclusions: benchmarkExclusionsValue(eligibility),
+      frequency: benchmarkFrequencyValue(frequency),
       prize: benchmarkPrizeDisplay(prize),
       medal: benchmarkMedalValue(prize, recognition),
       lecture: benchmarkLectureValue(sourceItem, category, recognition),
@@ -8426,10 +8437,20 @@ function benchmarkElectedValue(nomination, recognition, categoryId) {
   return "—";
 }
 
+function benchmarkElectionBasedValue(nomination, recognition, categoryId) {
+  return benchmarkElectedValue(nomination, recognition, categoryId);
+}
+
 function benchmarkLifetimeValue(duration, recognition) {
   const text = normalizeText(`${duration} ${recognition}`);
   if (hasAny(text, ["lifetime", "lifelong", "permanent", "career long", "fellow", "member"])) return "✓";
   if (hasAny(text, ["one time", "one-time", "prize", "award", "medal", "grant"])) return "—";
+  return "—";
+}
+
+function benchmarkFormalPrerequisiteValue(relationship, eligibility) {
+  const text = normalizeText(`${relationship} ${eligibility}`);
+  if (hasAny(text, ["prerequisite", "required before", "must first", "senior member", "membership requirement", "must be an ieee senior member"])) return "✓";
   return "—";
 }
 
@@ -8447,6 +8468,21 @@ function benchmarkNominationValue(value) {
   if (hasAny(text, ["invitation", "invited", "invite"])) return "Invitation only";
   if (hasAny(text, ["peer", "nomination", "nominated", "election"])) return "Peer nomination";
   return "Peer nomination";
+}
+
+function benchmarkApplicationRequirementsValue(value, nomination) {
+  const text = normalizeText(`${value} ${nomination}`);
+  const values = [];
+  const add = (label) => {
+    if (!values.includes(label)) values.push(label);
+  };
+
+  if (hasAny(text, ["open application", "online application", "application guide", "candidate may apply", "self apply", "self-application"])) add("Open application");
+  if (hasAny(text, ["nomination packet", "nomination package", "nomination form", "supporting material", "supporting materials", "endorsement", "support letters", "references", "citation", "proposer", "seconder"])) add("Nomination packet");
+  if (hasAny(text, ["cv", "curriculum vitae", "publication list", "publications list", "list of work", "bibliography"])) add("CV + publications list");
+  if (hasAny(text, ["invitation only", "invited", "invitation"])) add("Invitation only");
+
+  return values.length ? values.join(" · ") : "None";
 }
 
 function benchmarkEvaluationValue(value, recognition, organization) {
@@ -8479,6 +8515,13 @@ function benchmarkExclusionsValue(eligibility) {
   if (hasAny(text, ["resident", "residency", "resided", "based in"])) add("Residency restriction");
 
   return values.length ? values.join(" · ") : "None";
+}
+
+function benchmarkFrequencyValue(value) {
+  const text = normalizeText(value);
+  if (hasAny(text, ["biennial", "every two years", "two year", "odd numbered years", "even year"])) return "Biennial";
+  if (hasAny(text, ["annual", "yearly", "per year", "once a year", "each year"])) return "Annual";
+  return "Ad hoc";
 }
 
 function benchmarkMedalValue(prize, recognition) {
@@ -8720,9 +8763,12 @@ function benchmarkColumnGroups() {
       label: "Selection",
       columns: [
         { key: "elected", label: "Elected" },
+        { key: "electionBased", label: "Election Based" },
         { key: "lifetime", label: "Lifetime" },
+        { key: "formalPrerequisite", label: "Formal Prerequisite" },
         { key: "citizenship", label: "Citizenship" },
         { key: "nomination", label: "Nomination" },
+        { key: "applicationRequirements", label: "Application Requirements" },
         { key: "evaluation", label: "Evaluation" },
         { key: "exclusions", label: "Exclusions" }
       ]
@@ -8731,6 +8777,7 @@ function benchmarkColumnGroups() {
       key: "award",
       label: "Award",
       columns: [
+        { key: "frequency", label: "Frequency" },
         { key: "prize", label: "Prize" },
         { key: "medal", label: "Medal" },
         { key: "lecture", label: "Lecture" },
@@ -8761,11 +8808,15 @@ function benchmarkControlledColumnKeys() {
     "aiRelevant",
     "geographicScope",
     "elected",
+    "electionBased",
     "lifetime",
+    "formalPrerequisite",
     "citizenship",
     "nomination",
+    "applicationRequirements",
     "evaluation",
     "exclusions",
+    "frequency",
     "prize",
     "medal",
     "lecture",
