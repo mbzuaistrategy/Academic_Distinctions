@@ -1893,6 +1893,11 @@ a {
   max-width: 260px;
 }
 
+.benchmark-table .benchmark-col-exclusions {
+  width: 300px;
+  max-width: 300px;
+}
+
 .benchmark-table .benchmark-col-nomination,
 .benchmark-table .benchmark-col-prize {
   width: 185px;
@@ -2102,6 +2107,9 @@ a {
 .benchmark-value-pill {
   display: inline-block;
   max-width: 100%;
+  overflow-wrap: normal;
+  word-break: normal;
+  hyphens: none;
   border-radius: 3px;
   padding: 0.16rem 0.45rem;
   margin: 0 0.18rem 0.18rem 0;
