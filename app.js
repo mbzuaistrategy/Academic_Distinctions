@@ -8354,10 +8354,78 @@ function benchmarkingRows() {
       prestige: benchmarkPrestigeValue(item.tierKey),
       recipients: benchmarkRecipientsValue(recipients)
     };
+    applyBenchmarkOverrides(row);
     return row;
   });
 
   return benchmarkingRows.cache;
+}
+
+function applyBenchmarkOverrides(row) {
+  const key = benchmarkRowId(row.organization, row.recognition);
+  const overrides = benchmarkRowOverrides()[key];
+  if (!overrides) return row;
+
+  Object.assign(row, overrides);
+  if (overrides.level) row.categoryTier = overrides.level;
+  if (overrides.level && !overrides.prestige) {
+    row.prestige = benchmarkPrestigeValue(`level${String(overrides.level).toLowerCase()}`);
+  }
+  return row;
+}
+
+function benchmarkRowOverrides() {
+  const check = "✓";
+  const dash = "—";
+  return {
+    [benchmarkRowId("US National Academy of Sciences (NAS)", "Member")]: {
+      fields: "All sciences · Physics · Engineering · Mathematics · Medicine · Biology · Social sciences",
+      aiRelevant: dash,
+      geographicScope: "National"
+    },
+    [benchmarkRowId("US National Academy of Engineering (NAE)", "Member")]: {
+      geographicScope: "National"
+    },
+    [benchmarkRowId("The Royal Society (UK)", "Fellow")]: {
+      geographicScope: "Regional"
+    },
+    [benchmarkRowId("The Royal Society (UK)", "Royal Society Milner Award")]: {
+      nomination: "Peer nominated",
+      recipients: "1"
+    },
+    [benchmarkRowId("Royal Academy of Engineering (UK)", "Fellow")]: {
+      geographicScope: "National",
+      recipients: "~60/year"
+    },
+    [benchmarkRowId("Royal Academy of Engineering (UK)", "Royal Academy of Engineering Whittle Medal")]: {
+      lifetime: dash,
+      nomination: "Peer nominated"
+    },
+    [benchmarkRowId("Academy of Medical Sciences (UK)", "Fellow")]: {
+      geographicScope: "National"
+    },
+    [benchmarkRowId("BBVA Foundation", "BBVA Frontiers of Knowledge Award")]: {
+      level: "1C",
+      citizenship: dash,
+      recipients: "~8/year"
+    },
+    [benchmarkRowId("German Research Foundation (DFG)", "Gottfried Wilhelm Leibniz Prize")]: {
+      level: "1B",
+      geographicScope: "National",
+      citizenship: check
+    },
+    [benchmarkRowId("German Future Prize", "German Future Prize")]: {
+      geographicScope: "National",
+      citizenship: check
+    },
+    [benchmarkRowId("COPSS (Committee of Presidents of Statistical Societies)", "COPSS Presidents' Award")]: {
+      citizenship: dash
+    },
+    [benchmarkRowId("AAAI (Association for the Advancement of Artificial Intelligence)", "AAAI Feigenbaum Prize")]: {
+      formalPrerequisite: dash,
+      nomination: "Peer nominated"
+    }
+  };
 }
 
 function benchmarkRowId(organization, recognition) {
