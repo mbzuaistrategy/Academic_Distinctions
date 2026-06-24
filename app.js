@@ -6372,6 +6372,8 @@ function tierForRecognition(item, recognition, category) {
       "van niel international prize",
       "american academy of microbiology fellow",
       "michael bruno award",
+      "japan society of mechanical engineers jsme fellow",
+      "jsme medal for distinguished engineers",
       "editor for leading journals",
       "senior editor",
       "program chair"
@@ -8325,19 +8327,20 @@ function benchmarkingRows() {
     const applicationRequirements = benchmarkField(sourceItem, category, recognition, "Application Requirements");
     const frequency = benchmarkField(sourceItem, category, recognition, "Frequency");
     const relationship = benchmarkField(sourceItem, category, recognition, "Relationship to Other Awards");
+    const form = benchmarkFormValue(recognition, sourceItem, category);
     const row = {
       id: benchmarkRowId(item.organization, recognition),
       recognition,
       organization: item.organization,
       institution: item.category,
       level: levelCode,
-      form: benchmarkFormValue(recognition, sourceItem, category),
+      form,
       categoryTier: levelCode,
       category: benchmarkCategoryValue(item.category),
       fields: benchmarkFieldsValue(scope, recognition, item.organization),
       aiRelevant: benchmarkAiRelevantValue(scope, recognition, item.organization),
       geographicScope: benchmarkGeographicValue(benchmarkField(sourceItem, category, recognition, "Geographic Scope"), item.categoryId, recognition, item.organization),
-      electionBased: benchmarkElectionBasedValue(nomination, recognition, item.categoryId),
+      electionBased: benchmarkElectionBasedValue(nomination, recognition, item.categoryId, form),
       lifetime: benchmarkLifetimeValue(duration, recognition),
       formalPrerequisite: benchmarkFormalPrerequisiteValue(relationship, eligibility),
       citizenship: benchmarkCitizenshipValue(eligibility, recognition),
@@ -8371,12 +8374,12 @@ function benchmarkLevelCode(value) {
 
 function benchmarkFormValue(recognition, item, category) {
   const text = normalizeText(`${recognition} ${benchmarkField(item, category, recognition, "Type of Recognition")}`);
+  if (text.includes("fellowship") || text.includes("fellow")) return "fellowship";
+  if (text.includes("member")) return "membership";
   if (text.includes("chair") || text.includes("professorship")) return "chair";
   if (text.includes("grant")) return "grant";
   if (text.includes("medal")) return "medal";
   if (text.includes("prize") || text.includes("award")) return "prize";
-  if (text.includes("fellowship") || text.includes("fellow")) return "fellowship";
-  if (text.includes("member")) return "membership";
   return "prize";
 }
 
@@ -8427,15 +8430,16 @@ function benchmarkGeographicValue(value, categoryId, recognition, organization) 
   return "Global";
 }
 
-function benchmarkElectedValue(nomination, recognition, categoryId) {
+function benchmarkElectedValue(nomination, recognition, categoryId, form = "") {
   const text = normalizeText(`${nomination} ${recognition}`);
+  if (!["membership", "fellowship"].includes(form)) return "—";
   if (["private-foundations", "government-and-philanthropic-funding-bodies", "international-bodies"].includes(categoryId) && !hasAny(text, ["election", "elected", "vote", "voted"])) return "—";
   if (hasAny(text, ["election", "elected", "member", "fellow"]) && (categoryId.includes("academies") || hasAny(text, ["fellow", "member"]))) return "✓";
   return "—";
 }
 
-function benchmarkElectionBasedValue(nomination, recognition, categoryId) {
-  return benchmarkElectedValue(nomination, recognition, categoryId);
+function benchmarkElectionBasedValue(nomination, recognition, categoryId, form = "") {
+  return benchmarkElectedValue(nomination, recognition, categoryId, form);
 }
 
 function benchmarkLifetimeValue(duration, recognition) {
@@ -8453,6 +8457,7 @@ function benchmarkFormalPrerequisiteValue(relationship, eligibility) {
 
 function benchmarkCitizenshipValue(eligibility, recognition) {
   const text = normalizeText(`${eligibility} ${recognition}`);
+  if (hasAny(text, ["no age citizenship restriction", "no citizenship restriction", "no public citizenship restriction", "no nationality restriction"])) return "—";
   if (hasAny(text, ["foreign member", "foreign fellow", "separate foreign route", "international member"])) return "Separate foreign route";
   if (hasAny(text, ["citizenship", "citizen", "nationality", "resident", "residency", "european", "u s", "us ", "uk", "commonwealth", "ireland", "country requirement"])) return "✓";
   return "—";
@@ -8460,10 +8465,11 @@ function benchmarkCitizenshipValue(eligibility, recognition) {
 
 function benchmarkNominationValue(value) {
   const text = normalizeText(value);
+  if (hasAny(text, ["no applications or unsolicited nominations", "confidential nomination and review", "confidential nomination"])) return "Invitation only";
   if (hasAny(text, ["invitation", "invited", "invite"])) return "Invitation only";
   if (hasAny(text, ["self nominations are not permitted", "self nomination not permitted", "self nominations not accepted", "no self nomination", "cannot self nominate", "candidate cannot self apply"])) return "Peer nomination";
   if (hasAny(text, ["self nomination", "self-nomination", "self nominated", "self nominate"])) return "Self-nomination allowed";
-  if (hasAny(text, ["open application", "open call", "direct application", "online application"]) && !hasAny(text, ["not an open application", "no application", "direct applications are not accepted", "no self application", "cannot self apply", "does not self apply"])) return "Open application";
+  if (hasAny(text, ["open application", "open call", "direct application", "online application"]) && !hasAny(text, ["not an open application", "not a public open application", "no open application", "no application", "direct applications are not accepted", "no self application", "cannot self apply", "does not self apply", "internal process", "not public"])) return "Open application";
   if (hasAny(text, ["peer", "nomination", "nominated", "election"])) return "Peer nomination";
   return "Peer nomination";
 }
@@ -8475,7 +8481,7 @@ function benchmarkApplicationRequirementsValue(value, nomination) {
     if (!values.includes(label)) values.push(label);
   };
 
-  if (hasAny(text, ["open application", "online application", "application guide", "candidate may apply", "candidate can apply"]) && !hasAny(text, ["not an open application", "no application", "direct applications are not accepted", "no self application", "cannot self apply", "does not self apply"])) add("Open application");
+  if (hasAny(text, ["open application", "online application", "application guide", "candidate may apply", "candidate can apply"]) && !hasAny(text, ["not an open application", "not a public open application", "no open application", "no application", "direct applications are not accepted", "no self application", "cannot self apply", "does not self apply", "internal process", "not public"])) add("Open application");
   if (hasAny(text, ["nomination packet", "nomination package", "nomination form", "nomination materials", "formal nomination", "formal nominations", "supporting material", "supporting materials", "endorsement", "support letters", "references", "citation", "proposer", "seconder"])) add("Nomination packet");
   if (hasAny(text, ["cv", "curriculum vitae", "publication list", "publications list", "list of work", "bibliography"])) add("CV + publications list");
   if (hasAny(text, ["invitation only", "invited", "invitation"])) add("Invitation only");
@@ -8538,14 +8544,47 @@ function benchmarkPrestigeValue(tierKey) {
 function benchmarkRecipientsValue(value) {
   const text = String(value || "N/A").trim();
   if (!text || text === "N/A") return "N/A";
+  const normalized = normalizeText(text);
+  if (/%/.test(text)) return "N/A";
+
+  if (hasAny(normalized, ["per cycle numbers", "success rate not public", "not publicly specified", "not public", "varies by round"]) && !hasAny(normalized, ["new members", "new fellows", "cohort", "class", "recipients per year", "awards per year", "up to", "usually one", "typically one"])) {
+    return "N/A";
+  }
+
+  const memberInternational = text.match(/(?:elected|class elected|election[^.;]*?)\s*(\d{1,3})\s+(?:new\s+)?members?\s+and\s+(\d{1,3})\s+international/i);
+  if (memberInternational) return `${memberInternational[1]} + ${memberInternational[2]}`;
+
+  const fellowsForeign = text.match(/(\d{1,3})\s+Fellows?\s*\+\s*(\d{1,3})\s+Foreign Members?/i);
+  if (fellowsForeign) return `${fellowsForeign[1]} + ${fellowsForeign[2]}`;
 
   const range = text.match(/(?:~\s*)?\d{1,3}(?:,\d{3})?\s*(?:-|–|to)\s*(?:~\s*)?\d{1,3}(?:,\d{3})?/);
   if (range) return range[0].replace(/\s*to\s*/i, "–").replace(/\s*-\s*/, "–");
 
-  const approx = text.match(/(?:~|approximately|about|around|up to|over|more than)\s*\d{1,3}(?:,\d{3})?/i);
-  if (approx) return approx[0].replace(/approximately|about|around/i, "~").replace(/more than/i, "over").replace(/\s+/g, " ");
+  const upTo = text.match(/up to\s+\d{1,3}(?:,\d{3})?/i);
+  if (upTo) return upTo[0].replace(/\s+/g, " ");
 
-  const count = text.match(/\b\d{1,3}(?:,\d{3})?\b/);
+  const usuallyOne = text.match(/(?:usually|typically|normally)\s+one/i);
+  if (usuallyOne) return "1";
+
+  const annualPatterns = [
+    /(?:cohort|class)\s+(?:included|contained|had|listed|named)\s+(\d{1,3})(?:,\d{3})?/i,
+    /(\d{1,3})(?:,\d{3})?\s+(?:new\s+)?(?:fellows|members|recipients|awardees|candidates)\s+(?:in|were|are|per|annually|each|every)/i,
+    /(\d{1,3})(?:,\d{3})?\s+(?:awards|prizes)\s+per\s+year/i,
+    /two\s+awards\s+per\s+year/i
+  ];
+  for (const pattern of annualPatterns) {
+    const match = text.match(pattern);
+    if (match) return match[1] || "2";
+  }
+
+  const approx = text.match(/(?:~|approximately|about|around)\s*\d{1,3}(?:,\d{3})?/i);
+  if (approx && !hasAny(normalized, ["total", "nominations", "members total", "fellowship stood"])) {
+    return approx[0].replace(/approximately|about|around/i, "~").replace(/\s+/g, " ");
+  }
+
+  const count = !hasAny(normalized, ["total", "nominations", "members total", "fellows total", "membership stood"])
+    ? text.match(/\b\d{1,3}(?:,\d{3})?\b/)
+    : null;
   return count ? count[0] : "N/A";
 }
 
@@ -8601,7 +8640,7 @@ function benchmarkPrizeDisplay(value) {
     return "None";
   }
 
-  const moneyMatch = text.match(/(?:US\$|USD|EUR|GBP|RMB)\s?[\d,.]+(?:\s?(?:million|m|k|thousand))?/i);
+  const moneyMatch = text.match(/(?:US\$|USD|EUR|GBP|RMB|\$)\s?[\d,.]+(?:\s?(?:million|thousand|[mk]\b))?/i);
   if (moneyMatch) return normalizeBenchmarkMoney(moneyMatch[0]);
 
   if (normalized.includes("medal")) return "Medal";
@@ -8612,15 +8651,19 @@ function benchmarkPrizeDisplay(value) {
 
 function normalizeBenchmarkMoney(value) {
   const clean = String(value || "")
+    .replace(/^\$/i, "US$")
     .replace(/\bUSD\b/i, "US$")
     .replace(/\bEUR\b/i, "EUR")
     .replace(/\bGBP\b/i, "GBP")
     .replace(/\bRMB\b/i, "RMB")
     .replace(/\s+/g, " ")
     .trim()
+    .replace(/[,.]$/, "")
     .replace(/\b400,000\b/, "400k")
+    .replace(/\b800,000\b/, "800k")
     .replace(/\b250,000\b/, "250k")
     .replace(/\b125,000\b/, "125k")
+    .replace(/\b80,000\b/, "80k")
     .replace(/\b75,000\b/, "75k")
     .replace(/\b10,000\b/, "10k")
     .replace(/\b7,500\b/, "7.5k")
