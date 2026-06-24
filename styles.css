@@ -1880,6 +1880,11 @@ a {
   text-align: center;
 }
 
+.benchmark-table .benchmark-col-citizenship {
+  width: 230px;
+  max-width: 230px;
+}
+
 .benchmark-table .benchmark-col-category {
   width: 230px;
   max-width: 230px;
@@ -2006,6 +2011,9 @@ a {
 
 .benchmark-header-filter summary span {
   min-width: 0;
+  overflow-wrap: normal;
+  word-break: normal;
+  hyphens: none;
 }
 
 .benchmark-filter-menu {
