@@ -8379,7 +8379,7 @@ function benchmarkRowOverrides() {
   const dash = "—";
   return {
     [benchmarkRowId("US National Academy of Sciences (NAS)", "Member")]: {
-      fields: "All sciences · Physics · Engineering · Mathematics · Medicine · Biology · Social sciences",
+      fields: "All sciences",
       aiRelevant: dash,
       geographicScope: "National"
     },
@@ -8480,6 +8480,7 @@ function benchmarkFieldsValue(scope, recognition, organization) {
   if (hasAny(text, ["social science", "humanities", "cognitive", "economics", "society"])) add("Social sciences");
   if (hasAny(text, ["arts", "film", "motion picture", "music", "opera"])) add("Arts");
 
+  if (fields.includes("All sciences")) return "All sciences";
   return fields.length ? fields.join(" · ") : "N/A";
 }
 
