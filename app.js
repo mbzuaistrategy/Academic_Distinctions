@@ -8115,6 +8115,8 @@ function renderBenchmarkingPage() {
   const rows = benchmarkingRows();
   const categories = [...new Set(rows.map((row) => row.institution))].sort();
   const levels = [...new Set(rows.map((row) => row.level).filter(Boolean))].sort();
+  const forms = [...new Set(rows.map((row) => row.form).filter(Boolean))].sort();
+  const geographicScopes = [...new Set(rows.map((row) => row.geographicScope).filter(Boolean))].sort();
   activeBenchmarkColumnFilters = {};
   activeBenchmarkColumnGroups = new Set(["identity", "scope", "selection", "award"]);
   benchmarkSourceRows = rows;
@@ -8156,6 +8158,20 @@ function renderBenchmarkingPage() {
             </select>
           </label>
           <label>
+            <span>Form</span>
+            <select id="benchmark-form">
+              <option value="">All forms</option>
+              ${forms.map((form) => `<option value="${escapeHtml(form)}">${escapeHtml(form)}</option>`).join("")}
+            </select>
+          </label>
+          <label>
+            <span>Geographic Scope</span>
+            <select id="benchmark-geographic-scope">
+              <option value="">All scopes</option>
+              ${geographicScopes.map((scope) => `<option value="${escapeHtml(scope)}">${escapeHtml(scope)}</option>`).join("")}
+            </select>
+          </label>
+          <label>
             <span>Level</span>
             <select id="benchmark-level">
               <option value="">All levels</option>
@@ -8175,6 +8191,8 @@ function renderBenchmarkingPage() {
   const recognition = document.querySelector("#benchmark-recognition");
   const clearRecognitions = document.querySelector("#benchmark-clear-recognitions");
   const institution = document.querySelector("#benchmark-institution");
+  const form = document.querySelector("#benchmark-form");
+  const geographicScope = document.querySelector("#benchmark-geographic-scope");
   const level = document.querySelector("#benchmark-level");
   let filteredRows = rows;
 
@@ -8187,6 +8205,8 @@ function renderBenchmarkingPage() {
     const query = normalizeText(search.value);
     const selectedRecognitions = new Set([...recognition.selectedOptions].map((option) => option.value));
     const selectedInstitution = institution.value;
+    const selectedForm = form.value;
+    const selectedGeographicScope = geographicScope.value;
     const selectedLevel = level.value;
     filteredRows = rows.filter((row) => {
       const matchesQuery =
@@ -8197,14 +8217,16 @@ function renderBenchmarkingPage() {
         matchesBenchmarkColumnFilters(row, activeBenchmarkColumnFilters) &&
         (!selectedRecognitions.size || selectedRecognitions.has(row.id)) &&
         (!selectedInstitution || row.institution === selectedInstitution) &&
+        (!selectedForm || row.form === selectedForm) &&
+        (!selectedGeographicScope || row.geographicScope === selectedGeographicScope) &&
         (!selectedLevel || row.level === selectedLevel)
       );
     });
     renderResults();
   };
 
-  [search, recognition, institution, level].forEach((control) => control.addEventListener("input", update));
-  [recognition, institution, level].forEach((control) => control.addEventListener("change", update));
+  [search, recognition, institution, form, geographicScope, level].forEach((control) => control.addEventListener("input", update));
+  [recognition, institution, form, geographicScope, level].forEach((control) => control.addEventListener("change", update));
   clearRecognitions.addEventListener("click", () => {
     [...recognition.options].forEach((option) => {
       option.selected = false;
