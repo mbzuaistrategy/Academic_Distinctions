@@ -8304,8 +8304,19 @@ function syncBenchmarkHorizontalScroll() {
 function matchesBenchmarkColumnFilters(row, columnFilters) {
   return Object.entries(columnFilters).every(([column, selectedValues]) => {
     if (!selectedValues.size) return true;
-    return selectedValues.has(String(row[column] || "N/A"));
+    const rowValues = benchmarkColumnFilterValues(row, { key: column });
+    return rowValues.some((value) => selectedValues.has(value));
   });
+}
+
+function benchmarkColumnFilterValues(row, column) {
+  const raw = String(row[column.key] || "N/A");
+  if (column.key !== "fields") return [raw];
+
+  return raw
+    .split(" · ")
+    .map((value) => value.trim())
+    .filter(Boolean);
 }
 
 function benchmarkingRows() {
@@ -8744,9 +8755,9 @@ function normalizeBenchmarkMoney(value) {
 
 function benchmarkHeaderCell(column) {
   const selectedValues = activeBenchmarkColumnFilters[column.key] || new Set();
-  const options = [...new Set(benchmarkSourceRows.map((row) => String(row[column.key] || "N/A")))]
+  const options = [...new Set(benchmarkSourceRows.flatMap((row) => benchmarkColumnFilterValues(row, column)))]
     .filter(Boolean)
-    .sort((a, b) => a.localeCompare(b));
+    .sort((a, b) => benchmarkFilterOptionSort(a, b, column));
   const selectedCount = selectedValues.size;
 
   return `
@@ -8783,6 +8794,18 @@ function benchmarkHeaderCell(column) {
 function shortBenchmarkOption(value) {
   const text = String(value || "N/A");
   return text;
+}
+
+function benchmarkFilterOptionSort(a, b, column) {
+  if (column.key === "fields") {
+    const order = ["All sciences", "CS/AI/ML", "Engineering", "Mathematics", "Medicine", "Biology", "Physics", "Social sciences", "Arts"];
+    const aIndex = order.indexOf(a);
+    const bIndex = order.indexOf(b);
+    if (aIndex !== -1 || bIndex !== -1) {
+      return (aIndex === -1 ? order.length : aIndex) - (bIndex === -1 ? order.length : bIndex);
+    }
+  }
+  return a.localeCompare(b);
 }
 
 function benchmarkingTable(rows) {
