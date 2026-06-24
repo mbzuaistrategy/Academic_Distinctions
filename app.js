@@ -8105,7 +8105,6 @@ const benchmarkingCriteria = [
   { key: "frequency", label: "Frequency" },
   { key: "prize", label: "Prize" },
   { key: "medal", label: "Medal" },
-  { key: "lecture", label: "Lecture" },
   { key: "prestige", label: "Prestige" },
   { key: "recipients", label: "Recipients" }
 ];
@@ -8349,7 +8348,6 @@ function benchmarkingRows() {
       frequency: benchmarkFrequencyValue(frequency),
       prize: benchmarkPrizeDisplay(prize),
       medal: benchmarkMedalValue(prize, recognition),
-      lecture: benchmarkLectureValue(sourceItem, category, recognition),
       prestige: benchmarkPrestigeValue(item.tierKey),
       recipients: benchmarkRecipientsValue(recipients)
     };
@@ -8529,16 +8527,6 @@ function benchmarkFrequencyValue(value) {
 function benchmarkMedalValue(prize, recognition) {
   const text = normalizeText(`${prize} ${recognition}`);
   return hasAny(text, ["medal"]) ? "✓" : "—";
-}
-
-function benchmarkLectureValue(item, category, recognition) {
-  const value = benchmarkCombinedField(item, category, recognition, [
-    "Award Details",
-    "Prize Money/Material Award",
-    "Purpose",
-    "Relationship to Other Awards"
-  ]);
-  return normalizeText(value).includes("lecture") ? "✓" : "—";
 }
 
 function benchmarkPrestigeValue(tierKey) {
@@ -8781,7 +8769,6 @@ function benchmarkColumnGroups() {
         { key: "frequency", label: "Frequency" },
         { key: "prize", label: "Prize" },
         { key: "medal", label: "Medal" },
-        { key: "lecture", label: "Lecture" },
         { key: "recipients", label: "Recipients" }
       ]
     },
@@ -8819,7 +8806,6 @@ function benchmarkControlledColumnKeys() {
     "frequency",
     "prize",
     "medal",
-    "lecture",
     "prestige",
     "recipients"
   ]);
