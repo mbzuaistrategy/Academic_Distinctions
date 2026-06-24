@@ -1859,6 +1859,27 @@ a {
   white-space: nowrap;
 }
 
+.benchmark-table th.benchmark-recipients-col,
+.benchmark-table td.benchmark-recipients-col {
+  width: 210px;
+  max-width: 210px;
+  text-align: center;
+}
+
+.benchmark-table th.benchmark-recipients-col {
+  white-space: normal;
+}
+
+.benchmark-table th.benchmark-recipients-col .benchmark-header-filter summary {
+  justify-content: center;
+  text-align: center;
+}
+
+.benchmark-table td.benchmark-recipients-col .benchmark-value-pill {
+  min-width: 4.2rem;
+  text-align: center;
+}
+
 .benchmark-header-filter {
   position: relative;
 }

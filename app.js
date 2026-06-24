@@ -8681,7 +8681,7 @@ function benchmarkHeaderCell(column) {
   const selectedCount = selectedValues.size;
 
   return `
-    <th class="${column.freeze ? "benchmark-freeze-col" : ""}">
+    <th class="${column.freeze ? "benchmark-freeze-col" : ""} ${column.key === "recipients" ? "benchmark-recipients-col" : ""}">
       <details class="benchmark-header-filter">
         <summary>
           <span>${escapeHtml(column.label)}</span>
@@ -8867,7 +8867,7 @@ function benchmarkMatrixRow(row, columns) {
               </td>
             `;
           }
-          return `<td>${formatBenchmarkCell(row[column.key] || "N/A", column.key)}</td>`;
+          return `<td class="${column.key === "recipients" ? "benchmark-recipients-col" : ""}">${formatBenchmarkCell(row[column.key] || "N/A", column.key)}</td>`;
         })
         .join("")}
     </tr>
