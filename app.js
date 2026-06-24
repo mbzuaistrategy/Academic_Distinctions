@@ -8269,15 +8269,15 @@ function benchmarkingRows() {
       officialName: benchmarkField(sourceItem, category, recognition, "Official Name"),
       type: benchmarkField(sourceItem, category, recognition, "Type of Recognition"),
       awardingBody: awardingBody !== "N/A" ? awardingBody : item.organization || "N/A",
-      categoryTier: tierCode,
+      categoryTier: benchmarkLevelCode(tierCode),
       scopeField: benchmarkField(sourceItem, category, recognition, "Main Field/Scope"),
       geographicScope: benchmarkField(sourceItem, category, recognition, "Geographic Scope"),
       selectionProcess: benchmarkField(sourceItem, category, recognition, "Nomination Process"),
       evaluationCriteria: benchmarkField(sourceItem, category, recognition, "Review/Evaluation Criteria"),
       eligibility: benchmarkField(sourceItem, category, recognition, "Eligibility/Restrictions"),
       selectivity: benchmarkField(sourceItem, category, recognition, "Number of Recipients"),
-      duration: benchmarkField(sourceItem, category, recognition, "Duration"),
-      prizeMoney: benchmarkField(sourceItem, category, recognition, "Prize Money/Material Award"),
+      duration: benchmarkDurationDisplay(benchmarkField(sourceItem, category, recognition, "Duration")),
+      prizeMoney: benchmarkPrizeDisplay(benchmarkField(sourceItem, category, recognition, "Prize Money/Material Award")),
       notableRecipients: benchmarkNotableRecipients(sourceItem, category, recognition),
       careerImpact: benchmarkCombinedField(sourceItem, category, recognition, [
         "Career Impact/Outcomes",
@@ -8293,6 +8293,91 @@ function benchmarkingRows() {
 
 function benchmarkRowId(organization, recognition) {
   return `${normalizeText(organization)}||${normalizeText(recognition)}`;
+}
+
+function benchmarkLevelCode(value) {
+  const text = String(value || "N/A").trim();
+  return text
+    .replace(/^Level\s+/i, "")
+    .replace(/\s*\/\s*Tier\s*/i, " ")
+    .trim() || "N/A";
+}
+
+function benchmarkDurationDisplay(value) {
+  const text = String(value || "N/A").trim();
+  if (!text || text === "N/A") return "N/A";
+  const normalized = normalizeText(text);
+
+  if (
+    normalized.includes("lifetime") ||
+    normalized.includes("lifelong") ||
+    normalized.includes("long term") ||
+    normalized.includes("long-term") ||
+    normalized.includes("continuing") ||
+    normalized.includes("permanent")
+  ) {
+    return "Lifetime";
+  }
+
+  if (
+    normalized.includes("one time") ||
+    normalized.includes("one-time") ||
+    normalized.includes("single") ||
+    normalized.includes("medal") ||
+    normalized.includes("prize") ||
+    normalized.includes("award")
+  ) {
+    return "One-time";
+  }
+
+  return text;
+}
+
+function benchmarkPrizeDisplay(value) {
+  const text = String(value || "N/A").trim();
+  if (!text || text === "N/A") return "N/A";
+  const normalized = normalizeText(text);
+
+  if (
+    normalized.includes("no standard") ||
+    normalized.includes("no routine") ||
+    normalized.includes("no regular") ||
+    normalized.includes("no prize money") ||
+    normalized.includes("no monetary") ||
+    normalized.includes("not publicly specified") ||
+    normalized.includes("not clearly specified") ||
+    normalized.includes("not consistently identified") ||
+    normalized.includes("not identified")
+  ) {
+    if (normalized.includes("medal")) return "Medal";
+    return "None";
+  }
+
+  const moneyMatch = text.match(/(?:US\$|USD|EUR|GBP|RMB)\s?[\d,.]+(?:\s?(?:million|m|k|thousand))?/i);
+  if (moneyMatch) return normalizeBenchmarkMoney(moneyMatch[0]);
+
+  if (normalized.includes("medal")) return "Medal";
+  if (normalized.includes("plaque") || normalized.includes("certificate") || normalized.includes("diploma")) return "Medal";
+
+  return text;
+}
+
+function normalizeBenchmarkMoney(value) {
+  return String(value || "")
+    .replace(/\bUSD\b/i, "US$")
+    .replace(/\bEUR\b/i, "EUR")
+    .replace(/\bGBP\b/i, "GBP")
+    .replace(/\bRMB\b/i, "RMB")
+    .replace(/\s+/g, " ")
+    .trim()
+    .replace(/\b400,000\b/, "400k")
+    .replace(/\b250,000\b/, "250k")
+    .replace(/\b125,000\b/, "125k")
+    .replace(/\b75,000\b/, "75k")
+    .replace(/\b10,000\b/, "10k")
+    .replace(/\b5,000\b/, "5k")
+    .replace(/\b2,000\b/, "2k")
+    .replace(/\b1,000\b/, "1k");
 }
 
 function benchmarkHeaderCell(column) {
