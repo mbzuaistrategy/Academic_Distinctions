@@ -8098,9 +8098,9 @@ const benchmarkingCriteria = [
   { key: "geographicScope", label: "Geographic Scope" },
   { key: "electionBased", label: "Election Based" },
   { key: "lifetime", label: "Lifetime" },
-  { key: "formalPrerequisite", label: "Prior title required" },
+  { key: "formalPrerequisite", label: "Formal Prerequisite" },
   { key: "citizenship", label: "Citizenship/Residency required" },
-  { key: "nomination", label: "How you get in" },
+  { key: "nomination", label: "Nomination" },
   { key: "applicationRequirements", label: "Application Requirements" },
   { key: "evaluation", label: "Evaluation" },
   { key: "exclusions", label: "Exclusions" },
@@ -8458,7 +8458,7 @@ function benchmarkFormalPrerequisiteValue(relationship, eligibility) {
 function benchmarkCitizenshipValue(eligibility, recognition) {
   const text = normalizeText(`${eligibility} ${recognition}`);
   if (hasAny(text, ["no age citizenship restriction", "no citizenship restriction", "no public citizenship restriction", "no nationality restriction"])) return "—";
-  if (hasAny(text, ["foreign member", "foreign fellow", "separate foreign route", "international member"])) return "Foreign route available";
+  if (hasAny(text, ["foreign member", "foreign fellow", "separate foreign route", "international member"])) return "Separate foreign route";
   if (hasAny(text, ["citizenship", "citizen", "nationality", "resident", "residency", "european", "u s", "us ", "uk", "commonwealth", "ireland", "country requirement"])) return "✓";
   return "—";
 }
@@ -8797,9 +8797,9 @@ function benchmarkColumnGroups() {
       columns: [
         { key: "electionBased", label: "Election Based" },
         { key: "lifetime", label: "Lifetime" },
-        { key: "formalPrerequisite", label: "Prior title required" },
+        { key: "formalPrerequisite", label: "Formal Prerequisite" },
         { key: "citizenship", label: "Citizenship/Residency required" },
-        { key: "nomination", label: "How you get in" },
+        { key: "nomination", label: "Nomination" },
         { key: "applicationRequirements", label: "Application Requirements" },
         { key: "evaluation", label: "Evaluation" },
         { key: "exclusions", label: "Exclusions" }
