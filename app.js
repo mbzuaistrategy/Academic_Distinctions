@@ -7319,40 +7319,61 @@ function notableRecipientCards(recipients) {
 const notableRecipientImages = {
   "Adi Shamir": "https://commons.wikimedia.org/wiki/Special:FilePath/Adi_Shamir_2009_crop.jpg?width=330",
   "Albert Einstein": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/28/Albert_Einstein_Head_cleaned.jpg/330px-Albert_Einstein_Head_cleaned.jpg",
+  "Alain Aspect": "https://commons.wikimedia.org/wiki/Special:FilePath/Alain_Aspect_in_Budapest_2013.jpg?width=330",
   "Allen Newell": "https://commons.wikimedia.org/wiki/Special:FilePath/Allen_Newell_1978.jpg?width=330",
   "Andrew Viterbi": "https://commons.wikimedia.org/wiki/Special:FilePath/Andrew_Viterbi_2005.jpg?width=330",
   "Barbara Grosz": "https://commons.wikimedia.org/wiki/Special:FilePath/Barbara_Grosz_2016.jpg?width=330",
+  "Barbara Liskov": "https://commons.wikimedia.org/wiki/Special:FilePath/Barbara_Liskov_MIT_computer_scientist_2010.jpg?width=330",
   "Benjamin Franklin": "https://commons.wikimedia.org/wiki/Special:FilePath/Benjamin_Franklin_by_Joseph_Duplessis_1778.jpg?width=330",
   "Bjarne Stroustrup": "https://commons.wikimedia.org/wiki/Special:FilePath/Bjarne-stroustrup_%28cropped%29.jpg?width=330",
   "Brian Schmidt": "https://commons.wikimedia.org/wiki/Special:FilePath/Brian_Schmidt.jpg?width=330",
+  "Carolyn Bertozzi": "https://commons.wikimedia.org/wiki/Special:FilePath/Carolyn_Bertozzi_2022.jpg?width=330",
   "Charles Darwin": "https://commons.wikimedia.org/wiki/Special:FilePath/Charles_Darwin_seated_crop.jpg?width=330",
   "Christos Papadimitriou": "https://commons.wikimedia.org/wiki/Special:FilePath/Christos_Papadimitriou_2009.jpg?width=330",
+  "Christopher Manning": "https://commons.wikimedia.org/wiki/Special:FilePath/Christopher_Manning_at_the_ACL_2014.jpg?width=330",
+  "Daphne Koller": "https://commons.wikimedia.org/wiki/Special:FilePath/Daphne_Koller_2009.jpg?width=330",
   "David Patterson": "https://commons.wikimedia.org/wiki/Special:FilePath/David_Patterson_CHM_2013.jpg?width=330",
+  "David Haussler": "https://commons.wikimedia.org/wiki/Special:FilePath/David_Haussler.jpg?width=330",
   "Donald Knuth": "https://commons.wikimedia.org/wiki/Special:FilePath/Donald_Ervin_Knuth_%282005%29.jpg?width=330",
   "Dorothy Hodgkin": "https://commons.wikimedia.org/wiki/Special:FilePath/Dorothy_Hodgkin_Nobel.jpg?width=330",
+  "Edward Feigenbaum": "https://commons.wikimedia.org/wiki/Special:FilePath/Edward_Feigenbaum_2007.jpg?width=330",
   "Ellen Ochoa": "https://commons.wikimedia.org/wiki/Special:FilePath/Ellen_Ochoa.jpg?width=330",
+  "Elizabeth Blackburn": "https://commons.wikimedia.org/wiki/Special:FilePath/Elizabeth_Blackburn_2009.jpg?width=330",
   "Frances Arnold": "https://commons.wikimedia.org/wiki/Special:FilePath/Frances_Arnold_%2842989440724%29_%28cropped%29.jpg?width=330",
   "Geoffrey Hinton": "https://commons.wikimedia.org/wiki/Special:FilePath/Geoffrey_Hinton_at_UBC.jpg?width=330",
   "George Washington": "https://commons.wikimedia.org/wiki/Special:FilePath/Gilbert_Stuart_Williamstown_Portrait_of_George_Washington.jpg?width=330",
+  "Gertrude Cox": "https://commons.wikimedia.org/wiki/Special:FilePath/Gertrude_Mary_Cox.jpg?width=330",
   "Herbert Simon": "https://commons.wikimedia.org/wiki/Special:FilePath/Herbert_A._Simon_%281978%29.jpg?width=330",
+  "Howard Florey": "https://commons.wikimedia.org/wiki/Special:FilePath/Howard_Florey.jpg?width=330",
   "Isaac Newton": "https://commons.wikimedia.org/wiki/Special:FilePath/Sir_Isaac_Newton_by_Sir_Godfrey_Kneller,_Bt.jpg?width=330",
   "Jane Goodall": "https://commons.wikimedia.org/wiki/Special:FilePath/Jane_Goodall_2019.jpg?width=330",
   "Jennifer Doudna": "https://commons.wikimedia.org/wiki/Special:FilePath/Jennifer_Doudna_2016.jpg?width=330",
+  "Jean-Pierre Serre": "https://commons.wikimedia.org/wiki/Special:FilePath/Jean-Pierre_Serre_2009.jpg?width=330",
   "John Hennessy": "https://commons.wikimedia.org/wiki/Special:FilePath/John_L._Hennessy.jpg?width=330",
   "John McCarthy": "https://commons.wikimedia.org/wiki/Special:FilePath/John_McCarthy_Stanford.jpg?width=330",
   "Judea Pearl": "https://commons.wikimedia.org/wiki/Special:FilePath/Judea_Pearl.jpg?width=330",
   "Katalin Kariko": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/27/Katalin_Karik%C3%B3_by_Michel_2024_02.jpg/330px-Katalin_Karik%C3%B3_by_Michel_2024_02.jpg",
   "Martin Luther King Jr.": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/05/Martin_Luther_King%2C_Jr..jpg/330px-Martin_Luther_King%2C_Jr..jpg",
+  "Martin Luther King Jr": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/05/Martin_Luther_King%2C_Jr..jpg/330px-Martin_Luther_King%2C_Jr..jpg",
   "Marie Curie": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c8/Marie_Curie_c._1920s.jpg/330px-Marie_Curie_c._1920s.jpg",
+  "Marvin Minsky": "https://commons.wikimedia.org/wiki/Special:FilePath/Marvin_Minsky_at_OLPCb.jpg?width=330",
   "Max Planck": "https://commons.wikimedia.org/wiki/Special:FilePath/Max_Planck_1933.jpg?width=330",
   "Michael I. Jordan": "https://commons.wikimedia.org/wiki/Special:FilePath/Michael_I._Jordan_2016.jpg?width=330",
+  "Niels Bohr": "https://commons.wikimedia.org/wiki/Special:FilePath/Niels_Bohr.jpg?width=330",
+  "Peter Doherty": "https://commons.wikimedia.org/wiki/Special:FilePath/Peter_Doherty_2017.jpg?width=330",
   "Robert Langer": "https://commons.wikimedia.org/wiki/Special:FilePath/Robert_Langer_WEF_2013.jpg?width=330",
   "Robert Metcalfe": "https://commons.wikimedia.org/wiki/Special:FilePath/Robert_Metcalfe_2010.jpg?width=330",
+  "Shirley Ann Jackson": "https://commons.wikimedia.org/wiki/Special:FilePath/Shirley_Ann_Jackson.jpg?width=330",
   "Stephen Hawking": "https://commons.wikimedia.org/wiki/Special:FilePath/Stephen_Hawking.StarChild.jpg?width=330",
+  "Steven Chu": "https://commons.wikimedia.org/wiki/Special:FilePath/Steven_Chu_Secretary_of_Energy_official_portrait.jpg?width=330",
   "Stuart Russell": "https://commons.wikimedia.org/wiki/Special:FilePath/Stuart_Russell_%28computer_scientist%29.jpg?width=330",
+  "Subrahmanyan Chandrasekhar": "https://commons.wikimedia.org/wiki/Special:FilePath/Subrahmanyan_Chandrasekhar.jpg?width=330",
+  "Terence Tao": "https://commons.wikimedia.org/wiki/Special:FilePath/Terence_Tao%2C_2011.jpg?width=330",
   "Tim Berners-Lee": "https://commons.wikimedia.org/wiki/Special:FilePath/Sir_Tim_Berners-Lee.jpg?width=330",
+  "Thomas Edison": "https://commons.wikimedia.org/wiki/Special:FilePath/Thomas_Edison2.jpg?width=330",
   "Vinton Cerf": "https://commons.wikimedia.org/wiki/Special:FilePath/Vint_Cerf_-_2010.jpg?width=330",
   "Vladimir Vapnik": "https://commons.wikimedia.org/wiki/Special:FilePath/Vladimir_Vapnik_2014.jpg?width=330",
+  "W. E. B. Du Bois": "https://commons.wikimedia.org/wiki/Special:FilePath/W.E.B._Du_Bois_by_James_E._Purdy%2C_1907_%28cropped%29.jpg?width=330",
   "Yann LeCun": "https://commons.wikimedia.org/wiki/Special:FilePath/Yann_LeCun_-_2018.jpg?width=330",
   "Yoshua Bengio": "https://commons.wikimedia.org/wiki/Special:FilePath/Yoshua_Bengio_2019.jpg?width=330"
 };
@@ -7382,6 +7403,7 @@ function notableRecipientsFromText(value) {
     .filter((name) => {
       if (!name || name.length > 45) return false;
       if (isMbzuaiFacultyName(name)) return false;
+      if (isGenericRecipientPhrase(name)) return false;
       if (/^(Fellows|Members|Recipients|Awardees|Past|Other|Examples|Influential|Historical|The|Many|Multiple)\b/i.test(name)) return false;
       return /^([A-Z][A-Za-z.'-]+|Sir|Dame|W\.|E\.)\s+/.test(name);
     });
@@ -7401,6 +7423,10 @@ function normalizeRecipientName(name) {
     .replace(/\s+are documented recipients$/i, "")
     .replace(/\s+appear in the award recipient list$/i, "")
     .trim();
+}
+
+function isGenericRecipientPhrase(name) {
+  return /\b(Field Medalists|National Medal|ICT pioneers|Major global scientists|Nobel-level figures|Oscar-|team|teams|project|awardees|actors|directors|producers|technologists|composers|executives)\b/i.test(name);
 }
 
 function initialsForName(name) {
