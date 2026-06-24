@@ -1814,6 +1814,17 @@ a {
   box-shadow: var(--shadow);
 }
 
+.benchmark-top-scroll {
+  overflow-x: auto;
+  overflow-y: hidden;
+  border-bottom: 1px solid var(--line);
+  background: #f4f1eb;
+}
+
+.benchmark-top-scroll-spacer {
+  height: 14px;
+}
+
 .benchmark-table {
   min-width: 2800px;
   border: 0;

@@ -8180,6 +8180,7 @@ function renderBenchmarkingPage() {
 
   const renderResults = () => {
     document.querySelector("#benchmark-results").innerHTML = benchmarkingTable(filteredRows);
+    syncBenchmarkHorizontalScroll();
   };
 
   const update = () => {
@@ -8248,6 +8249,30 @@ function renderBenchmarkingPage() {
       if (!activeBenchmarkColumnFilters[column].size) delete activeBenchmarkColumnFilters[column];
     }
   });
+  syncBenchmarkHorizontalScroll();
+}
+
+function syncBenchmarkHorizontalScroll() {
+  const topScroller = document.querySelector(".benchmark-top-scroll");
+  const tableScroller = document.querySelector(".benchmark-table-wrap");
+  const table = document.querySelector(".benchmark-matrix-table");
+  const topSpacer = document.querySelector(".benchmark-top-scroll-spacer");
+  if (!topScroller || !tableScroller || !table || !topSpacer) return;
+
+  topSpacer.style.width = `${table.scrollWidth}px`;
+
+  let syncing = false;
+  const sync = (source, target) => {
+    if (syncing) return;
+    syncing = true;
+    target.scrollLeft = source.scrollLeft;
+    window.requestAnimationFrame(() => {
+      syncing = false;
+    });
+  };
+
+  topScroller.addEventListener("scroll", () => sync(topScroller, tableScroller));
+  tableScroller.addEventListener("scroll", () => sync(tableScroller, topScroller));
 }
 
 function matchesBenchmarkColumnFilters(row, columnFilters) {
@@ -8628,6 +8653,9 @@ function benchmarkingTable(rows) {
         .join("")}
     </div>
     <div class="benchmark-matrix-card">
+      <div class="benchmark-top-scroll" aria-label="Horizontal table scroll">
+        <div class="benchmark-top-scroll-spacer"></div>
+      </div>
       <div class="benchmark-table-wrap">
         <table class="directory-table benchmark-table benchmark-matrix-table">
           <thead>
