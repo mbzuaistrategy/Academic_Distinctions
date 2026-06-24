@@ -8094,7 +8094,6 @@ const benchmarkingCriteria = [
   { key: "fields", label: "Fields" },
   { key: "aiRelevant", label: "AI Relevant" },
   { key: "geographicScope", label: "Geographic Scope" },
-  { key: "elected", label: "Elected" },
   { key: "electionBased", label: "Election Based" },
   { key: "lifetime", label: "Lifetime" },
   { key: "formalPrerequisite", label: "Formal Prerequisite" },
@@ -8339,7 +8338,6 @@ function benchmarkingRows() {
       fields: benchmarkFieldsValue(scope, recognition, item.organization),
       aiRelevant: benchmarkAiRelevantValue(scope, recognition, item.organization),
       geographicScope: benchmarkGeographicValue(benchmarkField(sourceItem, category, recognition, "Geographic Scope"), item.categoryId, recognition, item.organization),
-      elected: benchmarkElectedValue(nomination, recognition, item.categoryId),
       electionBased: benchmarkElectionBasedValue(nomination, recognition, item.categoryId),
       lifetime: benchmarkLifetimeValue(duration, recognition),
       formalPrerequisite: benchmarkFormalPrerequisiteValue(relationship, eligibility),
@@ -8347,7 +8345,7 @@ function benchmarkingRows() {
       nomination: benchmarkNominationValue(nomination),
       applicationRequirements: benchmarkApplicationRequirementsValue(applicationRequirements, nomination),
       evaluation: benchmarkEvaluationValue(evaluation, recognition, item.organization),
-      exclusions: benchmarkExclusionsValue(eligibility),
+      exclusions: benchmarkExclusionsValue(eligibility, recognition),
       frequency: benchmarkFrequencyValue(frequency),
       prize: benchmarkPrizeDisplay(prize),
       medal: benchmarkMedalValue(prize, recognition),
@@ -8433,6 +8431,7 @@ function benchmarkGeographicValue(value, categoryId, recognition, organization) 
 
 function benchmarkElectedValue(nomination, recognition, categoryId) {
   const text = normalizeText(`${nomination} ${recognition}`);
+  if (["private-foundations", "government-and-philanthropic-funding-bodies", "international-bodies"].includes(categoryId) && !hasAny(text, ["election", "elected", "vote", "voted"])) return "—";
   if (hasAny(text, ["election", "elected", "member", "fellow"]) && (categoryId.includes("academies") || hasAny(text, ["fellow", "member"]))) return "✓";
   return "—";
 }
@@ -8463,9 +8462,10 @@ function benchmarkCitizenshipValue(eligibility, recognition) {
 
 function benchmarkNominationValue(value) {
   const text = normalizeText(value);
-  if (hasAny(text, ["open application", "application", "apply"])) return "Open application";
-  if (hasAny(text, ["self nomination", "self-nomination", "self nominated"])) return "Self-nomination allowed";
   if (hasAny(text, ["invitation", "invited", "invite"])) return "Invitation only";
+  if (hasAny(text, ["self nominations are not permitted", "self nomination not permitted", "self nominations not accepted", "no self nomination", "cannot self nominate", "candidate cannot self apply"])) return "Peer nomination";
+  if (hasAny(text, ["self nomination", "self-nomination", "self nominated", "self nominate"])) return "Self-nomination allowed";
+  if (hasAny(text, ["open application", "open call", "direct application", "online application"]) && !hasAny(text, ["not an open application", "no application", "direct applications are not accepted", "no self application", "cannot self apply", "does not self apply"])) return "Open application";
   if (hasAny(text, ["peer", "nomination", "nominated", "election"])) return "Peer nomination";
   return "Peer nomination";
 }
@@ -8477,8 +8477,8 @@ function benchmarkApplicationRequirementsValue(value, nomination) {
     if (!values.includes(label)) values.push(label);
   };
 
-  if (hasAny(text, ["open application", "online application", "application guide", "candidate may apply", "self apply", "self-application"])) add("Open application");
-  if (hasAny(text, ["nomination packet", "nomination package", "nomination form", "supporting material", "supporting materials", "endorsement", "support letters", "references", "citation", "proposer", "seconder"])) add("Nomination packet");
+  if (hasAny(text, ["open application", "online application", "application guide", "candidate may apply", "candidate can apply"]) && !hasAny(text, ["not an open application", "no application", "direct applications are not accepted", "no self application", "cannot self apply", "does not self apply"])) add("Open application");
+  if (hasAny(text, ["nomination packet", "nomination package", "nomination form", "nomination materials", "formal nomination", "formal nominations", "supporting material", "supporting materials", "endorsement", "support letters", "references", "citation", "proposer", "seconder"])) add("Nomination packet");
   if (hasAny(text, ["cv", "curriculum vitae", "publication list", "publications list", "list of work", "bibliography"])) add("CV + publications list");
   if (hasAny(text, ["invitation only", "invited", "invitation"])) add("Invitation only");
 
@@ -8501,18 +8501,20 @@ function benchmarkEvaluationValue(value, recognition, organization) {
   return values.length ? values.join(" · ") : "Research excellence";
 }
 
-function benchmarkExclusionsValue(eligibility) {
+function benchmarkExclusionsValue(eligibility, recognition = "") {
   const text = normalizeText(eligibility);
+  const recognitionText = normalizeText(recognition);
   const values = [];
   const add = (label) => {
     if (!values.includes(label)) values.push(label);
   };
+  const hasSeparateForeignRoute = hasAny(text, ["international members", "international member", "foreign members", "foreign member", "foreign fellows", "foreign fellow", "associate members", "associate member", "separate foreign route"]) || hasAny(recognitionText, ["foreign member", "foreign fellow", "international member"]);
 
   if (hasAny(text, ["employee", "employment", "microsoft", "remunerative relationship", "committee members are not eligible"])) add("Employment restriction");
-  if (hasAny(text, ["citizenship", "citizen", "nationality", "country"])) add("Citizenship restriction");
+  if (!hasSeparateForeignRoute && hasAny(text, ["must be a citizen", "citizenship required", "citizenship requirement", "nationality requirement", "only citizens", "country requirement"])) add("Citizenship restriction");
   if (hasAny(text, ["career stage", "early career", "age limit", "senior member", "active researcher"])) add("Career stage restriction");
   if (hasAny(text, ["previous winners", "prior award", "nobel prize", "turing award", "abel prize", "lasker", "gairdner", "breakthrough prize"])) add("Prior award restriction");
-  if (hasAny(text, ["resident", "residency", "resided", "based in"])) add("Residency restriction");
+  if (!hasSeparateForeignRoute && hasAny(text, ["resident", "residency", "resided", "based in"])) add("Residency restriction");
 
   return values.length ? values.join(" · ") : "None";
 }
@@ -8762,7 +8764,6 @@ function benchmarkColumnGroups() {
       key: "selection",
       label: "Selection",
       columns: [
-        { key: "elected", label: "Elected" },
         { key: "electionBased", label: "Election Based" },
         { key: "lifetime", label: "Lifetime" },
         { key: "formalPrerequisite", label: "Formal Prerequisite" },
@@ -8807,7 +8808,6 @@ function benchmarkControlledColumnKeys() {
     "fields",
     "aiRelevant",
     "geographicScope",
-    "elected",
     "electionBased",
     "lifetime",
     "formalPrerequisite",
