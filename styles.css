@@ -1826,7 +1826,7 @@ a {
 }
 
 .benchmark-table {
-  min-width: 2800px;
+  min-width: 3300px;
   border: 0;
   box-shadow: none;
 }
@@ -1839,8 +1839,8 @@ a {
 
 .benchmark-table th,
 .benchmark-table td {
-  width: 170px;
-  max-width: 230px;
+  width: 180px;
+  max-width: 260px;
   vertical-align: top;
   font-size: 0.78rem;
   line-height: 1.35;
@@ -1856,7 +1856,65 @@ a {
   font-size: 0.68rem;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  white-space: nowrap;
+  white-space: normal;
+}
+
+.benchmark-table thead th .benchmark-header-filter summary {
+  min-height: 2.15rem;
+  align-items: center;
+}
+
+.benchmark-table .benchmark-col-form,
+.benchmark-table .benchmark-col-category-tier,
+.benchmark-table .benchmark-col-ai-relevant,
+.benchmark-table .benchmark-col-geographic-scope,
+.benchmark-table .benchmark-col-election-based,
+.benchmark-table .benchmark-col-lifetime,
+.benchmark-table .benchmark-col-formal-prerequisite,
+.benchmark-table .benchmark-col-citizenship,
+.benchmark-table .benchmark-col-medal,
+.benchmark-table .benchmark-col-frequency,
+.benchmark-table .benchmark-col-prestige {
+  width: 145px;
+  max-width: 145px;
+  text-align: center;
+}
+
+.benchmark-table .benchmark-col-category {
+  width: 230px;
+  max-width: 230px;
+}
+
+.benchmark-table .benchmark-col-fields,
+.benchmark-table .benchmark-col-evaluation,
+.benchmark-table .benchmark-col-application-requirements,
+.benchmark-table .benchmark-col-exclusions {
+  width: 260px;
+  max-width: 260px;
+}
+
+.benchmark-table .benchmark-col-nomination,
+.benchmark-table .benchmark-col-prize {
+  width: 185px;
+  max-width: 185px;
+  text-align: center;
+}
+
+.benchmark-table .benchmark-col-form .benchmark-header-filter summary,
+.benchmark-table .benchmark-col-category-tier .benchmark-header-filter summary,
+.benchmark-table .benchmark-col-ai-relevant .benchmark-header-filter summary,
+.benchmark-table .benchmark-col-geographic-scope .benchmark-header-filter summary,
+.benchmark-table .benchmark-col-election-based .benchmark-header-filter summary,
+.benchmark-table .benchmark-col-lifetime .benchmark-header-filter summary,
+.benchmark-table .benchmark-col-formal-prerequisite .benchmark-header-filter summary,
+.benchmark-table .benchmark-col-citizenship .benchmark-header-filter summary,
+.benchmark-table .benchmark-col-nomination .benchmark-header-filter summary,
+.benchmark-table .benchmark-col-frequency .benchmark-header-filter summary,
+.benchmark-table .benchmark-col-medal .benchmark-header-filter summary,
+.benchmark-table .benchmark-col-prestige .benchmark-header-filter summary,
+.benchmark-table .benchmark-col-prize .benchmark-header-filter summary {
+  justify-content: center;
+  text-align: center;
 }
 
 .benchmark-table th.benchmark-recipients-col,
@@ -1877,6 +1935,22 @@ a {
 
 .benchmark-table td.benchmark-recipients-col .benchmark-value-pill {
   min-width: 4.2rem;
+  text-align: center;
+}
+
+.benchmark-table .benchmark-col-form .benchmark-value-pill,
+.benchmark-table .benchmark-col-category-tier .benchmark-level-pill,
+.benchmark-table .benchmark-col-ai-relevant .benchmark-value-pill,
+.benchmark-table .benchmark-col-geographic-scope .benchmark-value-pill,
+.benchmark-table .benchmark-col-election-based .benchmark-value-pill,
+.benchmark-table .benchmark-col-lifetime .benchmark-value-pill,
+.benchmark-table .benchmark-col-formal-prerequisite .benchmark-value-pill,
+.benchmark-table .benchmark-col-citizenship .benchmark-value-pill,
+.benchmark-table .benchmark-col-nomination .benchmark-value-pill,
+.benchmark-table .benchmark-col-frequency .benchmark-value-pill,
+.benchmark-table .benchmark-col-medal .benchmark-value-pill,
+.benchmark-table .benchmark-col-prestige .benchmark-value-pill,
+.benchmark-table .benchmark-col-prize .benchmark-value-pill {
   text-align: center;
 }
 
