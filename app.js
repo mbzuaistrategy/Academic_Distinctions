@@ -6556,8 +6556,6 @@ function render() {
     renderFacultyPage();
   } else if (route === "benchmarking") {
     renderBenchmarkingPage();
-  } else if (route === "ask") {
-    renderAskPage();
   } else if (route === "institutions" || route === "categories") {
     renderCategoriesPage();
   } else if (route === "directory") {
@@ -6578,8 +6576,6 @@ function updateActiveNavigation(route, value) {
       ? "directory"
       : route === "faculty"
         ? "faculty"
-        : route === "ask"
-          ? "ask"
         : route === "home"
           ? "home"
           : route === "benchmarking"
