@@ -8088,21 +8088,23 @@ function facultyTable(records, recognitions = allRecognitions()) {
 }
 
 const benchmarkingCriteria = [
-  { key: "officialName", label: "Official Name" },
-  { key: "type", label: "Type of Recognition" },
-  { key: "awardingBody", label: "Awarding Body / Institution" },
-  { key: "categoryTier", label: "Category / Tier (Level)" },
-  { key: "scopeField", label: "Scope and Field" },
+  { key: "form", label: "Form" },
+  { key: "categoryTier", label: "Level" },
+  { key: "category", label: "Category" },
+  { key: "fields", label: "Fields" },
+  { key: "aiRelevant", label: "AI Relevant" },
   { key: "geographicScope", label: "Geographic Scope" },
-  { key: "selectionProcess", label: "Selection/Nomination Process" },
-  { key: "evaluationCriteria", label: "Evaluation Criteria" },
-  { key: "eligibility", label: "Eligibility / Restrictions" },
-  { key: "selectivity", label: "Number of Recipients / Selectivity" },
-  { key: "duration", label: "Duration" },
-  { key: "prizeMoney", label: "Prize Money / Material Award" },
-  { key: "notableRecipients", label: "Notable Past Recipients" },
-  { key: "careerImpact", label: "Career Impact / Prestige Signal" },
-  { key: "relationship", label: "Relationship to Other Awards" }
+  { key: "elected", label: "Elected" },
+  { key: "lifetime", label: "Lifetime" },
+  { key: "citizenship", label: "Citizenship" },
+  { key: "nomination", label: "Nomination" },
+  { key: "evaluation", label: "Evaluation" },
+  { key: "exclusions", label: "Exclusions" },
+  { key: "prize", label: "Prize" },
+  { key: "medal", label: "Medal" },
+  { key: "lecture", label: "Lecture" },
+  { key: "prestige", label: "Prestige" },
+  { key: "recipients", label: "Recipients" }
 ];
 
 let activeBenchmarkColumnFilters = {};
@@ -8271,33 +8273,38 @@ function benchmarkingRows() {
     const category = getCategory(item.categoryId);
     const sourceItem = category?.items?.[item.itemIndex];
     const recognition = item.recognition;
-    const tier = tierLabel(item.tierKey);
     const tierCode = tierCodeLabel(item.tierKey);
-    const awardingBody = benchmarkField(sourceItem, category, recognition, "Awarding Body");
+    const levelCode = benchmarkLevelCode(tierCode);
+    const scope = benchmarkField(sourceItem, category, recognition, "Main Field/Scope");
+    const eligibility = benchmarkField(sourceItem, category, recognition, "Eligibility/Restrictions");
+    const nomination = benchmarkField(sourceItem, category, recognition, "Nomination Process");
+    const evaluation = benchmarkField(sourceItem, category, recognition, "Review/Evaluation Criteria");
+    const duration = benchmarkField(sourceItem, category, recognition, "Duration");
+    const prize = benchmarkField(sourceItem, category, recognition, "Prize Money/Material Award");
+    const recipients = benchmarkField(sourceItem, category, recognition, "Number of Recipients");
     const row = {
       id: benchmarkRowId(item.organization, recognition),
       recognition,
       organization: item.organization,
       institution: item.category,
-      level: tier,
-      officialName: benchmarkField(sourceItem, category, recognition, "Official Name"),
-      type: benchmarkField(sourceItem, category, recognition, "Type of Recognition"),
-      awardingBody: awardingBody !== "N/A" ? awardingBody : item.organization || "N/A",
-      categoryTier: benchmarkLevelCode(tierCode),
-      scopeField: benchmarkField(sourceItem, category, recognition, "Main Field/Scope"),
-      geographicScope: benchmarkField(sourceItem, category, recognition, "Geographic Scope"),
-      selectionProcess: benchmarkField(sourceItem, category, recognition, "Nomination Process"),
-      evaluationCriteria: benchmarkField(sourceItem, category, recognition, "Review/Evaluation Criteria"),
-      eligibility: benchmarkField(sourceItem, category, recognition, "Eligibility/Restrictions"),
-      selectivity: benchmarkField(sourceItem, category, recognition, "Number of Recipients"),
-      duration: benchmarkDurationDisplay(benchmarkField(sourceItem, category, recognition, "Duration")),
-      prizeMoney: benchmarkPrizeDisplay(benchmarkField(sourceItem, category, recognition, "Prize Money/Material Award")),
-      notableRecipients: benchmarkNotableRecipients(sourceItem, category, recognition),
-      careerImpact: benchmarkCombinedField(sourceItem, category, recognition, [
-        "Career Impact/Outcomes",
-        "Ranking/Prestige Signal"
-      ]),
-      relationship: benchmarkField(sourceItem, category, recognition, "Relationship to Other Awards")
+      level: levelCode,
+      form: benchmarkFormValue(recognition, sourceItem, category),
+      categoryTier: levelCode,
+      category: benchmarkCategoryValue(item.category),
+      fields: benchmarkFieldsValue(scope, recognition, item.organization),
+      aiRelevant: benchmarkAiRelevantValue(scope, recognition, item.organization),
+      geographicScope: benchmarkGeographicValue(benchmarkField(sourceItem, category, recognition, "Geographic Scope"), item.categoryId, recognition, item.organization),
+      elected: benchmarkElectedValue(nomination, recognition, item.categoryId),
+      lifetime: benchmarkLifetimeValue(duration, recognition),
+      citizenship: benchmarkCitizenshipValue(eligibility, recognition),
+      nomination: benchmarkNominationValue(nomination),
+      evaluation: benchmarkEvaluationValue(evaluation, recognition, item.organization),
+      exclusions: benchmarkExclusionsValue(eligibility),
+      prize: benchmarkPrizeDisplay(prize),
+      medal: benchmarkMedalValue(prize, recognition),
+      lecture: benchmarkLectureValue(sourceItem, category, recognition),
+      prestige: benchmarkPrestigeValue(item.tierKey),
+      recipients: benchmarkRecipientsValue(recipients)
     };
     return row;
   });
@@ -8315,6 +8322,160 @@ function benchmarkLevelCode(value) {
     .replace(/^Level\s+/i, "")
     .replace(/\s*\/\s*Tier\s*/i, " ")
     .trim() || "N/A";
+}
+
+function benchmarkFormValue(recognition, item, category) {
+  const text = normalizeText(`${recognition} ${benchmarkField(item, category, recognition, "Type of Recognition")}`);
+  if (text.includes("chair") || text.includes("professorship")) return "chair";
+  if (text.includes("grant")) return "grant";
+  if (text.includes("medal")) return "medal";
+  if (text.includes("prize") || text.includes("award")) return "prize";
+  if (text.includes("fellowship") || text.includes("fellow")) return "fellowship";
+  if (text.includes("member")) return "membership";
+  return "prize";
+}
+
+function benchmarkCategoryValue(value) {
+  const allowed = new Set([
+    "Leading National Academies",
+    "Other National Academies",
+    "Professional and Scholarly Associations",
+    "Private Foundations",
+    "Government and Philanthropic Funding Bodies",
+    "International Bodies"
+  ]);
+  return allowed.has(value) ? value : "N/A";
+}
+
+function benchmarkFieldsValue(scope, recognition, organization) {
+  const text = normalizeText(`${scope} ${recognition} ${organization}`);
+  const fields = [];
+  const add = (label) => {
+    if (!fields.includes(label)) fields.push(label);
+  };
+
+  if (hasAny(text, ["all science", "all sciences", "multidisciplinary", "all scientific"])) add("All sciences");
+  if (hasAny(text, ["computer", "computing", "cs", "ai", "artificial intelligence", "machine learning", "robot", "nlp", "cryptography", "data science", "software", "informatics", "bioinformatics", "computational"])) add("CS/AI/ML");
+  if (hasAny(text, ["engineering", "engineer", "robotics", "mechanical", "electrical", "technology"])) add("Engineering");
+  if (hasAny(text, ["mathematics", "mathematical", "statistics", "probability", "stochastic"])) add("Mathematics");
+  if (hasAny(text, ["medicine", "medical", "biomedicine", "health", "cancer", "clinical"])) add("Medicine");
+  if (hasAny(text, ["biology", "biological", "genomics", "molecular", "microbiology", "bioinformatics"])) add("Biology");
+  if (hasAny(text, ["physics", "optics", "photonics"])) add("Physics");
+  if (hasAny(text, ["social science", "humanities", "cognitive", "economics", "society"])) add("Social sciences");
+  if (hasAny(text, ["arts", "film", "motion picture", "music", "opera"])) add("Arts");
+
+  return fields.length ? fields.join(" · ") : "N/A";
+}
+
+function benchmarkAiRelevantValue(scope, recognition, organization) {
+  const text = normalizeText(`${scope} ${recognition} ${organization}`);
+  return hasAny(text, ["cs", "ai", "artificial intelligence", "machine learning", "computer", "computing", "robot", "nlp", "data science", "pattern recognition", "vision", "cryptography", "bioinformatics", "computational"]) ? "✓" : "—";
+}
+
+function benchmarkGeographicValue(value, categoryId, recognition, organization) {
+  const text = normalizeText(`${value} ${recognition} ${organization}`);
+  if (hasAny(text, ["global", "international", "world", "foreign member", "foreign fellow"])) return "Global";
+  if (hasAny(text, ["regional", "europe", "european", "commonwealth", "middle east"])) return "Regional";
+  if (hasAny(text, ["national", "u s", "us ", "german", "french", "canadian", "australian", "japan", "israeli", "serbian", "uae", "china", "indian", "italian", "uk"])) return "National";
+  if (categoryId === "international-bodies") return "Global";
+  if (categoryId === "leading-national-academies" || categoryId === "other-national-academies") return "National";
+  return "Global";
+}
+
+function benchmarkElectedValue(nomination, recognition, categoryId) {
+  const text = normalizeText(`${nomination} ${recognition}`);
+  if (hasAny(text, ["election", "elected", "member", "fellow"]) && (categoryId.includes("academies") || hasAny(text, ["fellow", "member"]))) return "✓";
+  return "—";
+}
+
+function benchmarkLifetimeValue(duration, recognition) {
+  const text = normalizeText(`${duration} ${recognition}`);
+  if (hasAny(text, ["lifetime", "lifelong", "permanent", "career long", "fellow", "member"])) return "✓";
+  if (hasAny(text, ["one time", "one-time", "prize", "award", "medal", "grant"])) return "—";
+  return "—";
+}
+
+function benchmarkCitizenshipValue(eligibility, recognition) {
+  const text = normalizeText(`${eligibility} ${recognition}`);
+  if (hasAny(text, ["foreign member", "foreign fellow", "separate foreign route", "international member"])) return "Separate foreign route";
+  if (hasAny(text, ["citizenship", "citizen", "nationality", "resident", "residency", "european", "u s", "us ", "uk", "commonwealth", "ireland", "country requirement"])) return "✓";
+  return "—";
+}
+
+function benchmarkNominationValue(value) {
+  const text = normalizeText(value);
+  if (hasAny(text, ["open application", "application", "apply"])) return "Open application";
+  if (hasAny(text, ["self nomination", "self-nomination", "self nominated"])) return "Self-nomination allowed";
+  if (hasAny(text, ["invitation", "invited", "invite"])) return "Invitation only";
+  if (hasAny(text, ["peer", "nomination", "nominated", "election"])) return "Peer nomination";
+  return "Peer nomination";
+}
+
+function benchmarkEvaluationValue(value, recognition, organization) {
+  const text = normalizeText(`${value} ${recognition} ${organization}`);
+  const values = [];
+  const add = (label) => {
+    if (!values.includes(label)) values.push(label);
+  };
+
+  if (hasAny(text, ["research", "scientific", "technical", "excellence", "achievement", "contribution"])) add("Research excellence");
+  if (hasAny(text, ["leadership", "field leadership", "impact", "influence", "pioneering"])) add("Field leadership");
+  if (hasAny(text, ["future", "promise", "potential", "early career"])) add("Future potential");
+  if (hasAny(text, ["service", "community", "professional contribution"])) add("Service");
+  if (hasAny(text, ["interdisciplinary", "bridge", "breadth", "cross disciplinary", "multiple disciplines"])) add("Interdisciplinary impact");
+
+  return values.length ? values.join(" · ") : "Research excellence";
+}
+
+function benchmarkExclusionsValue(eligibility) {
+  const text = normalizeText(eligibility);
+  const values = [];
+  const add = (label) => {
+    if (!values.includes(label)) values.push(label);
+  };
+
+  if (hasAny(text, ["employee", "employment", "microsoft", "remunerative relationship", "committee members are not eligible"])) add("Employment restriction");
+  if (hasAny(text, ["citizenship", "citizen", "nationality", "country"])) add("Citizenship restriction");
+  if (hasAny(text, ["career stage", "early career", "age limit", "senior member", "active researcher"])) add("Career stage restriction");
+  if (hasAny(text, ["previous winners", "prior award", "nobel prize", "turing award", "abel prize", "lasker", "gairdner", "breakthrough prize"])) add("Prior award restriction");
+  if (hasAny(text, ["resident", "residency", "resided", "based in"])) add("Residency restriction");
+
+  return values.length ? values.join(" · ") : "None";
+}
+
+function benchmarkMedalValue(prize, recognition) {
+  const text = normalizeText(`${prize} ${recognition}`);
+  return hasAny(text, ["medal"]) ? "✓" : "—";
+}
+
+function benchmarkLectureValue(item, category, recognition) {
+  const value = benchmarkCombinedField(item, category, recognition, [
+    "Award Details",
+    "Prize Money/Material Award",
+    "Purpose",
+    "Relationship to Other Awards"
+  ]);
+  return normalizeText(value).includes("lecture") ? "✓" : "—";
+}
+
+function benchmarkPrestigeValue(tierKey) {
+  if (tierKey === "level1a" || tierKey === "level1b") return "Very high";
+  if (tierKey === "level1c" || tierKey === "level2") return "High";
+  return "Moderate";
+}
+
+function benchmarkRecipientsValue(value) {
+  const text = String(value || "N/A").trim();
+  if (!text || text === "N/A") return "N/A";
+
+  const range = text.match(/(?:~\s*)?\d{1,3}(?:,\d{3})?\s*(?:-|–|to)\s*(?:~\s*)?\d{1,3}(?:,\d{3})?/);
+  if (range) return range[0].replace(/\s*to\s*/i, "–").replace(/\s*-\s*/, "–");
+
+  const approx = text.match(/(?:~|approximately|about|around|up to|over|more than)\s*\d{1,3}(?:,\d{3})?/i);
+  if (approx) return approx[0].replace(/approximately|about|around/i, "~").replace(/more than/i, "over").replace(/\s+/g, " ");
+
+  const count = text.match(/\b\d{1,3}(?:,\d{3})?\b/);
+  return count ? count[0] : "N/A";
 }
 
 function benchmarkDurationDisplay(value) {
@@ -8349,10 +8510,12 @@ function benchmarkDurationDisplay(value) {
 
 function benchmarkPrizeDisplay(value) {
   const text = String(value || "N/A").trim();
-  if (!text || text === "N/A") return "N/A";
+  if (!text || text === "N/A") return "Undisclosed";
   const normalized = normalizeText(text);
 
   if (
+    normalized === "0" ||
+    normalized.includes("none") ||
     normalized.includes("no standard") ||
     normalized.includes("no routine") ||
     normalized.includes("no regular") ||
@@ -8373,11 +8536,11 @@ function benchmarkPrizeDisplay(value) {
   if (normalized.includes("medal")) return "Medal";
   if (normalized.includes("plaque") || normalized.includes("certificate") || normalized.includes("diploma")) return "Medal";
 
-  return text;
+  return "Undisclosed";
 }
 
 function normalizeBenchmarkMoney(value) {
-  return String(value || "")
+  const clean = String(value || "")
     .replace(/\bUSD\b/i, "US$")
     .replace(/\bEUR\b/i, "EUR")
     .replace(/\bGBP\b/i, "GBP")
@@ -8389,9 +8552,11 @@ function normalizeBenchmarkMoney(value) {
     .replace(/\b125,000\b/, "125k")
     .replace(/\b75,000\b/, "75k")
     .replace(/\b10,000\b/, "10k")
+    .replace(/\b7,500\b/, "7.5k")
     .replace(/\b5,000\b/, "5k")
     .replace(/\b2,000\b/, "2k")
     .replace(/\b1,000\b/, "1k");
+  return clean.replace(/^(US\$|EUR|GBP|RMB)(?=\d)/, "$1 ");
 }
 
 function benchmarkHeaderCell(column) {
@@ -8506,17 +8671,17 @@ function benchmarkColumnGroups() {
       label: "Identity",
       columns: [
         { key: "recognition", label: "Recognition", freeze: true },
+        { key: "form", label: "Form" },
         { key: "categoryTier", label: "Level" },
-        { key: "institution", label: "Institution" },
-        { key: "type", label: "Type" },
-        { key: "awardingBody", label: "Awarding Body" }
+        { key: "category", label: "Category" }
       ]
     },
     {
       key: "scope",
       label: "Scope",
       columns: [
-        { key: "scopeField", label: "Fields" },
+        { key: "fields", label: "Fields" },
+        { key: "aiRelevant", label: "AI Relevant" },
         { key: "geographicScope", label: "Geographic Scope" }
       ]
     },
@@ -8524,27 +8689,29 @@ function benchmarkColumnGroups() {
       key: "selection",
       label: "Selection",
       columns: [
-        { key: "selectionProcess", label: "Nomination" },
-        { key: "evaluationCriteria", label: "Evaluation" },
-        { key: "eligibility", label: "Eligibility" }
+        { key: "elected", label: "Elected" },
+        { key: "lifetime", label: "Lifetime" },
+        { key: "citizenship", label: "Citizenship" },
+        { key: "nomination", label: "Nomination" },
+        { key: "evaluation", label: "Evaluation" },
+        { key: "exclusions", label: "Exclusions" }
       ]
     },
     {
       key: "award",
       label: "Award",
       columns: [
-        { key: "duration", label: "Duration" },
-        { key: "prizeMoney", label: "Prize" },
-        { key: "selectivity", label: "Recipients" }
+        { key: "prize", label: "Prize" },
+        { key: "medal", label: "Medal" },
+        { key: "lecture", label: "Lecture" },
+        { key: "recipients", label: "Recipients" }
       ]
     },
     {
       key: "impact",
       label: "Impact",
       columns: [
-        { key: "notableRecipients", label: "Notable Recipients" },
-        { key: "careerImpact", label: "Prestige" },
-        { key: "relationship", label: "Relationship" }
+        { key: "prestige", label: "Prestige" }
       ]
     }
   ];
@@ -8554,6 +8721,27 @@ function benchmarkVisibleColumns() {
   return benchmarkColumnGroups()
     .filter((group) => activeBenchmarkColumnGroups.has(group.key))
     .flatMap((group) => group.columns);
+}
+
+function benchmarkControlledColumnKeys() {
+  return new Set([
+    "form",
+    "category",
+    "fields",
+    "aiRelevant",
+    "geographicScope",
+    "elected",
+    "lifetime",
+    "citizenship",
+    "nomination",
+    "evaluation",
+    "exclusions",
+    "prize",
+    "medal",
+    "lecture",
+    "prestige",
+    "recipients"
+  ]);
 }
 
 function benchmarkMatrixRow(row, columns) {
@@ -8584,8 +8772,9 @@ function formatBenchmarkCell(value, key = "") {
     return `<span class="benchmark-level-pill level-${escapeHtml(text.replace(/\s+/g, "").toLowerCase())}">${escapeHtml(text)}</span>`;
   }
 
-  if (key === "type" || key === "duration" || key === "prizeMoney" || key === "institution") {
-    return `<span class="benchmark-value-pill">${escapeHtml(text)}</span>`;
+  if (benchmarkControlledColumnKeys().has(key)) {
+    const values = text.split(/\s+·\s+/).filter(Boolean);
+    return values.map((value) => `<span class="benchmark-value-pill">${escapeHtml(value)}</span>`).join(" ");
   }
 
   const points = benchmarkCompactPoints(text);

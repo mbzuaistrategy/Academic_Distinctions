@@ -1830,7 +1830,7 @@ a {
 }
 
 .benchmark-table {
-  min-width: 1700px;
+  min-width: 2800px;
   border: 0;
   box-shadow: none;
 }
@@ -2013,6 +2013,7 @@ a {
   max-width: 100%;
   border-radius: 3px;
   padding: 0.16rem 0.45rem;
+  margin: 0 0.18rem 0.18rem 0;
   background: #f0eee8;
   color: #5d554d;
   font-size: 0.72rem;
