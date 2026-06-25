@@ -529,7 +529,25 @@ const categories = [
             "Duration": "Lifetime fellowship, subject to Academy rules and conduct expectations.",
             "Prize Money/Material Award": "No routine monetary prize; honorific Fellowship and post-nominal title.",
             "Number of Recipients": "The Academy has elected annual cohorts; official process pages currently reference up to 44 new Fellows through the annual process, while the 2026 announced cohort contained 60 new Fellows during a transition/expansion period. Success rate is not public.",
-            "Notable Past Recipients": "Fellows include leading UK and international medical scientists, clinicians, public-health researchers, and biomedical innovators.",
+            "Notable Past Recipients": "Sir Paul Nurse, Sir John Bell, Dame Sally Davies, Sir Peter Ratcliffe.",
+            notableRecipients: [
+              {
+                name: "Sir Paul Nurse",
+                prize: "Fellow of the Academy of Medical Sciences"
+              },
+              {
+                name: "Sir John Bell",
+                prize: "Fellow of the Academy of Medical Sciences"
+              },
+              {
+                name: "Dame Sally Davies",
+                prize: "Fellow of the Academy of Medical Sciences"
+              },
+              {
+                name: "Sir Peter Ratcliffe",
+                prize: "Fellow of the Academy of Medical Sciences"
+              }
+            ],
             "Career Impact/Outcomes": "Major UK medical-science prestige signal; may strengthen visibility, leadership credibility, and influence in policy/advisory settings. No official citation-boost statistics found.",
             "Relationship to Other Awards": "Often co-occurs with Royal Society, Royal Academy of Engineering, NIHR, university chairs, and major biomedical prizes, but is not a prerequisite for them.",
             "Ranking/Prestige Signal": "High-prestige national academy fellowship in biomedical and health sciences.",
