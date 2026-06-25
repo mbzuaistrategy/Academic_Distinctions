@@ -5550,7 +5550,21 @@ const selectedRecognitionCriteriaProfiles = {
     "Duration": "One-time award with lifetime prestige.",
     "Prize Money/Material Award": "Bronze medal and USD 2,000 honorarium, according to the IEEE Computer Society awards page.",
     "Number of Recipients": "Usually one recipient per cycle; nomination totals and success rates are not publicly specified.",
-    "Notable Past Recipients": "Anil K. Jain and other major computing researchers and innovators appear in the award recipient list.",
+    "Notable Past Recipients": "Tim Berners-Lee, Grace Hopper, Donald Knuth.",
+    notableRecipients: [
+      {
+        name: "Tim Berners-Lee",
+        prize: "IEEE W. Wallace McDowell Award"
+      },
+      {
+        name: "Grace Hopper",
+        prize: "IEEE W. Wallace McDowell Award"
+      },
+      {
+        name: "Donald Knuth",
+        prize: "IEEE W. Wallace McDowell Award"
+      }
+    ],
     "Career Impact/Outcomes": "High recognition within computing and engineering; no official publication or citation impact statistics are published.",
     "Relationship to Other Awards": "Distinct from IEEE-wide medals and IEEE Fellow status; recipients may also hold IEEE/ACM fellowships or academy memberships.",
     "Ranking/Prestige Signal": "Elite IEEE Computer Society technical award; strong field-level prestige in computing.",
@@ -7429,6 +7443,7 @@ const notableRecipientImages = {
   "Geoffrey Hinton": "https://commons.wikimedia.org/wiki/Special:FilePath/Geoffrey_Hinton_at_UBC.jpg?width=330",
   "George Washington": "https://commons.wikimedia.org/wiki/Special:FilePath/Gilbert_Stuart_Williamstown_Portrait_of_George_Washington.jpg?width=330",
   "Graham Reed": "assets/recipients/graham-reed.png",
+  "Grace Hopper": "assets/recipients/grace-hopper.png",
   "Gertrude Cox": "https://commons.wikimedia.org/wiki/Special:FilePath/Gertrude_Mary_Cox.jpg?width=330",
   "Herbert Simon": "https://commons.wikimedia.org/wiki/Special:FilePath/Herbert_A._Simon_%281978%29.jpg?width=330",
   "Howard Florey": "https://commons.wikimedia.org/wiki/Special:FilePath/Howard_Florey.jpg?width=330",
