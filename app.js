@@ -5650,7 +5650,25 @@ const selectedRecognitionCriteriaProfiles = {
     "Duration": "One-time medal with lifetime prestige.",
     "Prize Money/Material Award": "Medal; no standard cash prize publicly specified.",
     "Number of Recipients": "Normally one recipient per year; nomination/success rates not publicly specified.",
-    "Notable Past Recipients": "Sir Michael Brady, Dame Julia Higgins, Tristram Carfrae, John Bartlett, and other major engineers.",
+    "Notable Past Recipients": "Tim Berners-Lee, Sir Michael Brady, Dame Julia Higgins, Graham Reed.",
+    notableRecipients: [
+      {
+        name: "Tim Berners-Lee",
+        prize: "Royal Academy of Engineering Whittle Medal"
+      },
+      {
+        name: "Sir Michael Brady",
+        prize: "Royal Academy of Engineering Whittle Medal"
+      },
+      {
+        name: "Dame Julia Higgins",
+        prize: "Royal Academy of Engineering Whittle Medal"
+      },
+      {
+        name: "Graham Reed",
+        prize: "Royal Academy of Engineering Whittle Medal"
+      }
+    ],
     "Career Impact/Outcomes": "High senior engineering prestige signal; no official career-impact statistics.",
     "Relationship to Other Awards": "Distinct from Royal Academy Fellowship; recipients may also be Fellows or hold other major engineering honors.",
     "Ranking/Prestige Signal": "Very high UK engineering lifetime-achievement medal.",
@@ -7352,6 +7370,7 @@ const notableRecipientImages = {
   "Christos Papadimitriou": "https://commons.wikimedia.org/wiki/Special:FilePath/Christos_Papadimitriou_2009.jpg?width=330",
   "Christopher Manning": "https://commons.wikimedia.org/wiki/Special:FilePath/Christopher_Manning_at_the_ACL_2014.jpg?width=330",
   "Daphne Koller": "https://commons.wikimedia.org/wiki/Special:FilePath/Daphne_Koller_2009.jpg?width=330",
+  "Dame Julia Higgins": "assets/recipients/dame-julia-higgins.png",
   "Dame Sally Davies": "assets/recipients/dame-sally-davies.png",
   "David Patterson": "assets/recipients/david-patterson.png",
   "David Haussler": "https://commons.wikimedia.org/wiki/Special:FilePath/David_Haussler.jpg?width=330",
@@ -7364,6 +7383,7 @@ const notableRecipientImages = {
   "Frances Arnold": "assets/recipients/frances-arnold.png",
   "Geoffrey Hinton": "https://commons.wikimedia.org/wiki/Special:FilePath/Geoffrey_Hinton_at_UBC.jpg?width=330",
   "George Washington": "https://commons.wikimedia.org/wiki/Special:FilePath/Gilbert_Stuart_Williamstown_Portrait_of_George_Washington.jpg?width=330",
+  "Graham Reed": "assets/recipients/graham-reed.png",
   "Gertrude Cox": "https://commons.wikimedia.org/wiki/Special:FilePath/Gertrude_Mary_Cox.jpg?width=330",
   "Herbert Simon": "https://commons.wikimedia.org/wiki/Special:FilePath/Herbert_A._Simon_%281978%29.jpg?width=330",
   "Howard Florey": "https://commons.wikimedia.org/wiki/Special:FilePath/Howard_Florey.jpg?width=330",
@@ -7389,6 +7409,7 @@ const notableRecipientImages = {
   "Robert Metcalfe": "https://commons.wikimedia.org/wiki/Special:FilePath/Robert_Metcalfe_2010.jpg?width=330",
   "Shirley Ann Jackson": "https://commons.wikimedia.org/wiki/Special:FilePath/Shirley_Ann_Jackson.jpg?width=330",
   "Sir John Bell": "assets/recipients/sir-john-bell.png",
+  "Sir Michael Brady": "assets/recipients/sir-michael-brady.png",
   "Sir Paul Nurse": "assets/recipients/sir-paul-nurse.png",
   "Sir Peter Ratcliffe": "assets/recipients/sir-peter-ratcliffe.png",
   "Stephen Hawking": "https://commons.wikimedia.org/wiki/Special:FilePath/Stephen_Hawking.StarChild.jpg?width=330",
@@ -7396,7 +7417,7 @@ const notableRecipientImages = {
   "Stuart Russell": "https://commons.wikimedia.org/wiki/Special:FilePath/Stuart_Russell_%28computer_scientist%29.jpg?width=330",
   "Subrahmanyan Chandrasekhar": "assets/recipients/subrahmanyan-chandrasekhar.png",
   "Terence Tao": "assets/recipients/terence-tao.png",
-  "Tim Berners-Lee": "https://commons.wikimedia.org/wiki/Special:FilePath/Sir_Tim_Berners-Lee.jpg?width=330",
+  "Tim Berners-Lee": "assets/recipients/tim-berners-lee.png",
   "Thomas Edison": "https://commons.wikimedia.org/wiki/Special:FilePath/Thomas_Edison2.jpg?width=330",
   "Vinton Cerf": "https://commons.wikimedia.org/wiki/Special:FilePath/Vint_Cerf_-_2010.jpg?width=330",
   "Vladimir Vapnik": "https://commons.wikimedia.org/wiki/Special:FilePath/Vladimir_Vapnik_2014.jpg?width=330",
