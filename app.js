@@ -3820,7 +3820,17 @@ const categories = [
             "Duration": "One-time prize",
             "Prize Money/Material Award": "EUR 400,000 per category, plus diploma and commemorative artwork. If shared, the monetary award is divided equally.",
             "Number of Recipients": "One award per category; may be shared. Success rate not publicly available.",
-            "Notable Past Recipients": "Major global scientists, economists, environmental researchers, ICT pioneers, and cultural figures.",
+            "Notable Past Recipients": "John Hennessy, David Patterson.",
+            notableRecipients: [
+              {
+                name: "John Hennessy",
+                prize: "BBVA Foundation Frontiers of Knowledge Award"
+              },
+              {
+                name: "David Patterson",
+                prize: "BBVA Foundation Frontiers of Knowledge Award"
+              }
+            ],
             "Career Impact/Outcomes": "Major international visibility and prestige; no official citation-boost statistics published.",
             "Relationship to Other Awards": "Often associated with researchers who also hold academy memberships, Nobel-level recognition, or major field prizes.",
             "Ranking/Prestige Signal": "Elite global multidisciplinary prize.",
