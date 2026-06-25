@@ -7327,7 +7327,7 @@ const notableRecipientImages = {
   "Benjamin Franklin": "https://commons.wikimedia.org/wiki/Special:FilePath/Benjamin_Franklin_by_Joseph_Duplessis_1778.jpg?width=330",
   "Bjarne Stroustrup": "https://commons.wikimedia.org/wiki/Special:FilePath/Bjarne-stroustrup_%28cropped%29.jpg?width=330",
   "Brian Schmidt": "https://commons.wikimedia.org/wiki/Special:FilePath/Brian_Schmidt.jpg?width=330",
-  "Carolyn Bertozzi": "https://commons.wikimedia.org/wiki/Special:FilePath/Carolyn_Bertozzi_2022.jpg?width=330",
+  "Carolyn Bertozzi": "assets/recipients/carolyn-bertozzi.png",
   "Charles Darwin": "https://commons.wikimedia.org/wiki/Special:FilePath/Charles_Darwin_seated_crop.jpg?width=330",
   "Christos Papadimitriou": "https://commons.wikimedia.org/wiki/Special:FilePath/Christos_Papadimitriou_2009.jpg?width=330",
   "Christopher Manning": "https://commons.wikimedia.org/wiki/Special:FilePath/Christopher_Manning_at_the_ACL_2014.jpg?width=330",
@@ -7368,13 +7368,13 @@ const notableRecipientImages = {
   "Steven Chu": "https://commons.wikimedia.org/wiki/Special:FilePath/Steven_Chu_Secretary_of_Energy_official_portrait.jpg?width=330",
   "Stuart Russell": "https://commons.wikimedia.org/wiki/Special:FilePath/Stuart_Russell_%28computer_scientist%29.jpg?width=330",
   "Subrahmanyan Chandrasekhar": "https://commons.wikimedia.org/wiki/Special:FilePath/Subrahmanyan_Chandrasekhar.jpg?width=330",
-  "Terence Tao": "https://commons.wikimedia.org/wiki/Special:FilePath/Terence_Tao%2C_2011.jpg?width=330",
+  "Terence Tao": "assets/recipients/terence-tao.png",
   "Tim Berners-Lee": "https://commons.wikimedia.org/wiki/Special:FilePath/Sir_Tim_Berners-Lee.jpg?width=330",
   "Thomas Edison": "https://commons.wikimedia.org/wiki/Special:FilePath/Thomas_Edison2.jpg?width=330",
   "Vinton Cerf": "https://commons.wikimedia.org/wiki/Special:FilePath/Vint_Cerf_-_2010.jpg?width=330",
   "Vladimir Vapnik": "https://commons.wikimedia.org/wiki/Special:FilePath/Vladimir_Vapnik_2014.jpg?width=330",
   "W. E. B. Du Bois": "https://commons.wikimedia.org/wiki/Special:FilePath/W.E.B._Du_Bois_by_James_E._Purdy%2C_1907_%28cropped%29.jpg?width=330",
-  "Yann LeCun": "https://commons.wikimedia.org/wiki/Special:FilePath/Yann_LeCun_-_2018.jpg?width=330",
+  "Yann LeCun": "assets/recipients/yann-lecun.png",
   "Yoshua Bengio": "https://commons.wikimedia.org/wiki/Special:FilePath/Yoshua_Bengio_2019.jpg?width=330"
 };
 
