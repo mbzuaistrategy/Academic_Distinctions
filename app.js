@@ -5619,7 +5619,25 @@ const selectedRecognitionCriteriaProfiles = {
     "Duration": "One-time award with associated lecture.",
     "Prize Money/Material Award": "Bronze medal and GBP 5,000 gift.",
     "Number of Recipients": "Normally one recipient per year; nomination/success rates not publicly specified.",
-    "Notable Past Recipients": "Other leading European computer scientists are listed by the Royal Society.",
+    "Notable Past Recipients": "Bernhard Scholkopf, Zoubin Ghahramani, Cordelia Schmid, Artur Ekert.",
+    notableRecipients: [
+      {
+        name: "Bernhard Scholkopf",
+        prize: "Royal Society Milner Award"
+      },
+      {
+        name: "Zoubin Ghahramani",
+        prize: "Royal Society Milner Award"
+      },
+      {
+        name: "Cordelia Schmid",
+        prize: "Royal Society Milner Award"
+      },
+      {
+        name: "Artur Ekert",
+        prize: "Royal Society Milner Award"
+      }
+    ],
     "Career Impact/Outcomes": "Major European computer science recognition and public lecture platform; no official citation-boost statistics.",
     "Relationship to Other Awards": "Distinct from Royal Society Fellowship; may accompany other computing and academy recognitions.",
     "Ranking/Prestige Signal": "Elite European computer science prize.",
@@ -7360,15 +7378,18 @@ const notableRecipientImages = {
   "Allen Newell": "https://commons.wikimedia.org/wiki/Special:FilePath/Allen_Newell_1978.jpg?width=330",
   "Andrew Viterbi": "assets/recipients/andrew-viterbi.png",
   "Ann Dowling": "assets/recipients/ann-dowling.png",
+  "Artur Ekert": "assets/recipients/artur-ekert.png",
   "Barbara Grosz": "https://commons.wikimedia.org/wiki/Special:FilePath/Barbara_Grosz_2016.jpg?width=330",
   "Barbara Liskov": "https://commons.wikimedia.org/wiki/Special:FilePath/Barbara_Liskov_MIT_computer_scientist_2010.jpg?width=330",
   "Benjamin Franklin": "https://commons.wikimedia.org/wiki/Special:FilePath/Benjamin_Franklin_by_Joseph_Duplessis_1778.jpg?width=330",
+  "Bernhard Scholkopf": "assets/recipients/bernhard-scholkopf.png",
   "Bjarne Stroustrup": "https://commons.wikimedia.org/wiki/Special:FilePath/Bjarne-stroustrup_%28cropped%29.jpg?width=330",
   "Brian Schmidt": "https://commons.wikimedia.org/wiki/Special:FilePath/Brian_Schmidt.jpg?width=330",
   "Carolyn Bertozzi": "assets/recipients/carolyn-bertozzi.png",
   "Charles Darwin": "https://commons.wikimedia.org/wiki/Special:FilePath/Charles_Darwin_seated_crop.jpg?width=330",
   "Christos Papadimitriou": "https://commons.wikimedia.org/wiki/Special:FilePath/Christos_Papadimitriou_2009.jpg?width=330",
   "Christopher Manning": "https://commons.wikimedia.org/wiki/Special:FilePath/Christopher_Manning_at_the_ACL_2014.jpg?width=330",
+  "Cordelia Schmid": "assets/recipients/cordelia-schmid.png",
   "Daphne Koller": "https://commons.wikimedia.org/wiki/Special:FilePath/Daphne_Koller_2009.jpg?width=330",
   "Dame Julia Higgins": "assets/recipients/dame-julia-higgins.png",
   "Dame Sally Davies": "assets/recipients/dame-sally-davies.png",
@@ -7423,7 +7444,8 @@ const notableRecipientImages = {
   "Vladimir Vapnik": "https://commons.wikimedia.org/wiki/Special:FilePath/Vladimir_Vapnik_2014.jpg?width=330",
   "W. E. B. Du Bois": "https://commons.wikimedia.org/wiki/Special:FilePath/W.E.B._Du_Bois_by_James_E._Purdy%2C_1907_%28cropped%29.jpg?width=330",
   "Yann LeCun": "assets/recipients/yann-lecun.png",
-  "Yoshua Bengio": "https://commons.wikimedia.org/wiki/Special:FilePath/Yoshua_Bengio_2019.jpg?width=330"
+  "Yoshua Bengio": "https://commons.wikimedia.org/wiki/Special:FilePath/Yoshua_Bengio_2019.jpg?width=330",
+  "Zoubin Ghahramani": "assets/recipients/zoubin-ghahramani.png"
 };
 
 function notableRecipientsFromText(value) {
