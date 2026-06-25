@@ -4148,7 +4148,21 @@ const categories = [
             "Duration": "One-time prize",
             "Prize Money/Material Award": "RMB 10 million per prize category, which may be divided among up to four laureates.",
             "Number of Recipients": "Up to four laureates per prize category; success rate not publicly available.",
-            "Notable Past Recipients": "Internationally prominent researchers in computer science, mathematics, life sciences, and medicine.",
+            "Notable Past Recipients": "Richard Schoen, Scott D. Emr, Wesley I. Sundquist.",
+            notableRecipients: [
+              {
+                name: "Richard Schoen",
+                prize: "World Laureates Association Prize"
+              },
+              {
+                name: "Scott D. Emr",
+                prize: "World Laureates Association Prize"
+              },
+              {
+                name: "Wesley I. Sundquist",
+                prize: "World Laureates Association Prize"
+              }
+            ],
             "Career Impact/Outcomes": "Major global visibility, especially in science and technology; no official career-outcome statistics published.",
             "Relationship to Other Awards": "Committees include major global laureates; positioned as a high-level international science prize.",
             "Ranking/Prestige Signal": "Emerging elite global science prize.",
@@ -7436,8 +7450,10 @@ const notableRecipientImages = {
   "Niels Bohr": "https://commons.wikimedia.org/wiki/Special:FilePath/Niels_Bohr.jpg?width=330",
   "Nigel Shadbolt": "assets/recipients/nigel-shadbolt.png",
   "Peter Doherty": "https://commons.wikimedia.org/wiki/Special:FilePath/Peter_Doherty_2017.jpg?width=330",
+  "Richard Schoen": "assets/recipients/richard-schoen.png",
   "Robert Langer": "assets/recipients/robert-langer.png",
   "Robert Metcalfe": "https://commons.wikimedia.org/wiki/Special:FilePath/Robert_Metcalfe_2010.jpg?width=330",
+  "Scott D. Emr": "assets/recipients/scott-emr.png",
   "Shirley Ann Jackson": "https://commons.wikimedia.org/wiki/Special:FilePath/Shirley_Ann_Jackson.jpg?width=330",
   "Sir John Bell": "assets/recipients/sir-john-bell.png",
   "Sir Michael Brady": "assets/recipients/sir-michael-brady.png",
@@ -7453,6 +7469,7 @@ const notableRecipientImages = {
   "Vinton Cerf": "https://commons.wikimedia.org/wiki/Special:FilePath/Vint_Cerf_-_2010.jpg?width=330",
   "Vladimir Vapnik": "https://commons.wikimedia.org/wiki/Special:FilePath/Vladimir_Vapnik_2014.jpg?width=330",
   "W. E. B. Du Bois": "https://commons.wikimedia.org/wiki/Special:FilePath/W.E.B._Du_Bois_by_James_E._Purdy%2C_1907_%28cropped%29.jpg?width=330",
+  "Wesley I. Sundquist": "assets/recipients/wesley-sundquist.png",
   "Yann LeCun": "assets/recipients/yann-lecun.png",
   "Yoshua Bengio": "https://commons.wikimedia.org/wiki/Special:FilePath/Yoshua_Bengio_2019.jpg?width=330",
   "Zoubin Ghahramani": "assets/recipients/zoubin-ghahramani.png"
