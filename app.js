@@ -8311,17 +8311,18 @@ function practiceCardsForDeck(deckId) {
     const category = getCategory(row.categoryId);
     const sourceItem = practiceSourceItem(row) || row;
     const scope = criteriaFieldValue("Main Field/Scope", sourceItem, category, row.recognition);
+    const label = practiceRecognitionLabel(row);
     const cards = [
       {
         id: `${row.categoryId}-${row.itemIndex}-${row.recognitionIndex}-institution`,
-        front: `Which institution awards or hosts ${row.recognition}?`,
+        front: `Which institution awards or hosts ${label}?`,
         back: row.organization,
         note: row.category,
         href: `#criteria/${row.categoryId}/${row.itemIndex}/${row.recognitionIndex}`
       },
       {
         id: `${row.categoryId}-${row.itemIndex}-${row.recognitionIndex}-level`,
-        front: `What level is ${row.recognition}?`,
+        front: `What level is ${label}?`,
         back: level,
         note: row.organization,
         href: `#criteria/${row.categoryId}/${row.itemIndex}/${row.recognitionIndex}`
@@ -8331,7 +8332,7 @@ function practiceCardsForDeck(deckId) {
     if (scope && scope !== "N/A") {
       cards.push({
         id: `${row.categoryId}-${row.itemIndex}-${row.recognitionIndex}-scope`,
-        front: `What field or scope best describes ${row.recognition}?`,
+        front: `What field or scope best describes ${label}?`,
         back: benchmarkConciseText(scope),
         note: row.organization,
         href: `#criteria/${row.categoryId}/${row.itemIndex}/${row.recognitionIndex}`
@@ -8346,20 +8347,26 @@ function practiceSourceItem(row) {
   return getCategory(row.categoryId)?.items?.[row.itemIndex] || null;
 }
 
+function practiceRecognitionLabel(row) {
+  const ambiguous = /^(member|fellow|foreign member|associate member|international member|fellow \/ foreign fellow)$/i.test(String(row.recognition || "").trim());
+  return ambiguous ? `${row.recognition} - ${row.organization}` : row.recognition;
+}
+
 function practiceQuizQuestions(deckId, requestedCount = 8) {
   const rows = allRecognitions();
   const sourceRows = deckId === "full" || deckId === "levels" ? rows : rows.filter((row) => row.categoryId === deckId);
   const questions = [];
 
   sourceRows.forEach((row) => {
+    const label = practiceRecognitionLabel(row);
     questions.push(practiceMultipleChoiceQuestion({
-      prompt: `Which institution is linked to ${row.recognition}?`,
+      prompt: `Which institution is linked to ${label}?`,
       answer: row.organization,
       choices: rows.map((item) => item.organization),
       href: `#criteria/${row.categoryId}/${row.itemIndex}/${row.recognitionIndex}`
     }));
     questions.push(practiceMultipleChoiceQuestion({
-      prompt: `What level is ${row.recognition}?`,
+      prompt: `What level is ${label}?`,
       answer: tierLabel(row.tierKey).replace(/^Level\s+/i, "Level "),
       choices: [...new Set(rows.map((item) => tierLabel(item.tierKey).replace(/^Level\s+/i, "Level ")))],
       href: `#criteria/${row.categoryId}/${row.itemIndex}/${row.recognitionIndex}`
@@ -8373,7 +8380,7 @@ function practiceQuizQuestions(deckId, requestedCount = 8) {
       questions.push(practiceMultipleChoiceQuestion({
         prompt: `Which recognition is listed for ${record.faculty}?`,
         answer,
-        choices: rows.map((item) => item.recognition),
+        choices: rows.map((item) => practiceRecognitionLabel(item)),
         href: facultyRecognitionHref(record, rows)
       }));
     });
