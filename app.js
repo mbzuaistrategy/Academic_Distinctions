@@ -7267,7 +7267,6 @@ function renderRecognitionCriteria(categoryId, itemIndex, recognitionIndex) {
                 </div>
               </div>
               ${mbzuaiRecipientSection(item, selectedRecognition)}
-              ${recognitionCriteriaSnapshotCards(item, category, selectedRecognition)}
               ${recognitionAwardingBodyProfile(item, selectedRecognition)}
               ${recognitionCriteriaProfile(item, category, selectedRecognition)}
             </div>
@@ -7275,63 +7274,6 @@ function renderRecognitionCriteria(categoryId, itemIndex, recognitionIndex) {
         </div>
       </div>
     </section>
-  `;
-}
-
-function recognitionCriteriaSnapshotCards(item, category, selectedRecognition) {
-  const row = practiceBenchmarkRow(item, selectedRecognition);
-  if (!row) return "";
-
-  const cards = [
-    ["Level", row.categoryTier],
-    ["Form", row.form],
-    ["Geographic Scope", row.geographicScope],
-    ["Nomination", row.nomination],
-    ["Frequency", row.frequency],
-    ["Duration", practiceBenchmarkDuration(row, item, category, selectedRecognition)],
-    ["Prize", row.prize],
-    ["Recipients / Year", row.recipients]
-  ]
-    .map(([label, value]) => [label, practiceConciseCriteriaValue(value)])
-    .filter(([, value]) => practiceUsefulCriteriaValue(value));
-
-  if (!cards.length) return "";
-
-  return `
-    <article class="criteria-snapshot-panel">
-      <div class="criteria-snapshot-head">
-        <h2>Criteria Snapshot</h2>
-        <p>Quick view using the unified benchmark criteria.</p>
-      </div>
-      <div class="criteria-snapshot-grid">
-        ${cards
-          .map(
-            ([label, value]) => `
-              <div class="criteria-snapshot-card">
-                <span>${escapeHtml(label)}</span>
-                <strong>${criteriaSnapshotValue(value)}</strong>
-              </div>
-            `
-          )
-          .join("")}
-      </div>
-    </article>
-  `;
-}
-
-function criteriaSnapshotValue(value) {
-  const text = String(value || "").trim();
-  if (!text.includes(" Â· ")) return escapeHtml(text);
-
-  return `
-    <span class="criteria-snapshot-chip-list">
-      ${text
-        .split(" Â· ")
-        .map((part) => part.trim())
-        .filter(Boolean)
-        .map((part) => `<em>${escapeHtml(part)}</em>`)
-        .join("")}
-    </span>
   `;
 }
 
@@ -8378,7 +8320,7 @@ function practiceCardsForDeck(deckId) {
     const level = tierLabel(row.tierKey).replace(/^Level\s+/i, "Level ");
     const category = getCategory(row.categoryId);
     const sourceItem = practiceSourceItem(row) || row;
-    const criteriaSnapshot = practiceCriteriaSnapshot(sourceItem, category, row.recognition);
+    const criteriaSnapshotCards = practiceCriteriaSnapshotCards(sourceItem, category, row.recognition);
     const label = practiceRecognitionLabel(row);
     const ambiguous = practiceRecognitionIsAmbiguous(row);
     const cards = [
@@ -8398,18 +8340,41 @@ function practiceCardsForDeck(deckId) {
       }
     ];
 
-    if (criteriaSnapshot) {
+    if (criteriaSnapshotCards.length) {
       cards.push({
         id: `${row.categoryId}-${row.itemIndex}-${row.recognitionIndex}-criteria`,
         front: `What are the key criteria details for ${label}?`,
-        back: criteriaSnapshot,
-        note: "Selection, geography, frequency, duration, recipients, and prize.",
+        back: "Criteria snapshot",
+        snapshotCards: criteriaSnapshotCards,
+        note: "Unified benchmark criteria.",
         href: `#criteria/${row.categoryId}/${row.itemIndex}/${row.recognitionIndex}`
       });
     }
 
     return deckId === "levels" ? cards.filter((card) => card.id.endsWith("-level")) : cards;
   });
+}
+
+function practiceCriteriaSnapshotCards(item, category, recognition) {
+  const benchmarkRow = practiceBenchmarkRow(item, recognition);
+  const benchmarkCards = practiceBenchmarkCriteriaCards(benchmarkRow, item, category, recognition);
+  if (benchmarkCards.length) return benchmarkCards;
+
+  const fields = [
+    ["Nomination", "Nomination Process"],
+    ["Geographic Scope", "Geographic Scope"],
+    ["Recipients / Year", "Number of Recipients"],
+    ["Frequency", "Frequency"],
+    ["Duration", "Duration"],
+    ["Prize", "Prize Money/Material Award"]
+  ];
+
+  return fields
+    .map(([label, field]) => {
+      const value = practiceConciseCriteriaValue(criteriaFieldValue(field, item, category, recognition));
+      return practiceUsefulCriteriaValue(value) ? { label, value } : null;
+    })
+    .filter(Boolean);
 }
 
 function practiceCriteriaSnapshot(item, category, recognition) {
@@ -8441,6 +8406,26 @@ function practiceBenchmarkRow(item, recognition) {
   if (!item?.organization || !recognition) return null;
   const key = benchmarkRowId(item.organization, recognition);
   return benchmarkingRows().find((row) => row.id === key) || null;
+}
+
+function practiceBenchmarkCriteriaCards(row, item, category, recognition) {
+  if (!row) return [];
+
+  return [
+    ["Level", row.categoryTier],
+    ["Form", row.form],
+    ["Geographic Scope", row.geographicScope],
+    ["Nomination", row.nomination],
+    ["Frequency", row.frequency],
+    ["Duration", practiceBenchmarkDuration(row, item, category, recognition)],
+    ["Prize", row.prize],
+    ["Recipients / Year", row.recipients]
+  ]
+    .map(([label, value]) => {
+      const clean = practiceConciseCriteriaValue(value);
+      return practiceUsefulCriteriaValue(clean) ? { label, value: clean } : null;
+    })
+    .filter(Boolean);
 }
 
 function practiceBenchmarkCriteriaSnapshot(row, item, category, recognition) {
@@ -8574,7 +8559,7 @@ function renderPracticeFlashcardWorkspace(cards) {
     </div>
     <button class="practice-flashcard ${practiceState.flipped ? "flipped" : ""}" type="button" data-practice-action="flip">
       <span>${escapeHtml(practiceState.flipped ? "Answer" : "Question")}</span>
-      ${practiceFlashcardMainHtml(practiceState.flipped ? card.back : card.front, practiceState.flipped)}
+      ${practiceFlashcardMainHtml(practiceState.flipped ? card.back : card.front, practiceState.flipped, card)}
       <em>${escapeHtml(practiceState.flipped ? card.note : "Click the card to reveal the answer.")}</em>
     </button>
     <div class="practice-actions split">
@@ -8586,7 +8571,24 @@ function renderPracticeFlashcardWorkspace(cards) {
   `;
 }
 
-function practiceFlashcardMainHtml(value, allowList = false) {
+function practiceFlashcardMainHtml(value, allowList = false, card = null) {
+  if (allowList && card?.snapshotCards?.length) {
+    return `
+      <div class="practice-snapshot-grid">
+        ${card.snapshotCards
+          .map(
+            (item) => `
+              <div class="practice-snapshot-card">
+                <span>${escapeHtml(item.label)}</span>
+                <strong>${practiceSnapshotValueHtml(item.value)}</strong>
+              </div>
+            `
+          )
+          .join("")}
+      </div>
+    `;
+  }
+
   const text = String(value || "");
   const points = allowList ? practiceAnswerPoints(text) : [];
 
@@ -8599,6 +8601,18 @@ function practiceFlashcardMainHtml(value, allowList = false) {
   }
 
   return `<strong>${escapeHtml(text)}</strong>`;
+}
+
+function practiceSnapshotValueHtml(value) {
+  const text = String(value || "").trim();
+  const parts = text.split(" Â· ").map((part) => part.trim()).filter(Boolean);
+  if (parts.length <= 1) return escapeHtml(text);
+
+  return `
+    <span class="practice-snapshot-chip-list">
+      ${parts.map((part) => `<em>${escapeHtml(part)}</em>`).join("")}
+    </span>
+  `;
 }
 
 function practiceAnswerPoints(value) {
