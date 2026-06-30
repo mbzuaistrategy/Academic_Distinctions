@@ -8292,14 +8292,24 @@ function practiceCardsForDeck(deckId) {
   }
 
   if (deckId === "faculty") {
-    return sortFacultyRecords(facultyRecognitions, rows).map((record, index) => {
-      const title = facultyRecognitionTitle(record, rows);
+    const sortedFacultyRecords = sortFacultyRecords(facultyRecognitions, rows);
+    const facultyGroups = groupFacultyRecords(sortedFacultyRecords, rows);
+
+    return facultyGroups.map((group, index) => {
+      const titles = group.records.map((record) => {
+        const title = facultyRecognitionTitle(record, rows);
+        return `${title}${record.details ? ` (${record.details})` : ""}`;
+      });
+      const workNotes = group.records
+        .map((record) => record.work)
+        .filter(Boolean)
+        .slice(0, 2);
       return {
         id: `faculty-${index}`,
-        front: `Which recognition is linked to ${record.faculty}?`,
-        back: `${title}${record.details ? ` (${record.details})` : ""}`,
-        note: record.work || record.organization || "Faculty recognition record.",
-        href: facultyRecognitionHref(record, rows)
+        front: `What recognitions are associated with ${group.faculty}?`,
+        back: titles.join("; "),
+        note: workNotes.length ? workNotes.join(" ") : `${titles.length} recognition${titles.length === 1 ? "" : "s"} listed for this faculty member.`,
+        href: facultyRecognitionHref(group.records[0], rows)
       };
     });
   }
