@@ -8446,7 +8446,7 @@ function renderPracticeFlashcardWorkspace(cards) {
     </div>
     <button class="practice-flashcard ${practiceState.flipped ? "flipped" : ""}" type="button" data-practice-action="flip">
       <span>${escapeHtml(practiceState.flipped ? "Answer" : "Question")}</span>
-      <strong>${escapeHtml(practiceState.flipped ? card.back : card.front)}</strong>
+      ${practiceFlashcardMainHtml(practiceState.flipped ? card.back : card.front, practiceState.flipped)}
       <em>${escapeHtml(practiceState.flipped ? card.note : "Click the card to reveal the answer.")}</em>
     </button>
     <div class="practice-actions split">
@@ -8456,6 +8456,31 @@ function renderPracticeFlashcardWorkspace(cards) {
     </div>
     <a class="practice-detail-link" href="${escapeHtml(card.href)}">Open related recognition page</a>
   `;
+}
+
+function practiceFlashcardMainHtml(value, allowList = false) {
+  const text = String(value || "");
+  const points = allowList ? practiceAnswerPoints(text) : [];
+
+  if (points.length > 1) {
+    return `
+      <ul class="practice-answer-list">
+        ${points.map((point) => `<li>${escapeHtml(point)}</li>`).join("")}
+      </ul>
+    `;
+  }
+
+  return `<strong>${escapeHtml(text)}</strong>`;
+}
+
+function practiceAnswerPoints(value) {
+  const text = String(value || "").trim();
+  if (!text || text.length < 95 || !text.includes(";")) return [];
+
+  return text
+    .split(";")
+    .map((point) => point.trim())
+    .filter(Boolean);
 }
 
 function renderPracticeQuiz(deckId) {

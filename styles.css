@@ -1495,6 +1495,21 @@ a {
   line-height: 1.2;
 }
 
+.practice-answer-list {
+  display: grid;
+  gap: 8px;
+  max-height: 320px;
+  overflow: auto;
+  margin: 0;
+  padding-left: 1.1rem;
+  font-weight: 800;
+}
+
+.practice-answer-list li {
+  font-size: 0.95rem;
+  line-height: 1.35;
+}
+
 .practice-flashcard em {
   color: var(--muted);
   font-style: normal;
