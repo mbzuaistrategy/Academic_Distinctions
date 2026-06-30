@@ -8320,7 +8320,7 @@ function practiceCardsForDeck(deckId) {
     const level = tierLabel(row.tierKey).replace(/^Level\s+/i, "Level ");
     const category = getCategory(row.categoryId);
     const sourceItem = practiceSourceItem(row) || row;
-    const scope = criteriaFieldValue("Main Field/Scope", sourceItem, category, row.recognition);
+    const criteriaSnapshot = practiceCriteriaSnapshot(sourceItem, category, row.recognition);
     const label = practiceRecognitionLabel(row);
     const ambiguous = practiceRecognitionIsAmbiguous(row);
     const cards = [
@@ -8340,18 +8340,45 @@ function practiceCardsForDeck(deckId) {
       }
     ];
 
-    if (scope && scope !== "N/A") {
+    if (criteriaSnapshot) {
       cards.push({
-        id: `${row.categoryId}-${row.itemIndex}-${row.recognitionIndex}-scope`,
-        front: `What field or scope best describes ${label}?`,
-        back: benchmarkConciseText(scope),
-        note: row.organization,
+        id: `${row.categoryId}-${row.itemIndex}-${row.recognitionIndex}-criteria`,
+        front: `What are the key criteria details for ${label}?`,
+        back: criteriaSnapshot,
+        note: "Selection, geography, frequency, duration, recipients, and prize.",
         href: `#criteria/${row.categoryId}/${row.itemIndex}/${row.recognitionIndex}`
       });
     }
 
     return deckId === "levels" ? cards.filter((card) => card.id.endsWith("-level")) : cards;
   });
+}
+
+function practiceCriteriaSnapshot(item, category, recognition) {
+  const fields = [
+    ["Selection", "Nomination Process"],
+    ["Geographic scope", "Geographic Scope"],
+    ["Recipients", "Number of Recipients"],
+    ["Frequency", "Frequency"],
+    ["Duration", "Duration"],
+    ["Prize", "Prize Money/Material Award"]
+  ];
+
+  const points = fields
+    .map(([label, field]) => {
+      const value = criteriaFieldValue(field, item, category, recognition);
+      const clean = practiceConciseCriteriaValue(value);
+      return clean && clean !== "N/A" && clean !== "To be completed" ? `${label}: ${clean}` : "";
+    })
+    .filter(Boolean);
+
+  return points.length >= 3 ? points.join("; ") : "";
+}
+
+function practiceConciseCriteriaValue(value) {
+  const text = benchmarkConciseText(String(value || "").trim());
+  if (!text) return "";
+  return text.length > 170 ? `${text.slice(0, 167).trim()}...` : text;
 }
 
 function practiceSourceItem(row) {
