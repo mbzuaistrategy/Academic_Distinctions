@@ -8312,11 +8312,12 @@ function practiceCardsForDeck(deckId) {
     const sourceItem = practiceSourceItem(row) || row;
     const scope = criteriaFieldValue("Main Field/Scope", sourceItem, category, row.recognition);
     const label = practiceRecognitionLabel(row);
+    const ambiguous = practiceRecognitionIsAmbiguous(row);
     const cards = [
       {
         id: `${row.categoryId}-${row.itemIndex}-${row.recognitionIndex}-institution`,
-        front: `Which institution awards or hosts ${label}?`,
-        back: row.organization,
+        front: ambiguous ? `What is the recognition type for ${row.organization}?` : `Which institution awards or hosts ${label}?`,
+        back: ambiguous ? row.recognition : row.organization,
         note: row.category,
         href: `#criteria/${row.categoryId}/${row.itemIndex}/${row.recognitionIndex}`
       },
@@ -8348,8 +8349,11 @@ function practiceSourceItem(row) {
 }
 
 function practiceRecognitionLabel(row) {
-  const ambiguous = /^(member|fellow|foreign member|associate member|international member|fellow \/ foreign fellow)$/i.test(String(row.recognition || "").trim());
-  return ambiguous ? `${row.recognition} - ${row.organization}` : row.recognition;
+  return practiceRecognitionIsAmbiguous(row) ? `${row.recognition} - ${row.organization}` : row.recognition;
+}
+
+function practiceRecognitionIsAmbiguous(row) {
+  return /^(member|fellow|foreign member|associate member|international member|fellow \/ foreign fellow)$/i.test(String(row.recognition || "").trim());
 }
 
 function practiceQuizQuestions(deckId, requestedCount = 8) {
@@ -8359,10 +8363,13 @@ function practiceQuizQuestions(deckId, requestedCount = 8) {
 
   sourceRows.forEach((row) => {
     const label = practiceRecognitionLabel(row);
+    const ambiguous = practiceRecognitionIsAmbiguous(row);
     questions.push(practiceMultipleChoiceQuestion({
-      prompt: `Which institution is linked to ${label}?`,
-      answer: row.organization,
-      choices: rows.map((item) => item.organization),
+      prompt: ambiguous ? `What is the recognition type for ${row.organization}?` : `Which institution is linked to ${label}?`,
+      answer: ambiguous ? row.recognition : row.organization,
+      choices: ambiguous
+        ? rows.filter((item) => practiceRecognitionIsAmbiguous(item)).map((item) => item.recognition)
+        : rows.map((item) => item.organization),
       href: `#criteria/${row.categoryId}/${row.itemIndex}/${row.recognitionIndex}`
     }));
     questions.push(practiceMultipleChoiceQuestion({
