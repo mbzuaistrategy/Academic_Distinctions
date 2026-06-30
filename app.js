@@ -4551,36 +4551,36 @@ const bodyProfileFields = [
 
 const tierDefinitions = {
   level1a: {
-    label: "Level 1A",
+    label: "1A",
     title: "Apex Academy or Apex Global Prize",
     definition: "Apex academies and apex global prizes; strongest institutional reputation signals."
   },
   level1b: {
-    label: "Level 1B",
+    label: "1B",
     title: "Global Mega-Prize",
     definition:
       "Global mega-prizes below the apex Nobel, Turing, Fields, or Abel class but still carrying very high international prestige."
   },
   level1c: {
-    label: "Level 1C",
+    label: "1C",
     title: "Elite Field-Specific Prize or Medal",
     definition:
       "Elite field-specific prizes or medals in AI, computing, statistics, vision, NLP, bioinformatics, or comparable fields."
   },
   level2: {
-    label: "Level 2",
+    label: "2",
     title: "Major Fellowship, Academy, Senior Distinction, or Field Leadership",
     definition:
       "Major elected society fellowships, non-apex academies, senior honors, and major scholarly field leadership roles."
   },
   level3: {
-    label: "Level 3",
+    label: "3",
     title: "Pipeline, Specialized, Professional, Grant, or Innovation Distinction",
     definition:
       "Pipeline, early-career, competitive grant, paper, professional, or innovation distinctions."
   },
   level4: {
-    label: "Level 4",
+    label: "4",
     title: "Campus Citizenship and Educational Excellence",
     definition: "Internal teaching, mentorship, service, culture, and campus citizenship excellence."
   }
@@ -4796,12 +4796,12 @@ const facultyGroupLabels = {
 };
 
 const facultyLevelLabels = {
-  level1a: "Level 1A / Tier 1A",
-  level1b: "Level 1B / Tier 1B",
-  level1c: "Level 1C / Tier 1C",
-  level2: "Level 2 / Tier 2",
-  level3: "Level 3 / Tier 3",
-  level4: "Level 4 / Tier 4"
+  level1a: "1A",
+  level1b: "1B",
+  level1c: "1C",
+  level2: "2",
+  level3: "3",
+  level4: "4"
 };
 
 function facultyRecord(faculty, distinction, groupKey, levelKey, options = {}) {
@@ -6516,12 +6516,12 @@ function tierBadge(tierKey) {
   const tier = tierDefinitions[tierKey];
   if (!tier) return "";
 
-  return `<span class="tier-badge ${tierKey}" title="${escapeHtml(`${tier.title}: ${tier.definition}`)}">${escapeHtml(tier.label)}</span>`;
+  return `<span class="tier-badge ${tierKey}" title="${escapeHtml(tier.label)}">${escapeHtml(tier.label)}</span>`;
 }
 
 function tierLabel(tierKey) {
   const tier = tierDefinitions[tierKey];
-  return tier ? `${tier.label}: ${tier.title}` : "Not leveled";
+  return tier ? tier.label : "Not leveled";
 }
 
 function tierCodeLabel(tierKey) {
@@ -7823,7 +7823,7 @@ function renderAskPage() {
             <button class="button" type="submit">Ask</button>
           </form>
           <div class="ask-examples" aria-label="Example questions">
-            ${["Which recognitions are Level 1A?", "Who at MBZUAI has IEEE Fellow?", "What is the nomination process for Royal Society Fellow?", "Compare ACM Fellow and IEEE Fellow"]
+            ${["Which recognitions are 1A?", "Who at MBZUAI has IEEE Fellow?", "What is the nomination process for Royal Society Fellow?", "Compare ACM Fellow and IEEE Fellow"]
               .map((example) => `<button type="button" data-ask-example="${escapeHtml(example)}">${escapeHtml(example)}</button>`)
               .join("")}
           </div>
@@ -8010,7 +8010,7 @@ function askLevelFromQuery(normalizedQuery) {
     normalizedQuery.match(/\btier\s*([123])\s*([abc])?\b/) ||
     normalizedQuery.match(/\b([123])\s*([abc])\b/);
   if (!match) return "";
-  return normalizeText(`Level ${match[1]}${match[2] || ""}`);
+  return normalizeText(`${match[1]}${match[2] || ""}`);
 }
 
 function askRecordForRecognition(recognitionItem) {
