@@ -6650,6 +6650,8 @@ function render() {
     renderFacultyPage();
   } else if (route === "benchmarking") {
     renderBenchmarkingPage();
+  } else if (route === "practice") {
+    renderKnowledgePracticePage();
   } else if (route === "institutions" || route === "categories") {
     renderCategoriesPage();
   } else if (route === "directory") {
@@ -6674,6 +6676,8 @@ function updateActiveNavigation(route, value) {
           ? "home"
           : route === "benchmarking"
             ? "benchmarking"
+            : route === "practice"
+              ? "practice"
             : "institutions";
   document.querySelector(`[data-nav="${primaryRoute}"]`)?.classList.add("active");
 
@@ -8150,6 +8154,388 @@ function askTokens(query) {
     .filter((token) => token.length > 2 && !stop.has(token));
 }
 
+const practiceState = {
+  deckId: "",
+  cardIndex: 0,
+  flipped: false,
+  quiz: null
+};
+
+function renderKnowledgePracticePage() {
+  const decks = practiceDecks();
+  const totalCards = decks.reduce((total, deck) => total + deck.cardCount, 0);
+
+  app.innerHTML = `
+    <section class="band compact">
+      <div class="section-inner">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">Knowledge Practice</p>
+            <h2>Practice The Portal Knowledge</h2>
+            <p>Use flashcards by section, then test the same section with a short quiz. Finish with a full portal challenge across all recognition data.</p>
+          </div>
+        </div>
+
+        <div class="practice-summary-grid">
+          <article class="practice-summary-card">
+            <strong>${decks.length}</strong>
+            <span>Practice sections</span>
+          </article>
+          <article class="practice-summary-card">
+            <strong>${totalCards}</strong>
+            <span>Flashcards generated</span>
+          </article>
+          <article class="practice-summary-card">
+            <strong>${allRecognitions().length}</strong>
+            <span>Recognitions covered</span>
+          </article>
+        </div>
+
+        <div class="practice-layout">
+          <div class="practice-deck-grid">
+            ${decks.map(practiceDeckCard).join("")}
+          </div>
+          <div id="practice-workspace" class="practice-workspace">
+            ${practiceWelcomePanel()}
+          </div>
+        </div>
+      </div>
+    </section>
+  `;
+}
+
+function practiceDecks() {
+  const recognitionRows = allRecognitions();
+  const categoryDecks = categories
+    .map((category) => {
+      const rows = recognitionRows.filter((row) => row.categoryId === category.id);
+      return {
+        id: category.id,
+        title: category.title,
+        label: "Section deck",
+        description: `${rows.length} recognition${rows.length === 1 ? "" : "s"} from this section.`,
+        cardCount: practiceCardsForDeck(category.id).length,
+        quizCount: practiceQuizQuestions(category.id, 8).length
+      };
+    })
+    .filter((deck) => deck.cardCount);
+
+  return [
+    ...categoryDecks,
+    {
+      id: "faculty",
+      title: "Faculty Recognitions",
+      label: "Faculty deck",
+      description: "Practice MBZUAI faculty-to-recognition links.",
+      cardCount: practiceCardsForDeck("faculty").length,
+      quizCount: practiceQuizQuestions("faculty", 8).length
+    },
+    {
+      id: "levels",
+      title: "Levels And Tiers",
+      label: "Level deck",
+      description: "Practice the internal level assigned to each recognition.",
+      cardCount: practiceCardsForDeck("levels").length,
+      quizCount: practiceQuizQuestions("levels", 8).length
+    },
+    {
+      id: "full",
+      title: "Full Portal Challenge",
+      label: "Mixed quiz",
+      description: "A larger quiz across all flashcard sections.",
+      cardCount: practiceCardsForDeck("full").length,
+      quizCount: practiceQuizQuestions("full", 20).length,
+      fullChallenge: true
+    }
+  ];
+}
+
+function practiceDeckCard(deck) {
+  return `
+    <article class="practice-deck-card ${deck.fullChallenge ? "featured" : ""}">
+      <div>
+        <span class="card-kicker">${escapeHtml(deck.label)}</span>
+        <h3>${escapeHtml(deck.title)}</h3>
+        <p>${escapeHtml(deck.description)}</p>
+      </div>
+      <div class="practice-deck-meta">
+        <span>${deck.cardCount} cards</span>
+        <span>${deck.quizCount} quiz questions</span>
+      </div>
+      <div class="practice-actions">
+        ${deck.fullChallenge ? "" : `<button class="button light" type="button" data-practice-action="flashcards" data-practice-deck="${escapeHtml(deck.id)}">Flashcards</button>`}
+        <button class="button" type="button" data-practice-action="quiz" data-practice-deck="${escapeHtml(deck.id)}">${deck.fullChallenge ? "Start challenge" : "Section quiz"}</button>
+      </div>
+    </article>
+  `;
+}
+
+function practiceWelcomePanel() {
+  return `
+    <div class="practice-panel-empty">
+      <span class="practice-icon">${icon("gem")}</span>
+      <h3>Choose a section to begin</h3>
+      <p>Review the flashcards first, then take the matching quiz. The full challenge mixes questions from every section.</p>
+    </div>
+  `;
+}
+
+function practiceCardsForDeck(deckId) {
+  const rows = allRecognitions();
+
+  if (deckId === "full") {
+    return [
+      ...practiceCardsForDeck("levels"),
+      ...practiceCardsForDeck("faculty"),
+      ...categories.flatMap((category) => practiceCardsForDeck(category.id))
+    ];
+  }
+
+  if (deckId === "faculty") {
+    return sortFacultyRecords(facultyRecognitions, rows).map((record, index) => {
+      const title = facultyRecognitionTitle(record, rows);
+      return {
+        id: `faculty-${index}`,
+        front: `Which recognition is linked to ${record.faculty}?`,
+        back: `${title}${record.details ? ` (${record.details})` : ""}`,
+        note: record.work || record.organization || "Faculty recognition record.",
+        href: facultyRecognitionHref(record, rows)
+      };
+    });
+  }
+
+  const deckRows = deckId === "levels" ? rows : rows.filter((row) => row.categoryId === deckId);
+
+  return deckRows.flatMap((row) => {
+    const level = tierLabel(row.tierKey).replace(/^Level\s+/i, "Level ");
+    const category = getCategory(row.categoryId);
+    const sourceItem = practiceSourceItem(row) || row;
+    const scope = criteriaFieldValue("Main Field/Scope", sourceItem, category, row.recognition);
+    const cards = [
+      {
+        id: `${row.categoryId}-${row.itemIndex}-${row.recognitionIndex}-institution`,
+        front: `Which institution awards or hosts ${row.recognition}?`,
+        back: row.organization,
+        note: row.category,
+        href: `#criteria/${row.categoryId}/${row.itemIndex}/${row.recognitionIndex}`
+      },
+      {
+        id: `${row.categoryId}-${row.itemIndex}-${row.recognitionIndex}-level`,
+        front: `What level is ${row.recognition}?`,
+        back: level,
+        note: row.organization,
+        href: `#criteria/${row.categoryId}/${row.itemIndex}/${row.recognitionIndex}`
+      }
+    ];
+
+    if (scope && scope !== "N/A") {
+      cards.push({
+        id: `${row.categoryId}-${row.itemIndex}-${row.recognitionIndex}-scope`,
+        front: `What field or scope best describes ${row.recognition}?`,
+        back: benchmarkConciseText(scope),
+        note: row.organization,
+        href: `#criteria/${row.categoryId}/${row.itemIndex}/${row.recognitionIndex}`
+      });
+    }
+
+    return deckId === "levels" ? cards.filter((card) => card.id.endsWith("-level")) : cards;
+  });
+}
+
+function practiceSourceItem(row) {
+  return getCategory(row.categoryId)?.items?.[row.itemIndex] || null;
+}
+
+function practiceQuizQuestions(deckId, requestedCount = 8) {
+  const rows = allRecognitions();
+  const sourceRows = deckId === "full" || deckId === "levels" ? rows : rows.filter((row) => row.categoryId === deckId);
+  const questions = [];
+
+  sourceRows.forEach((row) => {
+    questions.push(practiceMultipleChoiceQuestion({
+      prompt: `Which institution is linked to ${row.recognition}?`,
+      answer: row.organization,
+      choices: rows.map((item) => item.organization),
+      href: `#criteria/${row.categoryId}/${row.itemIndex}/${row.recognitionIndex}`
+    }));
+    questions.push(practiceMultipleChoiceQuestion({
+      prompt: `What level is ${row.recognition}?`,
+      answer: tierLabel(row.tierKey).replace(/^Level\s+/i, "Level "),
+      choices: [...new Set(rows.map((item) => tierLabel(item.tierKey).replace(/^Level\s+/i, "Level ")))],
+      href: `#criteria/${row.categoryId}/${row.itemIndex}/${row.recognitionIndex}`
+    }));
+  });
+
+  if (deckId === "faculty" || deckId === "full") {
+    const facultyRows = sortFacultyRecords(facultyRecognitions, rows).slice(0, deckId === "full" ? 80 : 120);
+    facultyRows.forEach((record) => {
+      const answer = facultyRecognitionTitle(record, rows);
+      questions.push(practiceMultipleChoiceQuestion({
+        prompt: `Which recognition is listed for ${record.faculty}?`,
+        answer,
+        choices: rows.map((item) => item.recognition),
+        href: facultyRecognitionHref(record, rows)
+      }));
+    });
+  }
+
+  return practiceShuffle(questions.filter(Boolean)).slice(0, requestedCount);
+}
+
+function practiceMultipleChoiceQuestion({ prompt, answer, choices, href }) {
+  if (!answer) return null;
+  const cleanChoices = [...new Set(choices.filter(Boolean).map((choice) => String(choice).trim()))]
+    .filter((choice) => normalizeText(choice) !== normalizeText(answer));
+  const selected = practiceShuffle(cleanChoices).slice(0, 3);
+  const options = practiceShuffle([answer, ...selected]);
+  return { prompt, answer, options, href, selected: null };
+}
+
+function practiceShuffle(items) {
+  return [...items].sort(() => Math.random() - 0.5);
+}
+
+function practiceDeckTitle(deckId) {
+  return practiceDecks().find((deck) => deck.id === deckId)?.title || "Knowledge Practice";
+}
+
+function renderPracticeFlashcards(deckId) {
+  const cards = practiceCardsForDeck(deckId);
+  practiceState.deckId = deckId;
+  practiceState.cardIndex = Math.min(practiceState.cardIndex, Math.max(cards.length - 1, 0));
+  practiceState.flipped = false;
+  renderPracticeFlashcardWorkspace(cards);
+}
+
+function renderPracticeFlashcardWorkspace(cards) {
+  const card = cards[practiceState.cardIndex];
+  const workspace = document.querySelector("#practice-workspace");
+  if (!workspace || !card) return;
+
+  workspace.innerHTML = `
+    <div class="practice-workspace-head">
+      <div>
+        <span class="card-kicker">Flashcards</span>
+        <h3>${escapeHtml(practiceDeckTitle(practiceState.deckId))}</h3>
+      </div>
+      <span class="practice-progress">${practiceState.cardIndex + 1} / ${cards.length}</span>
+    </div>
+    <button class="practice-flashcard ${practiceState.flipped ? "flipped" : ""}" type="button" data-practice-action="flip">
+      <span>${escapeHtml(practiceState.flipped ? "Answer" : "Question")}</span>
+      <strong>${escapeHtml(practiceState.flipped ? card.back : card.front)}</strong>
+      <em>${escapeHtml(practiceState.flipped ? card.note : "Click the card to reveal the answer.")}</em>
+    </button>
+    <div class="practice-actions split">
+      <button class="button light" type="button" data-practice-action="prev-card" ${practiceState.cardIndex === 0 ? "disabled" : ""}>Previous</button>
+      <button class="button light" type="button" data-practice-action="next-card" ${practiceState.cardIndex === cards.length - 1 ? "disabled" : ""}>Next</button>
+      <button class="button" type="button" data-practice-action="quiz" data-practice-deck="${escapeHtml(practiceState.deckId)}">Take section quiz</button>
+    </div>
+    <a class="practice-detail-link" href="${escapeHtml(card.href)}">Open related recognition page</a>
+  `;
+}
+
+function renderPracticeQuiz(deckId) {
+  practiceState.deckId = deckId;
+  practiceState.quiz = {
+    deckId,
+    questions: practiceQuizQuestions(deckId, deckId === "full" ? 20 : 8)
+  };
+  renderPracticeQuizWorkspace();
+}
+
+function renderPracticeQuizWorkspace() {
+  const workspace = document.querySelector("#practice-workspace");
+  const quiz = practiceState.quiz;
+  if (!workspace || !quiz) return;
+
+  const answered = quiz.questions.filter((question) => question.selected !== null).length;
+  const correct = quiz.questions.filter((question) => question.selected === question.answer).length;
+
+  workspace.innerHTML = `
+    <div class="practice-workspace-head">
+      <div>
+        <span class="card-kicker">${quiz.deckId === "full" ? "Full Portal Challenge" : "Section Quiz"}</span>
+        <h3>${escapeHtml(practiceDeckTitle(quiz.deckId))}</h3>
+      </div>
+      <span class="practice-progress">${correct} / ${quiz.questions.length} correct</span>
+    </div>
+    <div class="practice-quiz-list">
+      ${quiz.questions.map((question, questionIndex) => practiceQuestionHtml(question, questionIndex)).join("")}
+    </div>
+    <div class="practice-actions split">
+      <button class="button light" type="button" data-practice-action="quiz" data-practice-deck="${escapeHtml(quiz.deckId)}">Restart quiz</button>
+      ${quiz.deckId === "full" ? "" : `<button class="button" type="button" data-practice-action="flashcards" data-practice-deck="${escapeHtml(quiz.deckId)}">Review flashcards</button>`}
+      <span class="practice-score">${answered === quiz.questions.length ? "Quiz complete." : `${answered} answered.`}</span>
+    </div>
+  `;
+}
+
+function practiceQuestionHtml(question, questionIndex) {
+  return `
+    <article class="practice-question-card">
+      <div class="practice-question-head">
+        <span>Question ${questionIndex + 1}</span>
+        ${question.selected ? `<strong class="${question.selected === question.answer ? "correct" : "incorrect"}">${question.selected === question.answer ? "Correct" : "Review"}</strong>` : ""}
+      </div>
+      <h4>${escapeHtml(question.prompt)}</h4>
+      <div class="practice-choice-grid">
+        ${question.options.map((option) => {
+          const isSelected = question.selected === option;
+          const isCorrect = question.selected && question.answer === option;
+          return `
+            <button class="practice-choice ${isSelected ? "selected" : ""} ${isCorrect ? "correct" : ""}" type="button" data-practice-action="answer" data-practice-question="${questionIndex}" data-practice-answer="${escapeHtml(option)}">
+              ${escapeHtml(option)}
+            </button>
+          `;
+        }).join("")}
+      </div>
+      ${question.selected ? `<a class="practice-detail-link" href="${escapeHtml(question.href)}">Review source page</a>` : ""}
+    </article>
+  `;
+}
+
+function handlePracticeClick(target) {
+  const action = target.dataset.practiceAction;
+  const deckId = target.dataset.practiceDeck || practiceState.deckId;
+
+  if (action === "flashcards") {
+    practiceState.cardIndex = 0;
+    renderPracticeFlashcards(deckId);
+    return true;
+  }
+
+  if (action === "quiz") {
+    renderPracticeQuiz(deckId);
+    return true;
+  }
+
+  if (action === "flip") {
+    practiceState.flipped = !practiceState.flipped;
+    renderPracticeFlashcardWorkspace(practiceCardsForDeck(practiceState.deckId));
+    return true;
+  }
+
+  if (action === "next-card" || action === "prev-card") {
+    const cards = practiceCardsForDeck(practiceState.deckId);
+    practiceState.cardIndex += action === "next-card" ? 1 : -1;
+    practiceState.cardIndex = Math.max(0, Math.min(practiceState.cardIndex, cards.length - 1));
+    practiceState.flipped = false;
+    renderPracticeFlashcardWorkspace(cards);
+    return true;
+  }
+
+  if (action === "answer" && practiceState.quiz) {
+    const question = practiceState.quiz.questions[Number(target.dataset.practiceQuestion)];
+    if (question) {
+      question.selected = target.dataset.practiceAnswer;
+      renderPracticeQuizWorkspace();
+    }
+    return true;
+  }
+
+  return false;
+}
+
 function renderFacultyPage() {
   const recognitions = allRecognitions();
   const sortedRecords = sortFacultyRecords(facultyRecognitions, recognitions);
@@ -9435,6 +9821,12 @@ function directoryTable(items) {
 }
 
 function handleClick(event) {
+  const practiceControl = event.target.closest("[data-practice-action]");
+  if (practiceControl) {
+    event.preventDefault();
+    if (handlePracticeClick(practiceControl)) return;
+  }
+
   const facultyLink = event.target.closest("[data-faculty-link]");
   if (facultyLink) {
     const targetHash = facultyLink.dataset.facultyLink;
