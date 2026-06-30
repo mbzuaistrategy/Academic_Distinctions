@@ -1723,6 +1723,85 @@ a {
   font-weight: 700;
 }
 
+.criteria-snapshot-panel {
+  display: grid;
+  gap: 12px;
+  margin-bottom: 16px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 14px;
+  background: var(--surface);
+}
+
+.criteria-snapshot-head {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: 12px;
+  border-bottom: 1px solid var(--line-soft);
+  padding-bottom: 10px;
+}
+
+.criteria-snapshot-head h2 {
+  margin: 0;
+  font-size: 1.08rem;
+}
+
+.criteria-snapshot-head p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.84rem;
+  text-align: right;
+}
+
+.criteria-snapshot-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.criteria-snapshot-card {
+  min-width: 0;
+  display: grid;
+  gap: 6px;
+  align-content: start;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  padding: 10px 12px;
+  background: var(--surface-soft);
+}
+
+.criteria-snapshot-card span {
+  color: #6d6258;
+  font-size: 0.7rem;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.criteria-snapshot-card strong {
+  min-width: 0;
+  color: var(--ink);
+  font-size: 0.94rem;
+  line-height: 1.28;
+  overflow-wrap: anywhere;
+}
+
+.criteria-snapshot-chip-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+}
+
+.criteria-snapshot-chip-list em {
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  padding: 3px 7px;
+  background: var(--surface);
+  font-style: normal;
+  font-size: 0.82rem;
+}
+
 .criteria-profile {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -2538,6 +2617,10 @@ a {
     grid-template-columns: 1fr;
   }
 
+  .criteria-snapshot-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
   .practice-workspace {
     min-height: 0;
   }
@@ -2596,9 +2679,19 @@ a {
 
   .info-list,
   .body-profile-row,
+  .criteria-snapshot-grid,
   .practice-summary-grid,
   .practice-choice-grid {
     grid-template-columns: 1fr;
+  }
+
+  .criteria-snapshot-head {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .criteria-snapshot-head p {
+    text-align: left;
   }
 
   .directory-table {

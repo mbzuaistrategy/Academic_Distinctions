@@ -7267,6 +7267,7 @@ function renderRecognitionCriteria(categoryId, itemIndex, recognitionIndex) {
                 </div>
               </div>
               ${mbzuaiRecipientSection(item, selectedRecognition)}
+              ${recognitionCriteriaSnapshotCards(item, category, selectedRecognition)}
               ${recognitionAwardingBodyProfile(item, selectedRecognition)}
               ${recognitionCriteriaProfile(item, category, selectedRecognition)}
             </div>
@@ -7274,6 +7275,63 @@ function renderRecognitionCriteria(categoryId, itemIndex, recognitionIndex) {
         </div>
       </div>
     </section>
+  `;
+}
+
+function recognitionCriteriaSnapshotCards(item, category, selectedRecognition) {
+  const row = practiceBenchmarkRow(item, selectedRecognition);
+  if (!row) return "";
+
+  const cards = [
+    ["Level", row.categoryTier],
+    ["Form", row.form],
+    ["Geographic Scope", row.geographicScope],
+    ["Nomination", row.nomination],
+    ["Frequency", row.frequency],
+    ["Duration", practiceBenchmarkDuration(row, item, category, selectedRecognition)],
+    ["Prize", row.prize],
+    ["Recipients / Year", row.recipients]
+  ]
+    .map(([label, value]) => [label, practiceConciseCriteriaValue(value)])
+    .filter(([, value]) => practiceUsefulCriteriaValue(value));
+
+  if (!cards.length) return "";
+
+  return `
+    <article class="criteria-snapshot-panel">
+      <div class="criteria-snapshot-head">
+        <h2>Criteria Snapshot</h2>
+        <p>Quick view using the unified benchmark criteria.</p>
+      </div>
+      <div class="criteria-snapshot-grid">
+        ${cards
+          .map(
+            ([label, value]) => `
+              <div class="criteria-snapshot-card">
+                <span>${escapeHtml(label)}</span>
+                <strong>${criteriaSnapshotValue(value)}</strong>
+              </div>
+            `
+          )
+          .join("")}
+      </div>
+    </article>
+  `;
+}
+
+function criteriaSnapshotValue(value) {
+  const text = String(value || "").trim();
+  if (!text.includes(" Â· ")) return escapeHtml(text);
+
+  return `
+    <span class="criteria-snapshot-chip-list">
+      ${text
+        .split(" Â· ")
+        .map((part) => part.trim())
+        .filter(Boolean)
+        .map((part) => `<em>${escapeHtml(part)}</em>`)
+        .join("")}
+    </span>
   `;
 }
 
