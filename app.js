@@ -8355,10 +8355,14 @@ function practiceCardsForDeck(deckId) {
 }
 
 function practiceCriteriaSnapshot(item, category, recognition) {
+  const benchmarkRow = practiceBenchmarkRow(item, recognition);
+  const benchmarkSnapshot = practiceBenchmarkCriteriaSnapshot(benchmarkRow, item, category, recognition);
+  if (benchmarkSnapshot) return benchmarkSnapshot;
+
   const fields = [
     ["Selection", "Nomination Process"],
     ["Geographic scope", "Geographic Scope"],
-    ["Recipients", "Number of Recipients"],
+    ["Recipients/year", "Number of Recipients"],
     ["Frequency", "Frequency"],
     ["Duration", "Duration"],
     ["Prize", "Prize Money/Material Award"]
@@ -8373,6 +8377,45 @@ function practiceCriteriaSnapshot(item, category, recognition) {
     .filter(Boolean);
 
   return points.length >= 3 ? points.join("; ") : "";
+}
+
+function practiceBenchmarkRow(item, recognition) {
+  if (!item?.organization || !recognition) return null;
+  const key = benchmarkRowId(item.organization, recognition);
+  return benchmarkingRows().find((row) => row.id === key) || null;
+}
+
+function practiceBenchmarkCriteriaSnapshot(row, item, category, recognition) {
+  if (!row) return "";
+
+  const points = [
+    ["Nomination", row.nomination],
+    ["Geographic scope", row.geographicScope],
+    ["Recipients/year", row.recipients],
+    ["Frequency", row.frequency],
+    ["Duration", practiceBenchmarkDuration(row, item, category, recognition)],
+    ["Prize", row.prize]
+  ]
+    .map(([label, value]) => {
+      const clean = practiceConciseCriteriaValue(value);
+      return practiceUsefulCriteriaValue(clean) ? `${label}: ${clean}` : "";
+    })
+    .filter(Boolean);
+
+  return points.length >= 3 ? points.join("; ") : "";
+}
+
+function practiceBenchmarkDuration(row, item, category, recognition) {
+  if (row?.lifetime === "✓") return "Lifetime";
+  const duration = benchmarkDurationDisplay(criteriaFieldValue("Duration", item, category, recognition));
+  if (practiceUsefulCriteriaValue(duration)) return duration;
+  if (row?.lifetime === "—") return "One-time";
+  return row?.lifetime || "";
+}
+
+function practiceUsefulCriteriaValue(value) {
+  const text = String(value || "").trim();
+  return Boolean(text) && text !== "N/A" && text !== "To be completed";
 }
 
 function practiceConciseCriteriaValue(value) {
