@@ -8287,7 +8287,7 @@ function practiceCardsForDeck(deckId) {
     return [
       ...practiceCardsForDeck("levels"),
       ...practiceCardsForDeck("faculty"),
-      ...categories.flatMap((category) => practiceCardsForDeck(category.id))
+      ...practiceRecognitionCriteriaCards(practiceUniqueRecognitionRows(rows))
     ];
   }
 
@@ -8314,44 +8314,54 @@ function practiceCardsForDeck(deckId) {
     });
   }
 
-  const deckRows = deckId === "levels" ? rows : rows.filter((row) => row.categoryId === deckId);
+  const deckRows = practiceUniqueRecognitionRows(deckId === "levels" ? rows : rows.filter((row) => row.categoryId === deckId));
 
-  return deckRows.flatMap((row) => {
+  if (deckId === "levels") {
+    return deckRows.map((row) => {
     const level = tierLabel(row.tierKey).replace(/^Level\s+/i, "Level ");
-    const category = getCategory(row.categoryId);
-    const sourceItem = practiceSourceItem(row) || row;
-    const criteriaSnapshotCards = practiceCriteriaSnapshotCards(sourceItem, category, row.recognition);
-    const label = practiceRecognitionLabel(row);
-    const ambiguous = practiceRecognitionIsAmbiguous(row);
-    const cards = [
-      {
-        id: `${row.categoryId}-${row.itemIndex}-${row.recognitionIndex}-institution`,
-        front: ambiguous ? `What is the recognition type for ${row.organization}?` : `Which institution awards or hosts ${label}?`,
-        back: ambiguous ? row.recognition : row.organization,
-        note: row.category,
-        href: `#criteria/${row.categoryId}/${row.itemIndex}/${row.recognitionIndex}`
-      },
-      {
+      const label = practiceRecognitionLabel(row);
+      return {
         id: `${row.categoryId}-${row.itemIndex}-${row.recognitionIndex}-level`,
         front: `What level is ${label}?`,
         back: level,
         note: row.organization,
         href: `#criteria/${row.categoryId}/${row.itemIndex}/${row.recognitionIndex}`
-      }
-    ];
+      };
+    });
+  }
 
-    if (criteriaSnapshotCards.length) {
-      cards.push({
-        id: `${row.categoryId}-${row.itemIndex}-${row.recognitionIndex}-criteria`,
-        front: `What are the key criteria details for ${label}?`,
-        back: "Criteria snapshot",
-        snapshotCards: criteriaSnapshotCards,
-        note: "Unified benchmark criteria.",
-        href: `#criteria/${row.categoryId}/${row.itemIndex}/${row.recognitionIndex}`
-      });
-    }
+  return practiceRecognitionCriteriaCards(deckRows);
+}
 
-    return deckId === "levels" ? cards.filter((card) => card.id.endsWith("-level")) : cards;
+function practiceUniqueRecognitionRows(rows) {
+  const seen = new Set();
+  return rows.filter((row) => {
+    const key = benchmarkRowId(row.organization, row.recognition);
+    if (seen.has(key)) return false;
+    seen.add(key);
+    return true;
+  });
+}
+
+function practiceRecognitionCriteriaCards(rows) {
+  return rows.flatMap((row) => {
+    const category = getCategory(row.categoryId);
+    const sourceItem = practiceSourceItem(row) || row;
+    const criteriaSnapshotCards = practiceCriteriaSnapshotCards(sourceItem, category, row.recognition);
+    const label = practiceRecognitionLabel(row);
+
+    return criteriaSnapshotCards.length
+      ? [
+          {
+            id: `${row.categoryId}-${row.itemIndex}-${row.recognitionIndex}-criteria`,
+            front: `What are the key criteria details for ${label}?`,
+            back: "Criteria snapshot",
+            snapshotCards: criteriaSnapshotCards,
+            note: "Selection, geography, frequency, duration, recipients, and prize.",
+            href: `#criteria/${row.categoryId}/${row.itemIndex}/${row.recognitionIndex}`
+          }
+        ]
+      : [];
   });
 }
 
@@ -8412,14 +8422,12 @@ function practiceBenchmarkCriteriaCards(row, item, category, recognition) {
   if (!row) return [];
 
   return [
-    ["Level", row.categoryTier],
-    ["Form", row.form],
-    ["Geographic Scope", row.geographicScope],
     ["Nomination", row.nomination],
+    ["Geographic Scope", row.geographicScope],
+    ["Recipients / Year", row.recipients],
     ["Frequency", row.frequency],
     ["Duration", practiceBenchmarkDuration(row, item, category, recognition)],
-    ["Prize", row.prize],
-    ["Recipients / Year", row.recipients]
+    ["Prize", row.prize]
   ]
     .map(([label, value]) => {
       const clean = practiceConciseCriteriaValue(value);
